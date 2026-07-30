@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  /* Main colors */
+  --color-main-primary-color: #2563EB;
+  --color-main-second-color: #3B82F6;
+  --color-main-third-color: #1D4ED8;
+  --color-secondary-primary-color: #7C3AED;
+  --color-secondary-second-color: #8B5CF6;
+  --color-secondary-third-color: #4F46E5;
+
+  /* Texts */
+  --color-primary-color: #0F172A;
+  --color-second-color: #475569;
+
+  /* Backgrond */
+  --color-background-color: #F8FAFC;
+}
