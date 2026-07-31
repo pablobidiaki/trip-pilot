@@ -1,4 +1,3 @@
-import Header from "@/components/header";
 import "./globals.css";
 
 export default function RootLayout({
@@ -8,7 +7,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Header />
       <body className="bg-background-color">{children}</body>
     </html>
   );

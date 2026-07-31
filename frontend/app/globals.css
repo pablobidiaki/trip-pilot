@@ -15,4 +15,8 @@
 
   /* Backgrond */
   --color-background-color: #F8FAFC;
+
+  /* Buttons */
+  --color-blue-color: #2563EB; 
+  --color-purple-color: #7C3AED ; 
 }
