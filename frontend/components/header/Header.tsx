@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import WhiteButton from "@/components/Buttons/WhiteButton"
+import GradientButton from "@/components/Buttons/GradientButton"
+
 export default function Header(){
     return(
         <header>
@@ -26,37 +29,8 @@ export default function Header(){
                 
 
                 <div className="flex gap-5">
-                    <button className="bg-white
-                                        px-4
-                                       py-2
-                                       rounded-xl
-                                       hover:scale-[1.02]
-                                       transition-all
-                                       duration-300
-                                       hover:shadow-xl
-                                       shadow-lg">
-                        <Link href={'/login'}>Entrar</Link>
-                    </button>
-                    <button className="rounded-xl
-                                       bg-linear-to-r
-                                       from-blue-600
-                                       to-violet-600
-                                       px-4
-                                       py-2
-                                       font-semibold
-                                       text-white
-                                       shadow-lg
-                                       shadow-blue-500/20z'
-                                       transition-all
-                                       duration-300
-                                       hover:scale-[1.02]
-                                       hover:from-blue-700
-                                       hover:to-violet-700
-                                       hover:shadow-xl
-                                       hover:shadow-violet-500/30
-                                       active:scale-[0.98]">
-                        <Link href={'/register'}>Começar Grátis</Link>
-                    </button>
+                    <WhiteButton text={<Link href={'/login'}>Entrar</Link>}/>
+                    <GradientButton text={ <Link href={'/register'}>Começar Grátis</Link>}/>
                 </div>
             </div>
         </header>

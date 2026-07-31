@@ -27,10 +27,16 @@ const texts = {
 
     form:{
         exit_point: "De onde você vai sair?",
+        exit_point_placeholder: "Ex: São Paulo, Brasil",
         destination: "Para onde você quer ir?",
+        destination_placeholder: "Ex: Japão, Itália, Chile...",
         how_days: "Quantos dias?",
+        how_days_placeholder: "Ex: 10 dias",
         when: "Quando?",
-        budget: "Orçamento (opcional)"
+        when_placeholder: "Escolha as datas",
+        budget: "Orçamento (opcional)",
+        budget_placeholder: "Ex: R$10.000",
+        button_text: "Planejar minha viagem com IA"
     }
 }
 
