@@ -1,0 +1,36 @@
+const texts = {
+    header:{
+        create_script: "Criar roteiro",
+        ready_guides: "Guias prontos",
+        destinations: "Destinos",
+        pro: "Pro 👑",
+        login: "Entrar",
+        start_free: "Começar grátis"
+    },
+
+    home:{
+        title: "Planeje sua próxima viagem com IA.",
+        main_text: "Em poucos minutos, receba um roteiro completo com as melhores atrações, lugares e sugestões personalizadas.",
+        customized: "100% personalizado",
+        save_time_and_money: "Economize tempo e dinheiro",
+        script_for_ia: "Roteiros otimizados pela IA",
+        how_works_title: "Como funciona",
+        how_works_text: "Em apenas 3 passos sua viagem está pronta.",
+        informe_your_travel_title: "1. Conte sua viagem",
+        informe_your_travel_text: "Informe destinos, datas, orçamento e preferências.",
+        ai_plan_title: "2. A IA planeja",
+        ai_plan_text: "Nossa IA analisa milhares de opções e montya o melhor roteiro para você.",
+        enjoy_title: "3. Aproveite",
+        enjoy_text: "Siga o roteiro criado e boa viagem!"
+    },
+
+    form:{
+        exit_point: "De onde você vai sair?",
+        destination: "Para onde você quer ir?",
+        how_days: "Quantos dias?",
+        when: "Quando?",
+        budget: "Orçamento (opcional)"
+    }
+}
+
+export default texts;
