@@ -1,4 +1,9 @@
+import { Geist } from "next/font/google";
 import "./globals.css";
+
+const geist = Geist({
+  subsets: ["latin"],
+});
 
 export default function RootLayout({
   children,
@@ -6,8 +11,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-background-color">{children}</body>
+    <html className="bg-background-color" lang="en">
+      <body className={geist.className}>{children}</body>
     </html>
   );
 }
