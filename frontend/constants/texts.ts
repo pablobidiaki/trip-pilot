@@ -66,11 +66,14 @@ const texts = {
         chile_text: "Santiago, Atacama e Valparaíso",
         italy_title: "Itália Clássica",
         italy_text: "Roma, Florença e veneza",
-        greece_title: "grécia Essencial",
+        greece_title: "Grécia Essencial",
         greece_text: "Atenas e Santorini",
         starting_at: "A partir de ",
-        view_ininerary: "Ver roteiro"
-    }
+        view_itinerary: "Ver roteiro",
+        days: "dias"
+    },
+
+    real: "R$"
 }
 
 export default texts;

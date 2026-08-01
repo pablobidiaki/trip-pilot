@@ -7,4 +7,5 @@ export enum TripType {
   Nature = "Natureza",
   Cultural = "Cultura",
   Cruise = "Cruzeiro",
+  Economy = "Econômico"
 }
