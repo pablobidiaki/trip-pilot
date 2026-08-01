@@ -14,27 +14,7 @@ const texts = {
         main_text: "Em poucos minutos, receba um roteiro completo com as melhores atrações, lugares e sugestões personalizadas.",
         customized: "100% personalizado",
         save_time_and_money: "Economize tempo e dinheiro",
-        script_for_ia: "Roteiros otimizados pela IA",
-        how_works_title: "Como funciona",
-        how_works_text: "Em apenas 3 passos sua viagem está pronta.",
-        informe_your_travel_title: "1. Conte sua viagem",
-        informe_your_travel_text: "Informe destinos, datas, orçamento e preferências.",
-        ai_plan_title: "2. A IA planeja",
-        ai_plan_text: "Nossa IA analisa opções e monta o melhor roteiro para você.",
-        enjoy_title: "3. Aproveite",
-        enjoy_text: "Baixe, veja e siga o roteiro criado. Boa viagem!",
-        popular_destination_title: "Destinos populares",
-        view_all_destinations: "Ver todos os destinos",
-        japan: "Japão",
-        japan_description: "Descubra o Japão",
-        chile: "Chile", 
-        chile_description: "Do Atacama à Patagônia",
-        italy: "Itália",
-        italy_description:"História, cultura e gastronomia",
-        new_york: "Nova York",
-        new_york_description: "A cidade que nunca dorme",
-        bali:"Bali",
-        bali_description: "Praias paradisiacas"
+        script_for_ia: "Roteiros otimizados pela IA"
     },
 
     form:{
@@ -49,9 +29,48 @@ const texts = {
         budget: "Orçamento (opcional)",
         budget_placeholder: "Ex: R$10.000",
         button_text: "Planejar minha viagem com IA"
+    },
+
+    how_it_works:{
+        how_works_title: "Como funciona",
+        how_works_text: "Em apenas 3 passos sua viagem está pronta.",
+        informe_your_travel_title: "1. Conte sua viagem",
+        informe_your_travel_text: "Informe destinos, datas, orçamento e preferências.",
+        ai_plan_title: "2. A IA planeja",
+        ai_plan_text: "Nossa IA analisa opções e monta o melhor roteiro para você.",
+        enjoy_title: "3. Aproveite",
+        enjoy_text: "Baixe, veja e siga o roteiro criado. Boa viagem!",
+    },
+
+    popular_destination:{
+        popular_destination_title: "Destinos populares",
+        view_all_destinations: "Ver todos os destinos",
+        japan: "Japão",
+        japan_description: "Descubra o Japão",
+        chile: "Chile", 
+        chile_description: "Do Atacama à Patagônia",
+        italy: "Itália",
+        italy_description:"História, cultura e gastronomia",
+        new_york: "Nova York",
+        new_york_description: "A cidade que nunca dorme",
+        bali:"Bali",
+        bali_description: "Praias paradisiacas"
+    },
+
+    itinerary_example:{
+        title: "Exemplos de roteiros",
+        view_all_itinerary: "Ver todos os roteiros",
+        japan_title: "7 Dias no Japão",
+        japan_text: "Tóquio, Quioto e Osaka",
+        chile_title: "Chile + Atacama",
+        chile_text: "Santiago, Atacama e Valparaíso",
+        italy_title: "Itália Clássica",
+        italy_text: "Roma, Florença e veneza",
+        greece_title: "grécia Essencial",
+        greece_text: "Atenas e Santorini",
+        starting_at: "A partir de ",
+        view_ininerary: "Ver roteiro"
     }
-
-
 }
 
 export default texts;
