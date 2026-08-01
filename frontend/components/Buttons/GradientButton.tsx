@@ -1,5 +1,7 @@
+import { ReactNode } from "react"
+
 interface Props{
-    text: string
+    text: ReactNode
 }
 
 export default function GradientButton({text}: Props){

@@ -22,7 +22,19 @@ const texts = {
         ai_plan_title: "2. A IA planeja",
         ai_plan_text: "Nossa IA analisa opções e monta o melhor roteiro para você.",
         enjoy_title: "3. Aproveite",
-        enjoy_text: "Baixe, veja e siga o roteiro criado. Boa viagem!"
+        enjoy_text: "Baixe, veja e siga o roteiro criado. Boa viagem!",
+        popular_destination_title: "Destinos populares",
+        view_all_destinations: "Ver todos os destinos",
+        japan: "Japão",
+        japan_description: "Descubra o Japão",
+        chile: "Chile", 
+        chile_description: "Do Atacama à Patagônia",
+        italy: "Itália",
+        italy_description:"História, cultura e gastronomia",
+        new_york: "Nova York",
+        new_york_description: "A cidade que nunca dorme",
+        bali:"Bali",
+        bali_description: "Praias paradisiacas"
     },
 
     form:{
@@ -38,6 +50,8 @@ const texts = {
         budget_placeholder: "Ex: R$10.000",
         button_text: "Planejar minha viagem com IA"
     }
+
+
 }
 
 export default texts;
