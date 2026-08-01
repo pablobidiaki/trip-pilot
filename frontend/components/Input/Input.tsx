@@ -1,4 +1,14 @@
-export default function Input({icon, title, placeholder, type, required}){
+import { ReactNode } from "react";
+
+interface InputProps{
+    icon: ReactNode,
+    title: string,
+    placeholder: string,
+    type: string,
+    required: boolean
+}
+
+export default function Input({icon, title, placeholder, type, required}: InputProps){
     return(
         <div className="inline-block">
             <div className="border-2 rounded-2xl border-gray-300 flex items-center p-1">

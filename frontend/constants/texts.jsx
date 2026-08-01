@@ -20,9 +20,9 @@ const texts = {
         informe_your_travel_title: "1. Conte sua viagem",
         informe_your_travel_text: "Informe destinos, datas, orçamento e preferências.",
         ai_plan_title: "2. A IA planeja",
-        ai_plan_text: "Nossa IA analisa milhares de opções e montya o melhor roteiro para você.",
+        ai_plan_text: "Nossa IA analisa opções e monta o melhor roteiro para você.",
         enjoy_title: "3. Aproveite",
-        enjoy_text: "Siga o roteiro criado e boa viagem!"
+        enjoy_text: "Baixe, veja e siga o roteiro criado. Boa viagem!"
     },
 
     form:{

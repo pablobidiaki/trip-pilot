@@ -1,4 +1,8 @@
-export default function GradientButton({text}){
+interface Props{
+    text: string
+}
+
+export default function GradientButton({text}: Props){
     return(
         <button className="rounded-xl
                            bg-linear-to-r
