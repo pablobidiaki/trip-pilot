@@ -73,6 +73,20 @@ const texts = {
         days: "dias"
     },
 
+    why_use:{
+        title: "Por que usar o TripPilot?",
+        ai_title: "IA inteligente",
+        ai_text: "Roteiros personalizados de acordo com seu perfil.",
+        best_prices_title: "Melhores preços",
+        best_prices_text: "Encontramos as melhores opções para você.",
+        time_economy_title: "Economia de tempo",
+        time_economy_text: "Em minutos, o que levaria horas pesquisando.",
+        everything_in_one_place_title: "Tudo em um lugar",
+        everything_in_one_place_text: "Voos, hotéis, passeios e dicas em um só roteiro.",
+        pdf_generation_title: "Gere um PDF",
+        pdf_generation_text: "Baixe o roteiro e veja de qualquer lugar que você esteja."
+    },
+
     real: "R$"
 }
 
