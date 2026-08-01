@@ -87,6 +87,12 @@ const texts = {
         pdf_generation_text: "Baixe o roteiro e veja de qualquer lugar que você esteja."
     },
 
+    ready_to_next_travel:{
+        title: "Pronto para sua próxima viagem?",
+        text: "Comece agora mesmo a planejar sua viagem dos sonhos.",
+        button_text: "Criar meu roteiro grátis"
+    },
+
     real: "R$"
 }
 

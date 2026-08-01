@@ -2,6 +2,7 @@ import Hero from "@/components/Hero/Hero";
 import HowItWorks from "@/components/HowItWorks/HowItWorks"
 import ItineraryExamples from "@/components/ItineraryExamples/ItineraryExamples";
 import PopularDestinations from "@/components/PopularDestinations/PopularDestinations";
+import ReadyToNextTravel from "@/components/ReadyToNextTravel/ReadyToNextTravel";
 import WhyUse from "@/components/WhyUse/WhyUse";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <PopularDestinations />
       <ItineraryExamples />
       <WhyUse />
+      <ReadyToNextTravel />
       <br />
     </div>
   );
