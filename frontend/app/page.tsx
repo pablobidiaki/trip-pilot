@@ -4,6 +4,7 @@ import ItineraryExamples from "@/components/ItineraryExamples/ItineraryExamples"
 import PopularDestinations from "@/components/PopularDestinations/PopularDestinations";
 import ReadyToNextTravel from "@/components/ReadyToNextTravel/ReadyToNextTravel";
 import WhyUse from "@/components/WhyUse/WhyUse";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <ItineraryExamples />
       <WhyUse />
       <ReadyToNextTravel />
-      <br />
+      <Footer />
     </div>
   );
 }

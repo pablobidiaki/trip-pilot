@@ -93,6 +93,23 @@ const texts = {
         button_text: "Criar meu roteiro grátis"
     },
 
+    footer:{
+        social_links_text: "A plataforma de planejamento de viagens com IA que cria roteiros personalizados, otimizados e inesqueciveis.",
+        product_title: "Produto",
+        create_with_ai: "Criar com IA",
+        explore: "Explorar",
+        itinerary: "Roteiros",
+        price: "Preços",
+        business_title: "Empresa",
+        about_us: "Sobre nós",
+        blog: "Blog",
+        career: "Carreira",
+        contact: "Contato",
+        news_title: "Novidades",
+        news_text: "Receba dicas e ofertas exclusivas para suas viagens",
+        your_email: "Seu e-mail"
+    },
+
     real: "R$"
 }
 

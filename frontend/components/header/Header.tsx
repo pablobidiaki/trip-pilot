@@ -11,7 +11,7 @@ export default function Header(){
                 <div>
                     <Link href={'/'}>
                         <Image
-                            src="/trip_pilot_black.png"
+                            src="/imgs/icons/trip_pilot.png"
                             alt="Logo TripPilot"
                             width={40}
                             height={40}
