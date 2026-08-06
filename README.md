@@ -80,3 +80,27 @@ Além disso, o projeto foi pensado para possuir uma arquitetura escalável, perm
 
 - OpenAI
 - Google Gemini
+
+---
+
+# ⚙️ Como executar
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+## Backend
+
+```bash
+cd backend
+
+npm install
+
+npm run start:dev
+```
