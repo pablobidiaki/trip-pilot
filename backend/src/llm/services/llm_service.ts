@@ -16,7 +16,6 @@ export class LlmService {
     const itinerary = await this.geminiProvider.generate(prompt);
     console.log(itinerary)
 
-    // 3. Futuramente salvaremos no banco aqui
     // await this.prisma.itinerary.create(...);
 
     return {

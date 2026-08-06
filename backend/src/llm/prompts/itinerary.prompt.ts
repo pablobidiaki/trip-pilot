@@ -28,6 +28,8 @@ return `
         12. Todo o conteúdo deve ser escrito em português do Brasil.
         13. Caso alguma informação não possa ser determinada, utilize null.
         14. Nunca invente um formato diferente do JSON fornecido.
+        15. A propriedade 'departure_date' seria quando o usuario irá viajar ele sempre seguira o padrao mm-dd-yyyy
+        16. Sempre irei te passar todas as informações da propriedade 'request' então essa propriedade sempre deve estar preenchida no seu retorno/resposta
         --------------------------------------------------
         ## Regras específicas
 

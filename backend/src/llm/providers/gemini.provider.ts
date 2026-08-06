@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GoogleGenAI } from '@google/genai';
+import { LlmProvider } from '../interfaces/llm-provider.interface';
 
 @Injectable()
-export class GeminiProvider {
+export class GeminiProvider implements LlmProvider {
     private ai: GoogleGenAI;
 
     constructor(
@@ -14,13 +15,13 @@ export class GeminiProvider {
         });
     }
 
-    async generate(prompt: string) {
+    async generate(prompt: string): Promise<string> {
 
         const response = await this.ai.models.generateContent({
             model: 'gemini-3.6-flash',
             contents: prompt,
         });
 
-        return response.text;
+        return String(response.text);
     }
 }
