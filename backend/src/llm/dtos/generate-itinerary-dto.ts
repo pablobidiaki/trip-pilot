@@ -2,7 +2,6 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsString, Min } from 'class-validator';
 
 export class GenerateItineraryDto {
-
   @ApiProperty({
     example: 'São Paulo',
   })
@@ -27,4 +26,10 @@ export class GenerateItineraryDto {
   })
   @IsInt()
   budget: number;
+
+  @ApiProperty({
+    example: "01-01-2030", //mm-dd-yyyy
+  })
+  @IsString()
+  departure_date: string
 }
