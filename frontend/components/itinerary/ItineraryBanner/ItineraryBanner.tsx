@@ -10,6 +10,7 @@ export default function ItineraryBanner() {
                  className="w-full absolute -z-10"
                  
             />
+            
             <Link href={"/"}>
                 <Image src={"/imgs/icons/trip_pilot.png"}
                     alt="TripPilot icon"
