@@ -1,6 +1,6 @@
-import Header from "@/components/Header/Header";
-import HeroForm from "@/components/Hero/HeroForm";
-import HeroFeatures from "@/components/Hero/HeroFeatures";
+import Header from "@/components/home/Header/Header";
+import HeroForm from "@/components/home/Hero/HeroForm";
+import HeroFeatures from "@/components/home/Hero/HeroFeatures";
 
 import texts from "@/constants/texts";
 

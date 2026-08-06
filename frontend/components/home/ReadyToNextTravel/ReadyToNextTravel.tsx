@@ -1,4 +1,4 @@
-import WhiteButton from "../Buttons/WhiteButton"
+import WhiteButton from "../../ui/Buttons/WhiteButton"
 
 import texts from "@/constants/texts"
 

@@ -1,5 +1,5 @@
-import Input from "@/components/Input/Input";
-import GradientButton from "@/components/Buttons/GradientButton";
+import Input from "@/components/ui/Input/Input";
+import GradientButton from "@/components/ui/Buttons/GradientButton";
 import { MapPin, CalendarDays, DollarSign } from "lucide-react";
 
 import texts from "@/constants/texts";

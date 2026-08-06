@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import WhiteButton from "@/components/Buttons/WhiteButton"
-import GradientButton from "@/components/Buttons/GradientButton"
+import WhiteButton from "@/components/ui/Buttons/WhiteButton"
+import GradientButton from "@/components/ui/Buttons/GradientButton"
 
 export default function Header(){
     return(
