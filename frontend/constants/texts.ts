@@ -110,7 +110,70 @@ const texts = {
         your_email: "Seu e-mail"
     },
 
-    real: "R$"
+    itinerary_titles:{
+        main_title: "Seu roteiro personalizado",
+        provided_data: "1. Dados informados",
+        accommodations: "2. Hospedagem sugerida",
+        tours: "3. Principais passeios",
+        cost_estimate: "4. Custos Estimados",
+        transportation: "5. Meio de transporte",
+        requirements: "6. O que é preciso para entrar",
+        tips: "7. Dicas importantes",
+        itinerary: "8. Roteiro dia a dia"
+    },
+
+    provided_data:{
+        origin: "Origem: ",
+        destination: "Destino: ",
+        departure_date: "Data da viagem: ",
+        duration_days: "Duração: ",
+        travelers: "Viajantes",
+        budget: "Orçamento: ",
+    },
+
+    accommodations:{
+        address: "Localização: ",
+        include: "Inclui: ",
+        cost_estimate: "Custo estimado: "
+    },
+
+    tours:{
+        free: "Gratuito",
+        per_person: "por pessoa"
+    },
+
+    cost_estimate:{
+        accommodation: "Hospedagem",
+        food: "Alimentação",
+        tours: "Passeios",
+        transport: "Transporte",
+        shop_and_extras: "Compras e extras",
+        total_estimate: "Total estimado",
+        you_informed: "Você informou um orçamento de ",
+        its_possible_adjust : "É possível ajustar escolhendo passeios e refeições diferentes."
+    },
+
+    transportation:{
+        rental_car: "Carro alugado",
+        diary: "Diária média: ",
+        other_options: "Outras opções",
+        bus: "Ônibus ou transfers",
+        price: "Preço médio: "
+    },
+
+    requirements:{
+        observation: "Obs.: Regras podem mudar. Confira sempre informações atualizadas antes da viagem."
+    },
+
+    itinerary:{
+        cust: "Custo estimado do dia"
+    },
+
+    real: "R$",
+    tip: "Dica",
+    all_ready: "Tudo pronto para sua viagem inesquecível!",
+    ai_warning: "Este roteiro é uma sugestão personalizada por IA com base nas informações fornecidas. Ajustes podem ser feitos conforme seu perfil e prefêrencias.",
+    good_travel: "Tenha uma viagem incrível! Boa aventura!"
 }
 
 export default texts;
