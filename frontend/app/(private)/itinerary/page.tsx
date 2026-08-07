@@ -6,8 +6,10 @@ export default function Itinerary(){
     return(
         <div>
             <ItineraryBanner />
-            <ProvidedData />
-            <Accommodation />
+            <div className="flex justify-center">
+                <ProvidedData />
+                <Accommodation />
+            </div>
             <br />
         </div>
     )

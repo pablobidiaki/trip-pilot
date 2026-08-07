@@ -1,12 +1,13 @@
 import texts from "@/constants/texts";
-import { StarIcon, MapPin, Package, Bed  } from "lucide-react";
 import Image from "next/image";
 import InfoRow from "../InfoRow/InfoRow";
+import CardTitle from "../CardTitle/CardTitle";
+import { StarIcon, MapPin, Package, Bed, BedDouble } from "lucide-react";
 
 export default function Accommodation(){
     return(
-        <div className="mx-4 border rounded-2xl border-gray-300 max-w-4/7 mt-8">
-            <h1 className="bg-blue-100 rounded-t-2xl py-1 px-2 font-medium text-xl text-primary-color">{texts.itinerary_titles.accommodations}</h1>
+        <div className="mx-4 border rounded-2xl border-gray-300 min-w-4/7 mt-8 bg-white">
+            <CardTitle icon={<Bed />} title={texts.itinerary_titles.accommodations}/>
             <div className="flex gap-10 p-5">
                 <Image src={"/imgs/itinerary/hotel-teste.jpg"} 
                        alt="hotel image" 
@@ -33,7 +34,7 @@ export default function Accommodation(){
                     <InfoRow icon={<Package />} information={texts.accommodations.include} value={"Café da manhã, Wi-Fi e estacionamento"}/>
                     <hr  className="mx-2 text-gray-300 my-3"/>
                     <div className="flex gap-2 mt-3">
-                        <Bed className="text-blue-600"/>
+                        <BedDouble className="text-blue-600"/>
                         <p>Quato duplo standard</p>
                     </div>
 
