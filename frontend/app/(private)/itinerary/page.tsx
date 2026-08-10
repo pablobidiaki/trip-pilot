@@ -3,6 +3,7 @@ import CostEstimate from "@/components/itinerary/CostEstimate/CostEstimate";
 import ItineraryBanner from "@/components/itinerary/ItineraryBanner/ItineraryBanner";
 import ProvidedData from "@/components/itinerary/ProvidedData/ProvidedData";
 import Tours from "@/components/itinerary/Tours/Tours";
+import Transport from "@/components/itinerary/Transport/Transport";
 
 export default function Itinerary(){
     return(
@@ -15,7 +16,7 @@ export default function Itinerary(){
             <div className="flex justify-center">
                 <Tours />
                 <CostEstimate />
-                <Tours />
+                <Transport />
             </div>
             <br />
         </div>
