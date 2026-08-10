@@ -2,6 +2,7 @@ import Accommodation from "@/components/itinerary/Accommodation/Accommodation";
 import CostEstimate from "@/components/itinerary/CostEstimate/CostEstimate";
 import ItineraryBanner from "@/components/itinerary/ItineraryBanner/ItineraryBanner";
 import ProvidedData from "@/components/itinerary/ProvidedData/ProvidedData";
+import Requirements from "@/components/itinerary/Requirements/Requirements";
 import Tours from "@/components/itinerary/Tours/Tours";
 import Transport from "@/components/itinerary/Transport/Transport";
 
@@ -17,6 +18,10 @@ export default function Itinerary(){
                 <Tours />
                 <CostEstimate />
                 <Transport />
+            </div>
+            <div className="flex justify-center">
+                <Requirements />
+                <Requirements />
             </div>
             <br />
         </div>

@@ -162,7 +162,9 @@ const texts = {
     },
 
     requirements:{
-        observation: "Obs.: Regras podem mudar. Confira sempre informações atualizadas antes da viagem."
+        origin: "Saindo: ",
+        destination: "Destino: ",
+        observation: "Regras podem mudar. Confira sempre informações atualizadas antes da viagem."
     },
 
     itinerary:{
