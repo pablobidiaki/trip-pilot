@@ -168,7 +168,10 @@ const texts = {
     },
 
     itinerary:{
-        cust: "Custo estimado do dia"
+        cust: "Custo estimado do dia",
+        morning: "Manhã: ",
+        afternoon: "Tarde: ",
+        evening: "Noite: "
     },
 
     real: "R$",
