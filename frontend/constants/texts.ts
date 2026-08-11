@@ -28,7 +28,9 @@ const texts = {
         when_placeholder: "Escolha as datas",
         budget: "Orçamento (opcional)",
         budget_placeholder: "Ex: R$10.000",
-        button_text: "Planejar minha viagem com IA"
+        button_text: "Planejar minha viagem com IA",
+        people_quantity: "Quantidade de pessoas",
+        people_quantity_placeholder: "Ex: 2 pessoas"
     },
 
     how_it_works:{

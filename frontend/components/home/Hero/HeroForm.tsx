@@ -1,8 +1,9 @@
 import Input from "@/components/ui/Input/Input";
 import GradientButton from "@/components/ui/Buttons/GradientButton";
-import { MapPin, CalendarDays, DollarSign } from "lucide-react";
+import { MapPin, CalendarDays, DollarSign, Users } from "lucide-react";
 
 import texts from "@/constants/texts";
+import Dropdown from "@/components/ui/Dropdown/Dropdown";
 
 export default function HeroForm(){
     return(
@@ -15,6 +16,10 @@ export default function HeroForm(){
                 <Input icon={<CalendarDays />} title={texts.form.how_days} placeholder={texts.form.how_days_placeholder} type='text' required={true}/>
                 <Input icon={<CalendarDays />} title={texts.form.when} placeholder={texts.form.when_placeholder} type='text' required={true}/>
                 <Input icon={<DollarSign />} title={texts.form.budget} placeholder={texts.form.budget_placeholder} type='text' required={false}/>
+            </div>
+            <div className="my-4 grid grid-cols-2 gap-3">
+                <Input icon={<Users />} title={texts.form.people_quantity} placeholder={texts.form.people_quantity_placeholder} type='number' required={true}/>
+                <Dropdown />
             </div>
 
             <GradientButton text={texts.form.button_text}/>

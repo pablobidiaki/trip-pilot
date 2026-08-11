@@ -16,8 +16,9 @@ export default function PopularDestinationsCard({image, title, text, route_to_de
             <Image
                 src={image}
                 alt={`${title} image`}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 fill
-                className="object-cover brightness-50 -z-10"
+                className="object-cover brightness-50 "
                 priority
             />
 
