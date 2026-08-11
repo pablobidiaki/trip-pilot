@@ -7,6 +7,7 @@ import Requirements from "@/components/itinerary/Requirements/Requirements";
 import Tips from "@/components/itinerary/Tips/Tips";
 import Tours from "@/components/itinerary/Tours/Tours";
 import Transport from "@/components/itinerary/Transport/Transport";
+import texts from "@/constants/texts";
 
 export default function Itinerary(){
     return(
@@ -28,6 +29,8 @@ export default function Itinerary(){
             <div className="flex justify-center">
                 <ItineraryDays />
             </div>
+            <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.ai_warning}</p>
+            <p className="text-center mt-2 text-second-color">{texts.good_travel}</p>
             <br />
         </div>
     )
