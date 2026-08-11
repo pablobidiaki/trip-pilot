@@ -30,7 +30,9 @@ const texts = {
         budget_placeholder: "Ex: R$10.000",
         button_text: "Planejar minha viagem com IA",
         people_quantity: "Quantidade de pessoas",
-        people_quantity_placeholder: "Ex: 2 pessoas"
+        people_quantity_placeholder: "Ex: 2 pessoas",
+        type: "Tipo (opcional)",
+        ai_model: "Modelo de IA"
     },
 
     how_it_works:{
