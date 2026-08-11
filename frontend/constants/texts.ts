@@ -31,7 +31,7 @@ const texts = {
         button_text: "Planejar minha viagem com IA",
         people_quantity: "Quantidade de pessoas",
         people_quantity_placeholder: "Ex: 2 pessoas",
-        type: "Tipo (opcional)",
+        type: "Tipo de viagem",
         ai_model: "Modelo de IA"
     },
 
