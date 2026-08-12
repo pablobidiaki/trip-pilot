@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { GenerateItineraryDto } from '../dtos/generate-itinerary-dto';
-import { LlmService } from '../services/llm_service';
+import { LlmService } from '../services/llm.service';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 @ApiTags('LLM')

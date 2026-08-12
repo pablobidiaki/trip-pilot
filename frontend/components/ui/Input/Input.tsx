@@ -17,7 +17,7 @@ export default function Input({icon, title, placeholder, type, value, onChange, 
                 <span className="text-main-primary-color m-2">{icon}</span>
                 <div>
                     <p>{title}</p>
-                    <input className="w-full outline-none" type={type} placeholder={placeholder} value={value} onChange={onChange} required={required} />
+                    <input className="text-second-color w-full outline-none" type={type} placeholder={placeholder} value={value} onChange={onChange} required={required} />
                 </div>
             </div>
         </div>
