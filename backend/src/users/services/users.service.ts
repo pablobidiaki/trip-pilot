@@ -19,4 +19,26 @@ export class UsersService {
       message: 'User created successfully.',
     };
   }
+
+  async getAllUser(){
+    let users = await this.prisma.user.findMany()
+
+    return{
+        success: true,
+        users
+    }
+  }
+
+  async getUser(id: string){
+    let user = await this.prisma.user.findUnique({
+        where:{
+            id: id
+        }
+    })
+
+    return{
+        success: true,
+        user
+    }
+  }
 }
