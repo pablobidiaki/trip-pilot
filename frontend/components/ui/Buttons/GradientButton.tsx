@@ -1,10 +1,9 @@
-import { ReactNode } from "react"
-
 interface Props{
-    text: ReactNode
+    text: string,
+    type: "button" | "submit" | "reset"
 }
 
-export default function GradientButton({text}: Props){
+export default function GradientButton({text, type}: Props){
     return(
         <button className="rounded-xl
                            bg-linear-to-r
@@ -24,7 +23,8 @@ export default function GradientButton({text}: Props){
                            hover:to-violet-700
                            hover:shadow-xl
                            hover:shadow-violet-500/30
-                           active:scale-[0.98]">
+                           active:scale-[0.98]"
+                type={type}>
             {text}
         </button>
     )

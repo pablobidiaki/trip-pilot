@@ -14,13 +14,12 @@ export class LlmService {
     const prompt = createItineraryPrompt(dto);
 
     const itinerary = await this.geminiProvider.generate(prompt);
-    console.log(itinerary)
 
-    // await this.prisma.itinerary.create(...);
+    //await this.prisma.itinerary.create(...);
 
     return {
       success: true,
-      itinerary,
+      itinerary
     };
   }
 }

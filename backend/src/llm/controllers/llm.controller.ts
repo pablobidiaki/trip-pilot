@@ -15,5 +15,4 @@ export class LlmController{
     generate(@Body() dto: GenerateItineraryDto){
         return this.llmService.generate(dto);
     }
-    
 }
