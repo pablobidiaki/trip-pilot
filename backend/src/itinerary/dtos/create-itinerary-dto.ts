@@ -11,7 +11,7 @@ Body struct:
     "days": 5,
     "budget": 500,
     "travelers": 2,
-    "travelType": "aventura"
+    "travelType": "aventura",
     "aiProvider": "gemini"
 }
 
