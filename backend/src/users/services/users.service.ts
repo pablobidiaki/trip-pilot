@@ -4,41 +4,44 @@ import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
-  async create(dto: CreateUsersDto) {
-    await this.prisma.user.create({
+  getAll() {
+    return this.prisma.user.findMany()
+  }
+
+  getById(id: string) {
+    const user = this.prisma.user.findUnique({
+      where: {
+        id: id
+      }
+    })
+
+    return user
+  }
+
+  create(dto: CreateUsersDto) {
+    const user = this.prisma.user.create({
       data: {
         name: dto.name,
         email: dto.email,
       },
     });
 
-    return {
-      success: true,
-      message: 'User created successfully.',
-    };
+    return user
   }
 
-  async getAllUser(){
-    let users = await this.prisma.user.findMany()
-
-    return{
-        success: true,
-        users
-    }
+  deleteAll() {
+    return this.prisma.user.deleteMany()
   }
 
-  async getUser(id: string){
-    let user = await this.prisma.user.findUnique({
-        where:{
-            id: id
-        }
+  deleteById(id: string) {
+    const user = this.prisma.user.deleteMany({
+      where: {
+        id: id
+      }
     })
 
-    return{
-        success: true,
-        user
-    }
+    return user
   }
 }

@@ -10,6 +10,9 @@ import { GeminiProvider } from './providers/gemini.provider';
     LlmService,
     GeminiProvider,
   ],
+  exports: [
+    LlmService,
+  ],
 })
 
 export class LlmModule {}

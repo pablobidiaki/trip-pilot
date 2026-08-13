@@ -1,6 +1,6 @@
-export function createItineraryPrompt(dto){
+export function createItineraryPrompt(dto) {
 
-return `
+    return `
         Você é um especialista em turismo e planejamento de viagens.
         Sua única função é gerar um roteiro de viagem em formato JSON.
 
@@ -28,7 +28,7 @@ return `
         12. Todo o conteúdo deve ser escrito em português do Brasil.
         13. Caso alguma informação não possa ser determinada, utilize null.
         14. Nunca invente um formato diferente do JSON fornecido.
-        15. A propriedade 'departure_date' seria quando o usuario irá viajar ele sempre seguira o padrao mm-dd-yyyy
+        15. A propriedade 'departure_date' seria quando o usuario irá viajar ele sempre seguira o padrao yyyy-mm-dd
         16. Sempre irei te passar todas as informações da propriedade 'request' então essa propriedade sempre deve estar preenchida no seu retorno/resposta
         --------------------------------------------------
         ## Regras específicas

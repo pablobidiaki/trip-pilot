@@ -1,25 +1,16 @@
 import { Injectable } from '@nestjs/common';
 
-import { GenerateItineraryDto } from '../dtos/generate-itinerary-dto';
+import { CreateItineraryDto } from '../dtos/generate-itinerary-dto';
 import { GeminiProvider } from '../providers/gemini.provider';
 import { createItineraryPrompt } from '../prompts/itinerary.prompt';
 
 @Injectable()
 export class LlmService {
-  constructor(
-    private readonly geminiProvider: GeminiProvider,
-  ) {}
+  constructor(private readonly geminiProvider: GeminiProvider,) { }
 
-  async generate(dto: GenerateItineraryDto) {
+  async generate(dto: CreateItineraryDto) {
     const prompt = createItineraryPrompt(dto);
 
-    const itinerary = await this.geminiProvider.generate(prompt);
-
-    //await this.prisma.itinerary.create(...);
-
-    return {
-      success: true,
-      itinerary
-    };
+    return await this.geminiProvider.generate(prompt)
   }
 }

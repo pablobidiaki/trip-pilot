@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { GenerateItineraryDto } from '../dtos/generate-itinerary-dto';
+import { CreateItineraryDto } from '../dtos/generate-itinerary-dto';
 import { LlmService } from '../services/llm.service';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
@@ -8,11 +8,11 @@ import { ApiTags, ApiOperation } from '@nestjs/swagger';
 export class LlmController{
     constructor(private readonly llmService: LlmService,) {}
 
-    @Post("generate")
+    @Post()
     @ApiOperation({
-        summary: 'Gera um roteiro utilizando IA',
+        summary: 'Generates a JSON with all infos about the travel',
     })
-    generate(@Body() dto: GenerateItineraryDto){
+    generate(@Body() dto: CreateItineraryDto){
         return this.llmService.generate(dto);
     }
 }
