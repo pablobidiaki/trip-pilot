@@ -27,10 +27,9 @@ export default function Header(){
                     <p><Link href={'/pro'}>Pro 👑</Link></p>
                 </div>
                 
-
                 <div className="flex gap-5">
-                    <WhiteButton text={<Link href={'/login'}>Entrar</Link>}/>
-                    <GradientButton text={ <Link href={'/register'}>Começar Grátis</Link>}/>
+                    <WhiteButton text={<Link href={'/login'}>Entrar</Link>} type="button"/>
+                    <GradientButton text={ <Link href={'/register'}>Começar Grátis</Link>} type="button"/>
                 </div>
             </div>
         </header>
