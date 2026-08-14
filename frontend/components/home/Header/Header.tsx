@@ -7,7 +7,7 @@ import GradientButton from "@/components/ui/Buttons/GradientButton"
 export default function Header(){
     return(
         <header>
-            <div className="text-primary-color font-medium flex justify-between px-4 py-3 items-center">
+            <div className="bg-transparent text-primary-color font-medium flex justify-between px-4 py-3 items-center">
                 <div>
                     <Link href={'/'}>
                         <Image

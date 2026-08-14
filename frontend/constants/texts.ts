@@ -178,6 +178,12 @@ const texts = {
         evening: "Noite: "
     },
 
+    ready_guides:{
+        title: "Guias prontos para a sua próxima aventura",
+        subtitle: "Escolha entre roteiros completos e prontos para diversos distinos incríveis.",
+        search_bar_placeholder: "Para onde você quer ir?"
+    },
+
     real: "R$",
     tip: "Dica",
     all_ready: "Tudo pronto para sua viagem inesquecível!",

@@ -1,5 +1,5 @@
 interface Props{
-    text: string,
+    text: React.ReactNode,
     type: "button" | "submit" | "reset"
 }
 
