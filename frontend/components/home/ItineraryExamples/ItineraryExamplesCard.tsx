@@ -4,7 +4,7 @@ import { TripType } from "@/constants/enum"
 import { Clock, CircleDollarSign } from "lucide-react" 
 import texts from "@/constants/texts"
 import Link from "next/link"
-import InfoItem from "./InfoItem"
+import InfoItem from "../../ui/InfoItem/InfoItem"
 
 interface CardProps{
     image: string,
