@@ -13,7 +13,8 @@ export default function WhiteButton({text, type}: Props){
                             transition-all
                             duration-300
                             hover:shadow-xl
-                            shadow-lg"
+                            shadow-lg
+                            cursor-pointer"
                 type={type}>
             {text}
         </button>

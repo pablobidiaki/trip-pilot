@@ -23,7 +23,8 @@ export default function GradientButton({text, type}: Props){
                            hover:to-violet-700
                            hover:shadow-xl
                            hover:shadow-violet-500/30
-                           active:scale-[0.98]"
+                           active:scale-[0.98]
+                           cursor-pointer"
                 type={type}>
             {text}
         </button>
