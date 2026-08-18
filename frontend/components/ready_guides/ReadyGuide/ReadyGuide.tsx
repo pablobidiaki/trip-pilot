@@ -7,7 +7,6 @@ export default function ReadyGuide(){
         <div className="pb-15 bg-background-color">
             <GuideHero />
             <GuideTabs  />
-            <GeneralInfos />
         </div>
     )
 }

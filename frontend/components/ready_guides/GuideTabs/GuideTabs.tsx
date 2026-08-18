@@ -4,6 +4,11 @@ import { useState } from "react";
 import InfoItem from "@/components/ui/InfoItem/InfoItem";
 import texts from "@/constants/texts";
 import { Bed, CalendarDays, FileExclamationPoint, Info, Package } from "lucide-react";
+import GeneralInfos from "../GeneralInfos/GeneralInfos";
+import DayToDay from "../DayToDay/DayToDay";
+import Include from "../Include/Include";
+import Accommodation from "../Accommodation/Accommodation";
+import UtilInfos from "../UtilInfos/UtilInfos";
 
 export default function GuideTabs() {
     const [selected, setSelected] = useState(texts.ready_guides.general_infos)
@@ -17,16 +22,26 @@ export default function GuideTabs() {
     ]
 
     return (
-        <div className="flex justify-evenly py-10 bg-background-color">
-            {tabs.map(tab => (
-                <InfoItem key={tab.text}
-                    text={tab.text}
-                    icon={tab.icon}
-                    tailwindTags="cursor-pointer"
-                    selected={selected === tab.text}
-                    onClick={() => setSelected(tab.text)}
-                />
-            ))}
+        <div>
+            <div className="flex justify-evenly py-10 bg-background-color">
+                {tabs.map(tab => (
+                    <InfoItem key={tab.text}
+                        text={tab.text}
+                        icon={tab.icon}
+                        tailwindTags="cursor-pointer"
+                        selected={selected === tab.text}
+                        onClick={() => setSelected(tab.text)}
+                    />
+                ))}
+            </div>
+            
+            {selected ===  texts.ready_guides.general_infos && <GeneralInfos />}
+            {selected ===  texts.ready_guides.day_to_day && <DayToDay />}
+            {selected ===  texts.ready_guides.include && <Include />}
+            {selected ===  texts.ready_guides.accommodation && <Accommodation />}
+            {selected ===  texts.ready_guides.util_infos && <UtilInfos />}
+            
         </div>
+        
     )
 }
