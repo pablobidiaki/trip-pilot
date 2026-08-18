@@ -24,6 +24,7 @@ export default function ButtonFilters() {
                     key={filter.text}
                     icon={filter.icon}
                     text={filter.text}
+                    tailwindTags="cursor-pointer"
                     selected={selected === filter.text}
                     onClick={() => setSelected(filter.text)}
                 />

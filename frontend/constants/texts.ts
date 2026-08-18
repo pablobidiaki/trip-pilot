@@ -181,7 +181,12 @@ const texts = {
     ready_guides:{
         title: "Guias prontos para a sua próxima aventura",
         subtitle: "Escolha entre roteiros completos e prontos para diversos distinos incríveis.",
-        search_bar_placeholder: "Para onde você quer ir?"
+        search_bar_placeholder: "Para onde você quer ir?",
+        general_infos: "Informações gerais",
+        day_to_day: "Roteiro dia a dia",
+        include: "Incluso",
+        accommodation: "Hospedagens",
+        util_infos: "Informações uteis"
     },
 
     real: "R$",

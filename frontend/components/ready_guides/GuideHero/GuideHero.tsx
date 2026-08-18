@@ -6,7 +6,7 @@ import GradientButton from "@/components/ui/Buttons/GradientButton";
 
 export default function GuideHero() {
     return (
-        <div className="flex mx-4 mt-10 gap-5">
+        <div className="flex justify-center mt-10 gap-5">
             <Image src="/imgs/ready_guides/italy.jpg"
                 alt="Main image"
                 width={1181}
@@ -18,6 +18,7 @@ export default function GuideHero() {
                     <Heart className="text-red-500" />
                     <p className="text-sm text-second-color">3.1k de pessoas salvaram esse roteiro.</p>
                 </div>
+                
                 <h1 className="text-4xl font-medium mt-2">Italia classica</h1>
                 <h2 className="text-primary-color mt-2">Roma, Florença e Veneza</h2>
                 <p className="text-sm text-second-color my-2">Arte, historia, gastronomia e paisagens inesqueciveis em um roteiro que captura o melhor da italia.</p>
