@@ -4,7 +4,7 @@ import GuideTabs from "../GuideTabs/GuideTabs";
 
 export default function ReadyGuide(){
     return(
-        <div className="pb-10 bg-background-color">
+        <div className="pb-15 bg-background-color">
             <GuideHero />
             <GuideTabs  />
             <GeneralInfos />
