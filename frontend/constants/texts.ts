@@ -186,7 +186,8 @@ const texts = {
         day_to_day: "Roteiro dia a dia",
         include: "Incluso",
         accommodation: "Hospedagens",
-        util_infos: "Informações uteis"
+        util_infos: "Informações uteis",
+        overview: "Visão geral do roteiro"
     },
 
     real: "R$",

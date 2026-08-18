@@ -17,7 +17,7 @@ export default function GuideTabs() {
     ]
 
     return (
-        <div className="flex justify-evenly my-10 bg-background-color pt-3">
+        <div className="flex justify-evenly py-10 bg-background-color mt-5">
             {tabs.map(tab => (
                 <InfoItem key={tab.text}
                     text={tab.text}

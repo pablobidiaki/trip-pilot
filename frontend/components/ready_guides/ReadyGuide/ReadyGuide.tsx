@@ -1,3 +1,4 @@
+import GeneralInfos from "../GeneralInfos/GeneralInfos";
 import GuideHero from "../GuideHero/GuideHero";
 import GuideTabs from "../GuideTabs/GuideTabs";
 
@@ -6,6 +7,7 @@ export default function ReadyGuide(){
         <div>
             <GuideHero />
             <GuideTabs  />
+            <GeneralInfos />
         </div>
     )
 }
