@@ -6,7 +6,7 @@ import GradientButton from "@/components/ui/Buttons/GradientButton";
 
 export default function GuideHero() {
     return (
-        <div className="flex justify-center mt-10 gap-5">
+        <div className="flex justify-center mt-10 gap-5 bg-white pb-5">
             <Image src="/imgs/ready_guides/italy.jpg"
                 alt="Main image"
                 width={1181}
