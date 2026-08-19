@@ -9,7 +9,7 @@ interface CalendarProps{
 export default function Calendar({day, date, local, selected, onClick}: CalendarProps){
     return(
         <div onClick={onClick}
-             className={`flex items-center mt-3 gap-5 p-3 rounded-2xl border border-gray-200 ${selected
+             className={`cursor-pointer flex items-center mt-3 gap-5 p-3 rounded-2xl border border-gray-200 ${selected
                     ? "bg-[#787af748]"
                     : "bg-white"
                     }`}
