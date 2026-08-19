@@ -190,7 +190,13 @@ const texts = {
         overview: "Visão geral do roteiro",
         what_is_include: "O que está incluso",
         your_day_with_details: "Seu dia com detalhes",
-        tips_today: "Dicas para hoje"
+        tips_today: "Dicas para hoje",
+        cost_estimate: "Custo Estimado do dia",
+        alimentation: "Alimentação",
+        ticket: "Ingressos",
+        transport: "Transporte",
+        other: "Outros",
+        total: "Total"
     },
 
     real: "R$",

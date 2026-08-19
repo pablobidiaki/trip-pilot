@@ -4,6 +4,7 @@ import { useState } from "react";
 import Calendar from "./Calendar";
 import DayItinerary from "./DayItinerary";
 import DayTips from "./DayTips";
+import DayCostEstimate from "./DayCostEstimate";
 
 export default function DayToDay() {
     const [selected, setSelected] = useState("1")
@@ -41,6 +42,7 @@ export default function DayToDay() {
                 
                 <div className="max-w-2/12">
                     <DayTips />
+                    <DayCostEstimate />
                 </div>
 
             </div>
