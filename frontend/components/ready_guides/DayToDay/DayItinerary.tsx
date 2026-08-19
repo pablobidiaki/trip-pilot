@@ -13,16 +13,16 @@ export default function DayItinerary(){
         {hour:"20:00", title: "Jantar e noite livre", description: "Check-in no hotel e tempo para descansar apos a viagem"},
     ]
     return(
-        <div className="mt-3 ml-10 max-w-1/3">
+        <div className="mt-3 mx-20 max-w-5/12">
             <p className="text-white bg-purple-500 inline-block py-1 px-4 rounded-2xl">Dia 1</p>
             <p className="my-5 text-primary-color text-3xl font-medium">Roma</p>
             <p className="text-second-color">Quarta-feira, 10 de Junho</p>
             <p className="text-second-color mt-2 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui porro, ratione tenetur quod maiores, reiciendis dolore in repudiandae nobis error autem debitis. Quidem, veritatis corporis tenetur doloribus provident eos asperiores?</p>
             <Image src="/imgs/ready_guides/italy.jpg"
                    alt='italy image'
-                   width={50}
-                   height={50} 
-                   className="rounded-2xl w-120"                   
+                   width={1150}
+                   height={1150} 
+                   className="rounded-2xl w-full"                   
             />
             <p className="text-primary-color mt-5 font-medium text-xl">{texts.ready_guides.your_day_with_details}</p>
             {days.map(day => (

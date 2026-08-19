@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Calendar from "./Calendar";
 import DayItinerary from "./DayItinerary";
+import DayTips from "./DayTips";
 
 export default function DayToDay() {
     const [selected, setSelected] = useState("1")
@@ -22,20 +23,28 @@ export default function DayToDay() {
     ]
 
     return (
-        <div className="flex mx-4">
-            <div>
-                {days.map(day => (
-                    <Calendar key={day.day}
-                        day={day.day}
-                        date={day.date}
-                        local={day.local}
-                        selected={selected === day.day}
-                        onClick={() => setSelected(day.day)}
-                    />
-                ))}
-            </div>
+        <div className="flex">
+            <div className="flex justify-center">
+                <div>
+                    {days.map(day => (
+                        <Calendar key={day.day}
+                            day={day.day}
+                            date={day.date}
+                            local={day.local}
+                            selected={selected === day.day}
+                            onClick={() => setSelected(day.day)}
+                        />
+                    ))}
+                </div>
 
-            <DayItinerary />
+                <DayItinerary />
+                
+                <div className="max-w-2/12">
+                    <DayTips />
+                </div>
+
+            </div>
         </div>
+
     )
 }
