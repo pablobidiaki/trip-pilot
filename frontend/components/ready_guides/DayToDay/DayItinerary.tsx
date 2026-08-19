@@ -13,7 +13,7 @@ export default function DayItinerary(){
         {hour:"20:00", title: "Jantar e noite livre", description: "Check-in no hotel e tempo para descansar apos a viagem"},
     ]
     return(
-        <div className="mt-3 mx-20 max-w-5/12">
+        <div className="mt-3 mx-20 max-w-5/12 bg-white p-5 rounded-2xl">
             <p className="text-white bg-purple-500 inline-block py-1 px-4 rounded-2xl">Dia 1</p>
             <p className="my-5 text-primary-color text-3xl font-medium">Roma</p>
             <p className="text-second-color">Quarta-feira, 10 de Junho</p>

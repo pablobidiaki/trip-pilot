@@ -4,7 +4,7 @@ import { Car, CircleEllipsis, Handbag, Ticket, Utensils } from "lucide-react";
 
 export default function DayCostEstimate(){
     return(
-        <div className="border border-gray-200 rounded-2xl mt-5 py-2 px-3">
+        <div className="border border-gray-200 rounded-2xl mt-5 py-2 px-3 bg-white">
             <div className="flex gap-3 items-center font-bold mb-2">
                 <Handbag className="text-purple-500"/>
                 <p>{texts.ready_guides.cost_estimate}</p>

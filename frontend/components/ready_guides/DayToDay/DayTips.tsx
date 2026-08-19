@@ -1,5 +1,5 @@
 import texts from "@/constants/texts";
-import { CircleCheck, Lightbulb } from "lucide-react";
+import {  Lightbulb } from "lucide-react";
 
 export default function DayTips() {
     const tips = [
