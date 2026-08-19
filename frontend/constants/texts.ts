@@ -188,7 +188,8 @@ const texts = {
         accommodation: "Hospedagens",
         util_infos: "Informações uteis",
         overview: "Visão geral do roteiro",
-        what_is_include: "O que está incluso"
+        what_is_include: "O que está incluso",
+        your_day_with_details: "Seu dia com detalhes"
     },
 
     real: "R$",
