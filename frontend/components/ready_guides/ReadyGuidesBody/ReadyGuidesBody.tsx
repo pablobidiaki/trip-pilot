@@ -4,7 +4,7 @@ import GuideCard from "../GuideCard/GuideCard";
 
 export default function ReadyGuidesBody() {
     return(
-        <div className="relative h-screen overflow-hidden bg-white -mt-5 rounded-t-4xl">
+        <div className="relative overflow-hidden bg-white -mt-5 rounded-t-4xl">
             <ButtonFilters />
             <div className="grid grid-cols-3 justify-items-center">
                 <GuideCard image={"/imgs/itinerary/hotel-teste.jpg"} 

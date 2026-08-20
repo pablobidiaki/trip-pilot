@@ -1,3 +1,4 @@
+import Footer from "@/components/home/Footer/Footer";
 import Accommodation from "@/components/itinerary/Accommodation/Accommodation";
 import CostEstimate from "@/components/itinerary/CostEstimate/CostEstimate";
 import ItineraryBanner from "@/components/itinerary/ItineraryBanner/ItineraryBanner";
@@ -13,24 +14,27 @@ export default function Itinerary(){
     return(
         <div>
             <ItineraryBanner />
-            <div className="flex justify-center">
-                <ProvidedData />
-                <Accommodation />
+            <div className="relative">
+                <div className="flex justify-center">
+                    <ProvidedData />
+                    <Accommodation />
+                </div>
+                <div className="flex justify-center">
+                    <Tours />
+                    <CostEstimate />
+                    <Transport />
+                </div>
+                <div className="flex justify-center">
+                    <Requirements />
+                    <Tips />
+                </div>
+                <div className="flex justify-center">
+                    <ItineraryDays />
+                </div>
+                <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.ai_warning}</p>
+                <p className="text-center mt-2 text-second-color">{texts.good_travel}</p>
+                <Footer />
             </div>
-            <div className="flex justify-center">
-                <Tours />
-                <CostEstimate />
-                <Transport />
-            </div>
-            <div className="flex justify-center">
-                <Requirements />
-                <Tips />
-            </div>
-            <div className="flex justify-center">
-                <ItineraryDays />
-            </div>
-            <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.ai_warning}</p>
-            <p className="text-center mt-2 text-second-color">{texts.good_travel}</p>
         </div>
     )
 }
