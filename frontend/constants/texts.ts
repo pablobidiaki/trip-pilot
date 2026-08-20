@@ -199,6 +199,12 @@ const texts = {
         total: "Total"
     },
 
+    destinations:{
+        title: "Explore novos destinos com inteligência da IA",
+        subtitle: "Descubra lugares incríveis, conheça curiosidades, planeje sua viagem e viva experiências inesquecíveis com o TripPilot.",
+        featured_destinations: "Destinos em destaque"
+    },
+
     real: "R$",
     tip: "Dica",
     all_ready: "Tudo pronto para sua viagem inesquecível!",
