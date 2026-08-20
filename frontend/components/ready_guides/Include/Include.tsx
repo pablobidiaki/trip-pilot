@@ -1,5 +1,5 @@
 import { BusFront, Gift, Hotel, Map, Plane, Ticket, Utensils } from "lucide-react"
-import IncludeCard from "./IncludeCard"
+import InfoCard from "../InfoCard/InfoCard"
 
 export default function Include(){
     const includes = [
@@ -12,13 +12,14 @@ export default function Include(){
     ]
     return(
         <div className="max-w-7/12 mx-auto">
-            <IncludeCard icon={<Gift />} 
+            <InfoCard icon={<Gift />} 
                          title={"O que esta incluso"} 
                          text="Confira tudo o que está incluso no seu guia de viagem para a Itália Clássica, para que você aproveite sua experiência com mais tranquilidade e organização."
-                         tailwindTags="bg-purple-50"/>
+                         tailwindTags="bg-purple-50"
+            />
             <div className="grid grid-cols-2 gap-5 mt-5">
                 {includes.map(include => (
-                    <IncludeCard key={include.title}
+                    <InfoCard key={include.title}
                                  icon={include.icon}
                                  title={include.title}
                                  text={include.text}
