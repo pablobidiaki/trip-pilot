@@ -1,19 +1,20 @@
+import Header from "@/components/home/Header/Header";
 import texts from "@/constants/texts";
-import Image from "next/image";
+
 
 export default function DestinationsBanner(){
-    return(
-        <div className="relative">
-            <Image src={"/imgs/destinations/background.jpg"} 
-                   alt="background image"
-                   width={1150}
-                   height={1150}
-                   className="absolute w-screen max-h-[30vh] brightness-70"
+    return (
+        <div className="relative overflow-hidden pb-15">
+            <img src={"/imgs/destinations/background.jpg"}
+                alt="Banner"
+                className="absolute inset-0 h-full w-full object-cover z-0 brightness-40"
             />
-
-            <div className="absolute text-white max-w-1/3 my-12 mx-4">
-                <h1 className="text-5xl font-medium">{texts.destinations.title}</h1>
-                <p className="text-[#c5c5c5] font-medium">{texts.destinations.subtitle}</p>
+            <div className="relative z-10 bg-white/20">
+                <Header />
+            </div>
+            <div className="relative z-10 mt-5 mx-4 text-white">
+                <h1 className="text-6xl max-w-2/5 font-medium">{texts.destinations.title}</h1>
+                <h2 className="mt-1 text-2xl font-thin max-w-xl">{texts.destinations.subtitle}</h2>
             </div>
         </div>
     )
