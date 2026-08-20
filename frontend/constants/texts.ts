@@ -202,7 +202,16 @@ const texts = {
     destinations:{
         title: "Explore novos destinos com inteligência da IA",
         subtitle: "Descubra lugares incríveis, conheça curiosidades, planeje sua viagem e viva experiências inesquecíveis com o TripPilot.",
-        featured_destinations: "Destinos em destaque"
+        featured_destinations: "Destinos em destaque",
+        why_chose_trip_pilot: "Por que escolher o TripPilot?",
+        plan_with_ai: "Planejamento inteligente com IA",
+        personality_itineraries: "Roteiros personalizados para você",
+        destination_for_all_styles: "Destinos para todos os estilos",
+        destinations: "Praias, cidades, montanhas e muito mais",
+        complete_infos: "Informações completas",
+        tips: "Dicas, curiosidades, clima e o que fazer",
+        everything_in_one_place: "Tudo em um só lugar",
+        plan: "Planeje, descubra e aproveite sua viagem"
     },
 
     real: "R$",
