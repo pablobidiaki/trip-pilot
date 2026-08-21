@@ -1,20 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsObject, IsString, Min } from 'class-validator';
 
-interface Attraction {
-    image: string,
-    name: string,
-    short_description: string,
-    estimate_cost: number
-}
-
-interface AverageCost {
-    accommodations: string,
-    food: string,
-    transport: string,
-    tours: string
-}
-
 export class CreateDestinationDto {
     @ApiProperty({
         example: 'Tóquio, Japão',
