@@ -23,8 +23,20 @@ export class DestinationService {
                 attractions: dto.attractions,
                 averageCost: dto.averageCost
             }
-        })  
+        })
 
         return destination
+    }
+
+    getAll() {
+        return this.prisma.destinations.findMany()
+    }
+
+    get(id: string) {
+        return this.prisma.destinations.findMany({
+            where: {
+                id: id
+            }
+        })
     }
 }
