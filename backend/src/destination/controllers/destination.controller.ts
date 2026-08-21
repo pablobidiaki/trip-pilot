@@ -1,6 +1,6 @@
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 import { DestinationService } from "../service/destination.service";
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Delete } from '@nestjs/common';
 import { CreateDestinationDto } from "../dtos/create-destination-dto";
 
 @ApiTags('Destinations')
@@ -34,12 +34,34 @@ export class DestinationController {
 
     @Get(':id')
     @ApiOperation({
-        summary: 'get especific destination'
+        summary: 'Get an especific destination'
     })
     async get(@Param('id') id: string) {
         return {
             success: true,
             destination: await this.destinationService.get(id)
+        }
+    }
+
+    @Delete()
+    @ApiOperation({
+        'summary': 'Delete all destinations'
+    })
+    async deleteAll(){
+        return {
+            success: true,
+            destinations: await this.destinationService.deleteAll()
+        }
+    }
+
+    @Delete(':id')
+    @ApiOperation({
+        summary: 'Delete an especific destination'
+    })
+    async delete(@Param('id') id: string) {
+        return {
+            success: true,
+            destination: await this.destinationService.delete(id)
         }
     }
 }

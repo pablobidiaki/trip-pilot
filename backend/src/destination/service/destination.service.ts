@@ -39,4 +39,16 @@ export class DestinationService {
             }
         })
     }
+
+    deleteAll() {
+        return this.prisma.destinations.deleteMany()
+    }
+
+    delete(id: string) {
+        return this.prisma.destinations.deleteMany({
+            where: {
+                id: id
+            }
+        })
+    }
 }
