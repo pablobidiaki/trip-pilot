@@ -3,7 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { LlmModule } from './llm/llm.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
-import { itineraryModule } from './itinerary/itinerary.module';
+import { ItineraryModule } from './itinerary/itinerary.module';
+import { DestinationModule } from './destination/destination.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { itineraryModule } from './itinerary/itinerary.module';
     }),
     PrismaModule,
     UsersModule,
-    itineraryModule,
+    ItineraryModule,
+    DestinationModule,
     LlmModule
   ],
 })

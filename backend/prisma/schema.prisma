@@ -22,13 +22,50 @@ model User {
 }
 
 model Itinerary {
-  id          String    @id @default(uuid())
+  id          String   @id @default(uuid())
   userId      String
   destination String
   startDate   String
   endDate     String
   itinerary   Json
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ReadyGuides {
+  id                String   @id @default(uuid())
+  title             String
+  description       String
+  cities            String[]
+  travelType        String
+  bestTime          String
+  language          String
+  currenty          String
+  days              Int
+  price             Float
+  itinerary         Json
+  accommodations    Json[]
+  usefulInformation Json[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Destinations {
+  id                String   @id @default(uuid())
+  destination       String
+  description       String
+  country           String
+  travelType        String
+  bestTime          String
+  language          String
+  currenty          String
+  weather           String
+  dayReccomended    Int
+  usefulInformation Json
+  whatToDo          Json
+  attractions       Json
+  averageCost       Json
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }

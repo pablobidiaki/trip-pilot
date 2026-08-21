@@ -6,7 +6,7 @@ import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
 @ApiTags('Itinerary')
 @Controller('itinerary')
 export class ItineraryController {
-    constructor(private readonly itineraryService: ItineraryService,) { }
+    constructor(private readonly itineraryService: ItineraryService) { }
     
     @Get()
     @ ApiOperation({

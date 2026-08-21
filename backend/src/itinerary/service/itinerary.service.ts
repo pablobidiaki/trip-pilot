@@ -14,7 +14,6 @@ export class ItineraryService {
     }
 
     async create(dto: CreateItineraryDto) {
-        console.log('a')
         const itineraryJson = await this.llmService.generate(dto)
         const itinerary = this.prisma.itinerary.create({
             data: {
