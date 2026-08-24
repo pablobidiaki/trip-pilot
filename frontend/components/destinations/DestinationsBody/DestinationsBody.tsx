@@ -1,6 +1,6 @@
-import ButtonFilters from "@/components/ButtonFilters/ButtonFilters"
+import ButtonFilters from "@/components/ui/ButtonFilters/ButtonFilters"
 import texts from "@/constants/texts"
-import DestinationCard from "../DestinationCard/DestinationCard"
+import DestinationCard from "../DestinationsCard/DestinationsCard"
 import WhyChoseTripPilot from "../WhyChoseTripPilot/WhyChoseTripPilot"
 import { getDestinations } from "@/services/destination.service"
 

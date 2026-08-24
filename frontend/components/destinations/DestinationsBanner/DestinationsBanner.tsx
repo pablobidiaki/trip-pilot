@@ -1,7 +1,6 @@
 import Header from "@/components/home/Header/Header";
 import texts from "@/constants/texts";
 
-
 export default function DestinationsBanner(){
     return (
         <div className="relative overflow-hidden pb-15">

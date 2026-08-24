@@ -1,4 +1,4 @@
-import HowItWorksCard from "./HowItWorksCard"
+import InfoCard from "../../ui/InfoCard/InfoCard"
 
 import texts from "@/constants/texts";
 
@@ -7,21 +7,18 @@ import { NotebookPen, BrainCircuit, Plane } from "lucide-react";
 export default function HowItWorksCardsCointainer(){
     return(
         <div className="flex justify-evenly">
-            <HowItWorksCard icon={<NotebookPen />} 
+            <InfoCard icon={<NotebookPen className="text-blue-600" />} 
                             iconBgColor="bg-blue-300"
-                            iconColor="text-blue-600"
                             title={texts.how_it_works.informe_your_travel_title} 
                             text={texts.how_it_works.informe_your_travel_text}
             />
-            <HowItWorksCard icon={<BrainCircuit/>}
+            <InfoCard icon={<BrainCircuit className="text-purple-600"/>}
                             iconBgColor="bg-purple-300"
-                            iconColor="text-purple-600"
                             title={texts.how_it_works.ai_plan_title} 
                             text={texts.how_it_works.ai_plan_text}
             />
-            <HowItWorksCard icon={<Plane />} 
+            <InfoCard icon={<Plane className="text-green-600"/>} 
                             iconBgColor="bg-green-300"
-                            iconColor="text-green-600"
                             title={texts.how_it_works.enjoy_title} 
                             text={texts.how_it_works.enjoy_text}
             />

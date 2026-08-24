@@ -34,10 +34,7 @@ export class DestinationController {
         summary: 'Get an especific destination'
     })
     async get(@Param('id') id: string) {
-        return {
-            success: true,
-            destination: await this.destinationService.get(id)
-        }
+        return await this.destinationService.get(id)
     }
 
     @Delete()

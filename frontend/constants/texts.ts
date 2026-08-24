@@ -214,11 +214,23 @@ const texts = {
         plan: "Planeje, descubra e aproveite sua viagem"
     },
 
+    destination: {
+        return: "Voltar para destinos",
+        main_attractions: "Principais atrações",
+        what_to_do: "O que fazer?",
+        util_infos: "Informações úteis",
+        cost_estimated: "Custo estimado",
+        want_modify: "Gostaria de modificar essa viagem?",
+        want_modify_description: "Deixe nossa IA montar um roteiro personalizado para você, com os melhores passeios, dicas e tudo o que voce precisa para uma viagem inesquecível.",
+        button_text: "Criar meu roteiro com IA"
+    },
+
     real: "R$",
     tip: "Dica",
     all_ready: "Tudo pronto para sua viagem inesquecível!",
     ai_warning: "Este roteiro é uma sugestão personalizada por IA com base nas informações fornecidas. Ajustes podem ser feitos conforme seu perfil e prefêrencias.",
-    good_travel: "Tenha uma viagem incrível! Boa aventura!"
+    good_travel: "Tenha uma viagem incrível! Boa aventura!",
+    starting_at: "A partir de "
 }
 
 export default texts;
