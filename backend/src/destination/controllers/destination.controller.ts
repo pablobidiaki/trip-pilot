@@ -26,10 +26,7 @@ export class DestinationController {
         summary: 'Get all destinations'
     })
     async getAll() {
-        return {
-            success: true,
-            destinations: await this.destinationService.getAll()
-        }
+        return await this.destinationService.getAll()
     }
 
     @Get(':id')

@@ -9,6 +9,7 @@ export class DestinationService {
     create(dto: CreateDestinationDto) {
         const destination = this.prisma.destinations.create({
             data: {
+                imageURL: dto.imageURL,
                 destination: dto.destination,
                 description: dto.description,
                 country: dto.country,

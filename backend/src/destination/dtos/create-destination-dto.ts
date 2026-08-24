@@ -3,6 +3,12 @@ import { IsInt, IsObject, IsString, Min } from 'class-validator';
 
 export class CreateDestinationDto {
     @ApiProperty({
+        example: 'https://i.imgur.com/9LtXPOR.jpeg',
+    })
+    @IsString()
+    imageURL: string
+
+    @ApiProperty({
         example: 'Tóquio, Japão',
     })
     @IsString()
