@@ -8,12 +8,12 @@ interface WhatToDoCardProps {
     onClick: () => void
 }
 
-export default function WhatToDoCard({ icon, title, texts, isOpen, onClick }: WhatToDoCardProps) {
+export default function ExpandableCard({ icon, title, texts, isOpen, onClick }: WhatToDoCardProps) {
     return (
-        <div className="relative  transition-all duration-300 hover:scale-105">
+        <div className="relative">
             <div onClick={onClick}
-                 className="bg-white rounded-2xl border border-gray-200 py-10 cursor-pointer">
-                <div className="flex flex-col items-center">
+                 className="bg-white rounded-2xl border border-gray-200 py-10 cursor-pointer transition-all duration-300 hover:bg-gray-200">
+                <div className="flex flex-col items-center ">
                     <span>{icon}</span>
                     <h1 className="text-primary-color font-medium text-xl mb-2 text-center">{title}</h1>
                 </div>

@@ -227,7 +227,15 @@ const texts = {
         culture: "Cultura",
         tipicalFoods: "Comidas típicas",
         famousStores: "Lojas famosas",
-        nightLife: "Vida noturna"
+        nightLife: "Vida noturna",
+        documents: "Documentos",
+        vaccines_and_health: "Vacina e saúde",
+        bagagem: "Bagagem",
+        exchange_rate: "Câmbio",
+        power_outlet_and_voltage: "Tomada e voltagem",
+        internet: "Internet",
+        transport: "Transporte",
+        security: "Segurança"
     },
 
     real: "R$",

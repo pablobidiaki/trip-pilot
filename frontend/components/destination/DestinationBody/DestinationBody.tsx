@@ -3,6 +3,7 @@ import Attractions from "../Attractions/Attractions";
 import DestinationInfos from "../DestinationInfos/DestinationInfos";
 import { Calendar1, CalendarDays, Cloud, DollarSign, Languages, Plane } from "lucide-react";
 import WhatToDo from "../WhatToDo/WhatToDo";
+import UtilInformations from "../UtilInformations/UtilInformations";
 
 interface DestinationBodyProps {
     destination: Destination[]
@@ -21,6 +22,7 @@ export default function DestinationBody({ destination }: DestinationBodyProps) {
             </div>
             <Attractions destination={destination}/>
             <WhatToDo destination={destination} />
+            <UtilInformations destination={destination}/>
         </div>
     )
 }
