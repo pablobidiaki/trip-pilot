@@ -10,7 +10,7 @@ interface AttractionsCardProps {
 
 export default function AttractionsCard({ image, name, description, cost_estimate }: AttractionsCardProps) {
     return (
-        <div className="border border-gray-200 rounded-2xl">
+        <div className="border border-gray-200 rounded-2xl bg-white">
             <img src={image}
                 alt={name}
                 className="w-full h-42 rounded-t-2xl"

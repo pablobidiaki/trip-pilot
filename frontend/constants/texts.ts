@@ -222,7 +222,12 @@ const texts = {
         cost_estimated: "Custo estimado",
         want_modify: "Gostaria de modificar essa viagem?",
         want_modify_description: "Deixe nossa IA montar um roteiro personalizado para você, com os melhores passeios, dicas e tudo o que voce precisa para uma viagem inesquecível.",
-        button_text: "Criar meu roteiro com IA"
+        button_text: "Criar meu roteiro com IA",
+        nature: "Natureza",
+        culture: "Cultura",
+        tipicalFoods: "Comidas típicas",
+        famousStores: "Lojas famosas",
+        nightLife: "Vida noturna"
     },
 
     real: "R$",
