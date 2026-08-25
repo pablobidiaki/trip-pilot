@@ -235,7 +235,8 @@ const texts = {
         power_outlet_and_voltage: "Tomada e voltagem",
         internet: "Internet",
         transport: "Transporte",
-        security: "Segurança"
+        security: "Segurança",
+        alter_travel: "Crie um roteiro personalizado!"
     },
 
     real: "R$",

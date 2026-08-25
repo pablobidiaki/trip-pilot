@@ -1,10 +1,16 @@
-import WhiteButton from "../../ui/Buttons/WhiteButton"
-
+import WhiteButton from "../Buttons/WhiteButton"
 import texts from "@/constants/texts"
-
 import { Toolbox } from "lucide-react"
+import { ReactNode } from "react"
 
-export default function ReadyToNextTravel(){
+interface CTAProps{
+    icon: ReactNode,
+    title: string,
+    text: string
+    buttonText: string
+}
+
+export default function CTA({icon, title, text, buttonText}: CTAProps){
     return(
         <div className="rounded-xl
                         bg-linear-to-r
@@ -16,13 +22,13 @@ export default function ReadyToNextTravel(){
                         flex
                         justify-evenly
                         items-center">
-            <Toolbox className="text-white" size={80}/>
+            <span className="text-white">{icon}</span>
             <div className="text-white">
-                <h1 className="text-5xl">{texts.ready_to_next_travel.title}</h1>
-                <p className="text-gray-200">{texts.ready_to_next_travel.text}</p>
+                <h1 className="text-5xl">{title}</h1>
+                <p className="text-gray-200">{text}</p>
             </div>
             <div>
-                <WhiteButton text={texts.ready_to_next_travel.button_text}/>
+                <WhiteButton text={buttonText} type="button"/>
             </div>
         </div>
     )

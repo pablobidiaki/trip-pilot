@@ -13,13 +13,13 @@ interface UtilInformationsProps {
 export default function UtilInformations({ destination }: UtilInformationsProps) {
     const [selectedCard, setSelectedCard] = useState<string | null>(null)
     return (
-        <div className="mx-4 mt-10">
+        <div className="mx-4 mt-10 min-w-2/3">
             <div className="flex items-center gap-2 mb-5">
                 <ShieldAlert size={35} className="text-primary-color font-medium" />
                 <h1 className="text-3xl text-primary-color font-medium">{texts.destination.util_infos}</h1>
             </div>
 
-            <div className=" grid grid-cols-3 max-w-2/3 gap-3">
+            <div className=" grid grid-cols-3 gap-3">
                 <ExpandableCard icon={<File />}
                     title={texts.destination.documents}
                     texts={destination[0].usefulInformation.documents}
