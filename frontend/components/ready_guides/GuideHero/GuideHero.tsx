@@ -18,7 +18,7 @@ export default function GuideHero() {
                     <Heart className="text-red-500 fill-red-500" />
                     <p className="text-sm text-second-color">3.1k de pessoas salvaram esse roteiro.</p>
                 </div>
-                
+
                 <h1 className="text-4xl font-medium mt-2">Italia classica</h1>
                 <h2 className="text-primary-color mt-2">Roma, Florença e Veneza</h2>
                 <p className="text-sm text-second-color my-2">Arte, historia, gastronomia e paisagens inesqueciveis em um roteiro que captura o melhor da italia.</p>
@@ -29,13 +29,13 @@ export default function GuideHero() {
                 </div>
 
                 <div className="flex justify-between">
-                    <GuideInfoCard icon={<Calendar />} title="Melhor época" text="Abr a Jun - Set a Out"/>
-                    <GuideInfoCard icon={<ChartNoAxesColumnDecreasing />} title="Nível de viagem" text="Facil"/>
-                    <GuideInfoCard icon={<CircleDollarSign />} title="Moeda" text="Euro (EUR)"/>
+                    <GuideInfoCard icon={<Calendar />} title="Melhor época" text="Abr a Jun - Set a Out" />
+                    <GuideInfoCard icon={<ChartNoAxesColumnDecreasing />} title="Nível de viagem" text="Facil" />
+                    <GuideInfoCard icon={<CircleDollarSign />} title="Moeda" text="Euro (EUR)" />
                 </div>
 
                 <div className="mt-5">
-                    <GradientButton text="Salvar roteiro " type="button"/>
+                    <GradientButton text="Salvar roteiro " type="button" />
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ export default function Home() {
       <PopularDestinations />
       <ItineraryExamples />
       <WhyUse />
-      <CTA icon={<Toolbox size={80}/>} title={texts.ready_to_next_travel.title} text={texts.ready_to_next_travel.text} buttonText={texts.ready_to_next_travel.button_text}/>
+      <CTA icon={<Toolbox size={80} />} title={texts.ready_to_next_travel.title} text={texts.ready_to_next_travel.text} buttonText={texts.ready_to_next_travel.button_text} />
       <Footer />
     </div>
   );

@@ -7,7 +7,7 @@ import { getDestination } from "@/services/destination.service";
 import { BrainCircuit } from "lucide-react";
 
 interface DestinationProps {
-    params: Promise<{id: string}>
+    params: Promise<{ id: string }>
 }
 
 export default async function Destination({ params }: DestinationProps) {
@@ -17,9 +17,9 @@ export default async function Destination({ params }: DestinationProps) {
 
     return (
         <div className="bg-background-color">
-            <DestinationBanner destination={destination}/>
-            <DestinationBody destination={destination}/>
-            <CTA icon={<BrainCircuit size={80}/>} title={texts.destination.alter_travel} text={`Deseja mudar algo? Crie agora o seu roteiro personalizado para ${destination[0].destination}`} buttonText={texts.ready_to_next_travel.button_text}/>
+            <DestinationBanner destination={destination} />
+            <DestinationBody destination={destination} />
+            <CTA icon={<BrainCircuit size={80} />} title={texts.destination.alter_travel} text={`Deseja mudar algo? Crie agora o seu roteiro personalizado para ${destination[0].destination}`} buttonText={texts.ready_to_next_travel.button_text} />
             <Footer />
         </div>
     )

@@ -1,15 +1,14 @@
 import Header from "@/components/home/Header/Header";
-import WhiteButton from "@/components/ui/Buttons/WhiteButton";
 import texts from "@/constants/texts";
 import { Destination } from "@/interfaces/destination.interface";
 import { Heart, MoveLeft } from "lucide-react";
 import Link from "next/link";
 
-interface DestinationBannerProps{
+interface DestinationBannerProps {
     destination: Destination[]
 }
 
-export default function DestinationBanner({destination}: DestinationBannerProps){
+export default function DestinationBanner({ destination }: DestinationBannerProps) {
     return (
         <div className="relative overflow-hidden pb-15">
             <img src={"https://i.imgur.com/g3o8WGt.jpeg"}
@@ -29,7 +28,7 @@ export default function DestinationBanner({destination}: DestinationBannerProps)
             </div>
 
             <div className="absolute z-10 text-white right-4 top-20 ">
-                <Heart className="cursor-pointer transition-colors hover:fill-red-500 hover:text-red-500"/>
+                <Heart className="cursor-pointer transition-colors hover:fill-red-500 hover:text-red-500" />
             </div>
         </div>
     )
