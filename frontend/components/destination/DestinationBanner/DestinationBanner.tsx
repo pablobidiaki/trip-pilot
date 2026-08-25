@@ -11,7 +11,7 @@ interface DestinationBannerProps {
 export default function DestinationBanner({ destination }: DestinationBannerProps) {
     return (
         <div className="relative overflow-hidden pb-15">
-            <img src={"https://i.imgur.com/g3o8WGt.jpeg"}
+            <img src={destination[0].bannerURL}
                 alt="Banner"
                 className="absolute inset-0 h-full w-full object-cover z-0 brightness-40"
             />

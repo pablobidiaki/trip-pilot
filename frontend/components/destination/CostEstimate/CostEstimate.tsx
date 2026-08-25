@@ -23,7 +23,7 @@ export default function CostEstimate({ destination }: CostEstimateProps) {
                 <hr className="mx-1"/>
                 <div className="flex justify-between mt-2 mx-2 items-center">
                     <p className="text-primary-color font-bold">Custo total estimado</p>
-                    <p className="px-2 py-1 rounded-2xl bg-green-200 text-green-400">R$10.000,00</p>
+                    <p className="px-2 py-1 rounded-2xl bg-green-200 text-green-400">R$ {destination[0].averageCost.total}</p>
                 </div>
             </div>
         </div>

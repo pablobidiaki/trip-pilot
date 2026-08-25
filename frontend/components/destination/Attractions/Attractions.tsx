@@ -15,41 +15,16 @@ export default function Attractions({ destination }: AttractionsProps) {
                 <h1 className="text-3xl text-primary-color font-medium">{texts.destination.main_attractions}</h1>
             </div>
             <div className="grid grid-cols-6 gap-5">
-                <AttractionsCard image={"https://i.imgur.com/n18ol5P.jpeg"}
-                    name={destination[0].attractions.firstAttractions.name}
-                    description={destination[0].attractions.firstAttractions.shortDescription}
-                    cost_estimate={destination[0].attractions.firstAttractions.estimateCost}
-                />
 
-                <AttractionsCard image={"https://i.imgur.com/HRgIr66.jpeg"}
-                    name={destination[0].attractions.secondAttractions.name}
-                    description={destination[0].attractions.secondAttractions.shortDescription}
-                    cost_estimate={destination[0].attractions.secondAttractions.estimateCost}
-                />
+                 {destination[0].attractions.map((destination_item, index) => (
+                    <AttractionsCard key={index}
+                                     image={destination_item.image}
+                                     name={destination_item.name}
+                                     description={destination_item.shortDescription}
+                                     cost_estimate={destination_item.estimateCost}
+                    />
+                ))}
 
-                <AttractionsCard image={"https://i.imgur.com/ZyfKNRS.jpeg"}
-                    name={destination[0].attractions.thirdAttractions.name}
-                    description={destination[0].attractions.thirdAttractions.shortDescription}
-                    cost_estimate={destination[0].attractions.thirdAttractions.estimateCost}
-                />
-
-                <AttractionsCard image={"https://i.imgur.com/n18ol5P.jpeg"}
-                    name={destination[0].attractions.firstAttractions.name}
-                    description={destination[0].attractions.firstAttractions.shortDescription}
-                    cost_estimate={destination[0].attractions.firstAttractions.estimateCost}
-                />
-
-                <AttractionsCard image={"https://i.imgur.com/HRgIr66.jpeg"}
-                    name={destination[0].attractions.secondAttractions.name}
-                    description={destination[0].attractions.secondAttractions.shortDescription}
-                    cost_estimate={destination[0].attractions.secondAttractions.estimateCost}
-                />
-
-                <AttractionsCard image={"https://i.imgur.com/ZyfKNRS.jpeg"}
-                    name={destination[0].attractions.thirdAttractions.name}
-                    description={destination[0].attractions.thirdAttractions.shortDescription}
-                    cost_estimate={destination[0].attractions.thirdAttractions.estimateCost}
-                />
             </div>
         </div>
     )

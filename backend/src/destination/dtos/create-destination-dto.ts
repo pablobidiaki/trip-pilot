@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsObject, IsString, Min } from 'class-validator';
+import { IsArray, IsInt, IsObject, IsString, Min } from 'class-validator';
 
 export class CreateDestinationDto {
     @ApiProperty({
@@ -7,6 +7,12 @@ export class CreateDestinationDto {
     })
     @IsString()
     imageURL: string
+
+    @ApiProperty({
+        example: 'https://i.imgur.com/9LtXPOR.jpeg',
+    })
+    @IsString()
+    bannerURL: string
 
     @ApiProperty({
         example: 'Tóquio, Japão',
@@ -146,8 +152,8 @@ export class CreateDestinationDto {
             "estimate_cost": 150
         },
     })
-    @IsObject()
-    attractions: object
+    @IsArray()
+    attractions: object[]
 
     @ApiProperty({
         example: {
