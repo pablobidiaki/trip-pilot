@@ -15,7 +15,7 @@ export default function GuideHero() {
             />
             <div>
                 <div className="flex items-center gap-2">
-                    <Heart className="text-red-500" />
+                    <Heart className="text-red-500 fill-red-500" />
                     <p className="text-sm text-second-color">3.1k de pessoas salvaram esse roteiro.</p>
                 </div>
                 

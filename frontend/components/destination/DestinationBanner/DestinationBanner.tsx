@@ -1,7 +1,8 @@
 import Header from "@/components/home/Header/Header";
+import WhiteButton from "@/components/ui/Buttons/WhiteButton";
 import texts from "@/constants/texts";
 import { Destination } from "@/interfaces/destination.interface";
-import { MoveLeft } from "lucide-react";
+import { Heart, MoveLeft } from "lucide-react";
 import Link from "next/link";
 
 interface DestinationBannerProps{
@@ -25,6 +26,10 @@ export default function DestinationBanner({destination}: DestinationBannerProps)
                 </Link>
                 <h1 className="text-6xl max-w-2/5 font-medium">{destination[0].destination}</h1>
                 <h2 className="mt-1 text-2xl font-thin max-w-xl">{destination[0].description}</h2>
+            </div>
+
+            <div className="absolute z-10 text-white right-4 top-20 ">
+                <Heart className="cursor-pointer transition-colors hover:fill-red-500 hover:text-red-500"/>
             </div>
         </div>
     )
