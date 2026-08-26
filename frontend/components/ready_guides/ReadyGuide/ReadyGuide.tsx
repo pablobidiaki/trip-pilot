@@ -10,7 +10,7 @@ export default function ReadyGuide({guide}: ReadyGuideProps){
     return(
         <div className="pb-15 bg-background-color">
             <GuideHero guide={guide}/>
-            <GuideTabs  guide={guide}/>
+            <GuideTabs guide={guide}/>
         </div>
     )
 }

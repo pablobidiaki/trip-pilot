@@ -27,8 +27,8 @@ export default function GuideCard({ image, title, cities, duration, type, descri
 
             <h1 className="text-primary-color font-medium text-2xl mx-2 mt-2">{title}</h1>
             <div className="flex">
-                {cities.map(city => (
-                    <h2 className=" text-second-color mx-2 text-sm">{city}</h2>
+                {cities.map((city, index) => (
+                    <h2 key={index} className="text-second-color mx-2 text-sm">{city}</h2>
                 ))}
             </div>
 

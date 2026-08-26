@@ -1,13 +1,14 @@
 import texts from "@/constants/texts";
 import {  Lightbulb } from "lucide-react";
+import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
-export default function DayTips() {
-    const tips = [
-        "Use calcados confortaveis, a cidade tem muitaas ruias de pedra",
-        "Compre ingressos da galeria Uffizi com antecedencia para evitar filas",
-        "Leve uma garrafa de agua, especialmente nos dias mais quentes",
-        "Nao perca o por so sol no piazzalo mechalengelo a vista vale muito a pena"
-    ]
+interface DayTipsProps {
+    guide: ReadyGuideInterface[],
+    daySelected: string
+}
+
+export default function DayTips({ guide, daySelected }: DayTipsProps) {
+    console.log
     return (
         <div className="bg-purple-100 py-2 px-3 mt-3 rounded-2xl">
             <div className="flex items-center gap-3 font-bold mt-2">
@@ -15,8 +16,11 @@ export default function DayTips() {
                 <h1>{texts.ready_guides.tips_today}</h1>
             </div>
 
-            {tips.map((tip, index) => (
-                <p key={index} className="mt-3 text-sm text-second-color">{index + 1}. {tip}</p>
+            {guide[0].itinerary.map(resumeDay => (
+                resumeDay.day.toString() == daySelected &&
+                resumeDay.dayTips.map((tip, index) => (
+                    <p key={index} className="mt-3 text-sm text-second-color">{index + 1}. {tip}</p>
+                ))
             ))}
         </div>
     )

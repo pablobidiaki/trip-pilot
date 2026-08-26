@@ -35,6 +35,7 @@ interface Itinerary{
     day: number
     abbreviatedDate: string
     city: string
+    imageURL: string
     fullDate: string
     description: string
     dayTips: string[]
