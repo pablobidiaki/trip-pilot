@@ -19,10 +19,12 @@ export default function DestinationBanner({ destination }: DestinationBannerProp
                 <Header />
             </div>
             <div className="relative z-10 mt-5 mx-4 text-white">
-                <Link href={'/destinations'} className="flex gap-2 items-center mb-5">
-                    <MoveLeft />
-                    <p>{texts.destination.return}</p>
-                </Link>
+                <div className="transition-all duration-300 hover:scale-[0.99]">
+                    <Link href={'/destinations'} className="flex gap-2 items-center mb-5 ">
+                        <MoveLeft />
+                        <p>{texts.destination.return}</p>
+                    </Link>
+                </div>
                 <h1 className="text-6xl max-w-2/5 font-medium">{destination[0].destination}</h1>
                 <h2 className="mt-1 text-2xl font-thin max-w-xl">{destination[0].description}</h2>
             </div>

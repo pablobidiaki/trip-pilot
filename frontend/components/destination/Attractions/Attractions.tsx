@@ -15,7 +15,6 @@ export default function Attractions({ destination }: AttractionsProps) {
                 <h1 className="text-3xl text-primary-color font-medium">{texts.destination.main_attractions}</h1>
             </div>
             <div className="grid grid-cols-6 gap-5">
-
                  {destination[0].attractions.map((destination_item, index) => (
                     <AttractionsCard key={index}
                                      image={destination_item.image}
@@ -24,7 +23,6 @@ export default function Attractions({ destination }: AttractionsProps) {
                                      cost_estimate={destination_item.estimateCost}
                     />
                 ))}
-
             </div>
         </div>
     )
