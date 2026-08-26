@@ -5,6 +5,7 @@ import CTA from "@/components/ui/CTA/CTA";
 import texts from "@/constants/texts";
 import { getDestination } from "@/services/destination.service";
 import { BrainCircuit } from "lucide-react";
+import { notFound } from 'next/navigation'
 
 interface DestinationProps {
     params: Promise<{ id: string }>
@@ -14,6 +15,9 @@ export default async function Destination({ params }: DestinationProps) {
     const { id } = await params;
 
     const destination = await getDestination(id);
+    
+    if (!destination || destination.length === 0) 
+        notFound();
 
     return (
         <div className="bg-background-color">

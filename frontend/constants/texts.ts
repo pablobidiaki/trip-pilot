@@ -239,6 +239,13 @@ const texts = {
         alter_travel: "Crie um roteiro personalizado!"
     },
 
+    not_found: {
+        code: "404",
+        title: "Ops! Destino não encontrado",
+        text: "Parece que a página que você está procurando não existe ou foi removida.",
+        button_text: "Voltar para página inicial"
+    },
+
     real: "R$",
     tip: "Dica",
     all_ready: "Tudo pronto para sua viagem inesquecível!",
