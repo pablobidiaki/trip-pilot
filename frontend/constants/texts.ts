@@ -141,11 +141,6 @@ const texts = {
         cost_estimate: "Custo estimado: "
     },
 
-    tours: {
-        free: "Gratuito",
-        per_person: "por pessoa"
-    },
-
     cost_estimate: {
         accommodation: "Hospedagem",
         food: "Alimentação",
@@ -256,14 +251,14 @@ const texts = {
         button_text: "Voltar para página inicial"
     },
 
-
-
     real: "R$",
     tip: "Dica",
     all_ready: "Tudo pronto para sua viagem inesquecível!",
     ai_warning: "Este roteiro é uma sugestão personalizada por IA com base nas informações fornecidas. Ajustes podem ser feitos conforme seu perfil e prefêrencias.",
     good_travel: "Tenha uma viagem incrível! Boa aventura!",
-    starting_at: "A partir de "
+    starting_at: "A partir de ",
+    per_person: "Por pessoa",
+    free: "Gratuito"
 }
 
 export default texts;

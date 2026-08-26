@@ -43,7 +43,7 @@ export default function GuideTabs({ guide }: GuideTabsProps) {
             {selected === texts.ready_guides.general_infos && <GeneralInfos guide={guide}/>}
             {selected === texts.ready_guides.day_to_day && <DayToDay guide={guide}/>}
             {selected === texts.ready_guides.include && <Include />}
-            {selected === texts.ready_guides.accommodation && <Accommodation />}
+            {selected === texts.ready_guides.accommodation && <Accommodation guide={guide}/>}
             {selected === texts.ready_guides.util_infos && <UtilInfos />}
 
         </div>

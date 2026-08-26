@@ -20,7 +20,7 @@ export default function TourCard({image, title, description, price}: TourCardPro
             <div>
                 <h1 className="text-primary-color font-medium text-xl">{title}</h1>
                 <p className="text-second-color text-sm max-w-56">{description}</p>
-                {price == 0 ? <p className="text-green-500 font-medium mt-2">{texts.tours.free}</p> : <p className="text-green-500 font-medium mt-2">{texts.real} {price} {texts.tours.per_person}</p>}
+                {price == 0 ? <p className="text-green-500 font-medium mt-2">{texts.free}</p> : <p className="text-green-500 font-medium mt-2">{texts.real} {price} {texts.per_person}</p>}
             </div>
         </div>
     )
