@@ -196,7 +196,17 @@ const texts = {
         ticket: "Ingressos",
         transport: "Transporte",
         other: "Outros",
-        total: "Total"
+        total: "Total",
+        language: "Linguagem",
+        best_time: "Melhor época",
+        currency: "Moeda",
+        save_guide: "Salvar guia",
+        accommodations_selected: "Hospedagem selecionada",
+        breakfast: "Café da manhã diário",
+        tours: "Passeios e ingressos conforme roteiro",
+        transport_enter_cities: "Transporte entre cidades",
+        travel_insurance: "Seguro viagem",
+        support: "Suporte 24h durante viagem"
     },
 
     destinations: {
@@ -245,6 +255,8 @@ const texts = {
         text: "Parece que a página que você está procurando não existe ou foi removida.",
         button_text: "Voltar para página inicial"
     },
+
+
 
     real: "R$",
     tip: "Dica",

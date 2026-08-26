@@ -42,7 +42,7 @@ interface Itinerary{
     hours: Hours[]
 }
 
-export interface ReadyGuide {
+export interface ReadyGuideInterface {
     id: string
     imageURL: string
     title: string

@@ -1,12 +1,16 @@
-import GeneralInfos from "../GeneralInfos/GeneralInfos";
 import GuideHero from "../GuideHero/GuideHero";
 import GuideTabs from "../GuideTabs/GuideTabs";
+import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
-export default function ReadyGuide(){
+interface ReadyGuideProps{
+    guide: ReadyGuideInterface[]
+}
+
+export default function ReadyGuide({guide}: ReadyGuideProps){
     return(
         <div className="pb-15 bg-background-color">
-            <GuideHero />
-            <GuideTabs  />
+            <GuideHero guide={guide}/>
+            <GuideTabs  guide={guide}/>
         </div>
     )
 }

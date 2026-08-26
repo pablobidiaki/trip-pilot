@@ -9,8 +9,13 @@ import DayToDay from "../DayToDay/DayToDay";
 import Include from "../Include/Include";
 import Accommodation from "../Accommodation/Accommodation";
 import UtilInfos from "../UtilInfos/UtilInfos";
+import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
-export default function GuideTabs() {
+interface GuideTabsProps {
+    guide: ReadyGuideInterface[]
+}
+
+export default function GuideTabs({ guide }: GuideTabsProps) {
     const [selected, setSelected] = useState(texts.ready_guides.general_infos)
 
     const tabs = [
@@ -34,14 +39,14 @@ export default function GuideTabs() {
                     />
                 ))}
             </div>
-            
-            {selected ===  texts.ready_guides.general_infos && <GeneralInfos />}
-            {selected ===  texts.ready_guides.day_to_day && <DayToDay />}
-            {selected ===  texts.ready_guides.include && <Include />}
-            {selected ===  texts.ready_guides.accommodation && <Accommodation />}
-            {selected ===  texts.ready_guides.util_infos && <UtilInfos />}
-            
+
+            {selected === texts.ready_guides.general_infos && <GeneralInfos guide={guide}/>}
+            {selected === texts.ready_guides.day_to_day && <DayToDay />}
+            {selected === texts.ready_guides.include && <Include />}
+            {selected === texts.ready_guides.accommodation && <Accommodation />}
+            {selected === texts.ready_guides.util_infos && <UtilInfos />}
+
         </div>
-        
+
     )
 }

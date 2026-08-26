@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 interface GeneralInfoCardProps{
     image: string
     days: string
@@ -10,7 +8,7 @@ interface GeneralInfoCardProps{
 export default function GeneralInfoCard({image, days, title, description}: GeneralInfoCardProps){
     return(
         <div className="border border-gray-200 rounded-2xl h-full">
-            <Image src={image}
+            <img src={image}
                    alt={`${title} image`} 
                    width={50}
                    height={50}

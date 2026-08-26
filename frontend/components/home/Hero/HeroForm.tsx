@@ -32,7 +32,7 @@ export default function HeroForm(){
             travel_type: travelType,
             ai_provider: aiProvider,
         }
-        console.log(data)
+        
         try{
             const response = await fetch("http://localhost:3001/llm/generate",{
                 method: "POST",

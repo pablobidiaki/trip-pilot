@@ -40,7 +40,7 @@ export default function GuideCard({ image, title, cities, duration, type, descri
             <p className="text-primary-color mx-2 text-sm">{description}</p>
             <div className=" flex justify-between items-center mx-2 mb-2 mt-5">
                 <p className="p-2 bg-green-200 text-green-500 rounded-2xl">R$ {price}</p>
-                <Link className="rounded-2xl cursor-pointer p-2 border border-[#6366F1] text-[#6366F1]" href={`/ready_guide/${link_guide}`}> Ver Roteiro</Link>
+                <Link className="rounded-2xl cursor-pointer p-2 border border-[#6366F1] text-[#6366F1]" href={`/ready_guides/${link_guide}`}> Ver Roteiro</Link>
             </div>
         </div>
     )
