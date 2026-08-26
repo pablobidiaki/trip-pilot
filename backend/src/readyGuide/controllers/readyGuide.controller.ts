@@ -26,12 +26,8 @@ export class ReadyGuideController {
         summary: "Get all guides"
     })
     async getAll(){
-        const guides = await this.readyGuideService.getAll()
+        return await this.readyGuideService.getAll()
 
-        return{
-            success: true,
-            guides: guides
-        }
     }
 
     @Get(':id')
@@ -39,12 +35,7 @@ export class ReadyGuideController {
         summary: "Get a especific guide"
     })
     async get(@Param('id') id: string){
-        const guide = await this.readyGuideService.get(id)
-
-        return {
-            success: true,
-            guide: guide
-        }
+        return await this.readyGuideService.get(id)
     }
 
     @Delete()

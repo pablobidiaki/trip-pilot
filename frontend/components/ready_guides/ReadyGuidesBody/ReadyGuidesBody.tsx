@@ -1,50 +1,29 @@
 import { Landmark } from "lucide-react";
 import ButtonFilters from "../../ui/ButtonFilters/ButtonFilters";
 import GuideCard from "../GuideCard/GuideCard";
+import { getReadyGuides } from "@/services/readyGuides.service";
 
-export default function ReadyGuidesBody() {
-    return(
+export default async function ReadyGuidesBody() {
+    const readyGuides = await getReadyGuides()
+    console.log(readyGuides)
+    return (
         <div className="relative overflow-hidden bg-white -mt-5 rounded-t-4xl">
             <ButtonFilters />
             <div className="grid grid-cols-3 justify-items-center">
-                <GuideCard image={"/imgs/itinerary/hotel-teste.jpg"} 
-                           title={"Japao essencial"} 
-                           subtitle={"Toquio, Kyoto, Osaka e Nara"} 
-                           duration={"10 dias"} 
-                           type={"Cultura"} 
-                           type_icon={<Landmark />} 
-                           description={"O melhor do Japão em uma viagem inesquicível entre tradição e modernidade."} 
-                           link_guide={"/"} 
-                           price={10000}/>
-                <GuideCard image={"/imgs/itinerary/hotel-teste.jpg"} 
-                           title={"Japao essencial"} 
-                           subtitle={"Toquio, Kyoto, Osaka e Nara"} 
-                           duration={"10 dias"} 
-                           type={"Cultura"} 
-                           type_icon={<Landmark />} 
-                           description={"O melhor do Japão em uma viagem inesquicível entre tradição e modernidade."} 
-                           link_guide={"/"} 
-                           price={10000}/>
-                <GuideCard image={"/imgs/itinerary/hotel-teste.jpg"} 
-                           title={"Japao essencial"} 
-                           subtitle={"Toquio, Kyoto, Osaka e Nara"} 
-                           duration={"10 dias"} 
-                           type={"Cultura"} 
-                           type_icon={<Landmark />} 
-                           description={"O melhor do Japão em uma viagem inesquicível entre tradição e modernidade."} 
-                           link_guide={"/"} 
-                           price={10000}/>
-                <GuideCard image={"/imgs/itinerary/hotel-teste.jpg"} 
-                           title={"Japao essencial"} 
-                           subtitle={"Toquio, Kyoto, Osaka e Nara"} 
-                           duration={"10 dias"} 
-                           type={"Cultura"} 
-                           type_icon={<Landmark />} 
-                           description={"O melhor do Japão em uma viagem inesquicível entre tradição e modernidade."} 
-                           link_guide={"/"} 
-                           price={10000}/>
+                {readyGuides.map((guide, index) => (
+                    <GuideCard key={index}
+                        image={guide.imageURL}
+                        title={guide.title}
+                        cities={guide.cities}
+                        duration={guide.days}
+                        type={guide.travelType}
+                        description={guide.description}
+                        link_guide={guide.id}
+                        price={guide.price} 
+                    />
+                ))}
             </div>
-            
+
         </div>
     )
 }

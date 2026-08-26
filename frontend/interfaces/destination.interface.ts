@@ -11,6 +11,7 @@ interface AverageCost {
     transport: string
     tours: string
     total: string
+    dayTips: string[]
 }
 
 export interface Destination {
