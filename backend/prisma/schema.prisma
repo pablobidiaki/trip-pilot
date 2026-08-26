@@ -36,19 +36,20 @@ model Itinerary {
 model ReadyGuides {
   id                String   @id @default(uuid())
   imageURL          String
-  bannerURL         String
   title             String
   description       String
-  cities            String[]
   travelType        String
   bestTime          String
   language          String
   currenty          String
+  overviewResume    String
+  cities            String[]
   days              Int
   price             Float
+  overview          Json
   itinerary         Json
-  accommodations    Json[]
-  usefulInformation Json[]
+  accommodations    Json
+  usefulInformation Json
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 }

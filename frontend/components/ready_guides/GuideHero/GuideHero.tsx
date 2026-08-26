@@ -1,5 +1,5 @@
 import InfoItem from "@/components/ui/InfoItem/InfoItem";
-import { Calendar, ChartNoAxesColumnDecreasing, CircleDollarSign, Clock, Heart, Landmark } from "lucide-react";
+import { Calendar, CircleDollarSign, Clock, Heart, Landmark, Languages } from "lucide-react";
 import Image from "next/image";
 import GuideInfoCard from "../GuideInfoCard/GuideInfoCard";
 import GradientButton from "@/components/ui/Buttons/GradientButton";
@@ -30,7 +30,7 @@ export default function GuideHero() {
 
                 <div className="flex justify-between">
                     <GuideInfoCard icon={<Calendar />} title="Melhor época" text="Abr a Jun - Set a Out" />
-                    <GuideInfoCard icon={<ChartNoAxesColumnDecreasing />} title="Nível de viagem" text="Facil" />
+                    <GuideInfoCard icon={<Languages />} title="Língua" text="Ingles" />
                     <GuideInfoCard icon={<CircleDollarSign />} title="Moeda" text="Euro (EUR)" />
                 </div>
 

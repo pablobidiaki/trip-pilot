@@ -5,6 +5,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
 import { ItineraryModule } from './itinerary/itinerary.module';
 import { DestinationModule } from './destination/destination.module';
+import { ReadyGuidesModule } from './readyGuide/readyGuide.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { DestinationModule } from './destination/destination.module';
     UsersModule,
     ItineraryModule,
     DestinationModule,
+    ReadyGuidesModule,
     LlmModule
   ],
 })

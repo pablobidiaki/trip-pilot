@@ -7,7 +7,7 @@ export class DestinationService {
     constructor(private readonly prisma: PrismaService) { }
 
     create(dto: CreateDestinationDto) {
-        const destination = this.prisma.destinations.create({
+        return this.prisma.destinations.create({
             data: {
                 imageURL: dto.imageURL,
                 bannerURL: dto.bannerURL,
@@ -26,8 +26,6 @@ export class DestinationService {
                 averageCost: dto.averageCost
             }
         })
-
-        return destination
     }
 
     getAll() {
