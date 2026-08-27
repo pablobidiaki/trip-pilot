@@ -14,6 +14,18 @@ interface AverageCost {
     dayTips: string[]
 }
 
+interface usefulInformation {
+    bagagem: string[]
+    culture: string[]
+    internet: string[]
+    security: string[]
+    documents: string[]
+    exchangeRate: string[]
+    localTransport: string[]
+    vaccinesAndHealth: string[]
+    powerOutletAndVoltage: string[]
+}
+
 export interface Destination {
     id: string
     imageURL: string
@@ -27,7 +39,7 @@ export interface Destination {
     currenty: string
     weather: string
     dayReccomended: number
-    usefulInformation: JSON
+    usefulInformation: usefulInformation
     whatToDo: JSON
     attractions: Attraction[]
     averageCost: AverageCost

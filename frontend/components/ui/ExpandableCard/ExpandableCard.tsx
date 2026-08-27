@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 
-interface WhatToDoCardProps {
+interface ExpandableCardProps {
     icon: ReactNode
     title: string
     texts: string[]
@@ -8,7 +8,7 @@ interface WhatToDoCardProps {
     onClick: () => void
 }
 
-export default function ExpandableCard({ icon, title, texts, isOpen, onClick }: WhatToDoCardProps) {
+export default function ExpandableCard({ icon, title, texts, isOpen, onClick }: ExpandableCardProps) {
     return (
         <div className="relative">
             <div onClick={onClick}

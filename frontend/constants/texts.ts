@@ -251,6 +251,29 @@ const texts = {
         button_text: "Voltar para página inicial"
     },
 
+    util_info:{
+        util_infos_title: "Informações úteis",
+        util_infos_text: "Tudo o que você precisa saber para aproveitar sua viagem com mais tranquilidade e segurança.",
+        documents_title: "Documentos",
+        documents_text: "Veja os documentos necessários para o seu destino e dicas de visto.",
+        vaccines_and_health_title: "Vacina e saúde",
+        vaccines_and_health_text: "Informações sobre vacinas recomendadas e cuidados de saúde.",
+        baggage_title: "Bagagem",
+        baggage_text: "Dicas do que levar, restrições e itens essenciais.",
+        exchange_rate_title: "Câmbio",
+        exchange_rate_text: "Como funciona a moeda local, melhores formas de câmbio e uso de cartão internacional.",
+        power_outlet_and_voltage_title: "Tomada e voltagem",
+        power_outlet_and_voltage_text: "Informações sobre o padrão de tomadas e voltagem no destino.",
+        internet_title: "Internet",
+        internet_text: "Dicas para se manter conectado durante a viagem.",
+        transport_title: "Transporte",
+        security_title: "Segurança",
+        culture_title: "Cultura e costumes",
+        transport_text: "Principais opções de transporte público, apps e dicas de mobilidade.",
+        security_text: "Dicas para se manter seguro(a) durante a viagem, com orientações úteis para o dia a dia.",
+        culture_text:"Informações sobre tradições, etiquetas e o que conhecer para uma experiência mais rica."
+    },
+
     real: "R$",
     tip: "Dica",
     all_ready: "Tudo pronto para sua viagem inesquecível!",

@@ -5,9 +5,9 @@ import { getReadyGuides } from "@/services/readyGuides.service";
 
 export default async function ReadyGuidesBody() {
     const readyGuides = await getReadyGuides()
-    console.log(readyGuides)
+
     return (
-        <div className="relative overflow-hidden bg-white -mt-5 rounded-t-4xl">
+        <div className="relative overflow-hidden bg-background-color -mt-5 rounded-t-4xl">
             <ButtonFilters />
             <div className="grid grid-cols-3 justify-items-center">
                 {readyGuides.map((guide, index) => (
@@ -23,7 +23,6 @@ export default async function ReadyGuidesBody() {
                     />
                 ))}
             </div>
-
         </div>
     )
 }
