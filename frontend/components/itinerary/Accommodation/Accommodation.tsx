@@ -1,47 +1,66 @@
+"use client"
+
 import texts from "@/constants/texts";
-import Image from "next/image";
 import InfoRow from "../InfoRow/InfoRow";
 import CardTitle from "../CardTitle/CardTitle";
-import { StarIcon, MapPin, Package, Bed, BedDouble } from "lucide-react";
+import { StarIcon, MapPin, Package, Bed, BedDouble, ChevronLeft, ChevronRight } from "lucide-react";
+import { ItineraryInterface } from "@/interfaces/itinerary.interface";
+import { useState } from "react";
 
-export default function Accommodation(){
-    return(
-        <div className="mx-4 border rounded-2xl border-gray-300 min-w-4/7 mt-8 bg-white">
-            <CardTitle icon={<Bed />} title={texts.itinerary_titles.accommodations}/>
-            <div className="flex gap-10 p-5">
-                <Image src={"/imgs/itinerary/hotel-teste.jpg"} 
-                       alt="hotel image" 
-                       width={300}
-                       height={350}
-                       className="w-75 h-75 object-cover rounded-2xl"
+interface AccommodationProps {
+    itinerary: ItineraryInterface[]
+}
+
+export default function Accommodation({ itinerary }: AccommodationProps) {
+    const [option, setOption] = useState(0)
+
+    const plusButtonClicked = () => option == 2 ? setOption(0) : setOption(option + 1)
+    const minusButtonClicked = () => option == 0 ? setOption(2) : setOption(option - 1)
+
+    return (
+        <div className="mx-2 border rounded-2xl border-gray-300 min-w-4/7 mt-8 bg-white">
+            <CardTitle icon={<Bed />} title={texts.itinerary_titles.accommodations} />
+            <div className="flex py-5 px-1">
+                <ChevronLeft onClick={minusButtonClicked} size={30} className=" cursor-pointer p-1  my-auto mr-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
+
+                <img key={option}
+                    src={itinerary[0].itinerary.accommodations[option].imageURL}
+                    alt="hotel image"
+                    className="w-75 h-75 object-cover rounded-2xl mr-5"
                 />
                 <div className="w-full flex-col justify-between">
-                    <h1 className="text-primary-color text-2xl font-medium mb-3">Hotel Serra Azul</h1>
+                    <h1 className="text-primary-color text-2xl font-medium mb-3">{itinerary[0].itinerary.accommodations[option].name}</h1>
+
                     {/* TODO: create a component for this */}
                     <div className="flex gap-2 items-center">
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <div className="flex gap-2 ml-2">
-                            <p>5,0</p>
-                            <p>1.254 avaliações</p>
+                        <StarIcon className="fill-current text-yellow-500" size={20} />
+                        <StarIcon className="fill-current text-yellow-500" size={20} />
+                        <StarIcon className="fill-current text-yellow-500" size={20} />
+                        <StarIcon className="fill-current text-yellow-500" size={20} />
+                        <StarIcon className="fill-current text-yellow-500" size={20} />
+                        <div className="flex gap-5 ml-1">
+                            <p className="text-primary-color font-medium">{itinerary[0].itinerary.accommodations[option].rating}</p>
+                            <p className="text-second-color font-light">{itinerary[0].itinerary.accommodations[option].reviewCount} {texts.accommodations.reviews}</p>
                         </div>
                     </div>
-                    <InfoRow icon={<MapPin />} information={texts.accommodations.address} value={"Centro de gramado"} tailwindTags="mt-5"/>
-                    <hr  className="mx-2 text-gray-300 my-3"/>
-                    <InfoRow icon={<Package />} information={texts.accommodations.include} value={"Café da manhã, Wi-Fi e estacionamento"}/>
-                    <hr  className="mx-2 text-gray-300 my-3"/>
+
+                    <InfoRow icon={<MapPin />} information={texts.accommodations.address} value={itinerary[0].itinerary.accommodations[option].address} tailwindTags="mt-5" />
+                    <hr className="mx-2 text-gray-300 my-3" />
+
+                    <InfoRow icon={<Package />} information={texts.accommodations.include} value={itinerary[0].itinerary.accommodations[option].includes} />
+                    <hr className="mx-2 text-gray-300 my-3" />
+
                     <div className="flex gap-2 mt-3">
-                        <BedDouble className="text-blue-600"/>
-                        <p>Quato duplo standard</p>
+                        <BedDouble className="text-blue-600" />
+                        <p className=" text-second-color">{itinerary[0].itinerary.accommodations[option].roomType}</p>
                     </div>
 
                     <div className="bg-blue-100 p-2 rounded-2xl mt-8">
-                        <p className="font-medium text-blue-900">{texts.accommodations.cost_estimate} <span className="text-primary-color font-medium"> R$ 1.920,00</span></p>
+                        <p className="font-medium text-blue-900">{texts.accommodations.cost_estimate} <span className="text-primary-color font-medium">{texts.real} {itinerary[0].itinerary.accommodations[option].costEstimate}</span></p>
                     </div>
                 </div>
+
+                <ChevronRight onClick={plusButtonClicked} size={30} className=" cursor-pointer p-1  my-auto ml-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
             </div>
         </div>
     )

@@ -12,7 +12,7 @@ import texts from "@/constants/texts";
 import { getItinerary } from "@/services/itinerary.service";
 
 export default async function Itinerary(){
-    const itinerary = await getItinerary("5664d58c-ca37-48e7-9ef8-8db3a63e3831")
+    const itinerary = await getItinerary("95f63135-8ef0-4863-ae7c-33035378e887")
 
     return(
         <div className="bg-background-color">
@@ -20,7 +20,7 @@ export default async function Itinerary(){
             <div className="relative">
                 <div className="flex justify-center">
                     <ProvidedData itinerary={itinerary}/>
-                    <Accommodation />
+                    <Accommodation itinerary={itinerary}/>
                 </div>
                 <div className="flex justify-center">
                     <Tours />

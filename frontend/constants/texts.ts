@@ -138,7 +138,8 @@ const texts = {
     accommodations: {
         address: "Localização: ",
         include: "Inclui: ",
-        cost_estimate: "Custo estimado: "
+        cost_estimate: "Custo estimado: ",
+        reviews: "avaliações"
     },
 
     cost_estimate: {
