@@ -1,5 +1,4 @@
 import texts from "@/constants/texts";
-import Image from "next/image";
 
 interface TourCardProps{
     image: string,
@@ -11,10 +10,8 @@ interface TourCardProps{
 export default function TourCard({image, title, description, price}: TourCardProps){
     return(
         <div className="flex gap-4 p-2 items-center">
-            <Image src={image}
+            <img src={image}
                    alt="Tour tip image"
-                   width={100}
-                   height={100}
                    className="w-30 h-28 rounded-2xl"
             />
             <div>

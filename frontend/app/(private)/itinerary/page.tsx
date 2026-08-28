@@ -23,7 +23,7 @@ export default async function Itinerary(){
                     <Accommodation itinerary={itinerary}/>
                 </div>
                 <div className="flex justify-center">
-                    <Tours />
+                    <Tours itinerary={itinerary}/>
                     <CostEstimate />
                     <Transport />
                 </div>
