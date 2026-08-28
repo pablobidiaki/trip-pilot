@@ -1,3 +1,4 @@
+import ReviewBar from "@/components/ui/ReviewBar/ReviewBar"
 import texts from "@/constants/texts"
 import { MapPin, StarIcon } from "lucide-react"
 import Image from "next/image"
@@ -22,17 +23,9 @@ export default function AccomodationCard({image, days, name, review, address, te
             <div className="w-2/3">
                 <p className="text-second-color text-sm">{days}</p>
                 <p className="text-primary-color font-medium text-xl">{name}</p>
-                {/* TODO: create a component for this */}
-                    <div className="flex gap-2 items-center my-3">
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <StarIcon  className="fill-current text-yellow-500" size={20}/>
-                        <div className="flex gap-2 ml-2">
-                            <p>{review}</p>
-                        </div>
-                    </div>
+                
+                <ReviewBar rating={Number(review)} />
+                
                 <div className="flex items-center text-second-color my-2 gap-2">
                     <MapPin size={20}/>
                     <p>{address}</p>

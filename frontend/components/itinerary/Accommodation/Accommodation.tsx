@@ -6,6 +6,7 @@ import CardTitle from "../CardTitle/CardTitle";
 import { StarIcon, MapPin, Package, Bed, BedDouble, ChevronLeft, ChevronRight } from "lucide-react";
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
 import { useState } from "react";
+import ReviewBar from "@/components/ui/ReviewBar/ReviewBar";
 
 interface AccommodationProps {
     itinerary: ItineraryInterface[]
@@ -30,19 +31,10 @@ export default function Accommodation({ itinerary }: AccommodationProps) {
                 />
                 <div className="w-full flex-col justify-between">
                     <h1 className="text-primary-color text-2xl font-medium mb-3">{itinerary[0].itinerary.accommodations[option].name}</h1>
-
-                    {/* TODO: create a component for this */}
-                    <div className="flex gap-2 items-center">
-                        <StarIcon className="fill-current text-yellow-500" size={20} />
-                        <StarIcon className="fill-current text-yellow-500" size={20} />
-                        <StarIcon className="fill-current text-yellow-500" size={20} />
-                        <StarIcon className="fill-current text-yellow-500" size={20} />
-                        <StarIcon className="fill-current text-yellow-500" size={20} />
-                        <div className="flex gap-5 ml-1">
-                            <p className="text-primary-color font-medium">{itinerary[0].itinerary.accommodations[option].rating}</p>
-                            <p className="text-second-color font-light">{itinerary[0].itinerary.accommodations[option].reviewCount} {texts.accommodations.reviews}</p>
-                        </div>
-                    </div>
+                    
+                    <ReviewBar rating={itinerary[0].itinerary.accommodations[option].rating} 
+                               reviews={itinerary[0].itinerary.accommodations[option].reviewCount}
+                    />
 
                     <InfoRow icon={<MapPin />} information={texts.accommodations.address} value={itinerary[0].itinerary.accommodations[option].address} tailwindTags="mt-5" />
                     <hr className="mx-2 text-gray-300 my-3" />
