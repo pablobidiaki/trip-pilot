@@ -3,16 +3,18 @@ import CardTitle from "../CardTitle/CardTitle";
 
 import { Lightbulb } from "lucide-react";
 
-export default function Tips(){
+interface TipsProps{
+    tips: string[]
+}
+
+export default function Tips({tips}: TipsProps){
     return(
-        <div className="bg-white mx-4 border rounded-2xl border-gray-300 min-w-2/5 mt-8">
+        <div className="bg-white mx-4 border rounded-2xl border-gray-300 max-w-2/5 mt-8">
             <CardTitle icon={<Lightbulb />} title={texts.itinerary_titles.tips} />
             <ul className="list-disc marker:text-primary-color py-2 pl-8 max-w-[95%] text-second-color">
-                <li className="mb-3">Leve roupas de frio, mesmo no inverno mais leve, as noites sao geladas</li>
-                <li className="mb-3">Compre ingressos de passeios com antecedencia para evitar filas</li>
-                <li className="mb-3">Aproveite a gastronomia local: chocolates artesanais, foundues e cafe coloniais</li>
-                <li className="mb-3">Seguro de viagem não é obrigatorio para viagens nacionais, mas é sempre recomendado</li>
-                <li className="mb-3">Moeda: Real(R$)</li>
+                {tips.map((tip, index) => (
+                    <li key={index} className="mb-3">{tip}</li>
+                ))}
             </ul>
         </div>
     )

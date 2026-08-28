@@ -29,7 +29,7 @@ export default async function Itinerary(){
                 </div>
                 <div className="flex justify-center">
                     <Requirements />
-                    <Tips />
+                    <Tips tips={itinerary[0].itinerary.tips}/>
                 </div>
                 <div className="flex justify-center">
                     <ItineraryDays />
