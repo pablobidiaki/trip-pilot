@@ -26,7 +26,7 @@ interface usefulInformation {
     powerOutletAndVoltage: string[]
 }
 
-export interface Destination {
+export interface DestinationInterface {
     id: string
     imageURL: string
     bannerURL: string

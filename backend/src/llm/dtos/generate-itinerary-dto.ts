@@ -1,73 +1,189 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsInt, IsString, Min } from 'class-validator';
 
-/* 
-Body struct:
-{
-    "userId": "e7b48e14-b83c-4691-96a7-18c71f42faf2",
-    "departure": "São Paulo",
-    "destination": "China",
-    "departureDate": "2026-01-20",
-    "days": 5,
-    "budget": 500,
-    "travelers": 2,
-    "travelType": "aventura",
-    "aiProvider": "gemini"
-}
-
-Date formate: YYYY-MM-DD
-*/
-
 export class CreateItineraryDto {
     @ApiProperty({
-        example: 'e7b48e14-b83c-4691-96a7-18c71f42faf2',
+        example: '5e9a0a38-4777-4358-93d5-afd69472f469',
     })
-    @IsString()
     userId: string;
 
     @ApiProperty({
         example: 'São Paulo',
     })
-    @IsString()
     departure: string;
 
     @ApiProperty({
-        example: 'Japão',
+        example: 'China',
     })
-    @IsString()
     destination: string;
 
     @ApiProperty({
-        example: "2026-12-31",
+        example: '2026-01-20',
     })
-    @IsDateString()
-    departureDate: string
+    startDate: string;
+
+    @ApiProperty({
+        example: '2026-01-24',
+    })
+    endDate: string;
+
+    @ApiProperty({
+        example: 'Brazil',
+    })
+    countryOrigin: string;
+
+    @ApiProperty({
+        example: 'China',
+    })
+    countryDestination: string;
 
     @ApiProperty({
         example: 5,
     })
-    @IsInt()
-    @Min(1)
     days: number;
 
     @ApiProperty({
-        example: 3000,
+        example: '2026-08-31',
     })
-    @IsInt()
-    budget: number;
+    departureDate: string;
+
+    @ApiProperty({
+        example: 500,
+    })
+    budgetTotal: number;
 
     @ApiProperty({
         example: 2,
     })
-    @IsInt()
-    @Min(1)
-    travelers: number
+    travelers: number;
 
     @ApiProperty({
-        example: "adventure"
+        example: 'Adventure',
     })
-    @IsString()
-    travelType: string
+    travelType: string;
+
+    @ApiProperty({
+        example: 'BRL',
+    })
+    currency: string;
+
+    @ApiProperty({
+        example: [
+            'Leve roupas confortáveis.',
+            'Tenha sempre água durante os passeios.',
+            'Verifique os horários das atrações.',
+        ],
+    })
+    tips: string[];
+
+    @ApiProperty({
+        type: [Object],
+        example: [
+            {
+                name: 'Cidade Proibida',
+                description: 'Um dos principais pontos turísticos de Pequim.',
+                value: 80,
+            },
+        ],
+    })
+    tours: object[];
+
+    @ApiProperty({
+        type: Object,
+        example: {
+            type: 'Plane',
+            duration: '11h30',
+            price: 3500,
+        },
+    })
+    ticket: object;
+
+    @ApiProperty({
+        type: Object,
+        example: {
+            averageTemperature: '25°C',
+            description: 'Quente e parcialmente nublado',
+        },
+    })
+    weather: object;
+
+    @ApiProperty({
+        type: Object,
+        example: {
+            passport: true,
+            visa: true,
+            vaccines: [],
+            documents: ['Passaporte válido'],
+        },
+    })
+    requirements: object;
+
+    @ApiProperty({
+        type: Object,
+        example: {
+            accommodation: 1800,
+            food: 900,
+            transportation: 500,
+            tours: 600,
+            other: 200,
+            total: 4000,
+        },
+    })
+    costEstimate: object;
+
+    @ApiProperty({
+        type: [Object],
+        example: [
+            {
+                name: 'Hotel Example',
+                address: 'Beijing, China',
+                rating: 4.5,
+                price: 350,
+            },
+        ],
+    })
+    accommodations: object[];
+
+    @ApiProperty({
+        type: [Object],
+        example: [
+            {
+                type: 'Public transport',
+                averagePrice: 40,
+            },
+            {
+                type: 'Rental car',
+                averagePrice: 180,
+            },
+        ],
+    })
+    transportation: object[];
+
+    @ApiProperty({
+        type: [Object],
+        example: [
+            {
+                name: 'Pato de Pequim',
+                description: 'Prato tradicional chinês.',
+                averagePrice: 80,
+            },
+        ],
+    })
+    typicalFood: object[];
+
+    @ApiProperty({
+        type: [Object],
+        example: [
+            {
+                day: 1,
+                title: 'Chegada em Pequim',
+                morning: 'Chegada e check-in.',
+                afternoon: 'Visita ao centro histórico.',
+                evening: 'Jantar típico.',
+            },
+        ],
+    })
+    itinerary: object[];
 
     @ApiProperty({
         example: "gemini"

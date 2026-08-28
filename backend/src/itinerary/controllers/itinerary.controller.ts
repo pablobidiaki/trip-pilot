@@ -13,12 +13,15 @@ export class ItineraryController {
         summary: 'Get all existents itineraries'
     })
     async getAll(){
-        const itineraries = await this.itineraryService.getAll()
+        return await this.itineraryService.getAll()
+    }
 
-        return {
-            success: true,
-            itineraries: itineraries
-        }
+    @Get(':id')
+    @ApiOperation({
+        summary: 'Get an especific itinerary',
+    })
+    async get(@Param('id') id: string){
+        return await this.itineraryService.get(id)
     }
 
     @Post()

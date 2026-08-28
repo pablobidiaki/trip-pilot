@@ -13,15 +13,34 @@ export class ItineraryService {
         return this.prisma.itinerary.findMany()
     }
 
+    get(id: string) {
+        const itinerary = this.prisma.itinerary.findMany({
+            where: {
+                id: id
+            }
+        })
+
+        return itinerary
+    }
+
     async create(dto: CreateItineraryDto) {
-        const itineraryJson = await this.llmService.generate(dto)
+        // const itineraryJson = await this.llmService.generate(dto)
         const itinerary = this.prisma.itinerary.create({
             data: {
                 userId: dto.userId,
+                departure: dto.departure,
                 destination: dto.destination,
-                startDate: dto.departureDate,
-                endDate: this.calculateEndDate(dto.departureDate, dto.days),
-                itinerary: JSON.parse(itineraryJson),
+                startDate: dto.startDate,
+                endDate: this.calculateEndDate(dto.startDate, dto.days),
+                countryOrigin: dto.countryOrigin,
+                countryDestination: dto.countryDestination,
+                days: dto.days,
+                departureDate: dto.departureDate,
+                budgetTotal: dto.budgetTotal,
+                travelers: dto.travelers,
+                travelType: dto.travelType,
+                currency: dto.currency,
+                itinerary: dto.itinerary
             },
         });
 

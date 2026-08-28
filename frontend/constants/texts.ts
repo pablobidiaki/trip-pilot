@@ -131,7 +131,7 @@ const texts = {
         destination: "Destino: ",
         departure_date: "Data da viagem: ",
         duration_days: "Duração: ",
-        travelers: "Viajantes",
+        travelers: "Viajantes:",
         budget: "Orçamento: ",
     },
 
@@ -281,7 +281,9 @@ const texts = {
     good_travel: "Tenha uma viagem incrível! Boa aventura!",
     starting_at: "A partir de ",
     per_person: "Por pessoa",
-    free: "Gratuito"
+    free: "Gratuito",
+    days: "Dias",
+    people: "Pessoas"
 }
 
 export default texts;

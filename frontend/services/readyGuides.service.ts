@@ -1,6 +1,6 @@
-import { ReadyGuide } from "@/interfaces/readyGuides.interface";
+import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
-export async function getReadyGuides(): Promise<ReadyGuide[]> {
+export async function getReadyGuides(): Promise<ReadyGuideInterface[]> {
     const response = await fetch("http://localhost:3001/readyGuide")
 
     if(!response.ok)
@@ -9,7 +9,7 @@ export async function getReadyGuides(): Promise<ReadyGuide[]> {
     return response.json()
 }   
 
-export async function getReadyGuide(id: string): Promise<ReadyGuide[]> {
+export async function getReadyGuide(id: string): Promise<ReadyGuideInterface[]> {
     const response = await fetch(`http://localhost:3001/readyGuide/${id}`)
 
     if(!response.ok)

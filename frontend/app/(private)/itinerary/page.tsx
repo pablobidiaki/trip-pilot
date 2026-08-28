@@ -9,14 +9,17 @@ import Tips from "@/components/itinerary/Tips/Tips";
 import Tours from "@/components/itinerary/Tours/Tours";
 import Transport from "@/components/itinerary/Transport/Transport";
 import texts from "@/constants/texts";
+import { getItinerary } from "@/services/itinerary.service";
 
-export default function Itinerary(){
+export default async function Itinerary(){
+    const itinerary = await getItinerary("5664d58c-ca37-48e7-9ef8-8db3a63e3831")
+
     return(
-        <div>
+        <div className="bg-background-color">
             <ItineraryBanner />
             <div className="relative">
                 <div className="flex justify-center">
-                    <ProvidedData />
+                    <ProvidedData itinerary={itinerary}/>
                     <Accommodation />
                 </div>
                 <div className="flex justify-center">

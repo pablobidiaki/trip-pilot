@@ -1,6 +1,6 @@
-import { Destination } from "@/interfaces/destination.interface";
+import { DestinationInterface } from "@/interfaces/destination.interface";
 
-export async function getDestinations(): Promise<Destination[]> {
+export async function getDestinations(): Promise<DestinationInterface[]> {
     const response = await fetch("http://localhost:3001/destination")
 
     if(!response.ok)
@@ -9,7 +9,7 @@ export async function getDestinations(): Promise<Destination[]> {
     return response.json()
 }   
 
-export async function getDestination(id: string): Promise<Destination[]> {
+export async function getDestination(id: string): Promise<DestinationInterface[]> {
     const response = await fetch(`http://localhost:3001/destination/${id}`)
 
     if(!response.ok)

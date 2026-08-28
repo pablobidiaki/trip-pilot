@@ -1,26 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDateString, IsInt, IsString, Min } from 'class-validator';
-
-/* 
-Body struct:
-{
-    "userId": "e7b48e14-b83c-4691-96a7-18c71f42faf2",
-    "departure": "São Paulo",
-    "destination": "China",
-    "departureDate": "2026-01-20",
-    "days": 5,
-    "budget": 500,
-    "travelers": 2,
-    "travelType": "aventura",
-    "aiProvider": "gemini"
-}
-
-Date formate: YYYY-MM-DD
-*/
+import { IsInt, IsObject, IsString, Min } from 'class-validator';
 
 export class CreateItineraryDto {
     @ApiProperty({
-        example: 'e7b48e14-b83c-4691-96a7-18c71f42faf2',
+        example: '5e9a0a38-4777-4358-93d5-afd69472f469',
     })
     @IsString()
     userId: string;
@@ -32,46 +15,92 @@ export class CreateItineraryDto {
     departure: string;
 
     @ApiProperty({
-        example: 'Japão',
+        example: 'China',
     })
     @IsString()
     destination: string;
 
     @ApiProperty({
-        example: "2026-12-31",
+        example: '2026-01-20',
     })
-    @IsDateString()
-    departureDate: string
+    @IsString()
+    startDate: string;
+
+    @ApiProperty({
+        example: '2026-01-24',
+    })
+    @IsString()
+    endDate: string;
+
+    @ApiProperty({
+        example: 'Brazil',
+    })
+    @IsString()
+    countryOrigin: string;
+
+    @ApiProperty({
+        example: 'China',
+    })
+    @IsString()
+    countryDestination: string;
 
     @ApiProperty({
         example: 5,
     })
-    @IsInt()
     @Min(1)
+    @IsInt()
     days: number;
 
     @ApiProperty({
-        example: 3000,
+        example: '2026-08-31',
     })
+    @IsString()
+    departureDate: string;
+
+    @ApiProperty({
+        example: 500,
+    })
+    @Min(1)
     @IsInt()
-    budget: number;
+    budgetTotal: number;
 
     @ApiProperty({
         example: 2,
     })
-    @IsInt()
     @Min(1)
-    travelers: number
+    @IsInt()
+    travelers: number;
 
     @ApiProperty({
-        example: "adventure"
+        example: 'Adventure',
     })
     @IsString()
-    travelType: string
+    travelType: string;
 
     @ApiProperty({
-        example: "gemini"
+        example: 'BRL',
+    })
+    @IsString()
+    currency: string;
+
+    @ApiProperty({
+        example: 'gemini',
     })
     @IsString()
     aiProvider: string
+
+    @ApiProperty({
+        type: [Object],
+        example: [
+            {
+                day: 1,
+                title: 'Chegada em Pequim',
+                morning: 'Chegada e check-in.',
+                afternoon: 'Visita ao centro histórico.',
+                evening: 'Jantar típico.',
+            },
+        ],
+    })
+    @IsObject()
+    itinerary: object[];
 }
