@@ -1,4 +1,4 @@
-interface Tours {
+export interface ToursInterface {
     imageURL: string
     name: string
     description: string
@@ -34,7 +34,7 @@ interface CostEstimate {
     total: number
 }
 
-interface Accommodations {
+export interface AccommodationsInterface {
     imageURL: string
     name: string
     rating: number
@@ -78,12 +78,12 @@ interface DayToDay{
 
 interface Itinerary {
     tips: string[]
-    tours: Tours[]
+    tours: ToursInterface[]
     ticket: Tickets[]
     weather: Weather
     requirements: Requirements
     costEstimate: CostEstimate
-    accommodations: Accommodations[]
+    accommodations: AccommodationsInterface[]
     transportation: Transportation[]
     tipicalFoods: TipicalFoods[]
     dayToDay: DayToDay

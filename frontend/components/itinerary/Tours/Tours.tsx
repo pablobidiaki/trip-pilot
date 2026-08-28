@@ -4,25 +4,25 @@ import texts from "@/constants/texts";
 import CardTitle from "../CardTitle/CardTitle";
 import { Camera, ChevronLeft, ChevronRight } from "lucide-react"
 import TourCard from "./TourCard";
-import { ItineraryInterface } from "@/interfaces/itinerary.interface";
+import { ToursInterface } from "@/interfaces/itinerary.interface";
 import { useState } from "react";
 
 interface ToursProps {
-    itinerary: ItineraryInterface[]
+    tours: ToursInterface[]
 }
 
 const ITEMS_PER_PAGE = 3
 
-export default function Tours({ itinerary }: ToursProps) {
+export default function Tours({ tours }: ToursProps) {
     const [page, setPage] = useState(0);
 
-    const visibleItems = itinerary[0].itinerary.tours.slice(
+    const visibleItems = tours.slice(
         page * ITEMS_PER_PAGE,
         page * ITEMS_PER_PAGE + ITEMS_PER_PAGE
     )
 
     const nextPage = () => {
-        if ((page + 1) * ITEMS_PER_PAGE < itinerary[0].itinerary.tours.length) setPage((prev) => prev + 1);
+        if ((page + 1) * ITEMS_PER_PAGE < tours.length) setPage((prev) => prev + 1);
     }
 
     const previousPage = () => {
