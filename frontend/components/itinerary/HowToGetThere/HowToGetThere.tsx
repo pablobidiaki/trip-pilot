@@ -10,7 +10,7 @@ interface HowToGetThereProps{
 
 export default function HowToGetThere({tickets}: HowToGetThereProps) {
     return (
-        <div className="bg-white border rounded-2xl min-w-1/3 border-gray-300 mt-8">
+        <div className="bg-white border rounded-2xl max-w-2/3 border-gray-300 mt-8">
             <CardTitle icon={<Plane />} title={texts.itinerary_titles.fly_details} />
             <div className="m-4 flex justify-between items-center gap-5">
                 <div className="border border-gray-200 rounded-2xl">

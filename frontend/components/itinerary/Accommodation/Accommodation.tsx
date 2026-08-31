@@ -19,7 +19,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
     const minusButtonClicked = () => option == 0 ? setOption(2) : setOption(option - 1)
 
     return (
-        <div className="mx-2 border rounded-2xl border-gray-300 min-w-4/7 mt-8 bg-white">
+        <div className="border rounded-2xl border-gray-300 w-full mt-8 bg-white">
             <CardTitle icon={<Bed />} title={texts.itinerary_titles.accommodations} />
             <div className="flex py-5 px-1">
                 <ChevronLeft onClick={minusButtonClicked} size={30} className=" cursor-pointer p-1 my-auto mr-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />

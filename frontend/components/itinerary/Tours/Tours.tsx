@@ -30,7 +30,7 @@ export default function Tours({ tours }: ToursProps) {
     }
 
     return (
-        <div className="relative mx-4 border rounded-2xl border-gray-300 min-w-1/4 max-w-1/4 mt-8 bg-white">
+        <div className="relative border rounded-2xl border-gray-300 min-w-1/3 max-w-1/3 mt-8 bg-white">
             <CardTitle icon={<Camera />} title={texts.itinerary_titles.tours} />
 
             {visibleItems.map((tour, index) => (

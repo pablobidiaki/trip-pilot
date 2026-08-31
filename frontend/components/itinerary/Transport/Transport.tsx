@@ -11,7 +11,7 @@ interface TransportProps{
 
 export default function Transport({transports}: TransportProps){
     return(
-        <div className="mx-4 border rounded-2xl border-gray-300 mt-8 bg-white">
+        <div className="border rounded-2xl border-gray-300 mt-8 bg-white">
             <CardTitle icon={<CarFront />} title={texts.itinerary_titles.transportation}/>
             <TransportInfo icon={<CarFront />} title={transports[0].type} first_info={`Diaria: ~${texts.real} ${transports[0].averagePrice}`} second_info="Ideal para conhecer atrações próximas"/>
             <hr className="border-gray-300"/>

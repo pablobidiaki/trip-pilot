@@ -10,7 +10,7 @@ interface TipicalFoodsProps {
 
 export default function TipicalFoods({ tipicalFoods }: TipicalFoodsProps) {
     return (
-        <div className="bg-white border rounded-2xl max-w-1/3 border-gray-300 mt-8 ml-5">
+        <div className="bg-white border rounded-2xl max-w-1/3 min-w-1/3 border-gray-300 mt-8">
             <CardTitle icon={<Utensils />} title={texts.itinerary_titles.tipical_foods} />
             {tipicalFoods.map((food, index) => (
                 <TipicalFoodsCard key={index}

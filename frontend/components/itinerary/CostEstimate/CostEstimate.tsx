@@ -10,7 +10,7 @@ interface CostEstimateProps{
 
 export default function CostEstimate({itinerary}: CostEstimateProps){
     return(
-        <div className="mx-4 border rounded-2xl border-gray-300 max-w-1/4 mt-8 bg-white">
+        <div className="border rounded-2xl border-gray-300 min-w-1/3 mt-8 bg-white">
             <CardTitle icon={<CircleDollarSign />} title={texts.itinerary_titles.cost_estimate}/>
             <InfoRow icon={<Bed />} information={texts.cost_estimate.accommodation} value={`${texts.real} ${itinerary[0].itinerary.costEstimate.accommodations}`} tailwindTags="px-2 py-3"/>
             <InfoRow icon={<Utensils />} information={texts.cost_estimate.food} value={`${texts.real} ${itinerary[0].itinerary.costEstimate.food}`} tailwindTags="px-2 py-3"/>

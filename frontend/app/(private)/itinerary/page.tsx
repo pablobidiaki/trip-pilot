@@ -1,4 +1,5 @@
 import Footer from "@/components/home/Footer/Footer";
+import Header from "@/components/home/Header/Header";
 import Accommodation from "@/components/itinerary/Accommodation/Accommodation";
 import CostEstimate from "@/components/itinerary/CostEstimate/CostEstimate";
 import HowToGetThere from "@/components/itinerary/HowToGetThere/HowToGetThere";
@@ -15,39 +16,39 @@ import texts from "@/constants/texts";
 import { getItinerary } from "@/services/itinerary.service";
 
 export default async function Itinerary(){
-    const itinerary = await getItinerary("dd38483a-5ecc-4386-a7ed-969b4fd1f62a")
+    const itinerary = await getItinerary("a3664d55-2b61-4274-bc30-f846dbdfc4c9")
 
     return(
         <div className="bg-background-color">
             <ItineraryBanner />
-            <div className="relative">
-                <div className="flex justify-center">
+            <div className="relative mx-auto max-w-[85%]">
+                <div className="flex gap-5">
                     <ProvidedData itinerary={itinerary}/>
                     <Accommodation accommodations={itinerary[0].itinerary.accommodations}/>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center gap-5">
                     <Tours tours={itinerary[0].itinerary.tours}/>
                     <CostEstimate itinerary={itinerary}/>
-                    <div className="max-w-1/4">
+                    <div className="flex flex-col justify-between max-w-1/3">
                         <Weather weather={itinerary[0].itinerary.weather}/>
                         <Transport transports={itinerary[0].itinerary.transportation}/>
                     </div>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center gap-5">
                     <Requirements requirements={itinerary[0].itinerary.requirements}/>
                     <Tips tips={itinerary[0].itinerary.tips}/>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center gap-5">
                     <HowToGetThere tickets={itinerary[0].itinerary.ticket}/>
                     <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood}/>
                 </div>
-                <div className="flex justify-center">
-                    <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay}/>
-                </div>
+
+                <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay}/>
+
                 <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.ai_warning}</p>
                 <p className="text-center mt-2 text-second-color">{texts.good_travel}</p>
-                <Footer />
             </div>
+            <Footer />
         </div>
     )
 }
