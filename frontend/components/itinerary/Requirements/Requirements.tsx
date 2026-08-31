@@ -1,8 +1,7 @@
 import texts from "@/constants/texts";
 import CardTitle from "../CardTitle/CardTitle";
 
-import { FileText, MoveDown, CircleCheck } from "lucide-react"
-import Image from "next/image";
+import { FileText, CircleCheck } from "lucide-react"
 import RequirementsInfo from "./RequirementsInfo";
 import TripRoute from "./TripRoute";
 

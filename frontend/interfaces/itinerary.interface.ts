@@ -11,7 +11,7 @@ interface Tickets {
     disembarkationPoint: string
 }
 
-interface Weather {
+export interface WeatherInterface {
     season: string
     recommendation: string
     averageTemperature: string
@@ -80,7 +80,7 @@ interface Itinerary {
     tips: string[]
     tours: ToursInterface[]
     ticket: Tickets[]
-    weather: Weather
+    weather: WeatherInterface
     requirements: Requirements
     costEstimate: CostEstimate
     accommodations: AccommodationsInterface[]

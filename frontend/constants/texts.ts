@@ -120,10 +120,12 @@ const texts = {
         accommodations: "2. Hospedagem sugerida",
         tours: "3. Principais passeios",
         cost_estimate: "4. Custos Estimados",
-        transportation: "5. Meio de transporte",
-        requirements: "6. O que é preciso para entrar",
-        tips: "7. Dicas importantes",
-        itinerary: "8. Roteiro dia a dia"
+        how_to_get_there: "5. Como chegar",
+        transportation: "6. Meio de transporte",
+        requirements: "7. O que é preciso para entrar",
+        tips: "8. Dicas importantes",
+        weather: "9. Clima",
+        itinerary: "10. Roteiro dia a dia"
     },
 
     provided_data: {

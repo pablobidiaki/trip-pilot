@@ -8,6 +8,7 @@ import Requirements from "@/components/itinerary/Requirements/Requirements";
 import Tips from "@/components/itinerary/Tips/Tips";
 import Tours from "@/components/itinerary/Tours/Tours";
 import Transport from "@/components/itinerary/Transport/Transport";
+import Weather from "@/components/itinerary/Weather/Weather";
 import texts from "@/constants/texts";
 import { getItinerary } from "@/services/itinerary.service";
 
@@ -30,6 +31,9 @@ export default async function Itinerary(){
                 <div className="flex justify-center">
                     <Requirements />
                     <Tips tips={itinerary[0].itinerary.tips}/>
+                </div>
+                <div>
+                    <Weather weather={itinerary[0].itinerary.weather}/>
                 </div>
                 <div className="flex justify-center">
                     <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay}/>
