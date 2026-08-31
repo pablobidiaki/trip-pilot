@@ -31,7 +31,7 @@ export default function Requirements({requirements}: RequirementsProps){
                                 <p className="text-second-color text-sm mx-1 p-0.5">- {document}</p>
                             ))}
                         </div>
-                        <div className="border min-w-1/2 p-1 rounded-2xl">
+                        <div className="border min-w-1/2 rounded-2xl">
                             <h1 className="text-primary-color text-xl text-center p-1">{texts.requirements.vaccines_and_health}</h1>
                             <hr className="mb-2"/>
                             {requirements.vaccines.map(vaccine => (

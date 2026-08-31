@@ -120,11 +120,11 @@ const texts = {
         accommodations: "2. Hospedagem sugerida",
         tours: "3. Principais passeios",
         cost_estimate: "4. Custos Estimados",
-        how_to_get_there: "5. Como chegar",
+        weather: "5. Clima",
         transportation: "6. Meio de transporte",
         requirements: "7. O que é preciso para entrar",
         tips: "8. Dicas importantes",
-        weather: "9. Clima",
+        fly_details: "9. Detalhes do voo",
         itinerary: "10. Roteiro dia a dia"
     },
 
@@ -164,8 +164,6 @@ const texts = {
     },
 
     requirements: {
-        origin: "Saindo: ",
-        destination: "Destino: ",
         observation: "Regras podem mudar. Confira sempre informações atualizadas antes da viagem.",
         visa_true: "Necessário visto.",
         visa_false: "Não é necessário visto.",
@@ -173,6 +171,15 @@ const texts = {
         passport_false: "Não é necessário passaporte.",
         documents: "Documentos",
         vaccines_and_health: "Vacinas e saúde"
+    },
+
+
+    how_to_get_there:{
+        boarding_point: "Ponto de embarque: ",
+        fly_time: "Tempo de voo: ",
+        disembarkation_point: "Ponto de desembarque: ",
+        boarding: "Embarque:",
+        disembarkation: "Desembarque:"
     },
 
     itinerary: {

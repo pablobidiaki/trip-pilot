@@ -9,7 +9,7 @@ interface WeatherProps {
 
 export default function Weather({ weather }: WeatherProps) {
     return (
-        <div className="bg-white mx-4 border rounded-2xl border-gray-300 max-w-1/4 mt-8">
+        <div className="bg-white mx-4 border rounded-2xl border-gray-300 mt-8">
             <CardTitle icon={<SunSnow />} title={texts.itinerary_titles.weather} />
             <div className="mx-4 text-primary-color">
                 <p className="my-2">{texts.weather.season_text} <span className="text-second-color">{weather.season}</span></p>

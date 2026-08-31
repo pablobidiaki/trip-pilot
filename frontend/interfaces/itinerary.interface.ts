@@ -5,7 +5,7 @@ export interface ToursInterface {
     price: number
 }
 
-interface Tickets {
+export interface Tickets {
     boardingPoint: string
     flyTime: string
     disembarkationPoint: string

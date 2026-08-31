@@ -11,25 +11,23 @@ interface TripRouteProps{
 
 export default function TripRoute({country_origin_flag, country_origin_name, country_destination_flag, country_destination_name}: TripRouteProps){
     return(
-        <div className="min-w-1/2">
-            <div className="flex gap-2 items-center">
-                <Image src={country_origin_flag}
+        <div>
+            <div className="flex flex-col items-center">
+                <img src={country_origin_flag}
                         alt="Bandeira"
-                        height={50}
-                        width={70}
+                        className="w-22"
                 />
-                <p>{texts.requirements.origin} {country_origin_name}</p>
+                <p className="text-primary-color font-medium">{texts.how_to_get_there.boarding} <span className="text-second-color"> {country_origin_name}</span></p>
             </div>
 
             <MoveDown className="mx-auto my-4" />
 
-            <div className="flex gap-2 items-center">
-                <Image src={country_destination_flag}
+            <div className="flex flex-col items-center">
+                <img src={country_destination_flag}
                         alt="Bandeira"
-                        height={50}
-                        width={70}
+                        className="w-22"
                 />
-                <p>{texts.requirements.destination} {country_destination_name}</p>
+                <p className="text-primary-color font-medium">{texts.how_to_get_there.disembarkation} <span className="text-second-color"> {country_destination_name}</span></p>
             </div>
         </div>
     )

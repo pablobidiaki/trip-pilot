@@ -27,15 +27,17 @@ export default async function Itinerary(){
                 <div className="flex justify-center">
                     <Tours tours={itinerary[0].itinerary.tours}/>
                     <CostEstimate itinerary={itinerary}/>
-                    <Transport transports={itinerary[0].itinerary.transportation}/>
+                    <div className="max-w-1/4">
+                        <Weather weather={itinerary[0].itinerary.weather}/>
+                        <Transport transports={itinerary[0].itinerary.transportation}/>
+                    </div>
                 </div>
                 <div className="flex justify-center">
                     <Requirements requirements={itinerary[0].itinerary.requirements}/>
                     <Tips tips={itinerary[0].itinerary.tips}/>
                 </div>
                 <div className="flex justify-center">
-                    <Weather weather={itinerary[0].itinerary.weather}/>
-                    <HowToGetThere />
+                    <HowToGetThere tickets={itinerary[0].itinerary.ticket}/>
                 </div>
                 <div className="flex justify-center">
                     <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay}/>
