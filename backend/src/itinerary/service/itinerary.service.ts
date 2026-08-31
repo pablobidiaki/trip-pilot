@@ -6,8 +6,8 @@ import { LlmService } from 'src/llm/services/llm.service';
 @Injectable()
 export class ItineraryService {
     constructor(private readonly prisma: PrismaService,
-                private readonly llmService: LlmService
-                ) { }
+        private readonly llmService: LlmService
+    ) { }
 
     getAll() {
         return this.prisma.itinerary.findMany()
@@ -24,7 +24,10 @@ export class ItineraryService {
     }
 
     async create(dto: CreateItineraryDto) {
-        // const itineraryJson = await this.llmService.generate(dto)
+        // const itineraryJson = await this.llmService.generate(dto)]
+        const countryOriginFlag = await this.getCountryFlag(dto.countryOrigin)
+        const countryDestinationFlag = await this.getCountryFlag(dto.countryDestination)
+
         const itinerary = this.prisma.itinerary.create({
             data: {
                 userId: dto.userId,
@@ -32,8 +35,8 @@ export class ItineraryService {
                 destination: dto.destination,
                 startDate: dto.startDate,
                 endDate: this.calculateEndDate(dto.startDate, dto.days),
-                countryOrigin: dto.countryOrigin,
-                countryDestination: dto.countryDestination,
+                countryOrigin: countryOriginFlag,
+                countryDestination: countryDestinationFlag,
                 days: dto.days,
                 departureDate: dto.departureDate,
                 budgetTotal: dto.budgetTotal,
@@ -43,7 +46,6 @@ export class ItineraryService {
                 itinerary: dto.itinerary
             },
         });
-
         return itinerary
     }
 
@@ -69,5 +71,15 @@ export class ItineraryService {
 
         // split to remove the time
         return endDate.toISOString().split('T')[0]
+    }
+
+    async getCountryFlag(contry: string): Promise<string> {
+        const response = await fetch(
+            `https://api.restcountries.com/countries/v5?q=${contry}`,
+            { headers: { 'Authorization': `Bearer  ${process.env.REST_COUNTRIES_KEY}` } }
+        );
+        const data = await response.json();
+
+        return data.data.objects[0].flag.url_png
     }
 }

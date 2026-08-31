@@ -16,7 +16,7 @@ import texts from "@/constants/texts";
 import { getItinerary } from "@/services/itinerary.service";
 
 export default async function Itinerary(){
-    const itinerary = await getItinerary("a3664d55-2b61-4274-bc30-f846dbdfc4c9")
+    const itinerary = await getItinerary("54cf5acc-581f-43d0-82c5-393d1d6c3a11")
 
     return(
         <div className="bg-background-color">
@@ -39,7 +39,7 @@ export default async function Itinerary(){
                     <Tips tips={itinerary[0].itinerary.tips}/>
                 </div>
                 <div className="flex justify-center gap-5">
-                    <HowToGetThere tickets={itinerary[0].itinerary.ticket}/>
+                    <HowToGetThere tickets={itinerary[0].itinerary.ticket} originFlag={itinerary[0].countryOrigin} destinationFlag={itinerary[0].countryDestination}/>
                     <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood}/>
                 </div>
 
