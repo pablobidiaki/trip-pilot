@@ -13,7 +13,6 @@ interface AccommodationProps {
 }
 
 export default function Accommodation({ accommodations }: AccommodationProps) {
-    console.log(accommodations)
     const [option, setOption] = useState(0)
 
     const plusButtonClicked = () => option == 2 ? setOption(0) : setOption(option + 1)

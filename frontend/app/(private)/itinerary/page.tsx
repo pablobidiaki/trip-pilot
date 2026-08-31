@@ -6,6 +6,7 @@ import ItineraryBanner from "@/components/itinerary/ItineraryBanner/ItineraryBan
 import ItineraryDays from "@/components/itinerary/ItineraryDays/ItineraryDays";
 import ProvidedData from "@/components/itinerary/ProvidedData/ProvidedData";
 import Requirements from "@/components/itinerary/Requirements/Requirements";
+import TipicalFoods from "@/components/itinerary/TipicalFoods/TipicalFoods";
 import Tips from "@/components/itinerary/Tips/Tips";
 import Tours from "@/components/itinerary/Tours/Tours";
 import Transport from "@/components/itinerary/Transport/Transport";
@@ -38,6 +39,7 @@ export default async function Itinerary(){
                 </div>
                 <div className="flex justify-center">
                     <HowToGetThere tickets={itinerary[0].itinerary.ticket}/>
+                    <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood}/>
                 </div>
                 <div className="flex justify-center">
                     <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay}/>

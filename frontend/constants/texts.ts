@@ -125,7 +125,8 @@ const texts = {
         requirements: "7. O que é preciso para entrar",
         tips: "8. Dicas importantes",
         fly_details: "9. Detalhes do voo",
-        itinerary: "10. Roteiro dia a dia"
+        tipical_foods: "10. Comidas típicas",
+        itinerary: "11. Roteiro dia a dia"
     },
 
     provided_data: {

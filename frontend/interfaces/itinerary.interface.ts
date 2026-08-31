@@ -50,7 +50,7 @@ export interface TransportationInterface{
     averagePrice: number
 }
 
-interface TipicalFoods {
+export interface TipicalFoodsInterface {
     imageURL: string
     title: string
     description: string
@@ -85,7 +85,7 @@ interface Itinerary {
     costEstimate: CostEstimate
     accommodations: AccommodationsInterface[]
     transportation: TransportationInterface[]
-    tipicalFoods: TipicalFoods[]
+    tipicalFood: TipicalFoodsInterface[]
     dayToDay: DayToDayInterface[]
 }
 

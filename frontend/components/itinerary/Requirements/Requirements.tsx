@@ -27,15 +27,15 @@ export default function Requirements({requirements}: RequirementsProps){
                         <div className="border min-w-1/2 rounded-2xl">
                             <h1 className="text-primary-color text-xl text-center p-1">{texts.requirements.documents}</h1>
                             <hr className="mb-2"/>
-                            {requirements.documents.map(document => (
-                                <p className="text-second-color text-sm mx-1 p-0.5">- {document}</p>
+                            {requirements.documents.map((document,index) => (
+                                <p key={index} className="text-second-color text-sm mx-1 p-0.5">- {document}</p>
                             ))}
                         </div>
                         <div className="border min-w-1/2 rounded-2xl">
                             <h1 className="text-primary-color text-xl text-center p-1">{texts.requirements.vaccines_and_health}</h1>
                             <hr className="mb-2"/>
-                            {requirements.vaccines.map(vaccine => (
-                                <p className="text-second-color text-sm mx-1 p-0.5">- {vaccine}</p>
+                            {requirements.vaccines.map((vaccine, index) => (
+                                <p key={index} className="text-second-color text-sm mx-1 p-0.5">- {vaccine}</p>
                             ))}
                         </div>
                     </div>
