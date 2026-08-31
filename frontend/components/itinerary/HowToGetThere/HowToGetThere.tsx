@@ -6,11 +6,13 @@ import { Tickets } from "@/interfaces/itinerary.interface";
 
 interface HowToGetThereProps{
     tickets: Tickets[]
+    destinationCountry: string
     destinationFlag: string
+    originCountry: string
     originFlag: string
 }
 
-export default function HowToGetThere({tickets, destinationFlag, originFlag}: HowToGetThereProps) {
+export default function HowToGetThere({tickets, destinationCountry, destinationFlag, originCountry, originFlag}: HowToGetThereProps) {
     return (
         <div className="bg-white border rounded-2xl max-w-2/3 border-gray-300 mt-8">
             <CardTitle icon={<Plane />} title={texts.itinerary_titles.fly_details} />
@@ -29,9 +31,9 @@ export default function HowToGetThere({tickets, destinationFlag, originFlag}: Ho
                 </div>
 
                 <TripRoute country_origin_flag={originFlag}
-                    country_origin_name="Brasil"
+                    country_origin_name={originCountry}
                     country_destination_flag={destinationFlag}
-                    country_destination_name="Bolivia"
+                    country_destination_name={destinationCountry}
                 />
 
                 <div className="border border-gray-200 rounded-2xl">

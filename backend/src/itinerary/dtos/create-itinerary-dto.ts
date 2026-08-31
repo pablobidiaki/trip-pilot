@@ -45,6 +45,18 @@ export class CreateItineraryDto {
     countryDestination: string;
 
     @ApiProperty({
+        example: "https://flags.restcountries.com/v5/w640/br.png",
+    })
+    @IsString()
+    countryOriginFlagURL: string;
+
+    @ApiProperty({
+        example: "https://flags.restcountries.com/v5/w640/cn.png",
+    })
+    @IsString()
+    countryDestinationFlagURL: string;
+
+    @ApiProperty({
         example: 5,
     })
     @Min(1)

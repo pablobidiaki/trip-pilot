@@ -98,6 +98,8 @@ export interface ItineraryInterface {
     endDate: string
     countryOrigin: string
     countryDestination: string
+    countryOriginFlagURL: string
+    countryDestinationFlagURL: string
     departureDate: string
     travelType: string
     currency: string
