@@ -12,7 +12,7 @@ import texts from "@/constants/texts";
 import { getItinerary } from "@/services/itinerary.service";
 
 export default async function Itinerary(){
-    const itinerary = await getItinerary("95f63135-8ef0-4863-ae7c-33035378e887")
+    const itinerary = await getItinerary("dd38483a-5ecc-4386-a7ed-969b4fd1f62a")
 
     return(
         <div className="bg-background-color">
@@ -25,14 +25,14 @@ export default async function Itinerary(){
                 <div className="flex justify-center">
                     <Tours tours={itinerary[0].itinerary.tours}/>
                     <CostEstimate itinerary={itinerary}/>
-                    <Transport />
+                    <Transport transports={itinerary[0].itinerary.transportation}/>
                 </div>
                 <div className="flex justify-center">
                     <Requirements />
                     <Tips tips={itinerary[0].itinerary.tips}/>
                 </div>
                 <div className="flex justify-center">
-                    <ItineraryDays />
+                    <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay}/>
                 </div>
                 <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.ai_warning}</p>
                 <p className="text-center mt-2 text-second-color">{texts.good_travel}</p>

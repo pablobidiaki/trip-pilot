@@ -171,7 +171,8 @@ const texts = {
         cust: "Custo estimado do dia",
         morning: "Manhã: ",
         afternoon: "Tarde: ",
-        evening: "Noite: "
+        evening: "Noite: ",
+        view_hours: "Visualizar roteiro por hora"
     },
 
     ready_guides: {

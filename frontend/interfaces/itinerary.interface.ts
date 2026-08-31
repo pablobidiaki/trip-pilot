@@ -45,7 +45,7 @@ export interface AccommodationsInterface {
     costEstimate: number
 }
 
-interface Transportation{
+export interface TransportationInterface{
     type: string
     averagePrice: number
 }
@@ -58,20 +58,20 @@ interface TipicalFoods {
     category: string
 }
 
-interface Hours{
+export interface Hours{
     hour: string
     title: string
     description: string
     tip: string
 }
 
-interface DayToDay{
+export interface DayToDayInterface{
     imageURL: string
     day: string
     title: string
     morning: string
     afternoon: string
-    nightLife: string
+    night: string
     dayCostEstimate: number
     hours: Hours[]
 }
@@ -84,9 +84,9 @@ interface Itinerary {
     requirements: Requirements
     costEstimate: CostEstimate
     accommodations: AccommodationsInterface[]
-    transportation: Transportation[]
+    transportation: TransportationInterface[]
     tipicalFoods: TipicalFoods[]
-    dayToDay: DayToDay
+    dayToDay: DayToDayInterface[]
 }
 
 export interface ItineraryInterface {
