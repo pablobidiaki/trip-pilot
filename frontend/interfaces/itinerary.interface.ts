@@ -17,7 +17,7 @@ export interface WeatherInterface {
     averageTemperature: string
 }
 
-interface Requirements {
+export interface RequirementsInterface {
     visa: boolean
     passport: boolean
     vaccines: string[]
@@ -81,7 +81,7 @@ interface Itinerary {
     tours: ToursInterface[]
     ticket: Tickets[]
     weather: WeatherInterface
-    requirements: Requirements
+    requirements: RequirementsInterface
     costEstimate: CostEstimate
     accommodations: AccommodationsInterface[]
     transportation: TransportationInterface[]

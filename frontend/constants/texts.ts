@@ -166,7 +166,13 @@ const texts = {
     requirements: {
         origin: "Saindo: ",
         destination: "Destino: ",
-        observation: "Regras podem mudar. Confira sempre informações atualizadas antes da viagem."
+        observation: "Regras podem mudar. Confira sempre informações atualizadas antes da viagem.",
+        visa_true: "Necessário visto.",
+        visa_false: "Não é necessário visto.",
+        passport_true: "Necessário passaporte.",
+        passport_false: "Não é necessário passaporte.",
+        documents: "Documentos",
+        vaccines_and_health: "Vacinas e saúde"
     },
 
     itinerary: {
@@ -175,6 +181,11 @@ const texts = {
         afternoon: "Tarde: ",
         evening: "Noite: ",
         view_hours: "Visualizar roteiro por hora"
+    },
+
+    weather: {
+        season_text: "Na data da viagem a estação será:",
+        temperature_text: "A temperatura média normalmente é:"
     },
 
     ready_guides: {

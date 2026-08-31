@@ -1,6 +1,7 @@
 import Footer from "@/components/home/Footer/Footer";
 import Accommodation from "@/components/itinerary/Accommodation/Accommodation";
 import CostEstimate from "@/components/itinerary/CostEstimate/CostEstimate";
+import HowToGetThere from "@/components/itinerary/HowToGetThere/HowToGetThere";
 import ItineraryBanner from "@/components/itinerary/ItineraryBanner/ItineraryBanner";
 import ItineraryDays from "@/components/itinerary/ItineraryDays/ItineraryDays";
 import ProvidedData from "@/components/itinerary/ProvidedData/ProvidedData";
@@ -29,11 +30,12 @@ export default async function Itinerary(){
                     <Transport transports={itinerary[0].itinerary.transportation}/>
                 </div>
                 <div className="flex justify-center">
-                    <Requirements />
+                    <Requirements requirements={itinerary[0].itinerary.requirements}/>
                     <Tips tips={itinerary[0].itinerary.tips}/>
                 </div>
-                <div>
+                <div className="flex justify-center">
                     <Weather weather={itinerary[0].itinerary.weather}/>
+                    <HowToGetThere />
                 </div>
                 <div className="flex justify-center">
                     <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay}/>
