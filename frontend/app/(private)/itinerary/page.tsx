@@ -15,7 +15,7 @@ import texts from "@/constants/texts";
 import { getItinerary } from "@/services/itinerary.service";
 
 export default async function Itinerary() {
-    const itinerary = await getItinerary("d9920e99-0c10-465d-a598-ed1e1d9c7b72")
+    const itinerary = await getItinerary("ab006a37-78cc-4ba1-8aef-613ec492a943")
 
     return (
         <div className="bg-background-color">

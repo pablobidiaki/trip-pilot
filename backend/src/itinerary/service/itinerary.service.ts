@@ -2,11 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
 import { LlmService } from 'src/llm/services/llm.service';
+import { ImagesService } from 'src/images/services/images.service';
+import { json } from 'stream/consumers';
+import { JsonArray } from 'generated/prisma/internal/prismaNamespace';
 
 @Injectable()
 export class ItineraryService {
     constructor(private readonly prisma: PrismaService,
-        private readonly llmService: LlmService
+        private readonly llmService: LlmService,
+        private readonly imagesService: ImagesService
     ) { }
 
     getAll() {
@@ -24,9 +28,11 @@ export class ItineraryService {
     }
 
     async create(dto: CreateItineraryDto) {
-        // const itineraryJson = await this.llmService.generate(dto)]
-        const countryOriginFlag = await this.getCountryFlag(dto.countryOrigin)
-        const countryDestinationFlag = await this.getCountryFlag(dto.countryDestination)
+        // const itineraryJson = await this.llmService.generate(dto)
+        // const countryOriginFlag = await this.getCountryFlag(dto.countryOrigin)
+        // const countryDestinationFlag = await this.getCountryFlag(dto.countryDestination)
+
+        await this.getAllImagesURLs(dto.itinerary)
 
         const itinerary = this.prisma.itinerary.create({
             data: {
@@ -37,8 +43,8 @@ export class ItineraryService {
                 endDate: this.calculateEndDate(dto.startDate, dto.days),
                 countryOrigin: dto.countryOrigin,
                 countryDestination: dto.countryDestination,
-                countryOriginFlagURL: countryOriginFlag,
-                countryDestinationFlagURL: countryDestinationFlag,
+                countryOriginFlagURL: dto.countryOriginFlagURL,
+                countryDestinationFlagURL: dto.countryDestinationFlagURL,
                 days: dto.days,
                 departureDate: dto.departureDate,
                 budgetTotal: dto.budgetTotal,
@@ -83,5 +89,42 @@ export class ItineraryService {
         const data = await response.json();
 
         return data.data.objects[0].flag.url_png
+    }
+
+    async getAllImagesURLs(data: any) {
+        data.tours = await Promise.all(
+            data.tours.map(async (tour) => {
+                const imageURL = await this.imagesService.getImages(tour.imageSearchScript)
+
+                return {
+                    ...tour,
+                    imageURL,
+                }
+            })
+        )
+
+        data.tipicalFood = await Promise.all(
+            data.tipicalFood.map(async (food) => {
+                const imageURL = await this.imagesService.getImages(food.imageSearchScript, 'square')
+
+                return {
+                    ...food,
+                    imageURL,
+                }
+            })
+        )
+
+        data.dayToDay = await Promise.all(
+            data.dayToDay.map(async (day) => {
+                const imageURL = await this.imagesService.getImages(day.imageSearchScript, 'landscape')
+
+                return {
+                    ...day,
+                    imageURL,
+                }
+            })
+        )
+
+        return data
     }
 }

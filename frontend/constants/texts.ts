@@ -188,7 +188,8 @@ const texts = {
         morning: "Manhã: ",
         afternoon: "Tarde: ",
         evening: "Noite: ",
-        view_hours: "Visualizar roteiro por hora"
+        view_hours: "Visualizar roteiro por hora",
+        pexel_credits: "As imagens utilizadas nesta página são fornecidas pelo"
     },
 
     weather: {
@@ -295,6 +296,13 @@ const texts = {
         transport_text: "Principais opções de transporte público, apps e dicas de mobilidade.",
         security_text: "Dicas para se manter seguro(a) durante a viagem, com orientações úteis para o dia a dia.",
         culture_text:"Informações sobre tradições, etiquetas e o que conhecer para uma experiência mais rica."
+    },
+
+    tipicalFood:{
+        name: "Nome: ",
+        description: "Descrição: ",
+        category: "Categoria: ",
+        averagePrice: "Preço médio: "
     },
 
     real: "R$",

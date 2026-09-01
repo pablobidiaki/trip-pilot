@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { ItineraryModule } from './itinerary/itinerary.module';
 import { DestinationModule } from './destination/destination.module';
 import { ReadyGuidesModule } from './readyGuide/readyGuide.module';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ReadyGuidesModule } from './readyGuide/readyGuide.module';
     ItineraryModule,
     DestinationModule,
     ReadyGuidesModule,
+    ImagesModule,
     LlmModule
   ],
 })
