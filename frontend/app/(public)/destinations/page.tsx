@@ -1,6 +1,6 @@
 import DestinationBody from "@/components/destinations/DestinationsBody/DestinationsBody";
 import DestinationsBanner from "@/components/destinations/DestinationsBanner/DestinationsBanner";
-import Footer from "@/components/home/Footer/Footer";
+import Footer from "@/components/ui/Footer/Footer";
 
 export default function Destinations() {
   return (

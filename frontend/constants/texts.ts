@@ -265,7 +265,13 @@ const texts = {
         internet: "Internet",
         transport: "Transporte",
         security: "Segurança",
-        alter_travel: "Crie um roteiro personalizado!"
+        alter_travel: "Crie um roteiro personalizado!",
+        best_time: "Melhor época",
+        weather: "Clima",
+        travel_type: "Tipo de viagem",
+        recommended_days: "Dias recomendados",
+        currency: "Moeda",
+        language: "Idioma"
     },
 
     not_found: {

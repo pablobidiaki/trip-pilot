@@ -1,4 +1,4 @@
-import Header from "@/components/home/Header/Header";
+import Header from "@/components/ui/Header/Header";
 import SearchBar from "@/components/ui/SearchBar/Searchbar";
 import texts from "@/constants/texts";
 

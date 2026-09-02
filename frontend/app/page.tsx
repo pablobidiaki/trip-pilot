@@ -6,7 +6,7 @@ import ItineraryExamples from "@/components/home/ItineraryExamples/ItineraryExam
 import PopularDestinations from "@/components/home/PopularDestinations/PopularDestinations";
 import CTA from "@/components/ui/CTA/CTA";
 import WhyUse from "@/components/home/WhyUse/WhyUse";
-import Footer from "@/components/home/Footer/Footer";
+import Footer from "@/components/ui/Footer/Footer";
 
 import texts from "@/constants/texts";
 

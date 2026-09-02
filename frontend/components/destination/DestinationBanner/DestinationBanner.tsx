@@ -1,4 +1,4 @@
-import Header from "@/components/home/Header/Header";
+import Header from "@/components/ui/Header/Header";
 import texts from "@/constants/texts";
 import { Destination } from "@/interfaces/destination.interface";
 import { Heart, MoveLeft } from "lucide-react";

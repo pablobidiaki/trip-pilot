@@ -21,7 +21,7 @@ export default function Header(){
                 </div>
                 
                 <div className="flex gap-18">
-                    <p><Link href={'/create_script'}>Criar Roteiro </Link></p>
+                    <p><Link href={'/'}>Criar Roteiro </Link></p>
                     <p><Link href={'/ready_guides'}>Guias prontos</Link></p>
                     <p><Link href={'/destinations'}>Destinos</Link></p>
                     <p><Link href={'/pro'}>Pro 👑</Link></p>

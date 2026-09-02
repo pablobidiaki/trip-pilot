@@ -1,4 +1,4 @@
-import Footer from "@/components/home/Footer/Footer";
+import Footer from "@/components/ui/Footer/Footer";
 import ReadyGuidesBanner from "@/components/ready_guides/ReadyGuidesBanner/ReadyGuidesBanner";
 import ReadyGuidesBody from "@/components/ready_guides/ReadyGuidesBody/ReadyGuidesBody";
 

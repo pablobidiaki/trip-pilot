@@ -1,4 +1,4 @@
-import Header from "@/components/home/Header/Header";
+import Header from "@/components/ui/Header/Header";
 import texts from "@/constants/texts";
 import Link from "next/link";
 

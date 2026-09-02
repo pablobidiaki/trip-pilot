@@ -1,6 +1,6 @@
 import DestinationBanner from "@/components/destination/DestinationBanner/DestinationBanner";
 import DestinationBody from "@/components/destination/DestinationBody/DestinationBody";
-import Footer from "@/components/home/Footer/Footer";
+import Footer from "@/components/ui/Footer/Footer";
 import CTA from "@/components/ui/CTA/CTA";
 import texts from "@/constants/texts";
 import { getDestination } from "@/services/destination.service";

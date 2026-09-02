@@ -1,4 +1,4 @@
-import Footer from "@/components/home/Footer/Footer";
+import Footer from "@/components/ui/Footer/Footer";
 import Accommodation from "@/components/itinerary/Accommodation/Accommodation";
 import CostEstimate from "@/components/itinerary/CostEstimate/CostEstimate";
 import HowToGetThere from "@/components/itinerary/HowToGetThere/HowToGetThere";

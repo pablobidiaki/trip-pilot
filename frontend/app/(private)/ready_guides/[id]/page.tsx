@@ -1,5 +1,5 @@
-import Footer from "@/components/home/Footer/Footer";
-import Header from "@/components/home/Header/Header";
+import Footer from "@/components/ui/Footer/Footer";
+import Header from "@/components/ui/Header/Header";
 import ReadyGuide from "@/components/ready_guides/ReadyGuide/ReadyGuide";
 import { getReadyGuide } from "@/services/readyGuides.service";
 import { notFound } from 'next/navigation'
