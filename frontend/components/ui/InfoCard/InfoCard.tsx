@@ -9,7 +9,7 @@ interface CardProps{
 
 export default function InfoCard({icon, iconBgColor, title, text }: CardProps){
     return(
-        <div className={`flex flex-col items-center justify-center border border-gray-300 p-2 rounded-2xl mt-5`}>
+        <div className={`bg-white flex flex-col items-center justify-center border border-gray-300 p-2 rounded-2xl mt-5`}>
             <div className={`p-3 rounded-full ${iconBgColor}`}>
                 <span>{icon}</span>
             </div>

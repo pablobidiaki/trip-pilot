@@ -1,6 +1,3 @@
-import Image from "next/image"
-import { TripType } from "@/constants/enum" 
-
 import { Clock, CircleDollarSign } from "lucide-react" 
 import texts from "@/constants/texts"
 import Link from "next/link"
@@ -11,20 +8,17 @@ interface CardProps{
     title: string,
     text: string,
     days: number,
-    trip_type: TripType,
+    trip_type: string,
     price: string,
     route_to_itinerary: string
 }
 
 export default function ItineraryExamplesCard({image, title, text, days, trip_type, price, route_to_itinerary}: CardProps){
     return(
-        <div className="border border-gray-300 rounded-2xl">
-            <Image src={image}
+        <div className="cursor-pointer border border-gray-300 rounded-2xl bg-white transition-all hover:duration-200 hover:scale-105">
+            <img src={image}
                    alt={`${title} image`}
-                   width={400}
-                   height={40}
-                   className="h-40 mask-cover rounded-t-2xl mb-4"
-                   priority
+                   className="h-40 w-full mask-cover rounded-t-2xl mb-4"
             />
 
             <h1 className="text-primary-color text-2xl font-medium mx-4">{title}</h1>

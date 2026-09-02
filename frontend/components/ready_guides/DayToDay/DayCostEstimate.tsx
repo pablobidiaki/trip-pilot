@@ -11,9 +11,9 @@ interface DayCostEstimateProps {
 
 export default function DayCostEstimate({ guide, daySelected }: DayCostEstimateProps) {
     return (
-        guide[0].itinerary.map((resumeDay) => (
+        guide[0].itinerary.map((resumeDay, index) => (
             resumeDay.day.toString() == daySelected &&
-            <div className="border border-gray-200 rounded-2xl mt-5 py-2 px-3 bg-white">
+            <div key={index} className="border border-gray-200 rounded-2xl mt-5 py-2 px-3 bg-white">
                 <div className="flex gap-3 items-center font-bold mb-2">
                     <Handbag className="text-purple-500" />
                     <p>{texts.ready_guides.cost_estimate}</p>

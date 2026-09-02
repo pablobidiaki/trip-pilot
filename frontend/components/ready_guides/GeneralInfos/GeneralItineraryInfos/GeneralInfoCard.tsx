@@ -12,7 +12,7 @@ export default function GeneralInfoCard({image, days, title, description}: Gener
                    alt={`${title} image`} 
                    width={50}
                    height={50}
-                   className="w-full rounded-t-2xl"
+                   className="w-full h-[50%] rounded-t-2xl"
             />
             <p className="px-2 text-sm text-second-color mt-1">{days}</p>
             <p className="px-2 text-3xl text-primary-color font-medium">{title}</p>
