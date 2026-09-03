@@ -7,6 +7,7 @@ import { MapPin, Package, Bed, BedDouble, ChevronLeft, ChevronRight } from "luci
 import { AccommodationsInterface } from "@/interfaces/itinerary.interface";
 import { useState } from "react";
 import ReviewBar from "@/components/ui/ReviewBar/ReviewBar";
+import Loading from "@/components/loading/Loading/Loading";
 
 interface AccommodationProps {
     accommodations: AccommodationsInterface[]
@@ -14,20 +15,37 @@ interface AccommodationProps {
 
 export default function Accommodation({ accommodations }: AccommodationProps) {
     const [option, setOption] = useState(0)
+    const [mapLoading, setMapLoading] = useState(true)
 
-    const plusButtonClicked = () => option == 2 ? setOption(0) : setOption(option + 1)
-    const minusButtonClicked = () => option == 0 ? setOption(2) : setOption(option - 1)
+    const plusButtonClicked = () => {
+        option == 2 ? setOption(0) : setOption(option + 1)
+        setMapLoading(true)
+    }
+
+    const minusButtonClicked = () => {
+        option == 0 ? setOption(2) : setOption(option - 1)
+        setMapLoading(true)
+    }
 
     return (
         <div className="border rounded-2xl border-gray-300 w-full mt-8 bg-white">
             <CardTitle icon={<Bed />} title={texts.itinerary_titles.accommodations} />
             <div className="flex py-5 px-1">
                 <ChevronLeft onClick={minusButtonClicked} size={30} className=" cursor-pointer p-1 my-auto mr-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
-                <iframe
-                    className="w-75 h-75 rounded-2xl mr-5"
-                    loading="lazy"
-                    src={accommodations[option].googleMapsEmbed}>
-                </iframe>
+                <div className="relative w-75 h-75 mr-5">
+                    {mapLoading &&
+                        <div className="absolute w-75 h-75 rounded-2xl bg-gray-100">
+                            <Loading />
+                        </div>
+                    }
+                    <iframe
+                        className="w-75 h-75 rounded-2xl"
+                        loading="lazy"
+                        src={accommodations[option].googleMapsEmbed}
+                        onLoad={() => setMapLoading(false)}
+                    >
+                    </iframe>
+                </div>
 
                 <div className="w-full flex-col justify-between">
                     <h1 className="text-primary-color text-2xl font-medium mb-3">{accommodations[option].name}</h1>

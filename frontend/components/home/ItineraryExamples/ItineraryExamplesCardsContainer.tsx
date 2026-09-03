@@ -1,6 +1,4 @@
-import texts from "@/constants/texts";
 import ItineraryExamplesCard from "./ItineraryExamplesCard";
-import { TripType } from "@/constants/enum";
 import { getReadyGuides } from "@/services/readyGuides.service";
 
 export default async function ItineraryExamplesCardsContainer() {
@@ -15,7 +13,7 @@ export default async function ItineraryExamplesCardsContainer() {
                     days={guide.days} 
                     trip_type={guide.travelType}
                     price={guide.price.toString()}
-                    route_to_itinerary={`/ready_guide/${guide.id}`}
+                    route_to_itinerary={`/ready_guides/${guide.id}`}
                 />
             ))}
         </div>
