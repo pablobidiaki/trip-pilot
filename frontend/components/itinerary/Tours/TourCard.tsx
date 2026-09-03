@@ -24,9 +24,7 @@ export default function TourCard({ image, title, description, price }: TourCardP
                     onClick={() => setIsOpen(true)}
                 />
 
-                <Expand className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-                    size={28}
-                />
+                <Expand className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" size={28}/>
             </div>
             <div>
                 <h1 className="text-primary-color font-medium text-xl line-clamp-1">{title}</h1>

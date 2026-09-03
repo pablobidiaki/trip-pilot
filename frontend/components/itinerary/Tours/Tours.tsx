@@ -42,10 +42,20 @@ export default function Tours({ tours }: ToursProps) {
                 />
             ))}
 
-            <div className="absolute bottom-1 left-1/3">
-                <div className="flex gap-25">
-                    <ChevronLeft size={30} onClick={previousPage} className="cursor-pointer p-1 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110"/>
-                    <ChevronRight size={30} onClick={nextPage} className="cursor-pointer p-1 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110"/>
+            <div className="absolute bottom-1 w-full">
+                <div className="flex gap-6 w-fit mx-auto">
+                    <ChevronLeft size={30} onClick={previousPage} className="cursor-pointer p-1 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
+
+                    <div className="flex items-center gap-2">
+                        {Array.from({ length: Math.ceil(tours.length / ITEMS_PER_PAGE) }).map((_, index) => (
+                            <button key={index}
+                                onClick={() => setPage(index)}
+                                className={`rounded-full transition-all duration-200 ${page === index ? "w-2.5 h-2.5 bg-blue-500" : "w-2 h-2 bg-gray-300"}`}
+                            />
+                        ))}
+                    </div>
+
+                    <ChevronRight size={30} onClick={nextPage} className="cursor-pointer p-1 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
                 </div>
             </div>
         </div>
