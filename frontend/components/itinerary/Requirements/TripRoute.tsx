@@ -12,11 +12,12 @@ export default function TripRoute({country_origin_flag, country_origin_name, cou
     return(
         <div>
             <div className="flex flex-col items-center">
+                <p className="text-primary-color font-medium">{texts.how_to_get_there.boarding} </p>
                 <img src={country_origin_flag}
                         alt="Bandeira"
-                        className="w-22"
+                        className="w-22 shadow-sm shadow-gray-400 my-1"
                 />
-                <p className="text-primary-color font-medium">{texts.how_to_get_there.boarding} <span className="text-second-color"> {country_origin_name}</span></p>
+                <p className="text-second-color"> {country_origin_name}</p>
             </div>
             
             <div className="flex">
@@ -25,11 +26,12 @@ export default function TripRoute({country_origin_flag, country_origin_name, cou
             </div>
 
             <div className="flex flex-col items-center">
+                <p className="text-primary-color font-medium">{texts.how_to_get_there.disembarkation}</p>
                 <img src={country_destination_flag}
                         alt="Bandeira"
-                        className="w-22"
+                        className="w-22 shadow-sm shadow-gray-400 my-1"
                 />
-                <p className="text-primary-color font-medium">{texts.how_to_get_there.disembarkation} <span className="text-second-color"> {country_destination_name}</span></p>
+                <p className="text-second-color"> {country_destination_name}</p>
             </div>
         </div>
     )

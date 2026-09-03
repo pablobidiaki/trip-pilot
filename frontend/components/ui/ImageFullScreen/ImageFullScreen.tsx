@@ -3,11 +3,12 @@ import { X } from "lucide-react";
 interface ImageFullScreenProps {
     title: string;
     image: string;
+    description: string
     isOpen: boolean,
     onClick: () => void
 }
 
-export default function ImageFullScreen({ title, image, isOpen, onClick }: ImageFullScreenProps) {
+export default function ImageFullScreen({ title, image, description, isOpen, onClick }: ImageFullScreenProps) {
     return (
         <div onClick={onClick}>
             {isOpen && (
@@ -17,13 +18,12 @@ export default function ImageFullScreen({ title, image, isOpen, onClick }: Image
                             <X size={20} />
                         </button>
 
-                        <h1 className="mb-4 text-2xl font-medium text-primary-color">
-                            {title}
-                        </h1>
+                        <h1 className="text-2xl font-medium text-primary-color"> {title} </h1>
+                        <p className="mb-4 text-second-color">{description}</p>
 
                         <img src={image}
                             alt={title}
-                            className="max-h-[70vh] w-full rounded-xl object-contain"
+                            className="max-h-[70vh] w-full object-contain"
                         />
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDateString, IsInt, IsString, Min } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateItineraryDto {
     @ApiProperty({

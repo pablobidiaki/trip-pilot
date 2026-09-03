@@ -20,6 +20,7 @@ export default function HowToGetThere({tickets, destinationCountry, destinationF
                 <div className="border border-gray-200 rounded-2xl">
                     <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">Ida</h1>
                     {tickets.map((ticket, index) => (
+                        ticket.isGoing &&
                         <div key={index} className=" mb-5">
                             <hr />
                             <h2 className="text-primary-color text-xl font-medium my-2 px-2">{index + 1}º voo</h2>
@@ -39,6 +40,7 @@ export default function HowToGetThere({tickets, destinationCountry, destinationF
                 <div className="border border-gray-200 rounded-2xl">
                     <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">Volta</h1>
                     {tickets.map((ticket, index) => (
+                        !ticket.isGoing &&
                         <div key={index} className=" mb-5">
                             <hr />
                             <h2 className="text-primary-color text-xl font-medium my-2 px-2">{index + 1}º voo</h2>

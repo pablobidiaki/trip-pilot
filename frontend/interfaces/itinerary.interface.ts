@@ -6,6 +6,7 @@ export interface ToursInterface {
 }
 
 export interface Tickets {
+    isGoing: boolean
     boardingPoint: string
     flyTime: string
     disembarkationPoint: string
@@ -35,13 +36,13 @@ interface CostEstimate {
 }
 
 export interface AccommodationsInterface {
-    imageURL: string
+    googleMapsEmbed: string
     name: string
     rating: number
     address: string
     includes: string
     roomType: string
-    reviewCount: number
+    reviewsCount: number
     costEstimate: number
 }
 

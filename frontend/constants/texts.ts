@@ -141,7 +141,7 @@ const texts = {
     accommodations: {
         address: "Localização: ",
         include: "Inclui: ",
-        cost_estimate: "Custo estimado: ",
+        cost_estimate: "Custo estimado por noite: ",
         reviews: "avaliações"
     },
 

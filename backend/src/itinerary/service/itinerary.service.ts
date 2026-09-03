@@ -27,10 +27,10 @@ export class ItineraryService {
 
     async create(dto: CreateItineraryDto) {
         // const itineraryJson = await this.llmService.generate(dto)
-        // const countryOriginFlag = await this.getCountryFlag(dto.countryOrigin)
-        // const countryDestinationFlag = await this.getCountryFlag(dto.countryDestination)
+        const countryOriginFlag = await this.getCountryFlag(dto.countryOrigin)
+        const countryDestinationFlag = await this.getCountryFlag(dto.countryDestination)
 
-        // await this.getAllImagesURLs(dto.itinerary)
+        await this.getAllImagesURLs(dto.itinerary)
 
         const itinerary = this.prisma.itinerary.create({
             data: {
@@ -41,8 +41,8 @@ export class ItineraryService {
                 endDate: this.calculateEndDate(dto.startDate, dto.days),
                 countryOrigin: dto.countryOrigin,
                 countryDestination: dto.countryDestination,
-                countryOriginFlagURL: dto.countryOriginFlagURL,
-                countryDestinationFlagURL: dto.countryDestinationFlagURL,
+                countryOriginFlagURL: countryOriginFlag,
+                countryDestinationFlagURL: countryDestinationFlag,
                 days: dto.days,
                 departureDate: dto.departureDate,
                 budgetTotal: dto.budgetTotal,
@@ -92,7 +92,7 @@ export class ItineraryService {
     async getAllImagesURLs(data: any) {
         data.tours = await Promise.all(
             data.tours.map(async (tour) => {
-                const imageURL = await this.imagesService.getImages(tour.imageSearchScript)
+                const imageURL = await this.imagesService.getImages(tour.photoPrompt)
 
                 return {
                     ...tour,
@@ -103,7 +103,7 @@ export class ItineraryService {
 
         data.tipicalFood = await Promise.all(
             data.tipicalFood.map(async (food) => {
-                const imageURL = await this.imagesService.getImages(food.imageSearchScript, 'square')
+                const imageURL = await this.imagesService.getImages(food.photoPrompt, 'square')
 
                 return {
                     ...food,
@@ -114,7 +114,7 @@ export class ItineraryService {
 
         data.dayToDay = await Promise.all(
             data.dayToDay.map(async (day) => {
-                const imageURL = await this.imagesService.getImages(day.imageSearchScript, 'landscape')
+                const imageURL = await this.imagesService.getImages(day.photoPrompt, 'landscape')
 
                 return {
                     ...day,
