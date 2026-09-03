@@ -15,16 +15,16 @@ interface AccommodationProps {
 
 export default function Accommodation({ accommodations }: AccommodationProps) {
     const [option, setOption] = useState(0)
-    const [mapLoading, setMapLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true)
 
     const plusButtonClicked = () => {
         option == 2 ? setOption(0) : setOption(option + 1)
-        setMapLoading(true)
+        setIsLoading(true)
     }
 
     const minusButtonClicked = () => {
         option == 0 ? setOption(2) : setOption(option - 1)
-        setMapLoading(true)
+        setIsLoading(true)
     }
 
     return (
@@ -33,7 +33,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
             <div className="flex py-5 px-1">
                 <ChevronLeft onClick={minusButtonClicked} size={30} className=" cursor-pointer p-1 my-auto mr-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
                 <div className="relative w-75 h-75 mr-5">
-                    {mapLoading &&
+                    {isLoading &&
                         <div className="absolute w-75 h-75 rounded-2xl bg-gray-100">
                             <Loading />
                         </div>
@@ -42,7 +42,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                         className="w-75 h-75 rounded-2xl"
                         loading="lazy"
                         src={accommodations[option].googleMapsEmbed}
-                        onLoad={() => setMapLoading(false)}
+                        onLoad={() => setIsLoading(false)}
                     >
                     </iframe>
                 </div>
