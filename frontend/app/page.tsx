@@ -11,13 +11,13 @@ import { Toolbox } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="bg-background-color">
+    <div id="criar-roteiro" className="bg-background-color">
       <Hero />
       <HowItWorks />
       <PopularDestinations/>
       <ItineraryExamples />
       <WhyUse />
-      <CTA icon={<Toolbox size={80} />} title={texts.ready_to_next_travel.title} text={texts.ready_to_next_travel.text} buttonText={texts.ready_to_next_travel.button_text} />
+      <CTA icon={<Toolbox size={80} />} title={texts.ready_to_next_travel.title} text={texts.ready_to_next_travel.text} buttonText={texts.ready_to_next_travel.button_text} isHomePage={true}/>
       <Footer />
     </div>
   );

@@ -23,17 +23,17 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
             <CardTitle icon={<Bed />} title={texts.itinerary_titles.accommodations} />
             <div className="flex py-5 px-1">
                 <ChevronLeft onClick={minusButtonClicked} size={30} className=" cursor-pointer p-1 my-auto mr-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
+                <iframe
+                    className="w-75 h-75 rounded-2xl mr-5"
+                    loading="lazy"
+                    src={accommodations[option].imageURL}>
+                </iframe>
 
-                <img key={option}
-                    src={accommodations[option].imageURL}
-                    alt="hotel image"
-                    className="w-75 h-75 object-cover rounded-2xl mr-5"
-                />
                 <div className="w-full flex-col justify-between">
                     <h1 className="text-primary-color text-2xl font-medium mb-3">{accommodations[option].name}</h1>
-                    
-                    <ReviewBar rating={accommodations[option].rating} 
-                               reviews={accommodations[option].reviewCount}
+
+                    <ReviewBar rating={accommodations[option].rating}
+                        reviews={accommodations[option].reviewCount}
                     />
 
                     <InfoRow icon={<MapPin />} information={texts.accommodations.address} value={accommodations[option].address} tailwindTags="mt-5" />

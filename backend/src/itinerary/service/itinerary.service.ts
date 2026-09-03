@@ -3,8 +3,6 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
 import { LlmService } from 'src/llm/services/llm.service';
 import { ImagesService } from 'src/images/services/images.service';
-import { json } from 'stream/consumers';
-import { JsonArray } from 'generated/prisma/internal/prismaNamespace';
 
 @Injectable()
 export class ItineraryService {
@@ -32,7 +30,7 @@ export class ItineraryService {
         // const countryOriginFlag = await this.getCountryFlag(dto.countryOrigin)
         // const countryDestinationFlag = await this.getCountryFlag(dto.countryDestination)
 
-        await this.getAllImagesURLs(dto.itinerary)
+        // await this.getAllImagesURLs(dto.itinerary)
 
         const itinerary = this.prisma.itinerary.create({
             data: {
