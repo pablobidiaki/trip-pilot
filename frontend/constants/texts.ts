@@ -142,7 +142,8 @@ const texts = {
         address: "Localização: ",
         include: "Inclui: ",
         cost_estimate: "Custo estimado por noite: ",
-        reviews: "avaliações"
+        reviews: "avaliações",
+        roomType: "Tipo de quarto: "
     },
 
     cost_estimate: {
@@ -174,8 +175,7 @@ const texts = {
         vaccines_and_health: "Vacinas e saúde"
     },
 
-
-    how_to_get_there:{
+    how_to_get_there: {
         boarding_point: "Ponto de embarque: ",
         fly_time: "Tempo de voo: ",
         disembarkation_point: "Ponto de desembarque: ",
@@ -281,7 +281,7 @@ const texts = {
         button_text: "Voltar para página inicial"
     },
 
-    util_info:{
+    util_info: {
         util_infos_title: "Informações úteis",
         util_infos_text: "Tudo o que você precisa saber para aproveitar sua viagem com mais tranquilidade e segurança.",
         documents_title: "Documentos",
@@ -301,14 +301,28 @@ const texts = {
         culture_title: "Cultura e costumes",
         transport_text: "Principais opções de transporte público, apps e dicas de mobilidade.",
         security_text: "Dicas para se manter seguro(a) durante a viagem, com orientações úteis para o dia a dia.",
-        culture_text:"Informações sobre tradições, etiquetas e o que conhecer para uma experiência mais rica."
+        culture_text: "Informações sobre tradições, etiquetas e o que conhecer para uma experiência mais rica."
     },
 
-    tipicalFood:{
+    tipicalFood: {
         name: "Nome: ",
         description: "Descrição: ",
         category: "Categoria: ",
         averagePrice: "Preço médio: "
+    },
+
+    tabsOptions: {
+        provided_data: "Dados informados",
+        accommodations: "Hospedagens",
+        tours: "Passeios",
+        cost_estimate: "Custos",
+        weather: "Clima",
+        transportation: "Transporte",
+        requirements: "Requisitos",
+        tips: "Dicas",
+        flights: "Voos",
+        tipical_foods: "Comidas",
+        itinerary: "Dia a dia"  
     },
 
     real: "R$",

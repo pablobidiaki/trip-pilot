@@ -1,4 +1,4 @@
-import InfoRow from "@/components/itinerary/InfoRow/InfoRow";
+import InfoRow from "@/components/itinerary/grid/InfoRow/InfoRow";
 import texts from "@/constants/texts";
 import { Destination } from "@/interfaces/destination.interface";
 import { Bed, Binoculars, Car, DollarSign, Utensils } from "lucide-react";
