@@ -133,9 +133,12 @@ const texts = {
         origin: "Origem: ",
         destination: "Destino: ",
         departure_date: "Data da viagem: ",
+        date: "Data",
+        days: "Dias",
         duration_days: "Duração: ",
         travelers: "Viajantes:",
         budget: "Orçamento: ",
+        budget_tab: "Orçamento"
     },
 
     accommodations: {

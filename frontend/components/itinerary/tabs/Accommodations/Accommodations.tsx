@@ -15,7 +15,7 @@ interface MainContentTabsProps {
 export default function Accommodation({ itinerary}: MainContentTabsProps) {
     const [isLoading, setIsLoading] = useState(true)
     return (
-        <div className="grid grid-cols-3 mt-1 mx-auto gap-5">
+        <div className="grid grid-cols-3 mx-auto gap-5">
             {itinerary[0].itinerary.accommodations.map((accommodation, index) => (
                 <div className="w-125 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl" key={index}>
                     <div className="relative ">
