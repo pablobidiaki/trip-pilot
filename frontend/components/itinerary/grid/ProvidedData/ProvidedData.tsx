@@ -23,7 +23,7 @@ export default function ProvidedData({ itinerary }: ProvidedDataProps) {
             <InfoRow icon={<CalendarDays />} information={texts.provided_data.departure_date} value={formatDate(itinerary[0].departureDate)} tailwindTags="px-2 py-3" />
             <InfoRow icon={<Clock />} information={texts.provided_data.duration_days} value={`${itinerary[0].days.toString()} ${texts.days}`} tailwindTags="px-2 py-3" />
             <InfoRow icon={<Users />} information={texts.provided_data.travelers} value={`${itinerary[0].travelers.toString()} ${texts.people}`} tailwindTags="px-2 py-3" />
-            <InfoRow icon={<Banknote />} information={texts.provided_data.budget} value={`${texts.real} ${itinerary[0].budgetTotal.toString()}`} tailwindTags="px-2 py-3" />
+            <InfoRow icon={<Banknote />} information={texts.provided_data.budget} value={`${texts.real} ${itinerary[0].budgetTotal.toLocaleString("pt-BR").toString()}`} tailwindTags="px-2 py-3" />
         </div>
     )
 }

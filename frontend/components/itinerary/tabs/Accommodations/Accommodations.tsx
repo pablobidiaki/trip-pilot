@@ -39,7 +39,7 @@ export default function Accommodation({ itinerary}: MainContentTabsProps) {
                                 reviews={accommodation.reviewsCount}
                             />
                         </div>
-                        <div className="px-5 pb-5 mt-4 space-y-3">
+                        <div className="px-5 mt-4 space-y-3">
                             <InfoRow icon={<MapPin size={20} />}
                                 label={texts.accommodations.address}
                                 value={accommodation.address}
@@ -54,6 +54,7 @@ export default function Accommodation({ itinerary}: MainContentTabsProps) {
                                 label={texts.accommodations.roomType}
                                 value={accommodation.roomType}
                             />
+                            <p className="rounded-2xl mb-2 p-2 bg-green-200 w-fit mx-auto font-medium text-primary-color mt-5">{texts.accommodations.averagePricePerPerson} <span className="text-green-700 font-semibold"> {texts.real} {accommodation.costEstimate.toLocaleString("pt-BR")} </span></p>
                         </div>
                     </div>
                 </div>

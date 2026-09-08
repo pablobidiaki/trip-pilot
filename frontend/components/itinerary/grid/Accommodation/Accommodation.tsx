@@ -66,7 +66,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                     </div>
 
                     <div className="bg-blue-100 p-2 rounded-2xl mt-8">
-                        <p className="font-medium text-blue-900">{texts.accommodations.cost_estimate} <span className="text-primary-color font-medium">{texts.real} {accommodations[option].costEstimate}</span></p>
+                        <p className="font-medium text-blue-900">{texts.accommodations.cost_estimate} <span className="text-primary-color font-medium">{texts.real} {accommodations[option].costEstimate.toLocaleString("pt-BR")}</span></p>
                     </div>
                 </div>
 

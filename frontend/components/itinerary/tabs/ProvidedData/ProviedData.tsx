@@ -37,7 +37,7 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                     <ProvidedDataCard icon={<CalendarDays />} title={texts.provided_data.date} value={formatDate(itinerary[0].startDate)} />
                     <ProvidedDataCard icon={<Clock />} title={texts.provided_data.days} value={itinerary[0].days.toString()} />
                     <ProvidedDataCard icon={<Users />} title={texts.provided_data.travelers_tab} value={`${itinerary[0].travelers.toString()} ${texts.people}`} />
-                    <ProvidedDataCard icon={<CircleDollarSign />} title={texts.provided_data.budget_tab} value={`${texts.real} ${itinerary[0].budgetTotal.toString()}`} />
+                    <ProvidedDataCard icon={<CircleDollarSign />} title={texts.provided_data.budget_tab} value={`${texts.real} ${itinerary[0].budgetTotal.toLocaleString("pt-BR").toString()}`} />
                 </div>
                 <p className="mx-auto text-center text-second-color text-xl mt-15">Seu roteiro está pronto! Explore as abas ao lado para conferir todos os detalhes.</p>
                 <p className="mx-auto text-center text-second-color text-sm pb-5 italic">{texts.ai_warning}</p>

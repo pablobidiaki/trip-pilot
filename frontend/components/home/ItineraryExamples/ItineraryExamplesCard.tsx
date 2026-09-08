@@ -9,7 +9,7 @@ interface CardProps{
     text: string,
     days: number,
     trip_type: string,
-    price: string,
+    price: number,
     route_to_itinerary: string
 }
 
@@ -32,7 +32,7 @@ export default function ItineraryExamplesCard({image, title, text, days, trip_ty
             <hr className="mx-4 my-2 border-gray-300" />
 
             <div className="flex justify-between  mx-4 mb-4">
-                <p className="text-second-color">{texts.itinerary_example.starting_at} <span className="text-primary-color font-bold">{texts.real} {price}</span></p>
+                <p className="text-second-color">{texts.itinerary_example.starting_at} <span className="text-primary-color font-bold">{texts.real} {price.toLocaleString("pt-BR")}</span></p>
                 <p className="text-link-color underline font-medium">
                     <p>{texts.itinerary_example.view_itinerary}</p>
                 </p>

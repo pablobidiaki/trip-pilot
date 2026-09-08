@@ -23,7 +23,7 @@ export default function ImageFullScreen({ title, image, description, price, isOp
 
                         <h1 className="text-2xl font-medium text-primary-color text-center"> {title} </h1>
                         <p className="text-second-color text-center">{description}</p>
-                        <p className="text-green-600 font-semibold text-center mb-4">{price === 0 ? texts.free : `${texts.real} ${price} ${texts.per_person}`}</p>
+                        <p className="text-green-600 font-semibold text-center mb-4">{price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR")} ${texts.per_person}`}</p>
                         <img src={image}
                             alt={title}
                             className="max-h-[70vh] w-full object-contain"

@@ -29,7 +29,7 @@ export default function TourCard({ image, title, description, price }: TourCardP
             <div>
                 <h1 className="text-primary-color font-medium text-xl truncate">{title}</h1>
                 <p className="text-second-color text-sm max-w-56 line-clamp-2">{description}</p>
-                {price == 0 ? <p className="text-green-500 font-medium mt-2">{texts.free}</p> : <p className="text-green-500 font-medium mt-2">{texts.real} {price} {texts.per_person}</p>}
+                {price == 0 ? <p className="text-green-500 font-medium mt-2">{texts.free}</p> : <p className="text-green-500 font-medium mt-2">{texts.real} {price.toLocaleString("pt-BR")} {texts.per_person}</p>}
             </div>
 
             {isOpen && <ImageFullScreen image={image} title={title} description={description} price={price} isOpen={isOpen} onClick={() => setIsOpen(false)} />}

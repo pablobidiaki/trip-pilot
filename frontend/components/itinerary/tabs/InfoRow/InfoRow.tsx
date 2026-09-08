@@ -16,7 +16,7 @@ export default function InfoRow({ icon, label, value }: InfoRowProps) {
                     {label}
                 </span>
 
-                <span className="text-base text-primary-color leading-5 line-clamp-2">
+                <span className="text-base text-primary-color leading-5 line-clamp-1">
                     {value}
                 </span>
             </div>

@@ -12,7 +12,7 @@ export default async function ItineraryExamplesCardsContainer() {
                     text={guide.description}
                     days={guide.days} 
                     trip_type={guide.travelType}
-                    price={guide.price.toString()}
+                    price={guide.price}
                     route_to_itinerary={`/ready_guides/${guide.id}`}
                 />
             ))}

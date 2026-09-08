@@ -34,7 +34,7 @@ export default function AccomodationCard({image, days, name, review, address, te
             </div>
             <div className="bg-purple-100 p-3 rounded-2xl text-center text-second-color text-sm">
                 <p>{texts.starting_at}</p>
-                <p className="text-primary-color font-medium text-xl">{texts.real} {price}</p>
+                <p className="text-primary-color font-medium text-xl">{texts.real} {price.toLocaleString("pt-BR")}</p>
                 <p>{texts.per_person}</p>
             </div>
         </div>

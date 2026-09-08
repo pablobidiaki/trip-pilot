@@ -28,7 +28,7 @@ export default function TipicalFoodsCard({imageURL, title, description, averageP
                 <p className="text-primary-color font-medium line-clamp-2">{texts.tipicalFood.name}<span className="text-second-color">{title}</span></p>
                 <p className="text-primary-color font-medium line-clamp-2">{texts.tipicalFood.description}<span className="text-second-color">{description}</span></p>
                 <p className="text-primary-color font-medium">{texts.tipicalFood.category}<span className="text-second-color">{category}</span></p>
-                <p className="text-primary-color font-medium">{texts.tipicalFood.averagePrice}<span className="text-second-color">{texts.real} {averagePrice}</span></p>
+                <p className="text-primary-color font-medium">{texts.tipicalFood.averagePrice}<span className="text-second-color">{texts.real} {averagePrice.toLocaleString("pt-BR")}</span></p>
             </div>
 
             {isOpen && <ImageFullScreen image={imageURL} title={title} description={description} price={averagePrice} isOpen={isOpen} onClick={() => setIsOpen(false)} />}

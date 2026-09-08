@@ -147,7 +147,8 @@ const texts = {
         include: "Inclui: ",
         cost_estimate: "Custo estimado por noite: ",
         reviews: "avaliações",
-        roomType: "Tipo de quarto: "
+        roomType: "Tipo de quarto: ",
+        averagePricePerPerson: "Diária média por pessoa: "
     },
 
     cost_estimate: {
