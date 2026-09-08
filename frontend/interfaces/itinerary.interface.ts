@@ -25,7 +25,7 @@ export interface RequirementsInterface {
     documents: string[]
 }
 
-interface CostEstimate {
+export interface CostEstimateInterface {
     ticket: number
     accommodations: number
     food: number
@@ -83,7 +83,7 @@ interface Itinerary {
     ticket: Tickets[]
     weather: WeatherInterface
     requirements: RequirementsInterface
-    costEstimate: CostEstimate
+    costEstimate: CostEstimateInterface
     accommodations: AccommodationsInterface[]
     transportation: TransportationInterface[]
     tipicalFood: TipicalFoodsInterface[]

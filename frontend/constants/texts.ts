@@ -156,9 +156,11 @@ const texts = {
         tours: "Passeios",
         transport: "Transporte",
         shop_and_extras: "Compras e extras",
+        ticket: "Passagens",
         total_estimate: "Total estimado",
         you_informed: "Você informou um orçamento de ",
-        its_possible_adjust: "É possível ajustar escolhendo passeios e refeições diferentes."
+        its_possible_adjust: "É possível ajustar escolhendo passeios e refeições diferentes.",
+        its_possible_adjust_tab: "É possível ajustar os valores escolhendo items, locais e refeições diferentes das recomendadas."
     },
 
     transportation: {
