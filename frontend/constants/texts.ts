@@ -138,7 +138,8 @@ const texts = {
         duration_days: "Duração: ",
         travelers: "Viajantes:",
         budget: "Orçamento: ",
-        budget_tab: "Orçamento"
+        budget_tab: "Orçamento",
+        travelers_tab: "Viajantes"
     },
 
     accommodations: {
