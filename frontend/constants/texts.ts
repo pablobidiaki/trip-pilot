@@ -338,7 +338,8 @@ const texts = {
     per_person: "Por pessoa",
     free: "Gratuito",
     days: "Dias",
-    people: "Pessoas"
+    people: "Pessoas",
+    price: "Preço"
 }
 
 export default texts;

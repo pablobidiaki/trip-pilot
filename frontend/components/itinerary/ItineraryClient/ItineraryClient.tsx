@@ -17,9 +17,9 @@ import texts from "@/constants/texts";
 import Toggle from "@/components/ui/Toggle/Toggle";
 import Header from "@/components/ui/Header/Header";
 import OptionSelector from "@/components/itinerary/OptionSelector/OptionSelector";
+import MainContentTabs from "../tabs/MainContentTabs/MainContentTabs";
 import { useState } from "react";
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
-import MainContentTabs from "../tabs/MainContentTabs/MainContentTabs";
 
 interface ItineraryClientProps {
     itinerary: ItineraryInterface[]
@@ -31,10 +31,12 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
 
     return (
         <div className="relative bg-background-color">
-            <img src={"/imgs/itinerary/banner.png"}
-                alt="Banner"
-                className="w-full absolute z-0"
-            />
+            {isGrid && 
+                <img src={"/imgs/itinerary/banner.png"}
+                    alt="Banner"
+                    className="w-full absolute z-0"
+                />
+            }
             <div className="relative">
                 <Header />
             </div>
