@@ -1,7 +1,7 @@
 import texts from "@/constants/texts";
 import CardTitle from "../CardTitle/CardTitle";
 
-import { FileText, CircleCheck, CircleX } from "lucide-react"
+import { CircleCheck, CircleX, TableOfContents } from "lucide-react"
 import RequirementsInfo from "./RequirementsInfo";
 import { RequirementsInterface } from "@/interfaces/itinerary.interface";
 
@@ -12,7 +12,7 @@ interface RequirementsProps{
 export default function Requirements({requirements}: RequirementsProps){
     return(
         <div className="bg-white border rounded-2xl border-gray-300 max-w-1/2 min-w-1/2 mt-8">
-            <CardTitle icon={<FileText />} title={texts.itinerary_titles.requirements}/>
+            <CardTitle icon={<TableOfContents />} title={texts.itinerary_titles.requirements}/>
             <div className="flex justify-center gap-4 p-4">
                 <div>
                     <div className="flex justify-center gap-5">

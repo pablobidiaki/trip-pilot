@@ -1,6 +1,6 @@
 import texts from "@/constants/texts";
 
-import { FileText, MapPin, FlagTriangleRight, CalendarDays, Clock, Users, Banknote } from 'lucide-react'
+import { MapPin, FlagTriangleRight, CalendarDays, Clock, Users, Banknote, Info } from 'lucide-react'
 import InfoRow from "../InfoRow/InfoRow";
 import CardTitle from "../CardTitle/CardTitle";
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
@@ -17,7 +17,7 @@ function formatDate(date: string) {
 export default function ProvidedData({ itinerary }: ProvidedDataProps) {
     return (
         <div className="bg-white border rounded-2xl border-gray-300 min-w-1/3 max-w-1/3 mt-8">
-            <CardTitle icon={<FileText />} title={texts.itinerary_titles.provided_data} />
+            <CardTitle icon={<Info />} title={texts.itinerary_titles.provided_data} />
             <InfoRow icon={<MapPin />} information={texts.provided_data.origin} value={itinerary[0].departure} tailwindTags="px-2 py-3" />
             <InfoRow icon={<FlagTriangleRight />} information={texts.provided_data.destination} value={itinerary[0].destination} tailwindTags="px-2 py-3" />
             <InfoRow icon={<CalendarDays />} information={texts.provided_data.departure_date} value={formatDate(itinerary[0].departureDate)} tailwindTags="px-2 py-3" />

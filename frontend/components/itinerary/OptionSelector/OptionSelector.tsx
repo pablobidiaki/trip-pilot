@@ -1,6 +1,7 @@
 "use client";
 
 import texts from "@/constants/texts";
+import { Binoculars, ChefHat, CircleDollarSign, Hotel, Info, Lightbulb, Calendar, SunSnow, TableOfContents, Ticket, Van } from "lucide-react";
 import { useState } from "react";
 
 interface ItineraryNavigationProps{
@@ -9,18 +10,18 @@ interface ItineraryNavigationProps{
 }
 
 const options = [
-    texts.tabsOptions.provided_data,
-    texts.tabsOptions.accommodations,
-    texts.tabsOptions.tours,
-    texts.tabsOptions.cost_estimate,
-    texts.tabsOptions.weather,
-    texts.tabsOptions.transportation,
-    texts.tabsOptions.requirements,
-    texts.tabsOptions.tips,
-    texts.tabsOptions.flights,
-    texts.tabsOptions.tipical_foods,
-    texts.tabsOptions.itinerary,
-];
+    {icon: <Info />, text: texts.tabsOptions.provided_data},
+    {icon: <Hotel />, text:texts.tabsOptions.accommodations},
+    {icon: <Binoculars />, text:texts.tabsOptions.tours},
+    {icon: <CircleDollarSign />, text:texts.tabsOptions.cost_estimate},
+    {icon: <SunSnow />, text:texts.tabsOptions.weather},
+    {icon: <Van />, text:texts.tabsOptions.transportation},
+    {icon: <TableOfContents />, text:texts.tabsOptions.requirements},
+    {icon: <Lightbulb />, text:texts.tabsOptions.tips},
+    {icon: <Ticket />, text:texts.tabsOptions.flights},
+    {icon: <ChefHat />, text:texts.tabsOptions.tipical_foods},
+    {icon: <Calendar />, text:texts.tabsOptions.itinerary}, 
+]
 
 export default function ItineraryNavigation({optionSelected, onClick}: ItineraryNavigationProps) {
 
@@ -34,12 +35,13 @@ export default function ItineraryNavigation({optionSelected, onClick}: Itinerary
     return (
         <div className="relative ml-4 mt-5 bg-white border border-gray-200 rounded-2xl max-w-40 min-w-40 p-2">
             {options.map((option) => {
-                const isSelected = selected === option;
+                const isSelected = selected === option.text;
 
                 return (
-                    <p key={option} onClick={() => handleOptionClicked(option)} className={`text-sm p-2 rounded-2xl mb-2 cursor-pointer transition-all duration-200 ${isSelected ? "bg-blue-500 text-white" : "text-primary-color bg-gray-200 hover:bg-blue-300 hover:text-white hover:scale-105"}`}>
-                        {option}
-                    </p>
+                    <div key={option.text} onClick={() => handleOptionClicked(option.text)} className={`flex gap-2 items-center text-sm p-2 rounded-2xl mb-2 cursor-pointer transition-all duration-200 ${isSelected ? "bg-blue-500 text-white" : "text-primary-color bg-gray-200 hover:bg-blue-300 hover:text-white hover:scale-105"}`}>
+                        <span>{option.icon}</span>
+                        <p> {option.text}</p>
+                    </div>
                 );
             })}
         </div>

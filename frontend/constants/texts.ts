@@ -316,7 +316,7 @@ const texts = {
     },
 
     tabsOptions: {
-        provided_data: "Dados informados",
+        provided_data: "Dados",
         accommodations: "Hospedagens",
         tours: "Passeios",
         cost_estimate: "Custos",

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import { Camera, ChevronLeft, ChevronRight } from "lucide-react";
+import { Binoculars, ChevronLeft, ChevronRight } from "lucide-react";
 import texts from "@/constants/texts";
 import CardTitle from "../CardTitle/CardTitle";
 import TourCard from "./TourCard";
@@ -27,7 +27,7 @@ export default function Tours({ tours }: ToursProps) {
 
     return (
         <div className="relative border rounded-2xl border-gray-300 min-w-1/3 max-w-1/3 mt-8 bg-white overflow-hidden pb-16">
-            <CardTitle icon={<Camera />} title={texts.itinerary_titles.tours} />
+            <CardTitle icon={<Binoculars />} title={texts.itinerary_titles.tours} />
 
             <div className="overflow-hidden w-full">
                 <div className="flex transition-transform duration-300 ease-in-out" style={{ transform: `translateX(-${page * 100}%)` }}>

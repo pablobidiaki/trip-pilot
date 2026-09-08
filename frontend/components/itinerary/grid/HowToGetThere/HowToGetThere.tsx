@@ -1,6 +1,6 @@
 import texts from "@/constants/texts";
 import CardTitle from "../CardTitle/CardTitle";
-import { Plane } from "lucide-react";
+import { Ticket } from "lucide-react";
 import TripRoute from "../Requirements/TripRoute";
 import { Tickets } from "@/interfaces/itinerary.interface";
 
@@ -15,7 +15,7 @@ interface HowToGetThereProps{
 export default function HowToGetThere({tickets, destinationCountry, destinationFlag, originCountry, originFlag}: HowToGetThereProps) {
     return (
         <div className="bg-white border rounded-2xl max-w-2/3 border-gray-300 mt-8">
-            <CardTitle icon={<Plane />} title={texts.itinerary_titles.fly_details} />
+            <CardTitle icon={<Ticket />} title={texts.itinerary_titles.fly_details} />
             <div className="m-4 flex justify-between items-center gap-5">
                 <div className="border border-gray-200 rounded-2xl">
                     <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">Ida</h1>

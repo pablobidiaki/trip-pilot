@@ -3,7 +3,7 @@
 import texts from "@/constants/texts";
 import InfoRow from "../InfoRow/InfoRow";
 import CardTitle from "../CardTitle/CardTitle";
-import { MapPin, Package, Bed, BedDouble, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Package, BedDouble, ChevronLeft, ChevronRight, Hotel } from "lucide-react";
 import { AccommodationsInterface } from "@/interfaces/itinerary.interface";
 import { useState } from "react";
 import ReviewBar from "@/components/ui/ReviewBar/ReviewBar";
@@ -29,7 +29,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
 
     return (
         <div className="border rounded-2xl border-gray-300 w-full mt-8 bg-white">
-            <CardTitle icon={<Bed />} title={texts.itinerary_titles.accommodations} />
+            <CardTitle icon={<Hotel />} title={texts.itinerary_titles.accommodations} />
             <div className="flex py-5 px-1">
                 <ChevronLeft onClick={minusButtonClicked} size={30} className=" cursor-pointer p-1 my-auto mr-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
                 <div className="relative w-75 h-75 mr-5">
