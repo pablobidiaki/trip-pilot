@@ -14,7 +14,7 @@ interface TourCardProps {
 
 export default function TourCard({ imageURL, title, description, price }: TourCardProps) {
     const [isOpen, setIsOpen] = useState(false)
-    
+
     return (
         <div className="border border-gray-200 w-100 h-90 bg-white rounded-2xl flex flex-col transition-all hover:shadow-2xl hover:duration-200">
             <div className="relative">
@@ -35,7 +35,7 @@ export default function TourCard({ imageURL, title, description, price }: TourCa
                     <p className="text-green-600 font-semibold mt-1">{price === 0 ? texts.free : `${texts.real} ${price} ${texts.per_person}`}</p>
                 </div>
             </div>
-            {isOpen && <ImageFullScreen image={imageURL} title={title} description={description} isOpen={isOpen} onClick={() => setIsOpen(false)} />}
+            {isOpen && <ImageFullScreen image={imageURL} title={title} description={description} price={price} isOpen={isOpen} onClick={() => setIsOpen(false)} />}
         </div>
     );
 }

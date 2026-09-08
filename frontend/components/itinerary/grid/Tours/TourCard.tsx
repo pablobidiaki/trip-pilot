@@ -32,7 +32,7 @@ export default function TourCard({ image, title, description, price }: TourCardP
                 {price == 0 ? <p className="text-green-500 font-medium mt-2">{texts.free}</p> : <p className="text-green-500 font-medium mt-2">{texts.real} {price} {texts.per_person}</p>}
             </div>
 
-            {isOpen && <ImageFullScreen image={image} title={title} description={description} isOpen={isOpen} onClick={() => setIsOpen(false)} />}
+            {isOpen && <ImageFullScreen image={image} title={title} description={description} price={price} isOpen={isOpen} onClick={() => setIsOpen(false)} />}
         </div>
 
     )

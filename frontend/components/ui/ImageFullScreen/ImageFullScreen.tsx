@@ -1,3 +1,4 @@
+import texts from "@/constants/texts";
 import { X } from "lucide-react";
 
 interface ImageFullScreenProps {
@@ -5,10 +6,11 @@ interface ImageFullScreenProps {
     image: string;
     description: string
     isOpen: boolean,
+    price: number
     onClick: () => void
 }
 
-export default function ImageFullScreen({ title, image, description, isOpen, onClick }: ImageFullScreenProps) {
+export default function ImageFullScreen({ title, image, description, price, isOpen, onClick }: ImageFullScreenProps) {
     return (
         <div onClick={onClick}>
             {isOpen && (
@@ -18,13 +20,14 @@ export default function ImageFullScreen({ title, image, description, isOpen, onC
                             <X size={20} />
                         </button>
 
-                        <h1 className="text-2xl font-medium text-primary-color"> {title} </h1>
-                        <p className="mb-4 text-second-color">{description}</p>
-
+                        <h1 className="text-2xl font-medium text-primary-color text-center"> {title} </h1>
+                        <p className="text-second-color text-center">{description}</p>
+                        <p className="text-green-600 font-semibold text-center mb-4">{price === 0 ? texts.free : `${texts.real} ${price} ${texts.per_person}`}</p>
                         <img src={image}
                             alt={title}
                             className="max-h-[70vh] w-full object-contain"
                         />
+
                     </div>
                 </div>
             )}

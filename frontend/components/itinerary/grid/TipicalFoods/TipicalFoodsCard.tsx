@@ -31,7 +31,7 @@ export default function TipicalFoodsCard({imageURL, title, description, averageP
                 <p className="text-primary-color font-medium">{texts.tipicalFood.averagePrice}<span className="text-second-color">{texts.real} {averagePrice}</span></p>
             </div>
 
-            {isOpen && <ImageFullScreen image={imageURL} title={title} description={description} isOpen={isOpen} onClick={() => setIsOpen(false)} />}
+            {isOpen && <ImageFullScreen image={imageURL} title={title} description={description} price={averagePrice} isOpen={isOpen} onClick={() => setIsOpen(false)} />}
         </div>
     )
 }
