@@ -1,5 +1,6 @@
 import texts from "@/constants/texts";
 import { X } from "lucide-react";
+import Link from "next/link";
 
 interface ImageFullScreenProps {
     title: string;
@@ -27,7 +28,9 @@ export default function ImageFullScreen({ title, image, description, price, isOp
                             alt={title}
                             className="max-h-[70vh] w-full object-contain"
                         />
-
+                        <p className="text-center text-second-color text-sm font-light mt-5">{texts.itinerary.pexel_credits}
+                            <Link href={"https://www.pexels.com/pt-br/"} target="_blank" className="text-link-color"> Pexels.</Link>
+                        </p>
                     </div>
                 </div>
             )}
