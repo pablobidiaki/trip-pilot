@@ -191,6 +191,14 @@ const texts = {
         connectionText: "Considere um eSIM ou plano internacional para acessar mapas e tradutor."
     },
 
+    tips:{
+        title: "Dicas para aproveitar melhor sua viagem",
+        transport: "Transporte",
+        internet: "Internet",
+        money: "Dinheiro",
+        shop: "Conveniência"
+    },
+
     how_to_get_there: {
         boarding_point: "Ponto de embarque: ",
         fly_time: "Tempo de voo: ",

@@ -2,7 +2,7 @@ import ItineraryClient from "@/components/itinerary/ItineraryClient/ItineraryCli
 import { getItinerary } from "@/services/itinerary.service";
 
 export default async function Itinerary() {
-    const itinerary = await getItinerary("c5f78e5d-7ce1-467b-bbc2-c5625c6d7395")
+    const itinerary = await getItinerary("e28f8481-6c4b-4c54-9dd5-16c45bbfde06")
 
     return (
         <ItineraryClient itinerary={itinerary} />

@@ -38,7 +38,6 @@ export default function Weather({ weather }: WeatherProps) {
                     </div>
                 )}
 
-
                 <p className="text-sm text-primary-color text-center mt-2">{texts.weather.averageTemperature}</p>
                 <p className="text-3xl font-bold text-primary-color text-center mb-2">{weather.averageTemperature}</p>
                 <TemperatureThermometer temperature={weather.averageTemperature} />

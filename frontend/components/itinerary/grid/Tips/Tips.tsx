@@ -2,9 +2,10 @@ import texts from "@/constants/texts";
 import CardTitle from "../CardTitle/CardTitle";
 
 import { Lightbulb } from "lucide-react";
+import { TipsInterface } from "@/interfaces/itinerary.interface";
 
 interface TipsProps{
-    tips: string[]
+    tips: TipsInterface[]
 }
 
 export default function Tips({tips}: TipsProps){
@@ -13,7 +14,7 @@ export default function Tips({tips}: TipsProps){
             <CardTitle icon={<Lightbulb />} title={texts.itinerary_titles.tips} />
             <ul className="list-disc marker:text-primary-color py-2 pl-8 max-w-[95%] text-second-color">
                 {tips.map((tip, index) => (
-                    <li key={index} className="mb-3">{tip}</li>
+                    <li key={index} className="mb-3">{tip.text}</li>
                 ))}
             </ul>
         </div>

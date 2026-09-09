@@ -1,3 +1,8 @@
+export interface TipsInterface{
+    type: string
+    text: string
+}
+
 export interface ToursInterface {
     imageURL: string
     name: string
@@ -78,7 +83,7 @@ export interface DayToDayInterface{
 }
 
 interface Itinerary {
-    tips: string[]
+    tips: TipsInterface[]
     tours: ToursInterface[]
     ticket: Tickets[]
     weather: WeatherInterface
