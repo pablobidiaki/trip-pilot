@@ -201,7 +201,11 @@ const texts = {
 
     weather: {
         season_text: "Na data da viagem a estação será:",
-        temperature_text: "A temperatura média normalmente é:"
+        temperature_text: "A temperatura média normalmente é:",
+        recommendation: "Recomendação",
+        averageTemperature: "Temperatura média",
+        season: "Estação",
+        graus: "°C"
     },
 
     ready_guides: {
@@ -330,6 +334,13 @@ const texts = {
         flights: "Voos",
         tipical_foods: "Comidas",
         itinerary: "Dia a dia"  
+    },
+
+    seasons: {
+        summer: "Verão",
+        winter: "Inverno",
+        fall: "Outono",
+        spring:"Primavera"
     },
 
     real: "R$",

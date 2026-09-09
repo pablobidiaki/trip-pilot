@@ -1,10 +1,10 @@
 import InfoRow from "@/components/itinerary/grid/InfoRow/InfoRow";
 import texts from "@/constants/texts";
-import { Destination } from "@/interfaces/destination.interface";
+import { DestinationInterface } from "@/interfaces/destination.interface";
 import { Bed, Binoculars, Car, DollarSign, Utensils } from "lucide-react";
 
 interface CostEstimateProps {
-    destination: Destination[]
+    destination: DestinationInterface[]
 }
 
 export default function CostEstimate({ destination }: CostEstimateProps) {
@@ -22,7 +22,7 @@ export default function CostEstimate({ destination }: CostEstimateProps) {
                 <InfoRow icon={<Car />} information={texts.cost_estimate.transport} value={destination[0].averageCost.transport} tailwindTags="px-2 py-3" />
                 <hr className="mx-1"/>
                 <div className="flex justify-between mt-2 mx-2 items-center">
-                    <p className="text-primary-color font-bold">Custo total estimado</p>
+                    <p className="text-primary-color font-bold">{texts.cost_estimate.total_estimate}</p>
                     <p className="px-2 py-1 rounded-2xl bg-green-200 text-green-400">{texts.real} {destination[0].averageCost.total.toLocaleString("pt-BR")}</p>
                 </div>
             </div>
