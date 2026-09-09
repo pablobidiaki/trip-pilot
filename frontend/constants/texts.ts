@@ -182,7 +182,13 @@ const texts = {
         passport_true: "Necessário passaporte.",
         passport_false: "Não é necessário passaporte.",
         documents: "Documentos",
-        vaccines_and_health: "Vacinas e saúde"
+        vaccines_and_health: "Vacinas e saúde",
+        beforeEnter: "Antes de embarcar",
+        payment: "Pagamentos",
+        connection: "Conectividade",
+        documentText: "Mantenha cópias digitais do passaporte e reservas.",
+        paymentText: "Tenha uma opção de pagamento internacional disponível.",
+        connectionText: "Considere um eSIM ou plano internacional para acessar mapas e tradutor."
     },
 
     how_to_get_there: {

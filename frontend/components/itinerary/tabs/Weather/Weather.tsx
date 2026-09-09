@@ -21,7 +21,7 @@ export default function Weather({ weather }: WeatherProps) {
 
     return (
         <div className="flex justify-center px-4 py-10">
-            <div className="w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-lg">
+            <div className="w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-gray-300">
                 {currentSeason && (
                     <div className="relative h-64 w-full sm:h-80">
                         <Image

@@ -1,7 +1,7 @@
 import texts from "@/constants/texts";
 import CardTitle from "../CardTitle/CardTitle";
 import { Ticket } from "lucide-react";
-import TripRoute from "../Requirements/TripRoute";
+import TripRoute from "./TripRoute";
 import { Tickets } from "@/interfaces/itinerary.interface";
 
 interface HowToGetThereProps{
