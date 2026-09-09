@@ -15,7 +15,7 @@ export interface Tickets {
 export interface WeatherInterface {
     season: string
     recommendation: string
-    averageTemperature: string
+    averageTemperature: number
 }
 
 export interface RequirementsInterface {

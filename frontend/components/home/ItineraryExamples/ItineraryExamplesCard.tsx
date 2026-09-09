@@ -33,9 +33,7 @@ export default function ItineraryExamplesCard({image, title, text, days, trip_ty
 
             <div className="flex justify-between  mx-4 mb-4">
                 <p className="text-second-color">{texts.itinerary_example.starting_at} <span className="text-primary-color font-bold">{texts.real} {price.toLocaleString("pt-BR")}</span></p>
-                <p className="text-link-color underline font-medium">
-                    <p>{texts.itinerary_example.view_itinerary}</p>
-                </p>
+                <p className="text-link-color underline font-medium">{texts.itinerary_example.view_itinerary}</p>
             </div>
         </Link>
     )

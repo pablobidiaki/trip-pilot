@@ -1,7 +1,7 @@
 import texts from "@/constants/texts";
 
 interface TemperatureThermometerProps {
-    temperature: number;
+    temperature: number
 }
 
 export default function TemperatureThermometer({ temperature }: TemperatureThermometerProps) {
@@ -18,7 +18,7 @@ export default function TemperatureThermometer({ temperature }: TemperatureTherm
         100
     )
 
-    const teste = () => {
+    const textColor = () => {
         if (temperature <= 15) return "bg-blue-300"
         else if (temperature > 15 && temperature < 26) return "bg-orange-300"
         else if (temperature >= 26) return "bg-red-300"
@@ -29,7 +29,7 @@ export default function TemperatureThermometer({ temperature }: TemperatureTherm
             <span className="text-sm text-second-color ml-4">{minTemperature}{texts.weather.graus}</span>
             <div className={`w-full h-3 bg-gray-200 rounded-full overflow-hidden`}>
                 <div
-                    className={`${teste()} h-full rounded-full`}
+                    className={`${textColor()} h-full rounded-full`}
                     style={{ width: `${percentage}%` }}
                 />
             </div>
