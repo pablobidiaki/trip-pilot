@@ -169,7 +169,10 @@ const texts = {
         diary: "Diária média: ",
         other_options: "Outras opções",
         bus: "Ônibus ou transfers",
-        price: "Preço médio: "
+        price: "Preço médio: ",
+        tab_title: "Melhores maneiras de se locomover",
+        tab_subtitle: "Encontre a melhor opção para explorar seu destino",
+        tab_text: "Para conhecer as principais atrações, o transporte público é a opção mais prática e utilizada. Considere alugar um carro apenas para regiões mais afastadas."
     },
 
     requirements: {

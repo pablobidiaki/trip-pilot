@@ -5,6 +5,7 @@ import ProviedData from "../ProvidedData/ProviedData"
 import Tours from "../Tours/Tours"
 import CostEstimate from "../CostEstimate/CostEstimate"
 import Weather from "../Weather/Weather"
+import Transportation from "../Transportation/Transportation"
 
 interface MainContentTabsProps {
     itinerary: ItineraryInterface[]
@@ -19,6 +20,7 @@ export default function MainContentTabs({ itinerary, optionSelected }: MainConte
             {optionSelected === texts.tabsOptions.tours && <Tours tours={itinerary[0].itinerary.tours}/>}
             {optionSelected === texts.tabsOptions.cost_estimate && <CostEstimate costs={itinerary[0].itinerary.costEstimate} budgetTotal={itinerary[0].budgetTotal} />}
             {optionSelected === texts.tabsOptions.weather && <Weather weather={itinerary[0].itinerary.weather}/>}
+            {optionSelected === texts.tabsOptions.transportation && <Transportation transports={itinerary[0].itinerary.transportation}/>}
         </div>
     )
 }
