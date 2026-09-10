@@ -21,7 +21,10 @@ export default function TourCard({ imageURL, title, description, price }: TourCa
                 <img src={imageURL} className="w-full h-60 object-cover rounded-t-2xl" />
 
                 <span className="absolute top-3 right-3 bg-green-100  text-green-600 text-sm font-semibold px-3 py-1 rounded-full">
-                    {price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR")}`}
+                    {price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    })}`}
                 </span>
 
                 <Fullscreen size={30} onClick={() => setIsOpen(true)} className="cursor-pointer absolute top-2 left-3 text-white" />
@@ -32,7 +35,11 @@ export default function TourCard({ imageURL, title, description, price }: TourCa
                 <hr />
                 <div className="flex justify-between">
                     <p className="text-second-color">{texts.price}</p>
-                    <p className="text-green-600 font-semibold mt-1">{price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR")} ${texts.per_person}`}</p>
+                    <p className="text-green-600 font-semibold mt-1">{price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    })} ${texts.per_person}`}
+                    </p>
                 </div>
             </div>
             {isOpen && <ImageFullScreen image={imageURL} title={title} description={description} price={price} isOpen={isOpen} onClick={() => setIsOpen(false)} />}

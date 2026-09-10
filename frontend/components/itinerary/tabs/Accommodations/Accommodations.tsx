@@ -12,7 +12,7 @@ interface MainContentTabsProps {
     itinerary: ItineraryInterface[]
 }
 
-export default function Accommodation({ itinerary}: MainContentTabsProps) {
+export default function Accommodation({ itinerary }: MainContentTabsProps) {
     const [isLoading, setIsLoading] = useState(true)
     return (
         <div className="grid grid-cols-3 mx-auto gap-5 animate-[optionSelector_300ms_ease-out]">
@@ -54,7 +54,13 @@ export default function Accommodation({ itinerary}: MainContentTabsProps) {
                                 label={texts.accommodations.roomType}
                                 value={accommodation.roomType}
                             />
-                            <p className="rounded-2xl mb-2 p-2 bg-green-200 w-fit mx-auto font-medium text-primary-color mt-5">{texts.accommodations.averagePricePerPerson} <span className="text-green-700 font-semibold"> {texts.real} {accommodation.costEstimate.toLocaleString("pt-BR")} </span></p>
+                            <p className="rounded-2xl mb-2 p-2 bg-green-200 w-fit mx-auto font-medium text-primary-color mt-5">{texts.accommodations.averagePricePerPerson}
+                                <span className="text-green-700 font-semibold"> {texts.real} {accommodation.costEstimate.toLocaleString("pt-BR", {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })}
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
