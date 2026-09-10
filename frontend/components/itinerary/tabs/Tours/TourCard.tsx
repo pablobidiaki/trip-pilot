@@ -1,5 +1,6 @@
 "use client"
 
+import Loading from "@/components/loading/Loading/Loading";
 import ImageFullScreen from "@/components/ui/ImageFullScreen/ImageFullScreen";
 import texts from "@/constants/texts"
 import { Fullscreen } from "lucide-react";
@@ -14,11 +15,18 @@ interface TourCardProps {
 
 export default function TourCard({ imageURL, title, description, price }: TourCardProps) {
     const [isOpen, setIsOpen] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     return (
         <div className="border border-gray-200 w-100 h-90 bg-white rounded-2xl flex flex-col transition-all hover:shadow-2xl hover:duration-200">
             <div className="relative">
-                <img src={imageURL} className="w-full h-60 object-cover rounded-t-2xl" />
+                {isLoading &&
+                    <div className="absolute w-full h-60">
+                        <Loading />
+                    </div>
+                }
+                
+                <img onLoad={() => setIsLoading(false)} src={imageURL} className="w-full h-60 object-cover rounded-t-2xl" />
 
                 <span className="absolute top-3 right-3 bg-green-100  text-green-600 text-sm font-semibold px-3 py-1 rounded-full">
                     {price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR", {
