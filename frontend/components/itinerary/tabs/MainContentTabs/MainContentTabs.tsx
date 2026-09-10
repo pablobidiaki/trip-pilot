@@ -9,6 +9,7 @@ import Transportation from "../Transportation/Transportation"
 import Requirements from "../Requirements/Requirements"
 import Tips from "../Tips/Tips"
 import Flights from "../Flights/Flights"
+import TipicalFoods from "../TipicalFoods/TipicalFoods"
 
 interface MainContentTabsProps {
     itinerary: ItineraryInterface[]
@@ -32,7 +33,7 @@ export default function MainContentTabs({ itinerary, optionSelected }: MainConte
                 countryDestinationName={itinerary[0].countryDestination}
                 countryOriginName={itinerary[0].countryOrigin}
             />}
-            
+             {optionSelected === texts.tabsOptions.tipical_foods && <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood} />}
         </div>
     )
 }
