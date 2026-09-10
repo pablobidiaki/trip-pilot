@@ -369,6 +369,10 @@ const texts = {
         spring:"Primavera"
     },
 
+    dayInformations:{
+        dayItinerary: "Roteiro do dia"
+    },
+
     real: "R$",
     tip: "Dica",
     all_ready: "Tudo pronto para sua viagem inesquecível!",
@@ -379,7 +383,8 @@ const texts = {
     free: "Gratuito",
     days: "Dias",
     people: "Pessoas",
-    price: "Preço"
+    price: "Preço",
+
 }
 
 export default texts;

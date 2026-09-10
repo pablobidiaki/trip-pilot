@@ -8,7 +8,6 @@ interface DayTipsProps {
 }
 
 export default function DayTips({ guide, daySelected }: DayTipsProps) {
-    console.log
     return (
         <div className="bg-purple-100 py-2 px-3 mt-3 rounded-2xl">
             <div className="flex items-center gap-3 font-bold mt-2">
