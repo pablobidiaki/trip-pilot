@@ -9,7 +9,7 @@ interface RequirementsProps {
 
 export default function Requirements({ requirements }: RequirementsProps) {
     return (
-        <div className="relative">
+        <div className="relative animate-[optionSelector_300ms_ease-out]">
             <div className="bg-white max-w-[80%] mx-auto pt-2 pb-5 rounded-2xl shadow-2xl shadow-gray-300">
                 <h1 className="text-primary-color text-3xl text-center mb-8">O que você precisa para entrar ?</h1>
                 <div className="flex justify-center gap-5 mb-2">

@@ -9,7 +9,7 @@ interface TipsProps {
 
 export default function Tips({ tips }: TipsProps) {
     return (
-        <div className="relative">
+        <div className="relative animate-[optionSelector_300ms_ease-out]">
             <div className="max-w-[60%] mx-auto bg-white shadow-2xl shadow-gray-300 rounded-2xl pb-2">
                 <h1 className="text-4xl text-primary-color text-center pt-2 mb-8 font-medium">{texts.tips.title}</h1>
                 <div className="grid grid-cols-2 gap-x-15">

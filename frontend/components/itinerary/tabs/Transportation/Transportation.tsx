@@ -12,7 +12,7 @@ const publicTransportAdvantages=["Mais econômico", "Ideal para regiões centrai
 
 export default function Transportation({transports}: TransportationProps){
     return(
-        <div className="relative">
+        <div className="relative animate-[optionSelector_300ms_ease-out]">
             <div className="bg-white w-[60%] mx-auto py-2 px-5 rounded-2xl shadow-2xl shadow-gray-300">
                 <h1 className="text-2xl text-center text-primary-color font-medium">{texts.transportation.tab_title}</h1>
                 <h2 className="text-sm text-center text-second-color font-medium">{texts.transportation.tab_subtitle}</h2>

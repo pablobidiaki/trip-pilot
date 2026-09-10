@@ -31,7 +31,7 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
 
     return (
         <div className="relative bg-background-color">
-            {isGrid && 
+            {isGrid &&
                 <img src={"/imgs/itinerary/banner.png"}
                     alt="Banner"
                     className="w-full absolute z-0"
@@ -44,10 +44,17 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
             <div className="flex gap">
                 <div className="mt-2">
                     <Toggle isGrid={isGrid} onChange={setIsGrid} />
-                    {!isGrid && <OptionSelector optionSelected={optionSelected} onClick={setOptionSelected}/>}
+                    {!isGrid && (
+                        <div className="mt-2 animate-[optionSelector_300ms_ease-out]">
+                            <OptionSelector
+                                optionSelected={optionSelected}
+                                onClick={setOptionSelected}
+                            />
+                        </div>
+                    )}
                 </div>
                 {isGrid &&
-                    <div className="mx-4">
+                    <div className="mx-4 mt-2 animate-[optionSelector_300ms_ease-out]">
                         <ItineraryBanner />
                         <div className="flex gap-5 relative">
                             <ProvidedData itinerary={itinerary} />

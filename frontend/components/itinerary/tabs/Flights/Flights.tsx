@@ -13,7 +13,7 @@ interface FlightsProps {
 
 export default function Flights({ tickets, countryDestinationFlag, countryOriginFlag, countryDestinationName, countryOriginName }: FlightsProps) {
     return (
-        <div className="relative">
+        <div className="relative animate-[optionSelector_300ms_ease-out]">
             <div className="bg-white max-w-[75%] mx-auto rounded-2xl pb-5">
                 <h1 className="text-primary-color text-2xl font-medium text-center pt-2">{texts.flights.title}</h1>
                 <div className="flex justify-center gap-25 mt-5">
