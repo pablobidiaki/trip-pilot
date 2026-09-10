@@ -8,6 +8,7 @@ import Weather from "../Weather/Weather"
 import Transportation from "../Transportation/Transportation"
 import Requirements from "../Requirements/Requirements"
 import Tips from "../Tips/Tips"
+import Flights from "../Flights/Flights"
 
 interface MainContentTabsProps {
     itinerary: ItineraryInterface[]
@@ -17,14 +18,20 @@ interface MainContentTabsProps {
 export default function MainContentTabs({ itinerary, optionSelected }: MainContentTabsProps) {
     return (
         <div className="mt-1 mx-4 w-full h-full">
-            {optionSelected === texts.tabsOptions.provided_data && <ProviedData itinerary={itinerary}/>}
-            {optionSelected === texts.tabsOptions.accommodations && <Accommodation itinerary={itinerary}/>}
-            {optionSelected === texts.tabsOptions.tours && <Tours tours={itinerary[0].itinerary.tours}/>}
+            {optionSelected === texts.tabsOptions.provided_data && <ProviedData itinerary={itinerary} />}
+            {optionSelected === texts.tabsOptions.accommodations && <Accommodation itinerary={itinerary} />}
+            {optionSelected === texts.tabsOptions.tours && <Tours tours={itinerary[0].itinerary.tours} />}
             {optionSelected === texts.tabsOptions.cost_estimate && <CostEstimate costs={itinerary[0].itinerary.costEstimate} budgetTotal={itinerary[0].budgetTotal} />}
-            {optionSelected === texts.tabsOptions.weather && <Weather weather={itinerary[0].itinerary.weather}/>}
-            {optionSelected === texts.tabsOptions.transportation && <Transportation transports={itinerary[0].itinerary.transportation}/>}
-            {optionSelected === texts.tabsOptions.requirements && <Requirements requirements={itinerary[0].itinerary.requirements}/>}
-            {optionSelected === texts.tabsOptions.tips && <Tips tips={itinerary[0].itinerary.tips}/>}
+            {optionSelected === texts.tabsOptions.weather && <Weather weather={itinerary[0].itinerary.weather} />}
+            {optionSelected === texts.tabsOptions.transportation && <Transportation transports={itinerary[0].itinerary.transportation} />}
+            {optionSelected === texts.tabsOptions.requirements && <Requirements requirements={itinerary[0].itinerary.requirements} />}
+            {optionSelected === texts.tabsOptions.tips && <Tips tips={itinerary[0].itinerary.tips} />}
+            {optionSelected === texts.tabsOptions.flights && <Flights tickets={itinerary[0].itinerary.ticket}
+                countryDestinationFlag={itinerary[0].countryDestinationFlagURL}
+                countryOriginFlag={itinerary[0].countryOriginFlagURL}
+                countryDestinationName={itinerary[0].countryDestination}
+                countryOriginName={itinerary[0].countryOrigin}
+            />}
         </div>
     )
 }

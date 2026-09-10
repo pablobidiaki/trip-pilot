@@ -204,7 +204,16 @@ const texts = {
         fly_time: "Tempo de voo: ",
         disembarkation_point: "Ponto de desembarque: ",
         boarding: "Embarque:",
-        disembarkation: "Desembarque:"
+        disembarkation: "Desembarque:",
+        go: "Ida",
+        return: "Volta",
+        fly: "° Voo"
+    },
+
+    flights: {
+        title: "Voos recomendados para você",
+         boarding: "Embarque",
+        disembarkation: "Desembarque"
     },
 
     itinerary: {
