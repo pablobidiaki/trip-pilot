@@ -31,8 +31,7 @@ model Itinerary {
   countryOrigin             String
   countryDestination        String
   countryOriginFlagURL      String
-  z String
-  departureDate             String
+  countryDestinationFlagURL String
   travelType                String
   currency                  String
   days                      Int

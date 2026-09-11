@@ -33,7 +33,7 @@ export default function ProvidedData({ itinerary }: ProvidedDataProps) {
 
             <InfoRow icon={<CalendarDays />}
                 information={texts.provided_data.departure_date}
-                value={formatDate(itinerary[0].departureDate)}
+                value={formatDate(itinerary[0].startDate)}
                 tailwindTags="px-2 py-3"
             />
 

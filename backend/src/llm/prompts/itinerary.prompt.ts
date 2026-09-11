@@ -32,6 +32,7 @@ export function createItineraryPrompt(dto) {
         16. Sempre irei te passar todas as informações que o usuario enviou, sendo elas (origin, destination, days, startDate, budgetTotal, travelers e travelType) então essa propriedade sempre deve estar preenchida no seu retorno/resposta
         17. Em todos os campos escritos imageURL deixe a resposta como "" mas nunca se esqueça de preencher o campo "photoPrompt" (sempre em inglês assim como dito na regra 12) pois com ele que irei conseguir a URL da imagem!
         18. Nos retornos que devem possuir mais de um objeto, segue sempre as mesmas chaves, apenas crie outro objeto alterando apenas os valores.
+        19. NUNCA me responda com um JSON dentro de uma string responda DIRETAMENTE um json 
         --------------------------------------------------
         ## Regras específicas
 
@@ -154,7 +155,6 @@ export function createItineraryPrompt(dto) {
             "countryDestination": "China",
             "countryOriginFlagURL": "",
             "countryDestinationFlagURL": "",
-            "departureDate": "2026-08-31",
             "travelType": "Adventure",
             "currency": "BRL",
             "days": 5,

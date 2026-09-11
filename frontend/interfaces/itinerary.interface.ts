@@ -82,7 +82,7 @@ export interface DayToDayInterface{
     hours: Hours[]
 }
 
-interface Itinerary {
+export interface ItineraryTeste {
     tips: TipsInterface[]
     tours: ToursInterface[]
     ticket: Tickets[]
@@ -106,11 +106,10 @@ export interface ItineraryInterface {
     countryDestination: string
     countryOriginFlagURL: string
     countryDestinationFlagURL: string
-    departureDate: string
     travelType: string
     currency: string
     days: number
     travelers: number
     budgetTotal: number
-    itinerary: Itinerary
+    itinerary: ItineraryTeste
 }

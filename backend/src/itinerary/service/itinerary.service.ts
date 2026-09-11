@@ -26,11 +26,11 @@ export class ItineraryService {
     }
 
     async create(dto: CreateItineraryDto) {
-        // const itineraryJson = await this.llmService.generate(dto)
+        const itineraryJson = await this.llmService.generate(dto)
         const countryOriginFlag = await this.getCountryFlag(dto.countryOrigin)
         const countryDestinationFlag = await this.getCountryFlag(dto.countryDestination)
 
-        await this.getAllImagesURLs(dto.itinerary)
+        //await this.getAllImagesURLs(dto.itinerary)
 
         const itinerary = this.prisma.itinerary.create({
             data: {
@@ -43,15 +43,15 @@ export class ItineraryService {
                 countryDestination: dto.countryDestination,
                 countryOriginFlagURL: countryOriginFlag,
                 countryDestinationFlagURL: countryDestinationFlag,
-                days: dto.days,
-                departureDate: dto.departureDate,
-                budgetTotal: dto.budgetTotal,
-                travelers: dto.travelers,
                 travelType: dto.travelType,
                 currency: dto.currency,
-                itinerary: dto.itinerary
+                days: dto.days,
+                travelers: dto.travelers,
+                budgetTotal: dto.budgetTotal,
+                itinerary: itineraryJson
             },
         });
+        
         return itinerary
     }
 

@@ -19,13 +19,14 @@ import Header from "@/components/ui/Header/Header";
 import OptionSelector from "@/components/itinerary/tabs/OptionSelector/OptionSelector";
 import MainContentTabs from "../tabs/MainContentTabs/MainContentTabs";
 import { useState } from "react";
-import { ItineraryInterface } from "@/interfaces/itinerary.interface";
+import { ItineraryInterface, ItineraryTeste } from "@/interfaces/itinerary.interface";
 
 interface ItineraryClientProps {
+    iti : ItineraryTeste
     itinerary: ItineraryInterface[]
 }
 
-export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
+export default function ItineraryClient({ iti, itinerary }: ItineraryClientProps) {
     const [isGrid, setIsGrid] = useState(false)
     const [optionSelected, setOptionSelected] = useState(texts.tabsOptions.provided_data)
 
@@ -58,7 +59,7 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
                         <ItineraryBanner />
                         <div className="flex gap-5 relative">
                             <ProvidedData itinerary={itinerary} />
-                            <Accommodation accommodations={itinerary[0].itinerary.accommodations} />
+                            <Accommodation accommodations={iti.itinerary.accommodations} />
                         </div>
 
                         <div className="flex justify-center gap-5">

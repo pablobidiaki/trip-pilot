@@ -27,12 +27,6 @@ export class CreateItineraryDto {
     startDate: string;
 
     @ApiProperty({
-        example: '2026-01-24',
-    })
-    @IsString()
-    endDate: string;
-
-    @ApiProperty({
         example: 'Brazil',
     })
     @IsString()
@@ -45,45 +39,6 @@ export class CreateItineraryDto {
     countryDestination: string;
 
     @ApiProperty({
-        example: "https://flags.restcountries.com/v5/w640/br.png",
-    })
-    @IsString()
-    countryOriginFlagURL: string;
-
-    @ApiProperty({
-        example: "https://flags.restcountries.com/v5/w640/cn.png",
-    })
-    @IsString()
-    countryDestinationFlagURL: string;
-
-    @ApiProperty({
-        example: 5,
-    })
-    @Min(1)
-    @IsInt()
-    days: number;
-
-    @ApiProperty({
-        example: '2026-08-31',
-    })
-    @IsString()
-    departureDate: string;
-
-    @ApiProperty({
-        example: 500,
-    })
-    @Min(1)
-    @IsInt()
-    budgetTotal: number;
-
-    @ApiProperty({
-        example: 2,
-    })
-    @Min(1)
-    @IsInt()
-    travelers: number;
-
-    @ApiProperty({
         example: 'Adventure',
     })
     @IsString()
@@ -94,6 +49,27 @@ export class CreateItineraryDto {
     })
     @IsString()
     currency: string;
+
+    @ApiProperty({
+        example: 5,
+    })
+    @Min(1)
+    @IsInt()
+    days: number;
+
+    @ApiProperty({
+        example: 2,
+    })
+    @Min(1)
+    @IsInt()
+    travelers: number;
+
+    @ApiProperty({
+        example: 500,
+    })
+    @Min(1)
+    @IsInt()
+    budgetTotal: number;
 
     @ApiProperty({
         example: 'gemini',
