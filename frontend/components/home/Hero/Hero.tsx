@@ -21,7 +21,7 @@ export default function Hero(){
                     <span className="bg-linear-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent"> {texts.home.ai}</span>
                 </h1>
                 <p className="text-second-color text-sm max-w-1/5 mx-4 mt-5 mb-5">
-                    {texts.home.main_text}
+                    {texts.home.mainText}
                 </p>
 
                 <HeroForm />

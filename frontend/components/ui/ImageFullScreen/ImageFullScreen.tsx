@@ -26,14 +26,14 @@ export default function ImageFullScreen({ title, image, description, price, isOp
                         <p className="text-green-600 font-semibold text-center mb-4">{price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR", {
                             minimumFractionDigits: 2,
                             maximumFractionDigits: 2
-                        })} ${texts.per_person}`}
+                        })} ${texts.perPerson}`}
                         </p>
                         
                         <img src={image}
                             alt={title}
                             className="max-h-[70vh] w-full object-contain"
                         />
-                        <p className="text-center text-second-color text-sm font-light mt-5">{texts.itinerary.pexel_credits}
+                        <p className="text-center text-second-color text-sm font-light mt-5">{texts.itinerary.pexelsCredits}
                             <Link href={"https://www.pexels.com/pt-br/"} target="_blank" className="text-link-color"> Pexels.</Link>
                         </p>
                     </div>

@@ -15,18 +15,18 @@ interface HowToGetThereProps{
 export default function HowToGetThere({tickets, destinationCountry, destinationFlag, originCountry, originFlag}: HowToGetThereProps) {
     return (
         <div className="bg-white border rounded-2xl max-w-2/3 border-gray-300 mt-8">
-            <CardTitle icon={<Ticket />} title={texts.itinerary_titles.fly_details} />
+            <CardTitle icon={<Ticket />} title={texts.itineraryTitles.flyDetails} />
             <div className="m-4 flex justify-between items-center gap-5">
                 <div className="border border-gray-200 rounded-2xl">
-                    <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">{texts.how_to_get_there.go}</h1>
+                    <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">{texts.howToGetThere.go}</h1>
                     {tickets.map((ticket, index) => (
                         ticket.isGoing &&
                         <div key={index} className=" mb-5">
                             <hr />
-                            <h2 className="text-primary-color text-xl font-medium my-2 px-2">{index + 1}{texts.how_to_get_there.fly}</h2>
-                            <p className="text-primary-color font-medium px-2">{texts.how_to_get_there.boarding_point} <span className="text-second-color">{ticket.boardingPoint}</span></p>
-                            <p className="text-primary-color font-medium px-2">{texts.how_to_get_there.disembarkation_point} <span className="text-second-color">{ticket.disembarkationPoint}</span></p>
-                            <p className="text-primary-color font-medium px-2">{texts.how_to_get_there.fly_time} <span className="text-second-color">{ticket.flyTime}</span></p>
+                            <h2 className="text-primary-color text-xl font-medium my-2 px-2">{index + 1}{texts.howToGetThere.fly}</h2>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.boardingPoint} <span className="text-second-color">{ticket.boardingPoint}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.disembarkationPoint} <span className="text-second-color">{ticket.disembarkationPoint}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.flyTime} <span className="text-second-color">{ticket.flyTime}</span></p>
                         </div>
                     ))}
                 </div>
@@ -38,15 +38,15 @@ export default function HowToGetThere({tickets, destinationCountry, destinationF
                 />
 
                 <div className="border border-gray-200 rounded-2xl">
-                    <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">{texts.how_to_get_there.return}</h1>
+                    <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">{texts.howToGetThere.return}</h1>
                     {tickets.map((ticket, index) => (
                         !ticket.isGoing &&
                         <div key={index} className=" mb-5">
                             <hr />
                             <h2 className="text-primary-color text-xl font-medium my-2 px-2">{index + 1}º voo</h2>
-                            <p className="text-primary-color font-medium px-2">{texts.how_to_get_there.boarding_point} <span className="text-second-color">{ticket.boardingPoint}</span></p>
-                            <p className="text-primary-color font-medium px-2">{texts.how_to_get_there.disembarkation_point} <span className="text-second-color">{ticket.disembarkationPoint}</span></p>
-                            <p className="text-primary-color font-medium px-2">{texts.how_to_get_there.fly_time} <span className="text-second-color">{ticket.flyTime}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.boardingPoint} <span className="text-second-color">{ticket.boardingPoint}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.disembarkationPoint} <span className="text-second-color">{ticket.disembarkationPoint}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.flyTime} <span className="text-second-color">{ticket.flyTime}</span></p>
                         </div>
                     ))}
                 </div>

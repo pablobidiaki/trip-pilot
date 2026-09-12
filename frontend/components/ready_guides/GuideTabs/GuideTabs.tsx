@@ -16,14 +16,14 @@ interface GuideTabsProps {
 }
 
 export default function GuideTabs({ guide }: GuideTabsProps) {
-    const [selected, setSelected] = useState(texts.ready_guides.general_infos)
+    const [selected, setSelected] = useState(texts.readyGuides.generalInfos)
 
     const tabs = [
-        { text: texts.ready_guides.general_infos, icon: <Info /> },
-        { text: texts.ready_guides.day_to_day, icon: <CalendarDays /> },
-        { text: texts.ready_guides.include, icon: <Package /> },
-        { text: texts.ready_guides.accommodation, icon: <Bed /> },
-        { text: texts.ready_guides.util_infos, icon: <FileExclamationPoint /> }
+        { text: texts.readyGuides.generalInfos, icon: <Info /> },
+        { text: texts.readyGuides.dayToDay, icon: <CalendarDays /> },
+        { text: texts.readyGuides.include, icon: <Package /> },
+        { text: texts.readyGuides.accommodation, icon: <Bed /> },
+        { text: texts.readyGuides.utilInfos, icon: <FileExclamationPoint /> }
     ]
 
     return (
@@ -40,11 +40,11 @@ export default function GuideTabs({ guide }: GuideTabsProps) {
                 ))}
             </div>
 
-            {selected === texts.ready_guides.general_infos && <GeneralInfos guide={guide}/>}
-            {selected === texts.ready_guides.day_to_day && <DayToDay guide={guide}/>}
-            {selected === texts.ready_guides.include && <Include />}
-            {selected === texts.ready_guides.accommodation && <Accommodation guide={guide}/>}
-            {selected === texts.ready_guides.util_infos && <UtilInfos guide={guide}/>}
+            {selected === texts.readyGuides.generalInfos && <GeneralInfos guide={guide}/>}
+            {selected === texts.readyGuides.dayToDay && <DayToDay guide={guide}/>}
+            {selected === texts.readyGuides.include && <Include />}
+            {selected === texts.readyGuides.accommodation && <Accommodation guide={guide}/>}
+            {selected === texts.readyGuides.utilInfos && <UtilInfos guide={guide}/>}
 
         </div>
 

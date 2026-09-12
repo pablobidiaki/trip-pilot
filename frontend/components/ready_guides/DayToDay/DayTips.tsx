@@ -12,7 +12,7 @@ export default function DayTips({ guide, daySelected }: DayTipsProps) {
         <div className="bg-purple-100 py-2 px-3 mt-3 rounded-2xl">
             <div className="flex items-center gap-3 font-bold mt-2">
                 <Lightbulb className="text-purple-500" />
-                <h1>{texts.ready_guides.tips_today}</h1>
+                <h1>{texts.readyGuides.tipsToday}</h1>
             </div>
 
             {guide[0].itinerary.map(resumeDay => (

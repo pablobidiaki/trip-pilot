@@ -10,16 +10,16 @@ interface ItineraryNavigationProps{
 }
 
 const options = [
-    {icon: <Info />, text: texts.tabsOptions.provided_data},
+    {icon: <Info />, text: texts.tabsOptions.providedData},
     {icon: <Hotel />, text:texts.tabsOptions.accommodations},
     {icon: <Binoculars />, text:texts.tabsOptions.tours},
-    {icon: <CircleDollarSign />, text:texts.tabsOptions.cost_estimate},
+    {icon: <CircleDollarSign />, text:texts.tabsOptions.costEstimate},
     {icon: <SunSnow />, text:texts.tabsOptions.weather},
     {icon: <Van />, text:texts.tabsOptions.transportation},
     {icon: <TableOfContents />, text:texts.tabsOptions.requirements},
     {icon: <Lightbulb />, text:texts.tabsOptions.tips},
     {icon: <Ticket />, text:texts.tabsOptions.flights},
-    {icon: <ChefHat />, text:texts.tabsOptions.tipical_foods},
+    {icon: <ChefHat />, text:texts.tabsOptions.tipicalFoods},
     {icon: <Calendar />, text:texts.tabsOptions.itinerary}, 
 ]
 

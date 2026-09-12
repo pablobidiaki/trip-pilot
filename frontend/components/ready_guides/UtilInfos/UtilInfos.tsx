@@ -16,25 +16,25 @@ export default function UtilInfos({guide}: UtilInfosProps) {
     const [selected, setSelected] = useState("")
 
     const beforeTravelInfos = [
-        { icon: <Scroll />, title: texts.util_info.documents_title, text: texts.util_info.documents_text, json_key: "documents" },
-        { icon: <Shield />, title: texts.util_info.vaccines_and_health_title, text: texts.util_info.vaccines_and_health_text, json_key: "vaccinesAndHealth" },
-        { icon: <Backpack />, title: texts.util_info.baggage_title, text: texts.util_info.baggage_text, json_key: "baggage" },
-        { icon: <CircleDollarSign />, title: texts.util_info.exchange_rate_title, text: texts.util_info.exchange_rate_text, json_key: "exchangeRate" },
-        { icon: <Plug />, title: texts.util_info.power_outlet_and_voltage_title, text: texts.util_info.power_outlet_and_voltage_text, json_key: "powerOutletAndVoltage" },
-        { icon: <Smartphone />, title: texts.util_info.internet_title, text: texts.util_info.internet_text, json_key: "internet" }
+        { icon: <Scroll />, title: texts.utilInfo.documentsTitle, text: texts.utilInfo.documentsText, json_key: "documents" },
+        { icon: <Shield />, title: texts.utilInfo.vaccinesAndHealthTitle, text: texts.utilInfo.vaccinesAndHealthText, json_key: "vaccinesAndHealth" },
+        { icon: <Backpack />, title: texts.utilInfo.baggageTitle, text: texts.utilInfo.baggageText, json_key: "baggage" },
+        { icon: <CircleDollarSign />, title: texts.utilInfo.exchangeRateTitle, text: texts.utilInfo.exchangeRateText, json_key: "exchangeRate" },
+        { icon: <Plug />, title: texts.utilInfo.powerOutletAndVoltageTitle, text: texts.utilInfo.powerOutletAndVoltageText, json_key: "powerOutletAndVoltage" },
+        { icon: <Smartphone />, title: texts.utilInfo.internetTitle, text: texts.utilInfo.internetText, json_key: "internet" }
     ]
 
     const duringTravelInfos = [
-        { icon: <BusFront />, title: texts.util_info.transport_title, text: texts.util_info.transport_text, json_key: "localTransport" },
-        { icon: <Landmark />, title: texts.util_info.culture_title, text: texts.util_info.culture_text, json_key: "culture" },
-        { icon: <Shield />, title: texts.util_info.security_title, text: texts.util_info.security_text, json_key: "security" }
+        { icon: <BusFront />, title: texts.utilInfo.transportTitle, text: texts.utilInfo.transportText, json_key: "localTransport" },
+        { icon: <Landmark />, title: texts.utilInfo.cultureTitle, text: texts.utilInfo.cultureText, json_key: "culture" },
+        { icon: <Shield />, title: texts.utilInfo.securityTitle, text: texts.utilInfo.securityText, json_key: "security" }
     ]
 
     return (
         <div className="max-w-8/12 mx-auto">
             <InfoCard icon={<Info />}
-                title={texts.util_info.util_infos_title}
-                text={texts.util_info.util_infos_text}
+                title={texts.utilInfo.utilInfosTitle}
+                text={texts.utilInfo.utilInfosText}
                 tailwindTags="bg-purple-50"
             />
             <UtilInfosTitle icon={<Plane />} title="Antes da viagem" />

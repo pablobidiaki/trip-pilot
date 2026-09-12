@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import WhiteButton from "@/components/ui/Buttons/WhiteButton"
 import GradientButton from "@/components/ui/Buttons/GradientButton"
+import texts from "@/constants/texts";
 
 export default function Header(){
     return(
@@ -21,10 +22,10 @@ export default function Header(){
                 </div>
                 
                 <div className="flex gap-18">
-                    <p><Link href={'/'}>Criar Roteiro </Link></p>
-                    <p><Link href={'/ready_guides'}>Guias prontos</Link></p>
-                    <p><Link href={'/destinations'}>Destinos</Link></p>
-                    <p><Link href={'/pro'}>Pro 👑</Link></p>
+                    <p><Link href={'/'}>{texts.header.createScript}</Link></p>
+                    <p><Link href={'/ready_guides'}>{texts.header.readyGuides}</Link></p>
+                    <p><Link href={'/destinations'}>{texts.header.destinations}</Link></p>
+                    <p><Link href={'/pro'}>{texts.header.pro}</Link></p>
                 </div>
                 
                 <div className="flex gap-5">

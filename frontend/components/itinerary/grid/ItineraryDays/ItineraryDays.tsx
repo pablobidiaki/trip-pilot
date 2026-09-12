@@ -12,7 +12,7 @@ interface ItineraryDaysProps {
 export default function ItineraryDays({ itineraryDays }: ItineraryDaysProps) {
     return (
         <div className="bg-white border rounded-2xl border-gray-300 mt-8">
-            <CardTitle icon={<Calendar />} title={texts.itinerary_titles.itinerary} />
+            <CardTitle icon={<Calendar />} title={texts.itineraryTitles.itinerary} />
             <div className="grid grid-cols-4 gap-4 p-4">
                 {itineraryDays.map((day, index) => (
                     <ItineraryDaysCard key={index}

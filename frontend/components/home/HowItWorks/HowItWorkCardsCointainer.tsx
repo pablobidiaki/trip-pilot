@@ -9,18 +9,18 @@ export default function HowItWorksCardsCointainer(){
         <div className="flex justify-evenly">
             <InfoCard icon={<NotebookPen className="text-blue-600" />} 
                             iconBgColor="bg-blue-300"
-                            title={texts.how_it_works.informe_your_travel_title} 
-                            text={texts.how_it_works.informe_your_travel_text}
+                            title={texts.howItWorks.informeYourTravelTitle} 
+                            text={texts.howItWorks.informeYourTravelText}
             />
             <InfoCard icon={<BrainCircuit className="text-purple-600"/>}
                             iconBgColor="bg-purple-300"
-                            title={texts.how_it_works.ai_plan_title} 
-                            text={texts.how_it_works.ai_plan_text}
+                            title={texts.howItWorks.aiPlanTitle} 
+                            text={texts.howItWorks.aiPlanText}
             />
             <InfoCard icon={<Plane className="text-green-600"/>} 
                             iconBgColor="bg-green-300"
-                            title={texts.how_it_works.enjoy_title} 
-                            text={texts.how_it_works.enjoy_text}
+                            title={texts.howItWorks.enjoyTitle} 
+                            text={texts.howItWorks.enjoyText}
             />
         </div>
     )

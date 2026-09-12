@@ -14,10 +14,10 @@ export default function Requirements({ requirements }: RequirementsProps) {
                 <h1 className="text-primary-color text-3xl text-center mb-8">O que você precisa para entrar ?</h1>
                 <div className="flex justify-center gap-5 mb-2">
                     <RequirementsInfo icon={requirements.visa ? <CircleCheck className="text-green-500" /> : <CircleX className="text-red-500 " />}
-                        text={requirements.visa ? texts.requirements.visa_true : texts.requirements.visa_false}
+                        text={requirements.visa ? texts.requirements.visaTrue : texts.requirements.visaFalse}
                     />
                     <RequirementsInfo icon={requirements.passport ? <CircleCheck className="text-green-500" /> : <CircleX className="text-red-500 " />}
-                        text={requirements.passport ? texts.requirements.passport_true : texts.requirements.passport_false}
+                        text={requirements.passport ? texts.requirements.passportTrue : texts.requirements.passportFalse}
                     />
                 </div>
                 <div className="flex justify-center gap-2 mb-8">
@@ -28,7 +28,7 @@ export default function Requirements({ requirements }: RequirementsProps) {
                         ))}
                     </div>
                     <div className="border-gray-400 border w-full rounded-2xl mx-5 bg-gray-50">
-                        <h1 className="text-primary-color text-2xl text-center p-1 border-b-gray-400 border-b mb-2 rounded-t-2xl bg-white">{texts.requirements.vaccines_and_health}</h1>
+                        <h1 className="text-primary-color text-2xl text-center p-1 border-b-gray-400 border-b mb-2 rounded-t-2xl bg-white">{texts.requirements.vaccinesAndHealth}</h1>
                         {requirements.vaccines.map((vaccine, index) => (
                             <p key={index} className="text-primary-color text-xl mx-1 p-0.5 mb-5">- {vaccine}</p>
                         ))}

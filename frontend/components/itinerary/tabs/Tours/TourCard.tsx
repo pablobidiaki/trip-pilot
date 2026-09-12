@@ -46,7 +46,7 @@ export default function TourCard({ imageURL, title, description, price }: TourCa
                     <p className="text-green-600 font-semibold mt-1">{price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
-                    })} ${texts.per_person}`}
+                    })} ${texts.perPerson}`}
                     </p>
                 </div>
             </div>

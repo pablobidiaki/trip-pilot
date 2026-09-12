@@ -89,21 +89,23 @@ export class ItineraryService {
     }
 
     async getAllImagesURLs(data: any) {
+        console.log("chamou o get images ")
+        console.log("images tour")
         data.tours = await Promise.all(
             data.tours.map(async (tour) => {
                 const imageURL = await this.imagesService.getImages(tour.photoPrompt)
-
+                console.log(imageURL)
                 return {
                     ...tour,
                     imageURL,
                 }
             })
         )
-
+        console.log("images food")
         data.tipicalFood = await Promise.all(
             data.tipicalFood.map(async (food) => {
                 const imageURL = await this.imagesService.getImages(food.photoPrompt, 'square')
-
+                console.log(imageURL)
                 return {
                     ...food,
                     imageURL,
@@ -111,10 +113,11 @@ export class ItineraryService {
             })
         )
 
+        console.log("images daytoday")
         data.dayToDay = await Promise.all(
             data.dayToDay.map(async (day) => {
                 const imageURL = await this.imagesService.getImages(day.photoPrompt, 'landscape')
-
+                console.log(imageURL)
                 return {
                     ...day,
                     imageURL,

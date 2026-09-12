@@ -3,11 +3,11 @@
 import { useState } from "react";
 import texts from "@/constants/texts";
 import ExpandableCard from "../../ui/ExpandableCard/ExpandableCard";
-import { Destination } from "@/interfaces/destination.interface";
+import { DestinationInterface } from "@/interfaces/destination.interface";
 import { ChefHat, Drama, Leaf, PartyPopper, ShieldQuestionMark, Store } from "lucide-react";
 
 interface WhatToDoProps {
-    destination: Destination[]
+    destination: DestinationInterface[]
 }
 
 export default function WhatToDo({ destination }: WhatToDoProps) {
@@ -17,7 +17,7 @@ export default function WhatToDo({ destination }: WhatToDoProps) {
         <div className="mx-4 mt-10">
             <div className="flex items-center gap-2 mb-5">
                 <ShieldQuestionMark size={35} className="text-primary-color font-medium" />
-                <h1 className="text-3xl text-primary-color font-medium">{texts.destination.what_to_do}</h1>
+                <h1 className="text-3xl text-primary-color font-medium">{texts.destination.whatToDo}</h1>
             </div>
             <div className=" grid grid-cols-5 gap-10">
                 <ExpandableCard icon={<Leaf size={40}/>}

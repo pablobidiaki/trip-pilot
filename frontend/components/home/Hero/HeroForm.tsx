@@ -47,8 +47,8 @@ export default function HeroForm() {
         <form className="bg-white p-4 max-w-3/7 mx-4 rounded-2xl" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-3">
                 <Input icon={<MapPin />}
-                    title={texts.form.exit_point}
-                    placeholder={texts.form.exit_point_placeholder}
+                    title={texts.form.exitPoint}
+                    placeholder={texts.form.exitPointPlaceholder}
                     type='text'
                     value={departure}
                     onChange={(e) => setDeparture(e.target.value)}
@@ -56,7 +56,7 @@ export default function HeroForm() {
                 />
                 <Input icon={<MapPin />}
                     title={texts.form.destination}
-                    placeholder={texts.form.destination_placeholder}
+                    placeholder={texts.form.destinationPlaceholder}
                     type='text'
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
@@ -65,8 +65,8 @@ export default function HeroForm() {
             </div>
             <div className="my-4 grid grid-cols-3 gap-3">
                 <Input icon={<CalendarDays />}
-                    title={texts.form.how_days}
-                    placeholder={texts.form.how_days_placeholder}
+                    title={texts.form.howDays}
+                    placeholder={texts.form.howDaysPlaceholder}
                     type='text'
                     value={days}
                     onChange={(e) => setDays(e.target.value)}
@@ -74,7 +74,7 @@ export default function HeroForm() {
                 />
                 <Input icon={<CalendarDays />}
                     title={texts.form.when}
-                    placeholder={texts.form.when_placeholder}
+                    placeholder={texts.form.whenPlaceholder}
                     type='text'
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
@@ -82,7 +82,7 @@ export default function HeroForm() {
                 />
                 <Input icon={<DollarSign />}
                     title={texts.form.budget}
-                    placeholder={texts.form.budget_placeholder}
+                    placeholder={texts.form.budgetPlaceholder}
                     type='text'
                     value={budget}
                     onChange={(e) => setBudget(e.target.value)}
@@ -91,8 +91,8 @@ export default function HeroForm() {
             </div>
             <div className="my-4 grid grid-cols-3 gap-3">
                 <Input icon={<Users />}
-                    title={texts.form.people_quantity}
-                    placeholder={texts.form.people_quantity_placeholder}
+                    title={texts.form.peopleQuantity}
+                    placeholder={texts.form.peopleQuantityPlaceholder}
                     type='number'
                     value={travelers}
                     onChange={(e) => setTravelers(e.target.value)}
@@ -105,14 +105,14 @@ export default function HeroForm() {
                     onChange={(e) => setTravelType(e.target.value)}
                 />
                 <Dropdown icon={<BrainCircuit />}
-                    title={texts.form.ai_model}
+                    title={texts.form.aiModel}
                     options={AiModels}
                     value={aiProvider}
                     onChange={(e) => setAiProvider(e.target.value)}
                 />
             </div>
 
-            <GradientButton text={texts.form.button_text} type="submit" />
+            <GradientButton text={texts.form.buttonText} type="submit" />
         </form>
     )
 }

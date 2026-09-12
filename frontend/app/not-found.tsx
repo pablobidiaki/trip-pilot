@@ -12,12 +12,12 @@ export default function NotFound(){
                 <Header />
             </div>
             <div className="relative max-w-2/6 ml-32 mt-30">
-                <h1 className="text-9xl font-extrabold text-primary-color">{texts.not_found.code}</h1>
-                <h2 className="text-4xl font-bold text-primary-color mt-2">{texts.not_found.title}</h2>
-                <p className="text-2xl text-second-color mt-2">{texts.not_found.text}</p>
+                <h1 className="text-9xl font-extrabold text-primary-color">{texts.notFound.code}</h1>
+                <h2 className="text-4xl font-bold text-primary-color mt-2">{texts.notFound.title}</h2>
+                <p className="text-2xl text-second-color mt-2">{texts.notFound.text}</p>
                 <Link href={"/"} className="flex items-center py-3 px-8 bg-purple-color text-white gap-2 rounded-2xl w-fit mt-7">
                     <House />
-                    <p>{texts.not_found.button_text}</p>
+                    <p>{texts.notFound.buttonText}</p>
                 </Link>
             </div>
         </div>

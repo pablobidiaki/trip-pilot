@@ -33,7 +33,7 @@ export default function TourCard({ image, title, description, price }: TourCardP
                     <p className="text-green-500 font-medium mt-2">{texts.real} {price.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
-                    })} {texts.per_person}
+                    })} {texts.perPerson}
                     </p>
                 }
             </div>

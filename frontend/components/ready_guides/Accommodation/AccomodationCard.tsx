@@ -33,13 +33,13 @@ export default function AccomodationCard({ image, days, name, review, address, t
                 <p className="text-second-color">{text}</p>
             </div>
             <div className="bg-purple-100 p-3 rounded-2xl text-center text-second-color text-sm">
-                <p>{texts.starting_at}</p>
+                <p>{texts.startingAt}</p>
                 <p className="text-primary-color font-medium text-xl">{texts.real} {price.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}
                 </p>
-                <p>{texts.per_person}</p>
+                <p>{texts.perPerson}</p>
             </div>
         </div>
     )

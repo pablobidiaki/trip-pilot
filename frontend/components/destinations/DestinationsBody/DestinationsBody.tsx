@@ -10,7 +10,7 @@ export default async function DestinationBody() {
         return (
             <div className="relative h-full overflow-hidden bg-white -mt-5 rounded-t-4xl">
                 <ButtonFilters />
-                <h1 className="text-primary-color mt-10 mx-4 text-3xl font-medium">{texts.destinations.featured_destinations}</h1>
+                <h1 className="text-primary-color mt-10 mx-4 text-3xl font-medium">{texts.destinations.featuredDestinations}</h1>
 
                 <div className="grid grid-cols-[4fr_1fr] gap-4">
                     <div className="grid grid-cols-3 gap-4">

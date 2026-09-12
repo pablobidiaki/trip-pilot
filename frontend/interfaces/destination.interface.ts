@@ -26,6 +26,14 @@ interface usefulInformation {
     powerOutletAndVoltage: string[]
 }
 
+interface whatToDo{
+    culture: string[]
+    tipicalFood: string[]
+    nature: string[]
+    famousStores: string[]
+    nightLife:string[]
+}
+
 export interface DestinationInterface {
     id: string
     imageURL: string
@@ -40,7 +48,7 @@ export interface DestinationInterface {
     weather: string
     dayReccomended: number
     usefulInformation: usefulInformation
-    whatToDo: JSON
+    whatToDo: whatToDo
     attractions: Attraction[]
     averageCost: AverageCost
 }

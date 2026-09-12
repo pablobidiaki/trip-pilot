@@ -27,7 +27,7 @@ interface ItineraryClientProps {
 
 export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
     const [isGrid, setIsGrid] = useState(false)
-    const [optionSelected, setOptionSelected] = useState(texts.tabsOptions.provided_data)
+    const [optionSelected, setOptionSelected] = useState(texts.tabsOptions.providedData)
     console.log(itinerary[0])
     return (
         <div className="relative bg-background-color">
@@ -88,8 +88,8 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
 
                         <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay} />
 
-                        <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.ai_warning}</p>
-                        <p className="text-center mt-2 text-second-color">{texts.good_travel}</p>
+                        <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.aiWarning}</p>
+                        <p className="text-center mt-2 text-second-color">{texts.goodTravel}</p>
                     </div>
                 }
                 {!isGrid && <MainContentTabs itinerary={itinerary} optionSelected={optionSelected} />}

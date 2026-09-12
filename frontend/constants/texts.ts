@@ -1,188 +1,168 @@
 const texts = {
     header: {
-        create_script: "Criar roteiro",
-        ready_guides: "Guias prontos",
+        createScript: "Criar roteiro",
+        readyGuides: "Guias prontos",
         destinations: "Destinos",
         pro: "Pro 👑",
         login: "Entrar",
-        start_free: "Começar grátis"
+        startFree: "Começar grátis"
     },
 
     home: {
         title: "Planeje sua próxima viagem com",
         ai: "IA.",
-        main_text: "Em poucos minutos, receba um roteiro completo com as melhores atrações, lugares e sugestões personalizadas.",
+        mainText: "Em poucos minutos, receba um roteiro completo com as melhores atrações, lugares e sugestões personalizadas.",
         customized: "100% personalizado",
-        save_time_and_money: "Economize tempo e dinheiro",
-        script_for_ia: "Roteiros otimizados pela IA"
+        saveTimeAndMoney: "Economize tempo e dinheiro",
+        scriptForIa: "Roteiros otimizados pela IA"
     },
 
     form: {
-        exit_point: "De onde você vai sair?",
-        exit_point_placeholder: "Ex: São Paulo, Brasil",
+        exitPoint: "De onde você vai sair?",
+        exitPointPlaceholder: "Ex: São Paulo, Brasil",
         destination: "Para onde você quer ir?",
-        destination_placeholder: "Ex: Japão, Itália, Chile...",
-        how_days: "Quantos dias?",
-        how_days_placeholder: "Ex: 10",
+        destinationPlaceholder: "Ex: Japão, Itália, Chile...",
+        howDays: "Quantos dias?",
+        howDaysPlaceholder: "Ex: 10",
         when: "Quando?",
-        when_placeholder: "Escolha as datas",
+        whenPlaceholder: "Escolha as datas",
         budget: "Orçamento (opcional)",
-        budget_placeholder: "Ex: 10000",
-        button_text: "Planejar minha viagem com IA",
-        people_quantity: "Quantidade de pessoas",
-        people_quantity_placeholder: "Ex: 2",
+        budgetPlaceholder: "Ex: 10000",
+        buttonText: "Planejar minha viagem com IA",
+        peopleQuantity: "Quantidade de pessoas",
+        peopleQuantityPlaceholder: "Ex: 2",
         type: "Tipo de viagem",
-        ai_model: "Modelo de IA"
+        aiModel: "Modelo de IA"
     },
 
-    how_it_works: {
-        how_works_title: "Como funciona",
-        how_works_text: "Em apenas 3 passos sua viagem está pronta.",
-        informe_your_travel_title: "1. Conte sua viagem",
-        informe_your_travel_text: "Informe destinos, datas, orçamento e preferências.",
-        ai_plan_title: "2. A IA planeja",
-        ai_plan_text: "Nossa IA analisa opções e monta o melhor roteiro para você.",
-        enjoy_title: "3. Aproveite",
-        enjoy_text: "Baixe, veja e siga o roteiro criado. Boa viagem!",
+    howItWorks: {
+        howWorksTitle: "Como funciona",
+        howWorksText: "Em apenas 3 passos sua viagem está pronta.",
+        informeYourTravelTitle: "1. Conte sua viagem",
+        informeYourTravelText: "Informe destinos, datas, orçamento e preferências.",
+        aiPlanTitle: "2. A IA planeja",
+        aiPlanText: "Nossa IA analisa opções e monta o melhor roteiro para você.",
+        enjoyTitle: "3. Aproveite",
+        enjoyText: "Baixe, veja e siga o roteiro criado. Boa viagem!",
     },
 
-    popular_destination: {
-        popular_destination_title: "Destinos populares",
-        view_all_destinations: "Ver todos os destinos",
-        japan: "Japão",
-        japan_description: "Descubra o Japão",
-        chile: "Chile",
-        chile_description: "Do Atacama à Patagônia",
-        italy: "Itália",
-        italy_description: "História, cultura e gastronomia",
-        new_york: "Nova York",
-        new_york_description: "A cidade que nunca dorme",
-        bali: "Bali",
-        bali_description: "Praias paradisiacas"
+    popularDestination: {
+        popularDestinationTitle: "Destinos populares",
+        viewAllDestinations: "Ver todos os destinos",
     },
 
-    itinerary_example: {
+    itineraryExample: {
         title: "Exemplos de roteiros",
-        view_all_itinerary: "Ver todos os roteiros",
-        japan_title: "7 Dias no Japão",
-        japan_text: "Tóquio, Quioto e Osaka",
-        chile_title: "Chile + Atacama",
-        chile_text: "Santiago, Atacama e Valparaíso",
-        italy_title: "Itália Clássica",
-        italy_text: "Roma, Florença e veneza",
-        greece_title: "Grécia Essencial",
-        greece_text: "Atenas e Santorini",
-        starting_at: "A partir de ",
-        view_itinerary: "Ver roteiro",
-        days: "dias"
+        viewAllItinerary: "Ver todos os roteiros",
+        viewItinerary: "Ver roteiro",
     },
 
-    why_use: {
+    whyUse: {
         title: "Por que usar o TripPilot?",
-        ai_title: "IA inteligente",
-        ai_text: "Roteiros personalizados de acordo com seu perfil.",
-        best_prices_title: "Melhores preços",
-        best_prices_text: "Encontramos as melhores opções para você.",
-        time_economy_title: "Economia de tempo",
-        time_economy_text: "Em minutos, o que levaria horas pesquisando.",
-        everything_in_one_place_title: "Tudo em um lugar",
-        everything_in_one_place_text: "Voos, hotéis, passeios e dicas em um só roteiro.",
-        pdf_generation_title: "Gere um PDF",
-        pdf_generation_text: "Baixe o roteiro e veja de qualquer lugar que você esteja."
+        aiTitle: "IA inteligente",
+        aiText: "Roteiros personalizados de acordo com seu perfil.",
+        bestPricesTitle: "Melhores preços",
+        bestPricesText: "Encontramos as melhores opções para você.",
+        timeEconomyTitle: "Economia de tempo",
+        timeEconomyText: "Em minutos, o que levaria horas pesquisando.",
+        everythingInOnePlaceTitle: "Tudo em um lugar",
+        everythingInOnePlaceText: "Voos, hotéis, passeios e dicas em um só roteiro.",
+        pdfGenerationTitle: "Gere um PDF",
+        pdfGenerationText: "Baixe o roteiro e veja de qualquer lugar que você esteja."
     },
 
-    ready_to_next_travel: {
+    readyToNextTravel: {
         title: "Pronto para sua próxima viagem?",
         text: "Comece agora mesmo a planejar sua viagem dos sonhos.",
-        button_text: "Criar meu roteiro grátis"
+        buttonText: "Criar meu roteiro grátis"
     },
 
     footer: {
-        social_links_text: "A plataforma de planejamento de viagens com IA que cria roteiros personalizados, otimizados e inesqueciveis.",
-        product_title: "Produto",
-        create_with_ai: "Criar com IA",
+        socialLinksText: "A plataforma de planejamento de viagens com IA que cria roteiros personalizados, otimizados e inesqueciveis.",
+        productTitle: "Produto",
+        createWithAi: "Criar com IA",
         explore: "Explorar",
         itinerary: "Roteiros",
         price: "Preços",
-        business_title: "Empresa",
-        about_us: "Sobre nós",
+        businessTitle: "Empresa",
+        aboutUs: "Sobre nós",
         blog: "Blog",
         career: "Carreira",
         contact: "Contato",
-        news_title: "Novidades",
-        news_text: "Receba dicas e ofertas exclusivas para suas viagens",
-        your_email: "Seu e-mail"
+        newsTitle: "Novidades",
+        newsText: "Receba dicas e ofertas exclusivas para suas viagens",
+        yourEmail: "Seu e-mail"
     },
 
-    itinerary_titles: {
-        main_title: "Seu roteiro personalizado",
-        provided_data: "1. Dados informados",
+    itineraryTitles: {
+        mainTitle: "Seu roteiro personalizado",
+        providedData: "1. Dados informados",
         accommodations: "2. Hospedagem sugerida",
         tours: "3. Principais passeios",
-        cost_estimate: "4. Custos Estimados",
+        costEstimate: "4. Custos Estimados",
         weather: "5. Clima",
         transportation: "6. Meio de transporte",
         requirements: "7. O que é preciso para entrar",
         tips: "8. Dicas importantes",
-        fly_details: "9. Detalhes do voo",
-        tipical_foods: "10. Comidas típicas",
+        flyDetails: "9. Detalhes do voo",
+        tipicalFoods: "10. Comidas típicas",
         itinerary: "11. Roteiro dia a dia"
     },
 
-    provided_data: {
+    providedData: {
         origin: "Origem: ",
         destination: "Destino: ",
-        departure_date: "Data da viagem: ",
+        departureDate: "Data da viagem: ",
         date: "Data",
-        days: "Dias",
-        duration_days: "Duração: ",
+        durationDays: "Duração: ",
         travelers: "Viajantes:",
         budget: "Orçamento: ",
-        budget_tab: "Orçamento",
-        travelers_tab: "Viajantes"
+        budgetTab: "Orçamento",
+        travelersTab: "Viajantes",
+        yourTravelTo: "Sua viagem para:"
     },
 
     accommodations: {
         address: "Localização: ",
         include: "Inclui: ",
-        cost_estimate: "Custo estimado por noite: ",
+        costEstimate: "Custo estimado por noite: ",
         reviews: "avaliações",
         roomType: "Tipo de quarto: ",
         averagePricePerPerson: "Diária média por pessoa: "
     },
 
-    cost_estimate: {
+    costEstimate: {
         accommodation: "Hospedagem",
         food: "Alimentação",
         tours: "Passeios",
         transport: "Transporte",
-        shop_and_extras: "Compras e extras",
+        shopAndExtras: "Compras e extras",
         ticket: "Passagens",
-        total_estimate: "Total estimado",
-        you_informed: "Você informou um orçamento de ",
-        its_possible_adjust: "É possível ajustar escolhendo passeios e refeições diferentes.",
-        its_possible_adjust_tab: "É possível ajustar os valores escolhendo items, locais e refeições diferentes das recomendadas."
+        totalEstimate: "Total estimado",
+        youInformed: "Você informou um orçamento de ",
+        itsPossibleAdjust: "É possível ajustar escolhendo passeios e refeições diferentes.",
+        itsPossibleAdjustTab: "É possível ajustar os valores escolhendo items, locais e refeições diferentes das recomendadas."
     },
 
     transportation: {
-        rental_car: "Carro alugado",
+        rentalCar: "Carro alugado",
         diary: "Diária média: ",
-        other_options: "Outras opções",
+        otherOptions: "Outras opções",
         bus: "Ônibus ou transfers",
         price: "Preço médio: ",
-        tab_title: "Melhores maneiras de se locomover",
-        tab_subtitle: "Encontre a melhor opção para explorar seu destino",
-        tab_text: "Para conhecer as principais atrações, o transporte público é a opção mais prática e utilizada. Considere alugar um carro apenas para regiões mais afastadas."
+        tabTitle: "Melhores maneiras de se locomover",
+        tabSubtitle: "Encontre a melhor opção para explorar seu destino",
+        tabText: "Para conhecer as principais atrações, o transporte público é a opção mais prática e utilizada. Considere alugar um carro apenas para regiões mais afastadas."
     },
 
     requirements: {
         observation: "Regras podem mudar. Confira sempre informações atualizadas antes da viagem.",
-        visa_true: "Necessário visto.",
-        visa_false: "Não é necessário visto.",
-        passport_true: "Necessário passaporte.",
-        passport_false: "Não é necessário passaporte.",
+        visaTrue: "Necessário visto.",
+        visaFalse: "Não é necessário visto.",
+        passportTrue: "Necessário passaporte.",
+        passportFalse: "Não é necessário passaporte.",
         documents: "Documentos",
-        vaccines_and_health: "Vacinas e saúde",
+        vaccinesAndHealth: "Vacinas e saúde",
         beforeEnter: "Antes de embarcar",
         payment: "Pagamentos",
         connection: "Conectividade",
@@ -199,10 +179,10 @@ const texts = {
         shop: "Conveniência"
     },
 
-    how_to_get_there: {
-        boarding_point: "Ponto de embarque: ",
-        fly_time: "Tempo de voo: ",
-        disembarkation_point: "Ponto de desembarque: ",
+    howToGetThere: {
+        boardingPoint: "Ponto de embarque: ",
+        flyTime: "Tempo de voo: ",
+        disembarkationPoint: "Ponto de desembarque: ",
         boarding: "Embarque:",
         disembarkation: "Desembarque:",
         go: "Ida",
@@ -212,7 +192,7 @@ const texts = {
 
     flights: {
         title: "Voos recomendados para você",
-         boarding: "Embarque",
+        boarding: "Embarque",
         disembarkation: "Desembarque"
     },
 
@@ -221,124 +201,124 @@ const texts = {
         morning: "Manhã: ",
         afternoon: "Tarde: ",
         evening: "Noite: ",
-        view_hours: "Visualizar roteiro por hora",
-        pexel_credits: "As imagens utilizadas nesta página são fornecidas pelo"
+        viewHours: "Visualizar roteiro por hora",
+        pexelsCredits: "As imagens utilizadas nesta página são fornecidas pelo"
     },
 
     weather: {
-        season_text: "Na data da viagem a estação será:",
-        temperature_text: "A temperatura média normalmente é:",
+        seasonText: "Na data da viagem a estação será:",
+        temperatureText: "A temperatura média normalmente é:",
         recommendation: "Recomendação",
         averageTemperature: "Temperatura média",
         season: "Estação",
         graus: "°C"
     },
 
-    ready_guides: {
+    readyGuides: {
         title: "Guias prontos para a sua próxima aventura",
         subtitle: "Escolha entre roteiros completos e prontos para diversos distinos incríveis.",
-        search_bar_placeholder: "Para onde você quer ir?",
-        general_infos: "Informações gerais",
-        day_to_day: "Roteiro dia a dia",
+        searchBarPlaceholder: "Para onde você quer ir?",
+        generalInfos: "Informações gerais",
+        dayToDay: "Roteiro dia a dia",
         include: "Incluso",
         accommodation: "Hospedagens",
-        util_infos: "Informações uteis",
+        utilInfos: "Informações uteis",
         overview: "Visão geral do roteiro",
-        what_is_include: "O que está incluso",
-        your_day_with_details: "Seu dia com detalhes",
-        tips_today: "Dicas para hoje",
-        cost_estimate: "Custo Estimado do dia",
+        whatIsInclude: "O que está incluso",
+        yourDayWithDetails: "Seu dia com detalhes",
+        tipsToday: "Dicas para hoje",
+        costEstimate: "Custo Estimado do dia",
         alimentation: "Alimentação",
         ticket: "Ingressos",
         transport: "Transporte",
         other: "Outros",
         total: "Total",
         language: "Linguagem",
-        best_time: "Melhor época",
+        bestTime: "Melhor época",
         currency: "Moeda",
-        save_guide: "Salvar guia",
-        accommodations_selected: "Hospedagem selecionada",
+        saveGuide: "Salvar guia",
+        accommodationsSelected: "Hospedagem selecionada",
         breakfast: "Café da manhã diário",
         tours: "Passeios e ingressos conforme roteiro",
-        transport_enter_cities: "Transporte entre cidades",
-        travel_insurance: "Seguro viagem",
+        transportEnterCities: "Transporte entre cidades",
+        travelInsurance: "Seguro viagem",
         support: "Suporte 24h durante viagem"
     },
 
     destinations: {
         title: "Explore novos destinos com inteligência da IA",
         subtitle: "Descubra lugares incríveis, conheça curiosidades, planeje sua viagem e viva experiências inesquecíveis com o TripPilot.",
-        featured_destinations: "Destinos em destaque",
-        why_chose_trip_pilot: "Por que escolher o TripPilot?",
-        plan_with_ai: "Planejamento inteligente com IA",
-        personality_itineraries: "Roteiros personalizados para você",
-        destination_for_all_styles: "Destinos para todos os estilos",
+        featuredDestinations: "Destinos em destaque",
+        whyChoseTripPilot: "Por que escolher o TripPilot?",
+        planWithAi: "Planejamento inteligente com IA",
+        personalityItineraries: "Roteiros personalizados para você",
+        destinationForAllStyles: "Destinos para todos os estilos",
         destinations: "Praias, cidades, montanhas e muito mais",
-        complete_infos: "Informações completas",
+        completeInfos: "Informações completas",
         tips: "Dicas, curiosidades, clima e o que fazer",
-        everything_in_one_place: "Tudo em um só lugar",
+        everythingInOnePlace: "Tudo em um só lugar",
         plan: "Planeje, descubra e aproveite sua viagem"
     },
 
     destination: {
         return: "Voltar para destinos",
-        main_attractions: "Principais atrações",
-        what_to_do: "O que fazer?",
-        util_infos: "Informações úteis",
-        cost_estimated: "Custo estimado",
-        want_modify: "Gostaria de modificar essa viagem?",
-        want_modify_description: "Deixe nossa IA montar um roteiro personalizado para você, com os melhores passeios, dicas e tudo o que voce precisa para uma viagem inesquecível.",
-        button_text: "Criar meu roteiro com IA",
+        mainAttractions: "Principais atrações",
+        whatToDo: "O que fazer?",
+        utilInfos: "Informações úteis",
+        costEstimated: "Custo estimado",
+        wantModify: "Gostaria de modificar essa viagem?",
+        wantModifyDescription: "Deixe nossa IA montar um roteiro personalizado para você, com os melhores passeios, dicas e tudo o que voce precisa para uma viagem inesquecível.",
+        buttonText: "Criar meu roteiro com IA",
         nature: "Natureza",
         culture: "Cultura",
         tipicalFoods: "Comidas típicas",
         famousStores: "Lojas famosas",
         nightLife: "Vida noturna",
         documents: "Documentos",
-        vaccines_and_health: "Vacina e saúde",
+        vaccinesAndHealth: "Vacina e saúde",
         bagagem: "Bagagem",
-        exchange_rate: "Câmbio",
-        power_outlet_and_voltage: "Tomada e voltagem",
+        exchangeRate: "Câmbio",
+        powerOutletAndVoltage: "Tomada e voltagem",
         internet: "Internet",
         transport: "Transporte",
         security: "Segurança",
-        alter_travel: "Crie um roteiro personalizado!",
-        best_time: "Melhor época",
+        alterTravel: "Crie um roteiro personalizado!",
+        bestTime: "Melhor época",
         weather: "Clima",
-        travel_type: "Tipo de viagem",
-        recommended_days: "Dias recomendados",
+        travelType: "Tipo de viagem",
+        recommendedDays: "Dias recomendados",
         currency: "Moeda",
         language: "Idioma"
     },
 
-    not_found: {
+    notFound: {
         code: "404",
         title: "Ops! Destino não encontrado",
         text: "Parece que a página que você está procurando não existe ou foi removida.",
-        button_text: "Voltar para página inicial"
+        buttonText: "Voltar para página inicial"
     },
 
-    util_info: {
-        util_infos_title: "Informações úteis",
-        util_infos_text: "Tudo o que você precisa saber para aproveitar sua viagem com mais tranquilidade e segurança.",
-        documents_title: "Documentos",
-        documents_text: "Veja os documentos necessários para o seu destino e dicas de visto.",
-        vaccines_and_health_title: "Vacina e saúde",
-        vaccines_and_health_text: "Informações sobre vacinas recomendadas e cuidados de saúde.",
-        baggage_title: "Bagagem",
-        baggage_text: "Dicas do que levar, restrições e itens essenciais.",
-        exchange_rate_title: "Câmbio",
-        exchange_rate_text: "Como funciona a moeda local, melhores formas de câmbio e uso de cartão internacional.",
-        power_outlet_and_voltage_title: "Tomada e voltagem",
-        power_outlet_and_voltage_text: "Informações sobre o padrão de tomadas e voltagem no destino.",
-        internet_title: "Internet",
-        internet_text: "Dicas para se manter conectado durante a viagem.",
-        transport_title: "Transporte",
-        security_title: "Segurança",
-        culture_title: "Cultura e costumes",
-        transport_text: "Principais opções de transporte público, apps e dicas de mobilidade.",
-        security_text: "Dicas para se manter seguro(a) durante a viagem, com orientações úteis para o dia a dia.",
-        culture_text: "Informações sobre tradições, etiquetas e o que conhecer para uma experiência mais rica."
+    utilInfo: {
+        utilInfosTitle: "Informações úteis",
+        utilInfosText: "Tudo o que você precisa saber para aproveitar sua viagem com mais tranquilidade e segurança.",
+        documentsTitle: "Documentos",
+        documentsText: "Veja os documentos necessários para o seu destino e dicas de visto.",
+        vaccinesAndHealthTitle: "Vacina e saúde",
+        vaccinesAndHealthText: "Informações sobre vacinas recomendadas e cuidados de saúde.",
+        baggageTitle: "Bagagem",
+        baggageText: "Dicas do que levar, restrições e itens essenciais.",
+        exchangeRateTitle: "Câmbio",
+        exchangeRateText: "Como funciona a moeda local, melhores formas de câmbio e uso de cartão internacional.",
+        powerOutletAndVoltageTitle: "Tomada e voltagem",
+        powerOutletAndVoltageText: "Informações sobre o padrão de tomadas e voltagem no destino.",
+        internetTitle: "Internet",
+        internetText: "Dicas para se manter conectado durante a viagem.",
+        transportTitle: "Transporte",
+        securityTitle: "Segurança",
+        cultureTitle: "Cultura e costumes",
+        transportText: "Principais opções de transporte público, apps e dicas de mobilidade.",
+        securityText: "Dicas para se manter seguro(a) durante a viagem, com orientações úteis para o dia a dia.",
+        cultureText: "Informações sobre tradições, etiquetas e o que conhecer para uma experiência mais rica."
     },
 
     tipicalFood: {
@@ -349,16 +329,16 @@ const texts = {
     },
 
     tabsOptions: {
-        provided_data: "Dados",
+        providedData: "Dados",
         accommodations: "Hospedagens",
         tours: "Passeios",
-        cost_estimate: "Custos",
+        costEstimate: "Custos",
         weather: "Clima",
         transportation: "Transporte",
         requirements: "Requisitos",
         tips: "Dicas",
         flights: "Voos",
-        tipical_foods: "Comidas",
+        tipicalFoods: "Comidas",
         itinerary: "Dia a dia"  
     },
 
@@ -375,16 +355,15 @@ const texts = {
 
     real: "R$",
     tip: "Dica",
-    all_ready: "Tudo pronto para sua viagem inesquecível!",
-    ai_warning: "Este roteiro é uma sugestão personalizada por IA com base nas informações fornecidas. Ajustes podem ser feitos conforme seu perfil e prefêrencias.",
-    good_travel: "Tenha uma viagem incrível! Boa aventura!",
-    starting_at: "A partir de ",
-    per_person: "Por pessoa",
+    allReady: "Tudo pronto para sua viagem inesquecível!",
+    aiWarning: "Este roteiro é uma sugestão personalizada por IA com base nas informações fornecidas. Ajustes podem ser feitos conforme seu perfil e prefêrencias.",
+    goodTravel: "Tenha uma viagem incrível! Boa aventura!",
+    startingAt: "A partir de ",
+    perPerson: "Por pessoa",
     free: "Gratuito",
     days: "Dias",
     people: "Pessoas",
     price: "Preço",
-
 }
 
 export default texts;

@@ -14,10 +14,15 @@ export default function Home() {
     <div id="criar-roteiro" className="bg-background-color">
       <Hero />
       <HowItWorks />
-      <PopularDestinations/>
+      <PopularDestinations />
       <ItineraryExamples />
       <WhyUse />
-      <CTA icon={<Toolbox size={80} />} title={texts.ready_to_next_travel.title} text={texts.ready_to_next_travel.text} buttonText={texts.ready_to_next_travel.button_text} isHomePage={true}/>
+      <CTA icon={<Toolbox size={80} />}
+        title={texts.readyToNextTravel.title}
+        text={texts.readyToNextTravel.text}
+        buttonText={texts.readyToNextTravel.buttonText}
+        isHomePage={true}
+      />
       <Footer />
     </div>
   );

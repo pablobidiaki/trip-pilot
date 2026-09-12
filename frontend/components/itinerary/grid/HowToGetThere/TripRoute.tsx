@@ -12,7 +12,7 @@ export default function TripRoute({country_origin_flag, country_origin_name, cou
     return(
         <div>
             <div className="flex flex-col items-center">
-                <p className="text-primary-color font-medium">{texts.how_to_get_there.boarding} </p>
+                <p className="text-primary-color font-medium">{texts.howToGetThere.boarding} </p>
                 <img src={country_origin_flag}
                         alt="Bandeira"
                         className="w-22 shadow-sm shadow-gray-400 my-1"
@@ -26,7 +26,7 @@ export default function TripRoute({country_origin_flag, country_origin_name, cou
             </div>
 
             <div className="flex flex-col items-center">
-                <p className="text-primary-color font-medium">{texts.how_to_get_there.disembarkation}</p>
+                <p className="text-primary-color font-medium">{texts.howToGetThere.disembarkation}</p>
                 <img src={country_destination_flag}
                         alt="Bandeira"
                         className="w-22 shadow-sm shadow-gray-400 my-1"

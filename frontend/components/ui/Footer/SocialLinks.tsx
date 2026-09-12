@@ -10,7 +10,7 @@ export default function SocialLinks(){
                    height={50}
             />
 
-            <p className="text-second-color text-sm mt-3">{texts.footer.social_links_text}</p>
+            <p className="text-second-color text-sm mt-3">{texts.footer.socialLinksText}</p>
 
             <div className="flex gap-5 mt-3">
                 <Image src={"/imgs/icons/instagram.png"} 

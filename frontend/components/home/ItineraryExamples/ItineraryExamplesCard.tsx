@@ -25,21 +25,21 @@ export default function ItineraryExamplesCard({ image, title, text, days, trip_t
             <p className="text-second-color text-sm mx-4 mb-2">{text}</p>
 
             <div className="flex gap-4 mx-4 text-second-color text-sm">
-                <InfoItem icon={<Clock size={20} />} text={`${days} ${texts.itinerary_example.days}`} />
+                <InfoItem icon={<Clock size={20} />} text={`${days} ${texts.days}`} />
                 <InfoItem icon={<CircleDollarSign size={20} />} text={trip_type} />
             </div>
 
             <hr className="mx-4 my-2 border-gray-300" />
 
             <div className="flex justify-between  mx-4 mb-4">
-                <p className="text-second-color">{texts.itinerary_example.starting_at}
+                <p className="text-second-color">{texts.startingAt}
                     <span className="text-primary-color font-bold">{texts.real} {price.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
                     })}
                     </span>
                 </p>
-                <p className="text-link-color underline font-medium">{texts.itinerary_example.view_itinerary}</p>
+                <p className="text-link-color underline font-medium">{texts.itineraryExample.viewItinerary}</p>
             </div>
         </Link>
     )

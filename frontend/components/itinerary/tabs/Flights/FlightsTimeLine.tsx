@@ -10,7 +10,7 @@ interface FlightsTimeLineProps {
 export default function FlightsTimeLine({ index, boardingPoint, disembarkationPoint, flyTime }: FlightsTimeLineProps) {
     return (
         <div className="px-5">
-            <p className="text-center text-primary-color font-medium text-lg mt-2 mb-2">{index}{texts.how_to_get_there.fly}</p>
+            <p className="text-center text-primary-color font-medium text-lg mt-2 mb-2">{index}{texts.howToGetThere.fly}</p>
             <div className="relative flex flex-col gap-6">
                 <div className="absolute left-1.75 top-2 bottom-2 w-0.5 bg-gray-300" />
                 <div className="relative flex items-start gap-4">

@@ -12,7 +12,7 @@ interface TransportProps {
 export default function Transport({ transports }: TransportProps) {
     return (
         <div className="border rounded-2xl border-gray-300 mt-8 bg-white">
-            <CardTitle icon={<Van />} title={texts.itinerary_titles.transportation} />
+            <CardTitle icon={<Van />} title={texts.itineraryTitles.transportation} />
             <TransportInfo icon={<CarFront />}
                 title={transports[0].type}
                 first_info={`Diaria: ~${texts.real} ${transports[0].averagePrice.toLocaleString("pt-BR", {

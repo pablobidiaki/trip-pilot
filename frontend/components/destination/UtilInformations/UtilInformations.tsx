@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import ExpandableCard from "@/components/ui/ExpandableCard/ExpandableCard";
-import { Destination } from "@/interfaces/destination.interface";
+import { DestinationInterface } from "@/interfaces/destination.interface";
 import { BusFront, CircleDollarSign, Drama, File, HeartPulse, Luggage, Plug, ShieldAlert, ShieldUser, Wifi } from "lucide-react";
 import texts from "@/constants/texts";
 
 interface UtilInformationsProps {
-    destination: Destination[]
+    destination: DestinationInterface[]
 }
 
 export default function UtilInformations({ destination }: UtilInformationsProps) {
@@ -16,7 +16,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
         <div className="mx-4 mt-10 min-w-2/3">
             <div className="flex items-center gap-2 mb-5">
                 <ShieldAlert size={35} className="text-primary-color font-medium" />
-                <h1 className="text-3xl text-primary-color font-medium">{texts.destination.util_infos}</h1>
+                <h1 className="text-3xl text-primary-color font-medium">{texts.destination.utilInfos}</h1>
             </div>
 
             <div className=" grid grid-cols-3 gap-3">
@@ -33,14 +33,14 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
                 />
 
                 <ExpandableCard icon={<HeartPulse />}
-                    title={texts.destination.vaccines_and_health}
+                    title={texts.destination.vaccinesAndHealth}
                     texts={destination[0].usefulInformation.vaccinesAndHealth}
-                    isOpen={selectedCard === texts.destination.vaccines_and_health}
+                    isOpen={selectedCard === texts.destination.vaccinesAndHealth}
                     onClick={() =>
                         setSelectedCard(
-                            selectedCard === texts.destination.vaccines_and_health
+                            selectedCard === texts.destination.vaccinesAndHealth
                                 ? null
-                                : texts.destination.vaccines_and_health
+                                : texts.destination.vaccinesAndHealth
                         )}
                 />
 
@@ -57,26 +57,26 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
                 />
 
                 <ExpandableCard icon={<CircleDollarSign />}
-                    title={texts.destination.exchange_rate}
+                    title={texts.destination.exchangeRate}
                     texts={destination[0].usefulInformation.exchangeRate}
-                    isOpen={selectedCard === texts.destination.exchange_rate}
+                    isOpen={selectedCard === texts.destination.exchangeRate}
                     onClick={() =>
                         setSelectedCard(
-                            selectedCard === texts.destination.exchange_rate
+                            selectedCard === texts.destination.exchangeRate
                                 ? null
-                                : texts.destination.exchange_rate
+                                : texts.destination.exchangeRate
                         )}
                 />
 
                 <ExpandableCard icon={<Plug />}
-                    title={texts.destination.power_outlet_and_voltage}
+                    title={texts.destination.powerOutletAndVoltage}
                     texts={destination[0].usefulInformation.powerOutletAndVoltage}
-                    isOpen={selectedCard === texts.destination.power_outlet_and_voltage}
+                    isOpen={selectedCard === texts.destination.powerOutletAndVoltage}
                     onClick={() =>
                         setSelectedCard(
-                            selectedCard === texts.destination.power_outlet_and_voltage
+                            selectedCard === texts.destination.powerOutletAndVoltage
                                 ? null
-                                : texts.destination.power_outlet_and_voltage
+                                : texts.destination.powerOutletAndVoltage
                         )}
                 />
 

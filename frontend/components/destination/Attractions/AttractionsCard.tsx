@@ -24,7 +24,7 @@ export default function AttractionsCard({ image, name, description, cost_estimat
 
                 <div className="mt-auto pt-3">
                     <span className="rounded-2xl text-green-500 px-2 py-0.5 bg-green-200 text-sm font-medium">
-                        {cost_estimate == 0 ? `${texts.free}` : `${texts.starting_at} ${texts.real} ${cost_estimate.toLocaleString("pt-BR", {
+                        {cost_estimate == 0 ? `${texts.free}` : `${texts.startingAt} ${texts.real} ${cost_estimate.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
                     })}`}

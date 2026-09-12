@@ -46,7 +46,7 @@ export default function GuideCard({ image, title, cities, duration, type, descri
                         maximumFractionDigits: 2
                     })}
                     </p>
-                    <button className="rounded-2xl cursor-pointer p-2 border border-[#6366F1] text-[#6366F1]" >{texts.itinerary_example.view_itinerary}</button>
+                    <button className="rounded-2xl cursor-pointer p-2 border border-[#6366F1] text-[#6366F1]" >{texts.itineraryExample.viewItinerary}</button>
                 </div>
             </div>
         </Link>

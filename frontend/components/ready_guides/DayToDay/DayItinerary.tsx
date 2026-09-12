@@ -22,7 +22,7 @@ export default function DayItineraryProps({ guide, daySelected }: DayItineraryPr
                     height={1150}
                     className="rounded-2xl w-full"
                 />
-                <p className="text-primary-color mt-5 font-medium text-xl">{texts.ready_guides.your_day_with_details}</p>
+                <p className="text-primary-color mt-5 font-medium text-xl">{texts.readyGuides.yourDayWithDetails}</p>
                 {resumeDay.hours.map((hour, index) => (
                     <DayInfos key={index}
                         hour={hour.hour}

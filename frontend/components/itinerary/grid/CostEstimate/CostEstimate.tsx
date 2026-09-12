@@ -11,9 +11,9 @@ interface CostEstimateProps {
 export default function CostEstimate({ itinerary }: CostEstimateProps) {
     return (
         <div className="border rounded-2xl border-gray-300 min-w-1/3 mt-8 bg-white">
-            <CardTitle icon={<CircleDollarSign />} title={texts.itinerary_titles.cost_estimate} />
+            <CardTitle icon={<CircleDollarSign />} title={texts.itineraryTitles.costEstimate} />
             <InfoRow icon={<Bed />}
-                information={texts.cost_estimate.accommodation}
+                information={texts.costEstimate.accommodation}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.accommodations.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -22,7 +22,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
             />
 
             <InfoRow icon={<Utensils />}
-                information={texts.cost_estimate.food}
+                information={texts.costEstimate.food}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.food.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -31,7 +31,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
             />
 
             <InfoRow icon={<Binoculars />}
-                information={texts.cost_estimate.tours}
+                information={texts.costEstimate.tours}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.activities.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -40,7 +40,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
             />
 
             <InfoRow icon={<Car />}
-                information={texts.cost_estimate.transport}
+                information={texts.costEstimate.transport}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.transport.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -49,7 +49,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
             />
             
             <InfoRow icon={<ShoppingCart />}
-                information={texts.cost_estimate.shop_and_extras}
+                information={texts.costEstimate.shopAndExtras}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.extra.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -67,10 +67,10 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
             </div>
             <p className="m-4 mt-8 text-primary-color bg-blue-100 p-2 rounded-2xl">
                 <span className="text-blue-700 font-medium">{texts.tip}: </span>
-                {texts.cost_estimate.you_informed} {texts.real} {itinerary[0].budgetTotal.toLocaleString("pt-BR", {
+                {texts.costEstimate.youInformed} {texts.real} {itinerary[0].budgetTotal.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
-                })} {texts.cost_estimate.its_possible_adjust}
+                })} {texts.costEstimate.itsPossibleAdjust}
             </p>
         </div>
     )

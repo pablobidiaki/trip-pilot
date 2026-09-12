@@ -37,13 +37,13 @@ export default function GuideHero({guide}: GuideHeroProps) {
                 </div>
 
                 <div className="flex justify-between">
-                    <GuideInfoCard icon={<Calendar />} title={texts.ready_guides.best_time} text={guide[0].bestTime} />
-                    <GuideInfoCard icon={<Languages />} title={texts.ready_guides.language} text={guide[0].language} />
-                    <GuideInfoCard icon={<CircleDollarSign />} title={texts.ready_guides.currency} text={guide[0].currenty} />
+                    <GuideInfoCard icon={<Calendar />} title={texts.readyGuides.bestTime} text={guide[0].bestTime} />
+                    <GuideInfoCard icon={<Languages />} title={texts.readyGuides.language} text={guide[0].language} />
+                    <GuideInfoCard icon={<CircleDollarSign />} title={texts.readyGuides.currency} text={guide[0].currenty} />
                 </div>
 
                 <div className="mt-16">
-                    <GradientButton text={texts.ready_guides.save_guide} type="button" />
+                    <GradientButton text={texts.readyGuides.saveGuide} type="button" />
                 </div>
             </div>
         </div>

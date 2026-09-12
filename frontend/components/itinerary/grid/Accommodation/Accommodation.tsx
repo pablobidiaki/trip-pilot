@@ -30,7 +30,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
 
     return (
         <div className="border rounded-2xl border-gray-300 w-full mt-8 bg-white">
-            <CardTitle icon={<Hotel />} title={texts.itinerary_titles.accommodations} />
+            <CardTitle icon={<Hotel />} title={texts.itineraryTitles.accommodations} />
             <div className="flex py-5 px-1">
                 <ChevronLeft onClick={minusButtonClicked} size={30} className=" cursor-pointer p-1 my-auto mr-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
                 <div className="relative w-75 h-75 mr-5">
@@ -67,7 +67,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                     </div>
 
                     <div className="bg-blue-100 p-2 rounded-2xl mt-8">
-                        <p className="font-medium text-blue-900">{texts.accommodations.cost_estimate}
+                        <p className="font-medium text-blue-900">{texts.accommodations.costEstimate}
                             <span className="text-primary-color font-medium">{texts.real} {accommodations[option].costEstimate.toLocaleString("pt-BR", {
                                 minimumFractionDigits: 2,
                                 maximumFractionDigits: 2

@@ -16,9 +16,9 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
     return (
         <div className="relative animate-[optionSelector_300ms_ease-out]">
             <div className="bg-white rounded-2xl max-w-[60%] mx-auto shadow-2xl shadow-gray-300">
-                <h1 className="text-center text-4xl p-2 pt-2 text-primary-color">Sua viagem para: {itinerary[0].destination}</h1>
+                <h1 className="text-center text-4xl p-2 pt-2 text-primary-color ">{texts.providedData.yourTravelTo} <span className="capitalize">{itinerary[0].destination}</span></h1>
 
-                <div className="flex w-fit mx-auto gap-4 mt-5 items-center">
+                <div className="flex w-fit mx-auto gap-4 mt-5 items-center capitalize">
                     <p className="text-second-color text-2xl">{itinerary[0].departure}</p>
                     <MoveRight size={40} className="text-second-color" />
                     <p className="text-second-color text-2xl">{itinerary[0].destination}</p>
@@ -35,22 +35,22 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                 <p className="text-center text-second-color">{itinerary[0].days} {texts.days}</p>
                 <div className="flex justify-center gap-10 mt-10">
                     <ProvidedDataCard icon={<CalendarDays />}
-                        title={texts.provided_data.date}
+                        title={texts.providedData.date}
                         value={formatDate(itinerary[0].startDate)}
                     />
 
                     <ProvidedDataCard icon={<Clock />}
-                        title={texts.provided_data.days}
+                        title={texts.days}
                         value={itinerary[0].days.toString()}
                     />
 
                     <ProvidedDataCard icon={<Users />}
-                        title={texts.provided_data.travelers_tab}
+                        title={texts.providedData.travelersTab}
                         value={`${itinerary[0].travelers.toString()} ${texts.people}`}
                     />
 
                     <ProvidedDataCard icon={<CircleDollarSign />}
-                        title={texts.provided_data.budget_tab}
+                        title={texts.providedData.budgetTab}
                         value={`${texts.real} ${itinerary[0].budgetTotal.toLocaleString("pt-BR", {
                             minimumFractionDigits: 2,
                             maximumFractionDigits: 2
@@ -58,7 +58,7 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                     />
                 </div>
                 <p className="mx-auto text-center text-second-color text-xl mt-15">Seu roteiro está pronto! Explore as abas ao lado para conferir todos os detalhes.</p>
-                <p className="mx-auto text-center text-second-color text-sm pb-5 italic">{texts.ai_warning}</p>
+                <p className="mx-auto text-center text-second-color text-sm pb-5 italic">{texts.aiWarning}</p>
             </div>
         </div>
     )
