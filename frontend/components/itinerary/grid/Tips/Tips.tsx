@@ -9,6 +9,7 @@ interface TipsProps{
 }
 
 export default function Tips({tips}: TipsProps){
+    console.log(tips)
     return(
         <div className="bg-white border rounded-2xl border-gray-300 max-w-1/2 mt-8">
             <CardTitle icon={<Lightbulb />} title={texts.itinerary_titles.tips} />

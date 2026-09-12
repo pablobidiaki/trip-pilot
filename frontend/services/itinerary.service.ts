@@ -46,11 +46,6 @@ export async function createItinerary(data: createItineraryData) {
 
 export async function getItinerary(id: string): Promise<ItineraryInterface[]> {
     const response = await fetch(`http://localhost:3001/itinerary/${id}`)
-    if(typeof response === "string"){
-        console.log('siom é uma styring ')
-        JSON.parse(response)
-        console.log(response)
-    }
 
     if (!response.ok)
         throw new Error("Erro ao buscar itinerary")

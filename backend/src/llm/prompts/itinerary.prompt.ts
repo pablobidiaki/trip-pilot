@@ -29,10 +29,8 @@ export function createItineraryPrompt(dto) {
         13. Caso alguma informação não possa ser determinada, utilize "".
         14. Nunca invente um formato diferente do JSON fornecido.
         15. Todas propiedades de datas devem seguir o padrão yyyy-mm-dd
-        16. Sempre irei te passar todas as informações que o usuario enviou, sendo elas (origin, destination, days, startDate, budgetTotal, travelers e travelType) então essa propriedade sempre deve estar preenchida no seu retorno/resposta
-        17. Em todos os campos escritos imageURL deixe a resposta como "" mas nunca se esqueça de preencher o campo "photoPrompt" (sempre em inglês assim como dito na regra 12) pois com ele que irei conseguir a URL da imagem!
-        18. Nos retornos que devem possuir mais de um objeto, segue sempre as mesmas chaves, apenas crie outro objeto alterando apenas os valores.
-        19. NUNCA me responda com um JSON dentro de uma string responda DIRETAMENTE um json 
+        16. Em todos os campos escritos imageURL deixe a resposta como "" mas nunca se esqueça de preencher o campo "photoPrompt" (sempre em inglês assim como dito na regra 12) pois com ele que irei conseguir a URL da imagem!
+        17. Nos retornos que devem possuir mais de um objeto, segue sempre as mesmas chaves, apenas crie outro objeto alterando apenas os valores.
         --------------------------------------------------
         ## Regras específicas
 
@@ -109,7 +107,7 @@ export function createItineraryPrompt(dto) {
 
         ### tips
 
-        Retorne de 3 a 5 dicas realmente úteis. Evite dicas genéricas.
+        Retorne 4 dicas, uma para transporte, dinheiro, internet e conveniência
 
         --------------------------------------------------
 
@@ -147,146 +145,143 @@ export function createItineraryPrompt(dto) {
         Apenas substitua os valores.
         
         {
-            "departure": "São Paulo",
-            "destination": "China",
-            "startDate": "2026-01-20",
-            "endDate": "2026-01-24",
-            "countryOrigin": "Brazil",
-            "countryDestination": "China",
-            "countryOriginFlagURL": "",
-            "countryDestinationFlagURL": "",
-            "travelType": "Adventure",
-            "currency": "BRL",
-            "days": 5,
-            "travelers": 2,
-            "budgetTotal": 500,
-            "itinerary": {
-                "tips": [
-                "Baixe o Alipay ou WeChat Pay e vincule seu cartão de crédito antes de viajar, pois pagamentos em dinheiro ou cartão físico são raramente aceitos.",
-                "Compre um e-SIM com roaming ou configure uma VPN antes de embarcar para conseguir acessar redes sociais e serviços bloqueados no país.",
-                "Para visitar a Grande Muralha, opte pela seção de Mutianyu, que é menos lotada do que Badaling e possui infraestrutura excelente.",
-                "Tenha sempre o endereço do seu hotel escrito em caracteres chineses no celular para mostrar aos motoristas de táxi."
-                ],
-                "tours": [
+            "tips": [
                 {
-                    "name": "Praça da Paz Celestial",
-                    "price": 0,
-                    "imageURL": "",
-                    "photoPrompt": "Tiananmen Square Beijing",
-                    "description": "Coração histórico e político de Pequim"
+                    "type": "Transporte", 
+                    "text": "dica sobre transporte"
+                },
+                {
+                    "type": "Dinheiro", 
+                    "text": "dica sobre dinheiro"
+                },
+                {
+                    "type": "Conveniencia", 
+                    "text": "dica sobre conveniencia"
+                },
+                {
+                    "type": "Internet", 
+                    "text": "dica sobre internet"
                 }
-                ],
-                "ticket": [
+            ],
+            "tours": [
+            {
+                "name": "Praça da Paz Celestial",
+                "price": 0,
+                "imageURL": "",
+                "photoPrompt": "Tiananmen Square Beijing",
+                "description": "Coração histórico e político de Pequim"
+            }
+            ],
+            "ticket": [
+            {
+                "isGoing": true,
+                "flyTime": "10 horas",
+                "boardingPoint": "Aeroporto de guarulhos",
+                "disembarkationPoint": "Aeroporto de Madri"
+            },
+            {
+                "isGoing": true,
+                "flyTime": "30 horas",
+                "boardingPoint": "Aeroporto de Madri",
+                "disembarkationPoint": "Aeroporto de Pequim"
+            },
+            {
+                "isGoing": false,
+                "flyTime": "10 horas",
+                "boardingPoint": "Aeroporto de Madri",
+                "disembarkationPoint": "Aeroporto de Guarulhos"
+            },
+            {
+                "isGoing": false,
+                "flyTime": "30 horas",
+                "boardingPoint": "Aeroporto de Pequim",
+                "disembarkationPoint": "Aeroporto de Madri"
+            }
+            ],
+            "weather": {
+            "season": "Outono",
+            "recommendation": "Leve casaco leve, calçados confortáveis e agasalho para as noites mais frias.",
+            "averageTemperature": "15°C"
+            },
+            "dayToDay": [
+            {
+                "day": "Dia 1 - 10/08 (Dom)",
+                "title": "Chegada e Check-in",
+                "imageURL": "",
+                "photoPrompt": "Pequim landscape",
+                "morning": "Chegada em Pequim e check-in no hotel",
+                "afternoon": "Rua Coberta e lojas do centro",
+                "night": "Jantar em restaurantes tipicos",
+                "dayCostEstimate": 500,
+                "hours": [
                 {
-                    "isGoing": true,
-                    "flyTime": "10 horas",
-                    "boardingPoint": "Aeroporto de guarulhos",
-                    "disembarkationPoint": "Aeroporto de Madri"
+                    "tip": "Deixe as malas no hotel mesmo se o quarto ainda não estiver liberado",
+                    "hour": "08:00",
+                    "title": "Checkin",
+                    "description": "Chegada em Pequim, desembarque e acomodação no hotel"
                 },
                 {
-                    "isGoing": true,
-                    "flyTime": "30 horas",
-                    "boardingPoint": "Aeroporto de Madri",
-                    "disembarkationPoint": "Aeroporto de Pequim"
-                },
-                {
-                    "isGoing": false,
-                    "flyTime": "10 horas",
-                    "boardingPoint": "Aeroporto de Madri",
-                    "disembarkationPoint": "Aeroporto de Guarulhos"
-                },
-                {
-                    "isGoing": false,
-                    "flyTime": "30 horas",
-                    "boardingPoint": "Aeroporto de Pequim",
-                    "disembarkationPoint": "Aeroporto de Madri"
-                }
-                ],
-                "weather": {
-                "season": "Outono",
-                "recommendation": "Leve casaco leve, calçados confortáveis e agasalho para as noites mais frias.",
-                "averageTemperature": "15°C"
-                },
-                "dayToDay": [
-                {
-                    "day": "Dia 1 - 10/08 (Dom)",
-                    "title": "Chegada e Check-in",
-                    "imageURL": "",
-                    "photoPrompt": "Pequim landscape",
-                    "morning": "Chegada em Pequim e check-in no hotel",
-                    "afternoon": "Rua Coberta e lojas do centro",
-                    "night": "Jantar em restaurantes tipicos",
-                    "dayCostEstimate": 500,
-                    "hours": [
-                    {
-                        "tip": "Deixe as malas no hotel mesmo se o quarto ainda não estiver liberado",
-                        "hour": "08:00",
-                        "title": "Checkin",
-                        "description": "Chegada em Pequim, desembarque e acomodação no hotel"
-                    },
-                    {
-                        "tip": "Tome um café da manha caprichado no hotel",
-                        "hour": "10:00",
-                        "title": "Café da manhã",
-                        "description": "Descanço e café da manhã"
-                    }
-                    ]
-                }
-                ],
-                "tipicalFood": [
-                {
-                    "title": "Pato de Pequim",
-                    "category": "Prato principal",
-                    "imageURL": "",
-                    "photoPrompt": "Peking Duck Dish",
-                    "description": "Prato tradicional",
-                    "averagePrice": 80
-                }
-                ],
-                "costEstimate": {
-                "food": 140,
-                "extra": 30,
-                "total": 500,
-                "ticket": 4600,
-                "transport": 80,
-                "activities": 70,
-                "accommodations": 180
-                },
-                "requirements": {
-                "visa": true,
-                "passport": true,
-                "vaccines": [
-                    "Febre amarela"
-                ],
-                "documents": [
-                    "Passaporte válido por no mínimo 6 meses",
-                    "Visto para a China",
-                    "Comprovante de hospedagem"
-                ]
-                },
-                "accommodations": [
-                {
-                    "name": "Beijing Central Hotel",
-                    "rating": 4.6,
-                    "reviewsCount": 450,
-                    "googleMapsEmbed": "https://maps.google.com/maps?q=Beijing+Central+Hotel&output=embed",
-                    "address": "18 Xuanwumenwai Street, Xicheng District, China, 100052",
-                    "includes": "Wi-Fi gratuito, ar-condicionado e recepção 24h",
-                    "roomType": "Quarto Standard",
-                    "costEstimate": 180
-                }
-                ],
-                "transportation": [
-                {
-                    "type": "Aluguel de carro",
-                    "averagePrice": 280
-                },
-                {
-                    "type": "Metrô e Ônibus",
-                    "averagePrice": 15
+                    "tip": "Tome um café da manha caprichado no hotel",
+                    "hour": "10:00",
+                    "title": "Café da manhã",
+                    "description": "Descanço e café da manhã"
                 }
                 ]
             }
+            ],
+            "tipicalFood": [
+            {
+                "title": "Pato de Pequim",
+                "category": "Prato principal",
+                "imageURL": "",
+                "photoPrompt": "Peking Duck Dish",
+                "description": "Prato tradicional",
+                "averagePrice": 80
+            }
+            ],
+            "costEstimate": {
+            "food": 140,
+            "extra": 30,
+            "total": 500,
+            "ticket": 4600,
+            "transport": 80,
+            "activities": 70,
+            "accommodations": 180
+            },
+            "requirements": {
+            "visa": true,
+            "passport": true,
+            "vaccines": [
+                "Febre amarela"
+            ],
+            "documents": [
+                "Passaporte válido por no mínimo 6 meses",
+                "Visto para a China",
+                "Comprovante de hospedagem"
+            ]
+            },
+            "accommodations": [
+            {
+                "name": "Beijing Central Hotel",
+                "rating": 4.6,
+                "reviewsCount": 450,
+                "googleMapsEmbed": "https://maps.google.com/maps?q=Beijing+Central+Hotel&output=embed",
+                "address": "18 Xuanwumenwai Street, Xicheng District, China, 100052",
+                "includes": "Wi-Fi gratuito, ar-condicionado e recepção 24h",
+                "roomType": "Quarto Standard",
+                "costEstimate": 180
+            }
+            ],
+            "transportation": [
+            {
+                "type": "Aluguel de carro",
+                "averagePrice": 280
+            },
+            {
+                "type": "Metrô e Ônibus",
+                "averagePrice": 15
+            }
+            ]
         }
     `
 }

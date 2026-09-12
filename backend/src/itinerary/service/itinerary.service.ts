@@ -29,8 +29,9 @@ export class ItineraryService {
         const itineraryJson = await this.llmService.generate(dto)
         const countryOriginFlag = await this.getCountryFlag(dto.countryOrigin)
         const countryDestinationFlag = await this.getCountryFlag(dto.countryDestination)
+        const endDate = this.calculateEndDate(dto.startDate, dto.days)
 
-        //await this.getAllImagesURLs(dto.itinerary)
+        await this.getAllImagesURLs(JSON.parse(itineraryJson))
 
         const itinerary = this.prisma.itinerary.create({
             data: {
@@ -38,7 +39,7 @@ export class ItineraryService {
                 departure: dto.departure,
                 destination: dto.destination,
                 startDate: dto.startDate,
-                endDate: this.calculateEndDate(dto.startDate, dto.days),
+                endDate: endDate,
                 countryOrigin: dto.countryOrigin,
                 countryDestination: dto.countryDestination,
                 countryOriginFlagURL: countryOriginFlag,
@@ -48,10 +49,10 @@ export class ItineraryService {
                 days: dto.days,
                 travelers: dto.travelers,
                 budgetTotal: dto.budgetTotal,
-                itinerary: itineraryJson
+                itinerary: JSON.parse(itineraryJson)
             },
         });
-        
+
         return itinerary
     }
 
@@ -72,10 +73,8 @@ export class ItineraryService {
     calculateEndDate(startDate: string, days: number): string {
         const endDate = new Date(startDate)
 
-        // '-1' because day 1 counts as a travel day
         endDate.setDate(endDate.getDate() + days - 1)
 
-        // split to remove the time
         return endDate.toISOString().split('T')[0]
     }
 
