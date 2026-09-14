@@ -9,38 +9,50 @@ import Input from "@/components/ui/Input/Input";
 import Dropdown from "@/components/ui/Dropdown/Dropdown";
 import GradientButton from "@/components/ui/Buttons/GradientButton";
 import { createItinerary } from "@/services/itinerary.service";
+import ItineraryGeneratingModal from "../ItineraryGeneratingModal/ItineraryGeneratingModal";
+import { useRouter } from 'next/navigation'
 
 export default function HeroForm() {
-    const [departure, setDeparture] = useState("");
-    const [destination, setDestination] = useState("");
-    const [days, setDays] = useState("");
-    const [startDate, setStartDate] = useState("");
-    const [budget, setBudget] = useState("");
-    const [travelers, setTravelers] = useState("");
-    const [travelType, setTravelType] = useState("aventura");
-    const [aiProvider, setAiProvider] = useState("gemini");
+    const router = useRouter()
+
+    const [departure, setDeparture] = useState("")
+    const [destination, setDestination] = useState("")
+    const [days, setDays] = useState("")
+    const [startDate, setStartDate] = useState("")
+    const [budget, setBudget] = useState("")
+    const [travelers, setTravelers] = useState("")
+    const [travelType, setTravelType] = useState("aventura")
+    const [aiProvider, setAiProvider] = useState("gemini")
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
+        setIsLoading(true)
 
-        const data = {
-            userId: "5e9a0a38-4777-4358-93d5-afd69472f469",
-            departure: departure,
-            destination: destination,
-            days: Number(days),
-            startDate: startDate,
-            countryOrigin: departure,
-            countryDestination: destination,
-            currency: "BRL",
-            budgetTotal: Number(budget),
-            travelers: Number(travelers),
-            travelType: travelType,
-            aiProvider: aiProvider,
-            itinerary: {}
+        try {
+            const data = {
+                userId: "5e9a0a38-4777-4358-93d5-afd69472f469",
+                departure: departure,
+                destination: destination,
+                days: Number(days),
+                startDate: startDate,
+                countryOrigin: departure,
+                countryDestination: destination,
+                currency: "BRL",
+                budgetTotal: Number(budget),
+                travelers: Number(travelers),
+                travelType: travelType,
+                aiProvider: aiProvider,
+                itinerary: {}
+            }
+
+            const itinerary = await createItinerary(data)
+            router.push(`/itinerary/${itinerary.id}`)
+        } catch (err) {
+            console.log(`Erro ao gerar roteiro ${err}`)
+        } finally {
+            setIsLoading(false)
         }
-
-        const itinerary = await createItinerary(data)
-        console.log(itinerary)
     }
 
     return (
@@ -113,6 +125,8 @@ export default function HeroForm() {
             </div>
 
             <GradientButton text={texts.form.buttonText} type="submit" />
+
+            <ItineraryGeneratingModal isOpen={isLoading} />
         </form>
     )
 }
