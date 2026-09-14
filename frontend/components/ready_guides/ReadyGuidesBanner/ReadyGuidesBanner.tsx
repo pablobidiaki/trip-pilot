@@ -5,7 +5,7 @@ import texts from "@/constants/texts";
 export default function ReadyGuidesBanner() {
     return (
         <div className="relative overflow-hidden pb-15">
-            <img src={"/imgs/readyGuides/background.jpg"}
+            <img src={"/imgs/ready_guides/background.jpg"}
                 alt="Banner"
                 className="absolute inset-0 h-full w-full object-cover z-0 brightness-40"
             />

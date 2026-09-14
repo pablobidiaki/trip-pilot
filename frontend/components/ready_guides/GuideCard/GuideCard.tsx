@@ -17,17 +17,17 @@ interface GuideCardProps {
 export default function GuideCard({ image, title, cities, duration, type, description, link_guide, price }: GuideCardProps) {
     return (
         <Link href={`/ready_guides/${link_guide}`}>
-            <div className="bg-white relative mb-2 mt-10 max-w-90 overflow-hidden rounded-2xl border border-gray-300 transition-all duration-200  hover:scale-101">
+            <div className="bg-white relative mb-2 mt-10 max-w-100 overflow-hidden rounded-2xl border border-gray-300 transition-all duration-200  hover:scale-101">
                 <Heart className="absolute right-2 mt-1 text-white cursor-pointer transition-colors hover:fill-red-500 hover:text-red-500" />
                 <img
                     src={image}
                     alt={`${title} image`}
                     width={75}
                     height={75}
-                    className="w-full object-cover"
+                    className="w-full max-h-[250] min-h-[250] object-cover"
                 />
 
-                <h1 className="text-primary-color font-medium text-2xl mx-2 mt-2">{title}</h1>
+                <h1 className="text-primary-color font-medium text-2xl mx-2 mt-2 truncate">{title}</h1>
                 <div className="flex">
                     {cities.map((city, index) => (
                         <h2 key={index} className="text-second-color mx-2 text-sm">{city}</h2>
@@ -39,7 +39,7 @@ export default function GuideCard({ image, title, cities, duration, type, descri
                     <InfoItem icon={<Landmark />} text={type} />
                 </div>
 
-                <p className="text-primary-color mx-2 text-sm">{description}</p>
+                <p className="text-primary-color mx-2 text-sm line-clamp-2">{description}</p>
                 <div className=" flex justify-between items-center mx-2 mb-2 mt-5">
                     <p className="p-2 bg-green-200 text-green-500 rounded-2xl">{texts.real} {price.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,

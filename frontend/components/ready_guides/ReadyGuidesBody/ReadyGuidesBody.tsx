@@ -9,7 +9,7 @@ export default async function ReadyGuidesBody() {
     return (
         <div className="relative overflow-hidden bg-background-color -mt-5 rounded-t-4xl">
             <ButtonFilters />
-            <div className="grid grid-cols-3 justify-items-center">
+            <div className="grid grid-cols-4 justify-items-center ">
                 {readyGuides.map((guide, index) => (
                     <GuideCard key={index}
                         image={guide.imageURL}
