@@ -19,7 +19,7 @@ export default function TipicalFoodsCard({ imageURL, title, description, average
     return (
         <div className="flex rounded-2xl m-4 border border-gray-200 min-h-30 max-h-30">
             <div className="relative group cursor-pointer" onClick={() => setIsOpen(true)}>
-                <img src={imageURL} className="rounded-l-2xl min-h-30 max-h-30 max-w-32 transition-all group-hover:brightness-50" />
+                <img src={imageURL} className="rounded-l-2xl min-h-30 max-h-30 max-w-32 transition-all group-hover:brightness-50" alt={`${title} image`}/>
                 <Expand className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
                     size={28}
                 />

@@ -17,7 +17,7 @@ export default function TripRoute({country_origin_flag, country_origin_name, cou
                         alt="Bandeira"
                         className="w-22 shadow-sm shadow-gray-400 my-1"
                 />
-                <p className="text-second-color"> {country_origin_name}</p>
+                <p className="text-second-color capitalize"> {country_origin_name}</p>
             </div>
             
             <div className="flex">
@@ -31,7 +31,7 @@ export default function TripRoute({country_origin_flag, country_origin_name, cou
                         alt="Bandeira"
                         className="w-22 shadow-sm shadow-gray-400 my-1"
                 />
-                <p className="text-second-color"> {country_destination_name}</p>
+                <p className="text-second-color capitalize"> {country_destination_name}</p>
             </div>
         </div>
     )

@@ -18,6 +18,7 @@ export default function Toggle({isGrid, onChange}: ToggleProps) {
                 transition-colors
                 duration-200
                 bg-gray-400
+                cursor-pointer
             `}
             >
                 <span className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform duration-200 ${isGrid ? "translate-x-6" : "translate-x-0"}`}
