@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AiModels, TripTypesArray } from "@/constants/enum";
-import { MapPin, CalendarDays, DollarSign, Users, BrainCircuit, Backpack, Currency } from "lucide-react";
+import { MapPin, CalendarDays, DollarSign, Users, BrainCircuit, Backpack, Currency, Calendar1 } from "lucide-react";
 
 import texts from "@/constants/texts";
 import Input from "@/components/ui/Input/Input";
@@ -11,6 +11,8 @@ import GradientButton from "@/components/ui/Buttons/GradientButton";
 import { createItinerary } from "@/services/itinerary.service";
 import ItineraryGeneratingModal from "../ItineraryGeneratingModal/ItineraryGeneratingModal";
 import { useRouter } from 'next/navigation'
+import DatePicker from "./DatePicker";
+import Calendar from "@/components/ready_guides/DayToDay/Calendar";
 
 export default function HeroForm() {
     const router = useRouter()
@@ -79,26 +81,23 @@ export default function HeroForm() {
                 <Input icon={<CalendarDays />}
                     title={texts.form.howDays}
                     placeholder={texts.form.howDaysPlaceholder}
-                    type='text'
+                    type='number'
                     value={days}
                     onChange={(e) => setDays(e.target.value)}
                     required={true}
                 />
-                <Input icon={<CalendarDays />}
+                <DatePicker icon={<Calendar1 size={22} />}
                     title={texts.form.when}
-                    placeholder={texts.form.whenPlaceholder}
-                    type='text'
                     value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    required={true}
+                    onChange={setStartDate}
                 />
                 <Input icon={<DollarSign />}
                     title={texts.form.budget}
                     placeholder={texts.form.budgetPlaceholder}
-                    type='text'
+                    type='number'
                     value={budget}
                     onChange={(e) => setBudget(e.target.value)}
-                    required={false}
+                    required={true}
                 />
             </div>
             <div className="my-4 grid grid-cols-3 gap-3">

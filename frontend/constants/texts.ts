@@ -25,7 +25,7 @@ const texts = {
         howDays: "Quantos dias?",
         howDaysPlaceholder: "Ex: 10",
         when: "Quando?",
-        whenPlaceholder: "Escolha as datas",
+        whenPlaceholder: "Escolha a data",
         budget: "Orçamento (opcional)",
         budgetPlaceholder: "Ex: 10000",
         buttonText: "Planejar minha viagem com IA",
