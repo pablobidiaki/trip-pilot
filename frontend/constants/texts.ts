@@ -276,7 +276,7 @@ const texts = {
         nightLife: "Vida noturna",
         documents: "Documentos",
         vaccinesAndHealth: "Vacina e saúde",
-        bagagem: "Bagagem",
+        baggage: "Bagagem",
         exchangeRate: "Câmbio",
         powerOutletAndVoltage: "Tomada e voltagem",
         internet: "Internet",

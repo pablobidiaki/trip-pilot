@@ -78,7 +78,7 @@ export class CreateDestinationDto {
             "vaccines_and_health": [
                 "Nenhuma vacina obrigatória (Recomendado seguro viagem com alta cobertura)"
             ],
-            "bagagem": [
+            "baggage": [
                 "Adaptador de tomada universal",
                 "Sapatos confortáveis e fáceis de tirar",
                 "Powerbank",

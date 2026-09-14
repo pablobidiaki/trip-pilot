@@ -15,7 +15,7 @@ interface AverageCost {
 }
 
 interface usefulInformation {
-    bagagem: string[]
+    baggage: string[]
     culture: string[]
     internet: string[]
     security: string[]

@@ -45,14 +45,14 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
                 />
 
                 <ExpandableCard icon={<Luggage />}
-                    title={texts.destination.bagagem}
-                    texts={destination[0].usefulInformation.bagagem}
-                    isOpen={selectedCard === texts.destination.bagagem}
+                    title={texts.destination.baggage}
+                    texts={destination[0].usefulInformation.baggage}
+                    isOpen={selectedCard === texts.destination.baggage}
                     onClick={() =>
                         setSelectedCard(
-                            selectedCard === texts.destination.bagagem
+                            selectedCard === texts.destination.baggage
                                 ? null
-                                : texts.destination.bagagem
+                                : texts.destination.baggage
                         )}
                 />
 
