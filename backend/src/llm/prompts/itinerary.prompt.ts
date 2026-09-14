@@ -201,7 +201,7 @@ export function createItineraryPrompt(dto) {
             "weather": {
             "season": "Outono",
             "recommendation": "Leve casaco leve, calçados confortáveis e agasalho para as noites mais frias.",
-            "averageTemperature": "15°C"
+            "averageTemperature": 15
             },
             "dayToDay": [
             {
