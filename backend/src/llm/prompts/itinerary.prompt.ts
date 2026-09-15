@@ -117,15 +117,15 @@ export function createItineraryPrompt(dto) {
         O número de objetos deve ser exatamente igual ao número de dias da viagem ou seja se a viagem vai durar 12 dias, preciso ter 12 objetos.
         Cada dia deve conter obrigatoriamente:
 
-        - day (seguir padrao informado no json)
+        - day (seguir padrao informado no json: 'Dia X - dd/mm (Dom)' )
         - title (pequeno titulo do que será realizado no dia)
-        - imageURL (retorno deve ser "")
+        - imageURL (sempre deve possuir essa chave mas o retorno deve ser "")
         - photoPrompt (leve em consideração que isso será utilizado para uma consulta na api da pexels então me retorne SEMPRE em ingles e algo basico mas que descreva bem a atração para o melhor retorno deles possivel)
         - morning (pequeno resumo do que sera feito na manha do respectivo dia)
         - afternoon (pequeno resumo do que sera feito na tarde do respectivo dia)
         - night (pequeno resumo do que sera feito na boite do respectivo dia)
         - dayCostEstimate (custo estimado do respectivo dia)
-        - hours (neste objeto será informado para o usuario as atividades a se fazer em cada hora do dia, siga o padrao presente no json de exemplo, porém pode ter mais ou menos objetos de horas, crie o que for mais viavel para o dia atual)
+        - hours (Organize as atividades do dia em horários, seguindo a estrutura do JSON de exemplo. Os horários do exemplo são apenas uma referência e não devem ser copiados obrigatoriamente. Crie uma programação realista e viável para o dia, distribuindo as atividades de acordo com seus horários de funcionamento, duração estimada, tempo de deslocamento, refeições e descanso. Garanta que as atividades estejam em ordem cronológica, sem sobreposição de horários e com intervalos adequados entre elas. Adapte a quantidade e os horários das atividades conforme necessário para representar o melhor roteiro possível para aquele dia)
 
         --------------------------------------------------
 
@@ -137,6 +137,27 @@ export function createItineraryPrompt(dto) {
         - flyTime(tempo de voo medio)
         - boardingPoint(local de embarque)
         - disembarkationPoint(local de desembarque)
+
+        --------------------------------------------------
+
+        ### tipicalFood
+
+        Esse objeto se refere a comidas tipicas do destino selecionado pelo usuario
+        Sempre deve retornar 3 pratos tipicos:
+        - title (Nome do prato em pt-BR)
+        - category (categoria do prato, sobremesa, prato principal, entrada, etc)
+        - imageURL (sempre vazio "")
+        - photoPrompt (nome do prato em ingles para pesquisa de imagem na api do pexels)
+        - description (pequena descricao do prato)
+        - averagePrice (preco medio cobrado)
+
+        --------------------------------------------------
+
+        ### Weather
+        
+        - season (retorne apenas uma estação caso a viagem ocorra na transição, sempre me envie a ultima estação)
+        - recommendation (pequena dica de como se comportar/vestir nessa temperatura)
+        - averageTemperature (temperatura média no periodo da viagem)
 
         --------------------------------------------------
 
@@ -204,83 +225,107 @@ export function createItineraryPrompt(dto) {
             "averageTemperature": 15
             },
             "dayToDay": [
-            {
-                "day": "Dia 1 - 10/08 (Dom)",
-                "title": "Chegada e Check-in",
-                "imageURL": "",
-                "photoPrompt": "Pequim landscape",
-                "morning": "Chegada em Pequim e check-in no hotel",
-                "afternoon": "Rua Coberta e lojas do centro",
-                "night": "Jantar em restaurantes tipicos",
-                "dayCostEstimate": 500,
-                "hours": [
                 {
-                    "tip": "Deixe as malas no hotel mesmo se o quarto ainda não estiver liberado",
-                    "hour": "08:00",
-                    "title": "Checkin",
-                    "description": "Chegada em Pequim, desembarque e acomodação no hotel"
-                },
-                {
-                    "tip": "Tome um café da manha caprichado no hotel",
-                    "hour": "10:00",
-                    "title": "Café da manhã",
-                    "description": "Descanço e café da manhã"
+                    "day": "Dia 1 - 10/08 (Dom)",
+                    "title": "Chegada e Check-in",
+                    "imageURL": "",
+                    "photoPrompt": "Pequim landscape",
+                    "morning": "Chegada em Pequim e check-in no hotel",
+                    "afternoon": "Rua Coberta e lojas do centro",
+                    "night": "Jantar em restaurantes tipicos",
+                    "dayCostEstimate": 500,
+                    "hours": [
+                        {
+                            "tip": "Deixe as malas no hotel mesmo se o quarto ainda não estiver liberado",
+                            "hour": "08:00",
+                            "title": "Checkin e café da manhã",
+                            "description": "Chegada em Pequim, desembarque, acomodasse e tome café no hotel"
+                        },
+                         {
+                            "tip": "",
+                            "hour": "10:00",
+                            "title": "informacoes",
+                            "description": "informacoes"
+                        },
+                         {
+                            "tip": "",
+                            "hour": "12:00",
+                            "title": "informacoes",
+                            "description": "informacoes"
+                        },
+                         {
+                            "tip": "informacoes",
+                            "hour": "16:00",
+                            "title": "informacoes",
+                            "description": "informacoes"
+                        },
+                         {
+                            "tip": "",
+                            "hour": "18:00",
+                            "title": "informacoes",
+                            "description": "informacoes"
+                        },
+                         {
+                            "tip": "informacoes",
+                            "hour": "20:00",
+                            "title": "informacoes",
+                            "description": "informacoes"
+                        }
+                    ]
                 }
-                ]
-            }
             ],
             "tipicalFood": [
-            {
-                "title": "Pato de Pequim",
-                "category": "Prato principal",
-                "imageURL": "",
-                "photoPrompt": "Peking Duck Dish",
-                "description": "Prato tradicional",
-                "averagePrice": 80
-            }
+                {
+                    "title": "Pato de Pequim",
+                    "category": "Prato principal",
+                    "imageURL": "",
+                    "photoPrompt": "Peking Duck Dish",
+                    "description": "Prato tradicional",
+                    "averagePrice": 80
+                }
             ],
             "costEstimate": {
-            "food": 140,
-            "extra": 30,
-            "total": 500,
-            "ticket": 4600,
-            "transport": 80,
-            "activities": 70,
-            "accommodations": 180
+                "food": 140,
+                "extra": 30,
+                "total": 500,
+                "ticket": 4600,
+                "transport": 80,
+                "activities": 70,
+                "accommodations": 180
             },
             "requirements": {
-            "visa": true,
-            "passport": true,
-            "vaccines": [
-                "Febre amarela"
-            ],
-            "documents": [
-                "Passaporte válido por no mínimo 6 meses",
-                "Visto para a China",
-                "Comprovante de hospedagem"
-            ]
+                "visa": true,
+                "passport": true,
+                "vaccines": [
+                    "Febre amarela"
+                ],
+                "documents": [
+                    "Passaporte válido por no mínimo 6 meses",
+                    "Visto para a China",
+                    "Comprovante de hospedagem"
+                ]
             },
             "accommodations": [
-            {
-                "name": "Beijing Central Hotel",
-                "rating": 4.6,
-                "reviewsCount": 450,
-                "googleMapsEmbed": "https://maps.google.com/maps?q=Beijing+Central+Hotel&output=embed",
-                "address": "18 Xuanwumenwai Street, Xicheng District, China, 100052",
-                "includes": "Wi-Fi gratuito, ar-condicionado e recepção 24h",
-                "roomType": "Quarto Standard",
-                "costEstimate": 180
-            }
+                {
+                    "name": "Beijing Central Hotel",
+                    "rating": 4.6,
+                    "reviewsCount": 450,
+                    "googleMapsEmbed": "https://maps.google.com/maps?q=Beijing+Central+Hotel&output=embed",
+                    "address": "18 Xuanwumenwai Street, Xicheng District, China, 100052",
+                    "includes": "Wi-Fi gratuito, ar-condicionado e recepção 24h",
+                    "roomType": "Quarto Standard",
+                    "costEstimate": 180
+                }
             ],
             "transportation": [
-            {
-                "type": "Aluguel de carro",
-                "averagePrice": 280
-            },
-            {
-                "type": "Metrô e Ônibus",
-                "averagePrice": 15
-            }
+                {
+                    "type": "Aluguel de carro",
+                    "averagePrice": 280
+                },
+                {
+                    "type": "Metrô e Ônibus",
+                    "averagePrice": 15
+                }
             ]
         }
     `

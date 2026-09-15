@@ -16,7 +16,7 @@ export default function Transportation({transports}: TransportationProps){
             <div className="bg-white w-[60%] mx-auto py-2 px-5 rounded-2xl shadow-2xl shadow-gray-300">
                 <h1 className="text-2xl text-center text-primary-color font-medium">{texts.transportation.tabTitle}</h1>
                 <h2 className="text-sm text-center text-second-color font-medium">{texts.transportation.tabSubtitle}</h2>
-                <div className="flex gap-75 justify-center">
+                <div className="flex gap-6 justify-center">
                     <TransportationCard icon={<CarFront size={40}/>} type={transports[0].type} averagePrice={transports[0].averagePrice} advantages={carAdvantages} typePayment={texts.transportation.diary}/>
                     <TransportationCard icon={<BusFront size={40}/>} type={transports[1].type} averagePrice={transports[1].averagePrice} advantages={publicTransportAdvantages} typePayment={texts.transportation.price}/>
                 </div>

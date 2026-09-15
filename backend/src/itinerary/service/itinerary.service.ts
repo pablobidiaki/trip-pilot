@@ -99,19 +99,18 @@ export class ItineraryService {
                 }
             })
         )
-        console.log("images food")
-            data.tipicalFood = await Promise.all(
-                data.tipicalFood.map(async (food) => {
-                    const imageURL = await this.imagesService.getImages(food.photoPrompt, 'square')
-                
-                    return {
-                        ...food,
-                        imageURL,
-                    }
-                })
-            )
 
-        console.log("images daytoday")
+        data.tipicalFood = await Promise.all(
+            data.tipicalFood.map(async (food) => {
+                const imageURL = await this.imagesService.getImages(food.photoPrompt, 'square')
+            
+                return {
+                    ...food,
+                    imageURL,
+                }
+            })
+        )
+
         data.dayToDay = await Promise.all(
             data.dayToDay.map(async (day) => {
                 const imageURL = await this.imagesService.getImages(day.photoPrompt, 'landscape')

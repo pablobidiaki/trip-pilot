@@ -11,10 +11,12 @@ interface DayToDayProps {
 
 export default function DayToDay({ itinerary }: DayToDayProps) {
     const [selected, setSelected] = useState(0)
-    const sliderRef = useRef<HTMLDivElement>(null)
     const [isDragging, setIsDragging] = useState(false)
     const [startX, setStartX] = useState(0)
     const [scrollLeft, setScrollLeft] = useState(0)
+    const [imageLoading, setImageLoading] = useState(true)
+
+    const sliderRef = useRef<HTMLDivElement>(null)
 
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!sliderRef.current) return
@@ -50,38 +52,27 @@ export default function DayToDay({ itinerary }: DayToDayProps) {
         setIsDragging(false)
     }
 
+    const daySelected = (index: number) => {
+        setSelected(index)
+        setImageLoading(true)
+    }
+
     return (
         <div className="relative animate-[optionSelector_300ms_ease-out]">
             <div ref={sliderRef}
-                className={`
-                    bg-white
-                    p-2
-                    rounded-2xlz'
-                    flex
-                    max-w-full
-                    gap-10
-                    overflow-x-auto
-                    px-2
-                    select-none
-                    scrollbar-hide
-                    ${isDragging
-                        ? "cursor-grabbing"
-                        : "cursor-grab"
-                    }
-                `}
+                className={`bg-white p-2 rounded-2xl flex max-w-full gap-10 overflow-x-auto px-2 select-none scrollbar-hide ${isDragging ? "cursor-grabbing" : "cursor-grab" }`}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}
             >
                 {itinerary.map((day, index) => (
-
                     <DaySelector
                         key={index}
                         index={index}
                         day={day.day}
                         selected={selected}
-                        onClick={() => setSelected(index)}
+                        onClick={() => daySelected(index)}
                     />
                 ))}
             </div>
@@ -90,6 +81,8 @@ export default function DayToDay({ itinerary }: DayToDayProps) {
                 {itinerary[selected] && (
                     <DayInformations
                         itinerary={itinerary[selected]}
+                        imageLoading={imageLoading}
+                        setImageLoading={() => setImageLoading(false)}
                     />
                 )}
             </div>

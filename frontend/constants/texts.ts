@@ -128,7 +128,8 @@ const texts = {
         costEstimate: "Custo estimado por noite: ",
         reviews: "avaliações",
         roomType: "Tipo de quarto: ",
-        averagePricePerPerson: "Diária média por pessoa: "
+        averagePricePerPerson: "Diária média por pessoa: ",
+        
     },
 
     costEstimate: {
@@ -161,9 +162,9 @@ const texts = {
         visaFalse: "Não é necessário visto.",
         passportTrue: "Necessário passaporte.",
         passportFalse: "Não é necessário passaporte.",
-        documents: "Documentos",
         vaccinesAndHealth: "Vacinas e saúde",
         beforeEnter: "Antes de embarcar",
+        documents: "Documentos",
         payment: "Pagamentos",
         connection: "Conectividade",
         documentText: "Mantenha cópias digitais do passaporte e reservas.",
@@ -364,6 +365,8 @@ const texts = {
     days: "Dias",
     people: "Pessoas",
     price: "Preço",
+    clear: "Limpar",
+    today: "Hoje"
 }
 
 export default texts;

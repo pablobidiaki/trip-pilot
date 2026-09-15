@@ -14,7 +14,6 @@ interface AccommodationProps {
 }
 
 export default function Accommodation({ accommodations }: AccommodationProps) {
-    console.log(accommodations)
     const [option, setOption] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 

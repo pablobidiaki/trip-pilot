@@ -20,12 +20,12 @@ export default function Flights({ tickets, countryDestinationFlag, countryOrigin
                     <div className="flex flex-col items-center">
                         <p className="text-primary-color">{texts.howToGetThere.boarding}</p>
                         <img src={countryOriginFlag} className="max-w-30 shadow-2xl shadow-gray-300" />
-                        <p className="text-second-color">{countryOriginName}</p>
+                        <p className="text-second-color capitalize">{countryOriginName}</p>
                     </div>
                     <div className="flex flex-col items-center">
                         <p className="text-primary-color">{texts.howToGetThere.disembarkation}</p>
                         <img src={countryDestinationFlag} className="max-w-30 shadow-2xl shadow-gray-300" />
-                        <p className="text-second-color">{countryDestinationName}</p>
+                        <p className="text-second-color capitalize">{countryDestinationName}</p>
                     </div>
                 </div>
                 <div className="flex justify-evenly gap-10 mt-5">
