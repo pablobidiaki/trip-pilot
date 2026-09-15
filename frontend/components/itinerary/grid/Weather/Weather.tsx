@@ -13,7 +13,7 @@ export default function Weather({ weather }: WeatherProps) {
             <CardTitle icon={<SunSnow />} title={texts.itineraryTitles.weather} />
             <div className="mx-4 text-primary-color">
                 <p className="my-2">{texts.weather.seasonText} <span className="text-second-color">{weather.season}</span></p>
-                <p className="my-2">{texts.weather.temperatureText} <span className="text-second-color">{weather.averageTemperature}</span></p>
+                <p className="my-2 ">{texts.weather.temperatureText} <span className="text-second-color">{weather.averageTemperature}{texts.weather.graus}</span></p>
                 <p className="mb-2"><span className="text-purple-400">{texts.tip}:</span> {weather.recommendation}</p>
             </div>
         </div>

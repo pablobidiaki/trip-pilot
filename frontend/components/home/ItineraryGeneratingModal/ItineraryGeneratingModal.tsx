@@ -22,7 +22,7 @@ export default function ItineraryGeneratingModal({ isOpen }: ItineraryGenerating
     if (!isOpen) return null
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" >
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 animate-[optionSelector_300ms_ease-out]">
             <div className="relative w-120 rounded-xl bg-white p-2">
                 <Image src={"/imgs/icons/trip_pilot.png"}
                     alt="TripPilot icon"
