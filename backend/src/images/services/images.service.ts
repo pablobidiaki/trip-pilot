@@ -15,6 +15,6 @@ export class ImagesService {
 
         const data = await response.json()
 
-        return data.photos[0].src.original
+        return data.photos[0]?.src.original
     }
 }

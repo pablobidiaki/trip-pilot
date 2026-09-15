@@ -16,9 +16,8 @@ export class GeminiProvider implements LlmProvider {
     }
 
     async generate(prompt: string): Promise<string> {
-
         const response = await this.ai.models.generateContent({
-            model: 'gemini-3.6-flash',
+            model: 'gemini-3.5-flash-lite',
             contents: prompt,
         });
 

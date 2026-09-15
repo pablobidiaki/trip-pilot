@@ -12,7 +12,6 @@ import { createItinerary } from "@/services/itinerary.service";
 import ItineraryGeneratingModal from "../ItineraryGeneratingModal/ItineraryGeneratingModal";
 import { useRouter } from 'next/navigation'
 import DatePicker from "./DatePicker";
-import Calendar from "@/components/ready_guides/DayToDay/Calendar";
 
 export default function HeroForm() {
     const router = useRouter()
@@ -23,8 +22,8 @@ export default function HeroForm() {
     const [startDate, setStartDate] = useState("")
     const [budget, setBudget] = useState("")
     const [travelers, setTravelers] = useState("")
-    const [travelType, setTravelType] = useState("aventura")
-    const [aiProvider, setAiProvider] = useState("gemini")
+    const [travelType, setTravelType] = useState("Aventura")
+    const [aiProvider, setAiProvider] = useState("Gemini")
     const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
@@ -49,6 +48,7 @@ export default function HeroForm() {
             }
 
             const itinerary = await createItinerary(data)
+                
             router.push(`/itinerary/${itinerary.id}`)
         } catch (err) {
             console.log(`Erro ao gerar roteiro ${err}`)
@@ -113,13 +113,13 @@ export default function HeroForm() {
                     title={texts.form.type}
                     options={TripTypesArray}
                     value={travelType}
-                    onChange={(e) => setTravelType(e.target.value)}
+                    onChange={setTravelType}
                 />
                 <Dropdown icon={<BrainCircuit />}
                     title={texts.form.aiModel}
                     options={AiModels}
                     value={aiProvider}
-                    onChange={(e) => setAiProvider(e.target.value)}
+                    onChange={setAiProvider}
                 />
             </div>
 
