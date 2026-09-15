@@ -176,7 +176,7 @@ export function createItineraryPrompt(dto) {
                     "text": "dica sobre dinheiro"
                 },
                 {
-                    "type": "Conveniencia", 
+                    "type": "Conveniência", 
                     "text": "dica sobre conveniencia"
                 },
                 {
