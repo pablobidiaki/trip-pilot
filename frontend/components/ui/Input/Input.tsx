@@ -11,12 +11,13 @@ interface InputProps {
     value: string,
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
     required: boolean
+    tailwindTags?: string
 }
 
-export default function Input({ icon, title, placeholder, type, value, onChange, required }: InputProps) {
+export default function Input({ icon, title, placeholder, type, value, onChange, required, tailwindTags }: InputProps) {
     const inputRef = useRef<HTMLInputElement>(null)
     return (
-        <div onClick={() => inputRef.current?.focus()} className="inline-block ">
+        <div onClick={() => inputRef.current?.focus()} className={`inline-block ${tailwindTags}`}>
             <div className="border-2 rounded-2xl border-gray-300 flex items-center p-1 hover:border-blue-300 cursor-pointer">
                 <span className="text-main-primary-color m-2">{icon}</span>
                 <div>

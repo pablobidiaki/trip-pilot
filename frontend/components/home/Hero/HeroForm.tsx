@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiModels, TripTypesArray } from "@/constants/enum";
 import { MapPin, CalendarDays, DollarSign, Users, BrainCircuit, Backpack, Currency, Calendar1 } from "lucide-react";
 
@@ -14,9 +14,14 @@ import { useRouter } from 'next/navigation'
 import DatePicker from "./DatePicker";
 
 export default function HeroForm() {
+    const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY
     const router = useRouter()
 
+    const [search, setSearch] = useState("")
+    const [countries, setCountries] = useState<any[]>([])
     const [departure, setDeparture] = useState("")
+    const [departureSelected, setDepartureSelected] = useState(false)
+    const [destinationSelected, setDestinationSelected] = useState(false)
     const [destination, setDestination] = useState("")
     const [days, setDays] = useState("")
     const [startDate, setStartDate] = useState("")
@@ -48,7 +53,7 @@ export default function HeroForm() {
             }
 
             const itinerary = await createItinerary(data)
-                
+
             router.push(`/itinerary/${itinerary.id}`)
         } catch (err) {
             console.log(`Erro ao gerar roteiro ${err}`)
@@ -57,25 +62,99 @@ export default function HeroForm() {
         }
     }
 
+    useEffect(() => {
+        if (!search.trim()) {
+            setCountries([])
+            return
+        }
+
+        const timer = setTimeout(() => {
+            fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${search}&type=country&format=json&apiKey=${apiKey}`, { method: 'GET' })
+                .then((response) => response.json())
+                .then((result) => {
+                    const countries = result.results
+                        .map((result: any) => result.country)
+                        .filter(Boolean)
+
+                    setCountries([...new Set(countries)])
+                })
+                .catch((error) => console.log("error", error))
+        }, 300)
+
+        return () => clearTimeout(timer)
+    }, [search])
+
     return (
         <form className="bg-white p-4 max-w-3/7 mx-4 rounded-2xl" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-3">
-                <Input icon={<MapPin />}
-                    title={texts.form.exitPoint}
-                    placeholder={texts.form.exitPointPlaceholder}
-                    type='text'
-                    value={departure}
-                    onChange={(e) => setDeparture(e.target.value)}
-                    required={true}
-                />
-                <Input icon={<MapPin />}
-                    title={texts.form.destination}
-                    placeholder={texts.form.destinationPlaceholder}
-                    type='text'
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
-                    required={true}
-                />
+                <div className="relative">
+                    <Input icon={<MapPin />}
+                        title={texts.form.exitPoint}
+                        placeholder={texts.form.exitPointPlaceholder}
+                        type="text"
+                        value={departure}
+                        onChange={(e) => {
+                            setSearch(e.target.value)
+                            setDeparture(e.target.value)
+                            setDepartureSelected(false)
+                        }}
+                        required={true}
+                        tailwindTags="w-full"
+                    />
+
+                    {departure && !departureSelected && countries.length > 0 && (
+                        <div className="absolute top-full left-0 z-50 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+                            {countries.slice(0, 5).map((country) => (
+                                <button key={country}
+                                    className="w-full px-4 py-3 text-left transition-colors hover:bg-gray-100 border-b border-b-gray-200 cursor-pointer"
+                                    type="button"
+                                    onClick={() => {
+                                        setSearch("")
+                                        setDeparture(country)
+                                        setCountries([])
+                                        setDepartureSelected(true)
+                                    }}>
+                                    {country}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                <div className="relative">
+                    <Input icon={<MapPin />}
+                        title={texts.form.destination}
+                        placeholder={texts.form.destinationPlaceholder}
+                        type="text"
+                        value={destination}
+                        onChange={(e) => {
+                            setSearch(e.target.value)
+                            setDestination(e.target.value)
+                            setDestinationSelected(false)
+                        }}
+                        required={true}
+                        tailwindTags="w-full"
+                    />
+
+                    {destination && !destinationSelected && countries.length > 0 && (
+                        <div className="absolute top-full left-0 z-50 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+                            {countries.slice(0, 5).map((country) => (
+                                <button key={country}
+                                    className="w-full px-4 py-3 text-left transition-colors hover:bg-gray-100 border-b border-b-gray-200 cursor-pointer"
+                                    type="button"
+                                    onClick={() => {
+                                        setSearch("")
+                                        setDestination(country)
+                                        setCountries([])
+                                        setDestinationSelected(true)
+                                    }}>
+                                    {country}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
             </div>
             <div className="my-4 grid grid-cols-3 gap-3">
                 <Input icon={<CalendarDays />}
