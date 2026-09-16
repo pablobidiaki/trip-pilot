@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
 import { useEffect, useState } from "react";
 import { AiModels, TripTypesArray } from "@/constants/enum";
-import { MapPin, CalendarDays, DollarSign, Users, BrainCircuit, Backpack, Currency, Calendar1 } from "lucide-react";
+import { MapPin, CalendarDays, DollarSign, Users, BrainCircuit, Backpack, Calendar1 } from "lucide-react";
 
 import texts from "@/constants/texts";
 import Input from "@/components/ui/Input/Input";
@@ -13,18 +13,26 @@ import ItineraryGeneratingModal from "../ItineraryGeneratingModal/ItineraryGener
 import { useRouter } from 'next/navigation'
 import DatePicker from "./DatePicker";
 
+interface Country {
+    countryName: string
+    countryNamePtBR: string
+    countryCode: string
+}
+
 export default function HeroForm() {
     const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY
     const router = useRouter()
 
     const [search, setSearch] = useState("")
-    const [countries, setCountries] = useState<any[]>([])
+    const [countries, setCountries] = useState<Country[]>([])
     const [departure, setDeparture] = useState("")
     const [departureSelected, setDepartureSelected] = useState(false)
     const [destinationSelected, setDestinationSelected] = useState(false)
     const [destination, setDestination] = useState("")
     const [days, setDays] = useState("")
     const [startDate, setStartDate] = useState("")
+    const [countryOrigin, setCountryOrigin ] = useState("")
+    const [countryDestination, setCountryDestination] = useState("")
     const [budget, setBudget] = useState("")
     const [travelers, setTravelers] = useState("")
     const [travelType, setTravelType] = useState("Aventura")
@@ -42,8 +50,8 @@ export default function HeroForm() {
                 destination: destination,
                 days: Number(days),
                 startDate: startDate,
-                countryOrigin: departure,
-                countryDestination: destination,
+                countryOrigin: countryOrigin,
+                countryDestination: countryDestination,
                 currency: "BRL",
                 budgetTotal: Number(budget),
                 travelers: Number(travelers),
@@ -69,20 +77,37 @@ export default function HeroForm() {
         }
 
         const timer = setTimeout(() => {
-            fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${search}&type=country&format=json&apiKey=${apiKey}`, { method: 'GET' })
+            fetch(
+                `https://api.geoapify.com/v1/geocode/autocomplete?text=${search}&type=country&format=json&apiKey=${apiKey}`,
+                {
+                    method: "GET"
+                }
+            )
                 .then((response) => response.json())
                 .then((result) => {
-                    const countries = result.results
-                        .map((result: any) => result.country)
-                        .filter(Boolean)
+                    const countries: Country[] = result.results
+                        .map((result: any) => ({
+                            countryName: result.country,
+                            countryNamePtBR: result.other_names?.["name:pt"] ?? result.country,
+                            countryCode: result.country_code
+                        }))
+                        .filter((country: Country) => country.countryName)
 
-                    setCountries([...new Set(countries)])
+                    setCountries(
+                        countries.filter(
+                            (country, index, self) =>
+                                index ===
+                                self.findIndex(
+                                    (item) => item.countryCode === country.countryCode
+                                )
+                        )
+                    )
                 })
                 .catch((error) => console.log("error", error))
         }, 300)
 
         return () => clearTimeout(timer)
-    }, [search])
+    }, [search, apiKey])
 
     return (
         <form className="bg-white p-4 max-w-3/7 mx-4 rounded-2xl" onSubmit={handleSubmit}>
@@ -105,16 +130,23 @@ export default function HeroForm() {
                     {departure && !departureSelected && countries.length > 0 && (
                         <div className="absolute top-full left-0 z-50 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
                             {countries.slice(0, 5).map((country) => (
-                                <button key={country}
-                                    className="w-full px-4 py-3 text-left transition-colors hover:bg-gray-100 border-b border-b-gray-200 cursor-pointer"
+                                <button key={country.countryCode}
+                                    className="w-full px-4 py-3 text-left transition-colors bg-gray-100 hover:bg-gray-200 border-b border-b-gray-300 cursor-pointer flex items-center gap-3"
                                     type="button"
                                     onClick={() => {
                                         setSearch("")
-                                        setDeparture(country)
+                                        setDeparture(country.countryNamePtBR)
                                         setCountries([])
                                         setDepartureSelected(true)
-                                    }}>
-                                    {country}
+                                        setCountryOrigin(country.countryName)
+                                    }}
+                                >
+                                    <img className="w-8 h-6 object-cover"
+                                        src={`https://flags.restcountries.com/v5/w640/${country.countryCode}.png`}
+                                        alt={`Bandeira de ${country.countryNamePtBR}`}
+                                    />
+
+                                    <span> {country.countryNamePtBR} </span>
                                 </button>
                             ))}
                         </div>
@@ -139,16 +171,24 @@ export default function HeroForm() {
                     {destination && !destinationSelected && countries.length > 0 && (
                         <div className="absolute top-full left-0 z-50 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
                             {countries.slice(0, 5).map((country) => (
-                                <button key={country}
-                                    className="w-full px-4 py-3 text-left transition-colors hover:bg-gray-100 border-b border-b-gray-200 cursor-pointer"
+                                <button key={country.countryCode}
+                                    className="w-full px-4 py-3 text-left transition-colors bg-gray-100 hover:bg-gray-200 border-b border-b-gray-300 cursor-pointer flex items-center gap-3"
                                     type="button"
                                     onClick={() => {
                                         setSearch("")
-                                        setDestination(country)
+                                        setDestination(country.countryNamePtBR)
                                         setCountries([])
                                         setDestinationSelected(true)
+                                        setCountryDestination(country.countryName)
                                     }}>
-                                    {country}
+
+                                    <img
+                                        className="w-8 h-6 object-cover"
+                                        src={`https://flags.restcountries.com/v5/w640/${country.countryCode}.png`}
+                                        alt={`Bandeira de ${country.countryNamePtBR}`}
+                                    />
+
+                                    <span>{country.countryNamePtBR}</span>
                                 </button>
                             ))}
                         </div>
