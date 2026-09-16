@@ -1,3 +1,4 @@
+import { auth } from "@/auth"
 import texts from "@/constants/texts";
 import CTA from "@/components/ui/CTA/CTA";
 import Hero from "@/components/home/Hero/Hero";
@@ -9,7 +10,11 @@ import PopularDestinations from "@/components/home/PopularDestinations/PopularDe
 
 import { Toolbox } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
+
+  console.log(session)
+  console.log(session?.user?.email)
   return (
     <div id="criar-roteiro" className="bg-background-color">
       <Hero />
