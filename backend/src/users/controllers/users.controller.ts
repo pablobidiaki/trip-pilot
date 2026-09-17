@@ -8,16 +8,26 @@ import { CreateUsersDto } from '../dtos/create-users-dto';
 export class UsersController {
     constructor(private readonly usersService: UsersService,) { }
 
-    @Post()
-    @ApiOperation({
-        summary: 'Create an user',
-    })
-    async create(@Body() dto: CreateUsersDto) {
-        const user = await this.usersService.createIfNotExists(dto)
-        return {
-            success: true,
-            user
+    @Post("register")
+    async register(@Body() data: CreateUsersDto) {
+        return this.usersService.register(
+            data.name,
+            data.email,
+            data.password
+        )
+    }
+
+    @Post("login")
+    async login(
+        @Body() data: {
+            email: string
+            password: string
         }
+    ) {
+        return this.usersService.login(
+            data.email,
+            data.password
+        )
     }
 
     @Get()

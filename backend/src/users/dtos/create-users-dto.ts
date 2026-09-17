@@ -1,30 +1,22 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
-
-/* 
-Body struct:
-{
-    "name": "Estevao",
-    "email": "estevao@gmail.com",
-}
-*/
+import { IsEmail, IsNotEmpty, MinLength } from "class-validator"
 
 export class CreateUsersDto {
   @ApiProperty({
     example: 'Pablo',
   })
-  @IsString()
+  @IsNotEmpty()
   name: string;
 
   @ApiProperty({
     example: "pablo@gmail.com",
   })
-  @IsString()
+  @IsEmail()
   email: string;
 
   @ApiProperty({
     example: "https://lh3.googleusercontent.com/a/ACg8ocKLBFsEF9owNXphGXfNIJU6HqelKb4Fso-d-lwdcwHyC6aL3TA0kQ=s96-c",
   })
-  @IsString()
-  image: string;
+  @MinLength(8)
+  password: string;
 }

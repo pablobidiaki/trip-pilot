@@ -17,14 +17,14 @@ export default function UserMenu({ image, name, email}: UserMenuProps) {
     return (
         <div className="relative">
             <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
-                <img src={image ?? ""} alt="Foto do usuário" className="w-8.75 h-8.75 rounded-full object-cover" />
+                <img src={image ? image : "/imgs/icons/user.png"} alt="Foto do usuário" className={`w-8.75 h-8.75 rounded-full object-cover ${image ? '' : 'bg-white'}`} />
             </div>
 
             {isOpen && (
                 <div className="absolute right-0 top-12 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
                     <div className="p-4 border-b border-gray-100">
                         <div className="flex items-center gap-3">
-                            <img src={image?.toString() ?? ""} alt="user photo" className="w-10 h-10 rounded-full object-cover" />
+                            <img src={image ? image : "/imgs/icons/user.png"} alt="user photo" className="w-10 h-10 rounded-full object-cover" />
 
                             <div className="min-w-0">
                                 <p className="font-semibold text-gray-800 truncate"> {name} </p>

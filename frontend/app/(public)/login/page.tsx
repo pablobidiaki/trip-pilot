@@ -5,9 +5,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react"
+import { useRouter } from "next/dist/client/components/navigation";
+import InputWithTitle from "@/components/ui/InputWithTitle/InputWithTitle";
 
 export default function Login() {
+  const router = useRouter()
+
   const [viewPassword, setViewPassword] = useState(false)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(false)
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
+
+    const result = await signIn("credentials", { email, password, redirect: false})
+
+    if (result?.error) {
+      setError(true)
+      return
+    }
+
+    router.push("/")
+  }
 
   return (
     <div className="grid grid-cols-2">
@@ -24,24 +44,32 @@ export default function Login() {
           <h1 className="text-center text-4xl text-primary-color mt-10">Bem-vindo de volta</h1>
           <p className="text-center text-lg text-second-color mb-5">Entre para continuar planejando suas aventuras.</p>
           <form >
-            <p className="mb-1 text-primary-color font-medium">Email</p>
-            <div className="border flex items-center p-2 rounded-xl mb-5">
-              <Mail />
-              <input type="email" className="outline-none w-full ml-2 px-1" placeholder="seu@email.com" />
+            <InputWithTitle icon={<Mail />}
+              title={"Email"}
+              placeholder="seu@email.com"
+              inputType="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required={true}
+            />
+
+            <div className="flex items-center rounded-xl gap-3">
+              <InputWithTitle icon={<LockKeyhole />}
+                title={"Crie sua senha"}
+                placeholder="Crie sua senha"
+                inputType={!viewPassword ? "password" : "text"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required={true}
+              />
+              <Eye onClick={() => setViewPassword(!viewPassword)} className="cursor-pointer mt-2" />
             </div>
 
-            <p className="mb-1 text-primary-color font-medium">Senha</p>
-            <div className="border flex items-center p-2 rounded-xl">
-              <div className="flex items-center w-full">
-                <LockKeyhole />
-                <input type={!viewPassword ? "password" : "text"} className="outline-none w-full ml-2 px-1" placeholder="Sua senha" />
-              </div>
-              <Eye onClick={() => setViewPassword(!viewPassword)} className="cursor-pointer" />
-            </div>
-
-            <p className="mt-2 text-end text-link-color font-medium">Esqueci minha senha</p>
-
-            <button className="bg-blue-color py-2 text-white rounded-xl w-full my-10">Entrar</button>
+            <p className="mt-2 text-end text-link-color font-medium mb-10">Esqueci minha senha</p>
+            {error && (
+              <p className="mt-10 mb-2 text-center text-red-500 italic">Email ou senha inválidos</p>
+            )}
+            <button onClick={handleSubmit} className="bg-blue-color py-2 text-white rounded-xl w-full mb-10 cursor-pointer">Entrar</button>
           </form>
 
           <div className="flex items-center gap-3">
@@ -49,8 +77,8 @@ export default function Login() {
             <p>ou continue com</p>
             <hr className="flex-1 border-gray-300" />
           </div>
-
-          <button type="button" onClick={() => {signIn("google", { callbackUrl: "/" })}} className="w-full mt-10 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-300 hover:bg-gray-50 cursor-pointer">
+          
+          <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }} className="w-full mt-10 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-300 hover:bg-gray-50 cursor-pointer">
             <img
               src="/imgs/icons/google.png"
               alt="Google"

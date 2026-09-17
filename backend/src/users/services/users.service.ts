@@ -1,12 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUsersDto } from '../dtos/create-users-dto';
 import { PrismaService } from '../../prisma/prisma.service';
+import * as bcrypt from "bcrypt"
+import { ConflictException, Injectable, UnauthorizedException  } from "@nestjs/common"
 
-interface teste{
-    id: string;
-    email: string;
-    name: string;
-    image: string;
+
+interface teste {
+  id: string;
+  email: string;
+  name: string;
+  image: string;
 }
 
 @Injectable()
@@ -29,32 +30,40 @@ export class UsersService {
 
   async getByEmail(email: string) {
     const user = this.prisma.user.findUnique({
-        where: {
-            email: email,
-        },
+      where: {
+        email: email,
+      },
     })
 
     return user
-}
+  }
 
-  async createIfNotExists(data: CreateUsersDto) {
-    const user = await this.prisma.user.findUnique({
+  async register(name: string, email: string, password: string) {
+    const existingUser = await this.prisma.user.findUnique({
       where: {
-        email: data.email,
-      },
+        email: email
+      }
     })
 
-    if (user) {
-      return user
+    if (existingUser) {
+      throw new ConflictException("Email já cadastrado")
     }
 
-    return this.prisma.user.create({
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    const user = await this.prisma.user.create({
       data: {
-        name: data.name,
-        email: data.email,
-        image: data.image,
-      },
+        name,
+        email,
+        password: hashedPassword
+      }
     })
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    }
   }
 
   deleteAll() {
@@ -70,4 +79,31 @@ export class UsersService {
 
     return user
   }
+
+  async login(email: string, password: string) {
+
+    const user = await this.prisma.user.findUnique({
+        where: { email }
+    })
+
+    if (!user || !user.password) {
+        throw new UnauthorizedException("Email ou senha inválidos")
+    }
+
+    const passwordMatch = await bcrypt.compare(
+        password,
+        user.password
+    )
+
+    if (!passwordMatch) {
+        throw new UnauthorizedException("Email ou senha inválidos")
+    }
+
+    return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        image: user.image,
+    }
+}
 }
