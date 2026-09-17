@@ -7,6 +7,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/dist/client/components/navigation";
 import InputWithTitle from "@/components/ui/InputWithTitle/InputWithTitle";
+import texts from "@/constants/texts";
 
 export default function Login() {
   const router = useRouter()
@@ -39,14 +40,14 @@ export default function Login() {
         loading="eager"
       />
       <div>
-        <p className="text-end p-5">Não tem conta? <Link href={"/register"} className="text-link-color ">Criar conta</Link></p>
+        <p className="text-end p-5">{texts.loginAndRegister.dontHaveAccount} <Link href={"/register"} className="text-link-color ">{texts.loginAndRegister.createAccount}</Link></p>
         <div className="max-w-[50%] mx-auto">
-          <h1 className="text-center text-4xl text-primary-color mt-10">Bem-vindo de volta</h1>
-          <p className="text-center text-lg text-second-color mb-5">Entre para continuar planejando suas aventuras.</p>
+          <h1 className="text-center text-4xl text-primary-color mt-10">{texts.loginAndRegister.welcomeAgain}</h1>
+          <p className="text-center text-lg text-second-color mb-5">{texts.loginAndRegister.loginToContinue}</p>
           <form >
             <InputWithTitle icon={<Mail />}
-              title={"Email"}
-              placeholder="seu@email.com"
+              title={texts.loginAndRegister.email}
+              placeholder={texts.loginAndRegister.emailPlaceholder}
               inputType="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -55,8 +56,8 @@ export default function Login() {
 
             <div className="flex items-center rounded-xl gap-3">
               <InputWithTitle icon={<LockKeyhole />}
-                title={"Crie sua senha"}
-                placeholder="Crie sua senha"
+                title={texts.loginAndRegister.password}
+                placeholder={texts.loginAndRegister.passwordPlaceholder}
                 inputType={!viewPassword ? "password" : "text"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -65,16 +66,19 @@ export default function Login() {
               <Eye onClick={() => setViewPassword(!viewPassword)} className="cursor-pointer mt-2" />
             </div>
 
-            <p className="mt-2 text-end text-link-color font-medium mb-10">Esqueci minha senha</p>
+            <p className="mt-2 text-end text-link-color font-medium mb-10 cursor-pointer">
+              {texts.loginAndRegister.forgotPassword}
+            </p>
+
             {error && (
-              <p className="mt-10 mb-2 text-center text-red-500 italic">Email ou senha inválidos</p>
+              <p className="mt-10 mb-2 text-center text-red-500 italic">{texts.loginAndRegister.emailOrPasswordInvalid}</p>
             )}
-            <button onClick={handleSubmit} className="bg-blue-color py-2 text-white rounded-xl w-full mb-10 cursor-pointer">Entrar</button>
+            <button onClick={handleSubmit} className="bg-blue-color py-2 text-white rounded-xl w-full mb-10 cursor-pointer">{texts.loginAndRegister.enter}</button>
           </form>
 
           <div className="flex items-center gap-3">
             <hr className="flex-1 border-gray-300" />
-            <p>ou continue com</p>
+            <p>{texts.loginAndRegister.orContinueWith}</p>
             <hr className="flex-1 border-gray-300" />
           </div>
           
@@ -85,7 +89,7 @@ export default function Login() {
               className="w-5 h-5"
             />
 
-            <span>Continuar com Google</span>
+            <span>{texts.loginAndRegister.continueWithGoogle}</span>
           </button>
         </div>
       </div>

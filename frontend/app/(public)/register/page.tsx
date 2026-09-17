@@ -8,6 +8,7 @@ import { signIn } from "next-auth/react"
 import InputWithTitle from "@/components/ui/InputWithTitle/InputWithTitle";
 import { registerUser } from "@/services/user.service";
 import { useRouter } from "next/dist/client/components/navigation";
+import texts from "@/constants/texts";
 
 export default function Register() {
   const router = useRouter()
@@ -21,7 +22,7 @@ export default function Register() {
 
   const createUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    
+
     if (password !== confirmPassword) {
       setPasswordsMatch(false)
     } else {
@@ -35,14 +36,14 @@ return (
   <div>
     <div className="grid grid-cols-2">
       <div>
-        <p className="text-end p-5">Já tem uma conta? <Link href={"/login"} className="text-link-color ">Entrar</Link></p>
+        <p className="text-end p-5">{texts.loginAndRegister.alreadyHaveAccount} <Link href={"/login"} className="text-link-color ">{texts.loginAndRegister.enter}</Link></p>
         <div className="max-w-[50%] mx-auto">
-          <h1 className="text-center text-4xl text-primary-color mt-0">Crie sua conta</h1>
-          <p className="text-center text-lg text-second-color mb-5">É rápido, fácil e grátis.</p>
+          <h1 className="text-center text-4xl text-primary-color mt-0">{texts.loginAndRegister.createYourAccount}</h1>
+          <p className="text-center text-lg text-second-color mb-5">{texts.loginAndRegister.createYourAccountText}</p>
           <form onSubmit={createUser}>
             <InputWithTitle icon={<User />}
-              title={"Nome de usuario"}
-              placeholder="Ex: viajante_explorador"
+              title={texts.loginAndRegister.name}
+              placeholder={texts.loginAndRegister.namePlaceholder}
               inputType="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -50,8 +51,8 @@ return (
             />
 
             <InputWithTitle icon={<Mail />}
-              title={"Email"}
-              placeholder="seu@email.com"
+              title={texts.loginAndRegister.email}
+              placeholder={texts.loginAndRegister.emailPlaceholder}
               inputType="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -60,8 +61,8 @@ return (
 
             <div className="flex items-center rounded-xl gap-3">
               <InputWithTitle icon={<LockKeyhole className={`${!passwordsMatch ? "text-red-500" : ""}`} />}
-                title={"Crie sua senha"}
-                placeholder="Crie sua senha"
+                title={texts.loginAndRegister.createPassword}
+                placeholder={texts.loginAndRegister.createPasswordPlaceholder}
                 inputType={!viewPassword ? "password" : "text"}
                 tailwindTags={`${!passwordsMatch ? "border-red-500" : ""}`}
                 value={password}
@@ -73,8 +74,8 @@ return (
 
             <div className="flex items-center rounded-xl gap-3">
               <InputWithTitle icon={<LockKeyhole className={`${!passwordsMatch ? "text-red-500" : ""}`} />}
-                title={"Confirme sua senha"}
-                placeholder="Confirme sua senha"
+                title={texts.loginAndRegister.confirmPassword}
+                placeholder={texts.loginAndRegister.confirmPasswordPlaceholder}
                 inputType={!viewConfirmPassword ? "password" : "text"}
                 tailwindTags={`${!passwordsMatch ? "border-red-500" : ""}`}
                 value={confirmPassword}
@@ -85,15 +86,15 @@ return (
             </div>
 
             {!passwordsMatch && (
-              <p className={'text-center text-red-500 italic'}>As senhas não coincidem</p>
+              <p className={'text-center text-red-500 italic'}>{texts.loginAndRegister.passwordNotMatch}</p>
             )}
 
-            <button type="submit" className="bg-blue-color py-2 text-white rounded-xl w-full my-5">Criar conta</button>
+            <button type="submit" className="bg-blue-color py-2 text-white rounded-xl w-full my-5">{texts.loginAndRegister.createAccount}</button>
           </form>
 
           <div className="flex items-center gap-3">
             <hr className="flex-1 border-gray-300" />
-            <p>ou continue com</p>
+            <p>{texts.loginAndRegister.orContinueWith}</p>
             <hr className="flex-1 border-gray-300" />
           </div>
 
@@ -104,7 +105,7 @@ return (
               className="w-5 h-5"
             />
 
-            <span>Continuar com Google</span>
+            <span>{texts.loginAndRegister.continueWithGoogle}</span>
           </button>
         </div>
       </div>
