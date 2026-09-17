@@ -1,7 +1,7 @@
 import { ItineraryInterface } from "@/interfaces/itinerary.interface"
 
 interface createItineraryData {
-    userId: string,
+    userId: any
     departure: string,
     destination: string,
     days: number,

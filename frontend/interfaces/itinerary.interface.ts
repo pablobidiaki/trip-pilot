@@ -97,7 +97,7 @@ export interface Itinerary {
 
 export interface ItineraryInterface {
     id: string
-    userId: string
+    userId: any
     departure: string
     destination: string
     startDate: string

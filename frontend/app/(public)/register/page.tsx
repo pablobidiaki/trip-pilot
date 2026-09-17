@@ -45,7 +45,7 @@ export default function Register() {
             <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }} className="w-full mt-5 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-300 hover:bg-gray-50 cursor-pointer">
               <img
                 src="/imgs/icons/google.png"
-                alt="Google"
+                alt="Google icon"
                 className="w-5 h-5"
               />
 

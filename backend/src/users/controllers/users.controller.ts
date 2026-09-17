@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Delete, Query } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { CreateUsersDto } from '../dtos/create-users-dto';
@@ -13,7 +13,7 @@ export class UsersController {
         summary: 'Create an user',
     })
     async create(@Body() dto: CreateUsersDto) {
-        const user = await this.usersService.create(dto)
+        const user = await this.usersService.createIfNotExists(dto)
         return {
             success: true,
             user
@@ -48,9 +48,9 @@ export class UsersController {
     @ApiOperation({
         summary: 'Delete an especific user'
     })
-    async deleteById(@Param('id') id: string){
+    async deleteById(@Param('id') id: string) {
         const user = await this.usersService.deleteById(id)
-        return{
+        return {
             success: true,
             user
         }
@@ -60,9 +60,9 @@ export class UsersController {
     @ApiOperation({
         summary: 'Delete all users'
     })
-    async delete(){
+    async delete() {
         const user = await this.usersService.deleteAll()
-        return{
+        return {
             success: true,
             user
         }

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import "./globals.css";
-import AuthSessionProvider from "@/components/providers/AuthSessionProvider";
+import Providers from "@/components/provider/SessionProvider";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -21,9 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html className="bg-background-color" lang="en">
-      <AuthSessionProvider>
-        <body className={geist.className}>{children}</body>
-      </AuthSessionProvider>
+      <body className={geist.className}>
+        <Providers>
+          {children}
+        </Providers>
+        </body>
     </html>
   );
 }

@@ -12,6 +12,7 @@ import { createItinerary } from "@/services/itinerary.service";
 import ItineraryGeneratingModal from "../ItineraryGeneratingModal/ItineraryGeneratingModal";
 import { useRouter } from 'next/navigation'
 import DatePicker from "./DatePicker";
+import { useSession } from "next-auth/react"
 
 interface Country {
     countryName: string
@@ -21,6 +22,9 @@ interface Country {
 
 export default function HeroForm() {
     const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY
+
+    const { data: session } = useSession()
+
     const router = useRouter()
 
     const [search, setSearch] = useState("")
@@ -42,10 +46,10 @@ export default function HeroForm() {
     const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
         setIsLoading(true)
-
+        
         try {
             const data = {
-                userId: "5e9a0a38-4777-4358-93d5-afd69472f469",
+                userId: session?.user?.email,
                 departure: departure,
                 destination: destination,
                 days: Number(days),

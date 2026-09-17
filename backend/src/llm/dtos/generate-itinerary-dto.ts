@@ -1,13 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsString, Min } from 'class-validator';
 
-export class CreateItineraryLlmDto {
-    @ApiProperty({
-            example: '5e9a0a38-4777-4358-93d5-afd69472f469',
-        })
-        @IsString()
-        userId: string;
-    
+export class CreateItineraryLlmDto {    
         @ApiProperty({
             example: 'São Paulo',
         })

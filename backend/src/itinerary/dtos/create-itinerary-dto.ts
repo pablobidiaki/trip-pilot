@@ -6,7 +6,7 @@ export class CreateItineraryDto {
         example: '5e9a0a38-4777-4358-93d5-afd69472f469',
     })
     @IsString()
-    userId: string;
+    userId: string
 
     @ApiProperty({
         example: 'São Paulo',
