@@ -11,6 +11,7 @@ import UserMenu from "../UserMenu/UserMenu";
 
 export default function Header() {
     const { data: session, status } = useSession()
+    
     return (
         <header>
             <div className="bg-transparent text-primary-color font-medium flex justify-between px-4 py-3 items-center">

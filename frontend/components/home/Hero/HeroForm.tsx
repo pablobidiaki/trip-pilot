@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AiModels, TripTypesArray } from "@/constants/enum";
 import { MapPin, CalendarDays, DollarSign, Users, BrainCircuit, Backpack, Calendar1 } from "lucide-react";
+import { toast } from "sonner"
 
 import texts from "@/constants/texts";
 import Input from "@/components/ui/Input/Input";
@@ -23,9 +24,8 @@ interface Country {
 export default function HeroForm() {
     const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY
 
-    const { data: session } = useSession()
-
     const router = useRouter()
+    const { data: session } = useSession()
 
     const [search, setSearch] = useState("")
     const [countries, setCountries] = useState<Country[]>([])
@@ -45,9 +45,15 @@ export default function HeroForm() {
 
     const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
+        
+        if(session == null) {
+            toast.error("Você precisa estar logado para gerar um roteiro")
+            return
+        }
+
         setIsLoading(true)
         
-        try {
+         try {
             const data = {
                 userId: session?.user?.email,
                 departure: departure,

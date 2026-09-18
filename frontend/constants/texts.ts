@@ -380,6 +380,12 @@ const texts = {
         continueWithGoogle: "Continuar com Google",
     },
 
+    profile:{
+        hello: "Olá, ",
+        readyForNextAdventure: "Pronto para sua próxima aventura?",
+        createScript: "Criar Roteiro",
+    },
+
     real: "R$",
     tip: "Dica",
     allReady: "Tudo pronto para sua viagem inesquecível!",

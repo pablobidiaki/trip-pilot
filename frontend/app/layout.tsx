@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "sonner"
 
 import { Geist } from "next/font/google";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html className="bg-background-color" lang="en">
       <body className={geist.className}>
         <Providers>
+          <Toaster position="top-right" />
           {children}
         </Providers>
         </body>
