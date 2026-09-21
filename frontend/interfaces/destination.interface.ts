@@ -52,3 +52,9 @@ export interface DestinationInterface {
     attractions: Attraction[]
     averageCost: AverageCost
 }
+
+export interface SavedDestinationInterface{
+    id: string
+    destinationId: string
+    destination: DestinationInterface[]
+}

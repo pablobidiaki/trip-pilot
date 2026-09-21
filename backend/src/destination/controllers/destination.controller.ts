@@ -58,4 +58,25 @@ export class DestinationController {
             destination: await this.destinationService.delete(id)
         }
     }
+
+    @Post('favorite')
+    @ApiOperation({
+        summary: 'Favorite a destination'
+    })
+    async favorite(@Body() body: { userId: string; destinationId: string }) {
+        const destination = await this.destinationService.favorite(body.userId, body.destinationId)
+
+        return {
+            success: true,
+            destination: destination
+        }
+    }
+
+    @Get('favorite/:userId')
+    @ApiOperation({
+        summary: 'Get all favorite destinations'
+    })
+    async getAllFavorites(@Param('userId') userId: string) {
+        return await this.destinationService.getAllFavorites(userId)
+    }
 }

@@ -20,7 +20,7 @@ export default function YourItinerariesCard({ itineraries }: YourItinerariesCard
                             <p className="rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700">{itinerary.travelType}</p>
                         </div>
 
-                        <div className="space-y-2 text-sm text-gray-500 mx-2">
+                        <div className="space-y-2 text-sm text-second-color mx-2">
                             <p><span>{formatDate(itinerary.startDate)}</span> - <span>{formatDate(itinerary.endDate)}</span></p>
                             <div className="flex gap-2">
                                 <p>{itinerary.days} {texts.days}</p>

@@ -51,4 +51,23 @@ export class DestinationService {
             }
         })
     }
+
+    favorite(userId: string, destinationId: string) {
+        return this.prisma.savedDestinations.create({
+            data: {
+                userId: userId,
+                destinationId: destinationId
+            }
+        })
+    }
+
+    getAllFavorites(userId: string) {
+        return this.prisma.savedDestinations.findMany({
+            where: {
+                userId: userId
+            }, include: {
+                destination: true
+            }
+        })
+    }
 }

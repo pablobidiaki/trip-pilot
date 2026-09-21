@@ -6,12 +6,13 @@ import InitialPage from "./InitialPage/InitialPage"
 interface MainContentProps {
     session: any
     itineraries: ItineraryInterface[]
+    savedDestinations: any
 }
 
-export default function MainContent({ session, itineraries }: MainContentProps) {
+export default function MainContent({ session, itineraries, savedDestinations }: MainContentProps) {
     return(
         <div className="w-full mx-4 bg-white rounded-2xl">
-            <InitialPage  session={session} itineraries={itineraries}/>
+            <InitialPage session={session} itineraries={itineraries} savedDestinations={savedDestinations}/>
         </div>
     )
 }

@@ -5,13 +5,15 @@ import { Bookmark, Briefcase, Plane } from "lucide-react"
 import InitialPageInfoCard from "./InitialPageInfoCard"
 import YourItinerariesCard from "./YourItinerariesCard"
 import { ItineraryInterface } from "@/interfaces/itinerary.interface"
+import DestinationSavedCard from "./DestinationSavedCard"
 
 interface InitialPageProps {
     session: any
     itineraries: ItineraryInterface[]
+    savedDestinations: any
 }
 
-export default function InitialPage({ session, itineraries }: InitialPageProps) {
+export default function InitialPage({ session, itineraries, savedDestinations }: InitialPageProps) {
     const cardInfos = [
         {
             icon: <Briefcase className="text-purple-500" />,
@@ -51,7 +53,10 @@ export default function InitialPage({ session, itineraries }: InitialPageProps) 
             </div>
             <h1 className="text-primary-color text-2xl font-medium mx-5 mt-3">Seus Roteiros</h1>
             <YourItinerariesCard itineraries={itineraries} />
+
             <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Destinos salvos</h1>
+            <DestinationSavedCard savedDestinations={savedDestinations} />
+            
             <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Guias prontos salvos</h1>
             <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Recomendações</h1>
         </div>
