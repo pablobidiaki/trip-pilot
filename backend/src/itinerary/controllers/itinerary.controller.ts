@@ -7,12 +7,12 @@ import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
 @Controller('itinerary')
 export class ItineraryController {
     constructor(private readonly itineraryService: ItineraryService) { }
-    
+
     @Get()
-    @ ApiOperation({
+    @ApiOperation({
         summary: 'Get all existents itineraries'
     })
-    async getAll(){
+    async getAll() {
         return await this.itineraryService.getAll()
     }
 
@@ -20,9 +20,18 @@ export class ItineraryController {
     @ApiOperation({
         summary: 'Get an especific itinerary',
     })
-    async get(@Param('id') id: string){
+    async get(@Param('id') id: string) {
         return await this.itineraryService.get(id)
     }
+
+    @Get('user/:userId')
+    @ApiOperation({
+        summary: 'Get itineraries for a specific user',
+    })
+    async getUserItineraries(@Param('userId') userId: string) {
+        return await this.itineraryService.getUserItineraries(userId);
+    }
+
 
     @Post()
     @ApiOperation({
@@ -36,7 +45,7 @@ export class ItineraryController {
     @ApiOperation({
         summary: 'Delete an especific itinerary',
     })
-    async delete(@Param('id') id: string){
+    async delete(@Param('id') id: string) {
         return await this.itineraryService.delete(id)
     }
 
@@ -44,7 +53,7 @@ export class ItineraryController {
     @ApiOperation({
         summary: 'Delete all itinerary',
     })
-    async deleteAll(){
+    async deleteAll() {
         return await this.itineraryService.deleteAll()
     }
 }

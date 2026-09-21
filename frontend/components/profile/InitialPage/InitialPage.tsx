@@ -1,14 +1,17 @@
-"use client"
-
-import { useSession } from "next-auth/react"
 import GradientButton from "../../ui/Buttons/GradientButton"
 import Link from "next/link"
 import texts from "@/constants/texts"
 import { Bookmark, Briefcase, Plane } from "lucide-react"
 import InitialPageInfoCard from "./InitialPageInfoCard"
+import YourItinerariesCard from "./YourItinerariesCard"
+import { ItineraryInterface } from "@/interfaces/itinerary.interface"
 
+interface InitialPageProps {
+    session: any
+    itineraries: ItineraryInterface[]
+}
 
-export default function InitialPage(){
+export default function InitialPage({ session, itineraries }: InitialPageProps) {
     const cardInfos = [
         {
             icon: <Briefcase className="text-purple-500" />,
@@ -30,7 +33,6 @@ export default function InitialPage(){
         }
     ]
 
-    const { data: session } = useSession()
     return(
         <div className="">
             <div className="flex justify-between items-center">
@@ -47,6 +49,11 @@ export default function InitialPage(){
                     <InitialPageInfoCard key={index} icon={info.icon} title={info.title} value={info.value} bgColor={info.bgColor} />
                 ))}
             </div>
+            <h1 className="text-primary-color text-2xl font-medium mx-5 mt-3">Seus Roteiros</h1>
+            <YourItinerariesCard itineraries={itineraries} />
+            <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Destinos salvos</h1>
+            <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Guias prontos salvos</h1>
+            <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Recomendações</h1>
         </div>
     )
 }

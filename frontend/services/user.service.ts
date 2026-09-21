@@ -1,4 +1,4 @@
-export async function getUserIdByEmail(email: string | null | undefined): Promise<string> {
+export async function getUserIdByEmail(email: string | null | undefined) {
     const response = await fetch(`http://localhost:3001/user/${email}`)
 
     if (!response.ok)

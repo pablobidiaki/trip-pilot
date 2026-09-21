@@ -52,3 +52,12 @@ export async function getItinerary(id: string): Promise<ItineraryInterface[]> {
 
     return response.json()
 }  
+
+export async function getUserItineraries(userId: any): Promise<ItineraryInterface[]> {
+    const response = await fetch(`http://localhost:3001/itinerary/user/${userId}`)
+
+    if (!response.ok)
+        throw new Error("Erro ao buscar itinerary")
+
+    return response.json()
+}

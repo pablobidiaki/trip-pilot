@@ -2,16 +2,13 @@ import { ItineraryInterface } from "@/interfaces/itinerary.interface";
 import { CalendarDays, CircleDollarSign, Clock, MoveRight, Users } from "lucide-react";
 import ProvidedDataCard from "./ProvidedDataCard";
 import texts from "@/constants/texts";
+import formatDate from "@/utils/formatDate";
 
 interface ProviedDataProps {
     itinerary: ItineraryInterface[]
 }
 
 export default function ProviedData({ itinerary }: ProviedDataProps) {
-    function formatDate(date: string) {
-        const [year, month, day] = date.split("-")
-        return `${day}/${month}/${year}`
-    }
     return (
         <div className="relative animate-[optionSelector_300ms_ease-out]">
             <div className="bg-white rounded-2xl max-w-[60%] mx-auto shadow-2xl shadow-gray-300">

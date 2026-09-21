@@ -4,14 +4,10 @@ import { MapPin, FlagTriangleRight, CalendarDays, Clock, Users, Banknote, Info }
 import InfoRow from "../InfoRow/InfoRow";
 import CardTitle from "../CardTitle/CardTitle";
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
+import formatDate from "@/utils/formatDate";
 
 interface ProvidedDataProps {
     itinerary: ItineraryInterface[]
-}
-
-function formatDate(date: string) {
-    const [year, month, day] = date.split("-")
-    return `${day}/${month}/${year}`
 }
 
 export default function ProvidedData({ itinerary }: ProvidedDataProps) {

@@ -42,6 +42,18 @@ export class UsersController {
         }
     }
 
+    @Get(':email')
+    @ApiOperation({
+        summary: 'Get an especific user id by email',
+    })
+    async getIdByEmail(@Param('email') email: string) {
+        const user = await this.usersService.getIdByEmail(email)
+        return {
+            success: true,
+            user
+        }
+    }
+
     @Get(':id')
     @ApiOperation({
         summary: 'Get an especific user',

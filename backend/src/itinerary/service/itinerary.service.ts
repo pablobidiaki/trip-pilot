@@ -17,6 +17,16 @@ export class ItineraryService {
         return this.prisma.itinerary.findMany()
     }
 
+    getUserItineraries(userId: string) {
+        const itineraries = this.prisma.itinerary.findMany({
+            where: {
+                userId: userId
+            }
+        })
+        
+        return itineraries
+    }
+
     get(id: string) {
         const itinerary = this.prisma.itinerary.findMany({
             where: {

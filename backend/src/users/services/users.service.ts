@@ -18,6 +18,14 @@ export class UsersService {
     return this.prisma.user.findMany()
   }
 
+  getIdByEmail(email: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        email: email
+      }
+    })  
+  }
+
   getById(id: string) {
     const user = this.prisma.user.findUnique({
       where: {
