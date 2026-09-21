@@ -10,7 +10,7 @@ interface AverageCost {
     food: string
     transport: string
     tours: string
-    total: string
+    total: number
     dayTips: string[]
 }
 
@@ -56,5 +56,5 @@ export interface DestinationInterface {
 export interface SavedDestinationInterface{
     id: string
     destinationId: string
-    destination: DestinationInterface[]
+    destination: DestinationInterface
 }
