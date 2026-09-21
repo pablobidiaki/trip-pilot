@@ -15,19 +15,19 @@ export default function InitialPage({ session, itineraries }: InitialPageProps) 
     const cardInfos = [
         {
             icon: <Briefcase className="text-purple-500" />,
-            title: "Roteiros criados",
-            value: 12,
+            title: texts.profile.itinerariesCreated,
+            value: itineraries.length,
             bgColor: "bg-purple-100"
         },
         {
             icon: <Bookmark className="text-green-500" />,
-            title: "Itens salvos",
+            title: texts.profile.savedItems,
             value: 28,
             bgColor: "bg-green-100"
         },
         {
             icon: <Plane className="text-blue-500" />,
-            title: "Países visitados",
+            title: texts.profile.visitedCountries,
             value: 5,
             bgColor: "bg-blue-100"
         }

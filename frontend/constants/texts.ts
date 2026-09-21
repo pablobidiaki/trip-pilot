@@ -384,6 +384,9 @@ const texts = {
         hello: "Olá, ",
         readyForNextAdventure: "Pronto para sua próxima aventura?",
         createScript: "Criar Roteiro",
+        itinerariesCreated: "Roteiros criados",
+        savedItems: "Itens salvos",
+        visitedCountries: "Países visitados"
     },
 
     real: "R$",
