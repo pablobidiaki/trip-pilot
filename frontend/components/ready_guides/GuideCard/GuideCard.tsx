@@ -1,6 +1,6 @@
 import InfoItem from "@/components/ui/InfoItem/InfoItem";
 import texts from "@/constants/texts";
-import { Clock, Heart, Landmark } from "lucide-react";
+import { Clock, Landmark } from "lucide-react";
 import Link from "next/link";
 import { auth } from "@/auth"
 import { getUserIdByEmail } from "@/services/user.service";

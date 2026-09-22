@@ -9,11 +9,11 @@ interface YourItinerariesCardProps {
 
 export default function YourItinerariesCard({ itineraries }: YourItinerariesCardProps) {
     return (
-        <div className="flex gap-5 overflow-x-auto py-2 px-5">
-            {itineraries.map((itinerary) => (
-                <Link href={`/itinerary/${itinerary.id}`} className="relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103" key={itinerary.id}>
+        <div className="grid grid-cols-4 py-2 gap-5 px-4">
+            {itineraries.slice(0, 4).map((itinerary) => (
+                <Link href={`/itinerary/${itinerary.id}`} className="w-85 relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103" key={itinerary.id}>
                     <img className="absolute top-2 right-2 w-8 object-cover z-10" src={itinerary.countryDestinationFlagURL} alt={itinerary.countryDestination} />
-                    <img className="w-75 h-52 object-cover brightness-50 rounded-t-2xl" src={itinerary.itinerary.tours[0].imageURL} alt={itinerary.itinerary.tours[0].name} />
+                    <img className="w-85 h-52 object-cover brightness-50 rounded-t-2xl" src={itinerary.itinerary.tours[0].imageURL} alt={itinerary.itinerary.tours[0].name} />
                     <div>
                         <div className="flex items-center justify-between mt-1 mx-2 mb-2">
                             <p className="text-lg font-semibold text-gray-900">{itinerary.destination}</p>

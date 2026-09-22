@@ -1,4 +1,3 @@
-import { Landmark } from "lucide-react";
 import ButtonFilters from "../../ui/ButtonFilters/ButtonFilters";
 import GuideCard from "../GuideCard/GuideCard";
 import { getReadyGuides } from "@/services/readyGuides.service";

@@ -386,7 +386,10 @@ const texts = {
         createScript: "Criar Roteiro",
         itinerariesCreated: "Roteiros criados",
         savedItems: "Itens salvos",
-        visitedCountries: "Países visitados"
+        visitedCountries: "Países visitados",
+        viewAllItineraries: "Ver todos meus roteiros",
+        viewAllDestinationsSaved: "Ver todos destinos salvos",
+        viewAllReadyGuidesSaved: "Ver todos guias prontos salvos"
     },
 
     real: "R$",

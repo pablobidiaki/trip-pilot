@@ -26,7 +26,7 @@ export default function InitialPage({ session, itineraries, savedDestinations, s
         {
             icon: <Bookmark className="text-green-500" />,
             title: texts.profile.savedItems,
-            value: 28,
+            value: savedDestinations.length + savedReadyGuides.length,
             bgColor: "bg-green-100"
         },
         {
@@ -38,7 +38,7 @@ export default function InitialPage({ session, itineraries, savedDestinations, s
     ]
 
     return(
-        <div className="">
+        <div>
             <div className="flex justify-between items-center">
                 <div className="mx-5 gap-2">
                     <p className="text-primary-color text-3xl font-medium">{texts.profile.hello} {session?.user?.name}</p>
@@ -53,16 +53,25 @@ export default function InitialPage({ session, itineraries, savedDestinations, s
                     <InitialPageInfoCard key={index} icon={info.icon} title={info.title} value={info.value} bgColor={info.bgColor} />
                 ))}
             </div>
-            <h1 className="text-primary-color text-2xl font-medium mx-5 mt-3">Seus Roteiros</h1>
+            <div className="flex  justify-between items-center">
+                <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Seus Roteiros <span className="text-second-color ml-2 text-lg font-normal">({itineraries.length})</span></h1>
+                <p className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllItineraries}</p>
+            </div>
             <YourItinerariesCard itineraries={itineraries} />
 
-            <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Destinos salvos</h1>
+            <div className="flex  justify-between items-center">
+                <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Destinos salvos <span className="text-second-color ml-2 text-lg font-normal">({savedDestinations.length})</span></h1>
+                <p className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllDestinationsSaved}</p>
+            </div>
             <DestinationSavedCard savedDestinations={savedDestinations} />
 
-            <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Guias prontos salvos</h1>
+            <div className="flex  justify-between items-center">
+                <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Guias prontos salvos <span className="text-second-color ml-2 text-lg font-normal">({savedReadyGuides.length})</span></h1>
+                <p className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllReadyGuidesSaved}</p>
+            </div>
             <ReadyGuidesSavedCard savedReadyGuides={savedReadyGuides}/>
 
-            <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Recomendações</h1>
+            <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Recomendações</h1>
         </div>
     )
 }

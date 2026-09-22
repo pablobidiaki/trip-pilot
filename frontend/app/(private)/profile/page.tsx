@@ -14,7 +14,7 @@ export default async function Profile() {
     const savedReadyGuides = await getFavoriteReadyGuides(user.user.id)
 
     return(
-        <div className="bg-background-color flex mt-2">
+        <div className="bg-background-color flex mt-2 animate-[optionSelector_300ms_ease-out]">
                 <OptionsSelect />
                 <MainContent session={session} itineraries={itineraries} savedDestinations={savedDestinations} savedReadyGuides={savedReadyGuides} />
         </div>
