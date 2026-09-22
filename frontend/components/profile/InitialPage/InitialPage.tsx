@@ -6,14 +6,16 @@ import InitialPageInfoCard from "./InitialPageInfoCard"
 import YourItinerariesCard from "./YourItinerariesCard"
 import { ItineraryInterface } from "@/interfaces/itinerary.interface"
 import DestinationSavedCard from "./DestinationSavedCard"
+import ReadyGuidesSavedCard from "./ReadyGuidesSavedCard"
 
 interface InitialPageProps {
     session: any
     itineraries: ItineraryInterface[]
     savedDestinations: any
+    savedReadyGuides: any
 }
 
-export default function InitialPage({ session, itineraries, savedDestinations }: InitialPageProps) {
+export default function InitialPage({ session, itineraries, savedDestinations, savedReadyGuides }: InitialPageProps) {
     const cardInfos = [
         {
             icon: <Briefcase className="text-purple-500" />,
@@ -56,8 +58,10 @@ export default function InitialPage({ session, itineraries, savedDestinations }:
 
             <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Destinos salvos</h1>
             <DestinationSavedCard savedDestinations={savedDestinations} />
-            
+
             <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Guias prontos salvos</h1>
+            <ReadyGuidesSavedCard savedReadyGuides={savedReadyGuides}/>
+
             <h1 className="text-primary-color text-2xl font-medium mx-5 my-3">Recomendações</h1>
         </div>
     )

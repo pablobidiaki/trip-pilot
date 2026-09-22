@@ -61,3 +61,9 @@ export interface ReadyGuideInterface {
     accommodations: Accommodations[]
     usefulInformation: JSON
 }
+
+export interface SavedReadyGuideInterface{
+    id: string
+    readyGuideId: string
+    readyGuide: ReadyGuideInterface
+}

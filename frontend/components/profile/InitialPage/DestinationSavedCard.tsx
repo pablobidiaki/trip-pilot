@@ -7,7 +7,6 @@ interface DestinationSavedCardProps {
 }
 
 export default function DestinationSavedCard({ savedDestinations }: DestinationSavedCardProps) {
-    console.log(savedDestinations)
     return (
         <div className="flex gap-5 overflow-x-auto py-2 px-5">
             {savedDestinations.map((destination, index) => (
@@ -21,7 +20,7 @@ export default function DestinationSavedCard({ savedDestinations }: DestinationS
                         <p>·</p>
                         <p>{destination.destination.dayReccomended} {texts.days}</p>
                     </div>
-                    <div className=" border-gray-100 pt-3 mx-2 mb-1">
+                    <div className="pt-3 mx-2 mb-1">
                         <p className="text-xl font-bold text-gray-900">{texts.real} {destination.destination.averageCost.total.toLocaleString("pt-BR", {
                             minimumFractionDigits: 2,
                             maximumFractionDigits: 2

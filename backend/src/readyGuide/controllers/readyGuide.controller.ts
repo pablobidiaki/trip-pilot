@@ -12,10 +12,10 @@ export class ReadyGuideController {
     @ApiOperation({
         summary: "Create a guide"
     })
-    async create(@Body() dto: CreateGuideDto){
+    async create(@Body() dto: CreateGuideDto) {
         const guide = await this.readyGuideService.create(dto)
 
-        return{
+        return {
             success: true,
             guide: guide
         }
@@ -25,7 +25,7 @@ export class ReadyGuideController {
     @ApiOperation({
         summary: "Get all guides"
     })
-    async getAll(){
+    async getAll() {
         return await this.readyGuideService.getAll()
 
     }
@@ -34,7 +34,7 @@ export class ReadyGuideController {
     @ApiOperation({
         summary: "Get a especific guide"
     })
-    async get(@Param('id') id: string){
+    async get(@Param('id') id: string) {
         return await this.readyGuideService.get(id)
     }
 
@@ -42,10 +42,10 @@ export class ReadyGuideController {
     @ApiOperation({
         summary: "Get all guides"
     })
-    async deleteAll(){
+    async deleteAll() {
         const guides = await this.readyGuideService.deleteAll()
 
-        return{
+        return {
             success: true,
             guides: guides
         }
@@ -55,12 +55,33 @@ export class ReadyGuideController {
     @ApiOperation({
         summary: "Get a especific guide"
     })
-    async delete(@Param('id') id: string){
+    async delete(@Param('id') id: string) {
         const guide = await this.readyGuideService.delete(id)
 
         return {
             success: true,
             guide: guide
         }
+    }
+
+    @Post('favorite')
+    @ApiOperation({
+        summary: 'Favorite a guide'
+    })
+    async favorite(@Body() body: { userId: string; readyGuideId: string }) {
+        const guide = await this.readyGuideService.favorite(body.userId, body.readyGuideId)
+
+        return {
+            success: true,
+            guide: guide
+        }
+    }
+
+    @Get('favorite/:userId')
+    @ApiOperation({
+        summary: 'Get all favorite guides'
+    })
+    async getAllFavorites(@Param('userId') userId: string) {
+        return await this.readyGuideService.getAllFavorites(userId)
     }
 }

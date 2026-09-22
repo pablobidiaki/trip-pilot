@@ -46,8 +46,8 @@ export async function favoriteDestination(userId: string, destinationId: string)
     }
 }
 
-export async function getFavoriteDestinations(id: string) {
-    const response = await fetch(`http://localhost:3001/destination/favorite/${id}`)
+export async function getFavoriteDestinations(userId: string) {
+    const response = await fetch(`http://localhost:3001/destination/favorite/${userId}`)
 
     if (!response.ok)
         throw new Error("Erro ao buscar destinos favoritos")

@@ -17,3 +17,12 @@ export async function getReadyGuide(id: string): Promise<ReadyGuideInterface[]> 
 
     return response.json()
 }  
+
+export async function getFavoriteReadyGuides(userId: string) {
+    const response = await fetch(`http://localhost:3001/readyGuide/favorite/${userId}`)
+
+    if (!response.ok)
+        throw new Error("Erro ao buscar destinos favoritos")
+
+    return response.json()
+}

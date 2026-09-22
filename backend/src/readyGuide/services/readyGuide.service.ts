@@ -51,4 +51,23 @@ export class ReadyGuideService {
             }
         })
     }
+
+    favorite(userId: string, readyGuideId: string) {
+        return this.prisma.savedReadyGuides.create({
+            data: {
+                userId: userId,
+                readyGuideId: readyGuideId
+            }
+        })
+    }
+
+    getAllFavorites(userId: string) {
+        return this.prisma.savedReadyGuides.findMany({
+            where: {
+                userId: userId
+            }, include: {
+                readyGuide: true
+            }
+        })
+    }
 }
