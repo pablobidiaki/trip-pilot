@@ -52,13 +52,38 @@ export class DestinationService {
         })
     }
 
-    favorite(userId: string, destinationId: string) {
-        return this.prisma.savedDestinations.create({
-            data: {
-                userId: userId,
-                destinationId: destinationId
+    async favorite(userId: string, destinationId: string) {
+        const favorite = await this.prisma.savedDestinations.findUnique({
+            where: {
+                userId_destinationId: {
+                    userId,
+                    destinationId
+                }
             }
         })
+
+        if (favorite) {
+            await this.prisma.savedDestinations.delete({
+                where: {
+                    id: favorite.id
+                }
+            })
+
+            return {
+                isFavorite: false
+            }
+        }
+
+        await this.prisma.savedDestinations.create({
+            data: {
+                userId,
+                destinationId
+            }
+        })
+
+        return {
+            isFavorite: true
+        }
     }
 
     getAllFavorites(userId: string) {

@@ -41,7 +41,7 @@ export default async function DestinationBanner({destination}: DestinationBanner
             </div>
 
             <div className="absolute z-10 text-white right-4 top-20">
-                <FavoriteButton userId={user.user.id} destinationId={destination[0].id}/>
+                <FavoriteButton userId={user.user.id} destinationId={destination[0].id} />
             </div>
         </div>
     )
