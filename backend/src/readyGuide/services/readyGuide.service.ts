@@ -52,13 +52,38 @@ export class ReadyGuideService {
         })
     }
 
-    favorite(userId: string, readyGuideId: string) {
-        return this.prisma.savedReadyGuides.create({
-            data: {
-                userId: userId,
-                readyGuideId: readyGuideId
+    async favorite(userId: string, readyGuideId: string) {
+        const favorite = await this.prisma.savedReadyGuides.findUnique({
+            where: {
+                userId_readyGuideId: {
+                    userId,
+                    readyGuideId
+                }
             }
         })
+
+        if (favorite) {
+            await this.prisma.savedReadyGuides.delete({
+                where: {
+                    id: favorite.id
+                }
+            })
+
+            return {
+                isFavorite: false
+            }
+        }
+
+        await this.prisma.savedReadyGuides.create({
+            data: {
+                userId,
+                readyGuideId
+            }
+        })
+
+        return {
+            isFavorite: true
+        }
     }
 
     getAllFavorites(userId: string) {

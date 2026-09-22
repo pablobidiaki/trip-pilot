@@ -6,13 +6,16 @@ import { toast } from "sonner"
 import { favoriteDestination, getFavoriteDestinations } from "@/services/destination.service"
 import { useEffect, useState } from "react"
 import { SavedDestinationInterface } from "@/interfaces/destination.interface"
+import { favoriteReadyGuide, getFavoriteReadyGuides } from "@/services/readyGuides.service"
+import { SavedReadyGuideInterface } from "@/interfaces/readyGuides.interface"
 
 interface FavoriteButtonProps {
     userId: string
-    destinationId: string
+    destinationId?: string
+    readyGuideId?: string
 }
 
-export default function FavoriteButton({ userId, destinationId }: FavoriteButtonProps) {
+export default function FavoriteButton({ userId, destinationId, readyGuideId }: FavoriteButtonProps) {
     const [isFavorited, setIsFavorited] = useState(false)
 
     const handleFavoriteClick = async () => {
@@ -21,7 +24,8 @@ export default function FavoriteButton({ userId, destinationId }: FavoriteButton
             if (!isFavorited) text = "Destino favoritado com sucesso!"
             else text = "Destino removido dos favoritos com sucesso!"
 
-            await favoriteDestination(userId, destinationId)
+            if (destinationId) await favoriteDestination(userId, destinationId)
+            if (readyGuideId) await favoriteReadyGuide(userId, readyGuideId)
             toast.success(text)
 
             setIsFavorited(!isFavorited)
@@ -32,8 +36,14 @@ export default function FavoriteButton({ userId, destinationId }: FavoriteButton
     }
 
     const isFavorite = async () => {
+        let isFavorite
+        
         const destinations = await getFavoriteDestinations(userId)
-        const isFavorite = destinations.some((saved: SavedDestinationInterface) => saved.destinationId === destinationId)
+        const readyGuides = await getFavoriteReadyGuides(userId)
+
+        if(destinationId) isFavorite = destinations.some((saved: SavedDestinationInterface) => saved.destinationId === destinationId)
+        if(readyGuideId) isFavorite = readyGuides.some((saved: SavedReadyGuideInterface) => saved.readyGuideId === readyGuideId)
+
         setIsFavorited(isFavorite)
     }
 

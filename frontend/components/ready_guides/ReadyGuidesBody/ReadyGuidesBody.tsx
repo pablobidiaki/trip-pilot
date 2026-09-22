@@ -12,13 +12,13 @@ export default async function ReadyGuidesBody() {
             <div className="grid grid-cols-4 justify-items-center ">
                 {readyGuides.map((guide, index) => (
                     <GuideCard key={index}
+                        id={guide.id}
                         image={guide.imageURL}
                         title={guide.title}
                         cities={guide.cities}
                         duration={guide.days}
                         type={guide.travelType}
                         description={guide.description}
-                        link_guide={guide.id}
                         price={guide.price} 
                     />
                 ))}
