@@ -15,7 +15,7 @@ export default function SavedDestinations({ destinations }: SavedDestinationsPro
             <p className="text-sm font-light text-second-color">{texts.profile.destinationsText}</p>
             <div className="grid grid-cols-4 mt-5 gap-5">
                 {destinations.map((destination, index) => (
-                    <Link key={index} href={`destination/${destination.id}`} className="relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103">
+                    <Link key={index} href={`destinations/${destination.destination.id}`} className="relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103">
                         <p className="absolute top-2 right-2 object-cover z-10 rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700">{destination.destination.travelType}</p>
                         <img className="w-full h-60 object-cover brightness-50 rounded-t-2xl" src={destination.destination.imageURL} alt={destination.destination.destination} />
                         <div>
