@@ -13,7 +13,7 @@ export default function MyItineraries({ itineraries }: MyItinerariesProps) {
     return (
         <div className="p-4">
             <h1 className="text-4xl font-medium text-primary-color">{texts.profile.myItineraries}</h1>
-            <p className="text-sm font-light text-second-color">Reviva suas viagens e acesse todos os roteiros que você criou.</p>
+            <p className="text-sm font-light text-second-color">{texts.profile.itineraryText}</p>
             <div className="grid grid-cols-4 mt-5 gap-5">
                 {itineraries.map((itinerary, index) => (
                     <Link key={index} href={`itinerary/${itinerary.id}`} className="relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103">
@@ -54,7 +54,7 @@ export default function MyItineraries({ itineraries }: MyItinerariesProps) {
                             })}</p>
 
                             <div className="m-2 mt-5">
-                                <GradientButton text={"Ver roteiro"} type="button" />
+                                <GradientButton text={texts.itineraryExample.viewItinerary} type="button" />
                             </div>
                         </div>
                     </Link>

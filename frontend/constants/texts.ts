@@ -399,7 +399,11 @@ const texts = {
         viewAllItineraries: "Ver todos meus roteiros",
         viewAllDestinationsSaved: "Ver todos destinos salvos",
         viewAllReadyGuidesSaved: "Ver todos guias prontos salvos",
-        myItineraries: "Meus roteiros"
+        myItineraries: "Meus roteiros",
+        itineraryText: "Reviva suas viagens e acesse todos os roteiros que você criou.",
+        savedDestinations: "Destinos salvos",
+        destinationsText: "Seus destinos favoritos, prontos para inspirar sua próxima viagem.",
+        viewDestination: "Ver destino",
     },
 
     real: "R$",
