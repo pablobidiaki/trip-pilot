@@ -15,9 +15,10 @@ interface InitialPageProps {
     itineraries: ItineraryInterface[]
     savedDestinations: SavedDestinationInterface[]
     savedReadyGuides: SavedReadyGuideInterface[]
+    setOptionSelected: (text: string) => void
 }
 
-export default function InitialPage({ session, itineraries, savedDestinations, savedReadyGuides }: InitialPageProps) {
+export default function InitialPage({ session, itineraries, savedDestinations, savedReadyGuides, setOptionSelected }: InitialPageProps) {
     const cardInfos = [
         {
             icon: <Briefcase className="text-purple-500" />,
@@ -57,20 +58,20 @@ export default function InitialPage({ session, itineraries, savedDestinations, s
             </div>
             <div className="flex  justify-between items-center">
                 <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Seus Roteiros <span className="text-second-color ml-2 text-lg font-normal">({itineraries.length})</span></h1>
-                <p className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllItineraries}</p>
+                <p onClick={() => setOptionSelected(texts.optionSelectorProfile.myItineraries)} className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllItineraries}</p>
             </div>
             <YourItinerariesCard itineraries={itineraries} />
 
             <div className="flex  justify-between items-center">
                 <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Destinos salvos <span className="text-second-color ml-2 text-lg font-normal">({savedDestinations.length})</span></h1>
-                <p className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllDestinationsSaved}</p>
+                <p onClick={() => setOptionSelected(texts.optionSelectorProfile.destinationsSaved)} className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllDestinationsSaved}</p>
             </div>
             <DestinationSavedCard savedDestinations={savedDestinations} />
 
             <div className="flex  justify-between items-center">
                 <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Guias prontos salvos <span className="text-second-color ml-2 text-lg font-normal">({savedReadyGuides.length})</span></h1>
-                <p className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllReadyGuidesSaved}</p>
-            </div>
+                <p onClick={() => setOptionSelected(texts.optionSelectorProfile.guidesSaved)} className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllReadyGuidesSaved}</p>
+            </div>  
             <ReadyGuidesSavedCard savedReadyGuides={savedReadyGuides}/>
 
             <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Recomendações</h1>

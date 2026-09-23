@@ -398,7 +398,8 @@ const texts = {
         visitedCountries: "Países visitados",
         viewAllItineraries: "Ver todos meus roteiros",
         viewAllDestinationsSaved: "Ver todos destinos salvos",
-        viewAllReadyGuidesSaved: "Ver todos guias prontos salvos"
+        viewAllReadyGuidesSaved: "Ver todos guias prontos salvos",
+        myItineraries: "Meus roteiros"
     },
 
     real: "R$",
@@ -413,7 +414,8 @@ const texts = {
     people: "Pessoas",
     price: "Preço",
     clear: "Limpar",
-    today: "Hoje"
+    today: "Hoje",
+    date: "Data"
 }
 
 export default texts;

@@ -52,6 +52,7 @@ export default function Profile() {
                     savedDestinations={savedDestinations}
                     savedReadyGuides={savedReadyGuides}
                     optionSelected={optionSelected}
+                    setOptionSelected={setOptionSelected}
                 />
             }
         </div>
