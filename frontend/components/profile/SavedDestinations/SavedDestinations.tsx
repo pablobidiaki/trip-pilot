@@ -10,7 +10,7 @@ interface SavedDestinationsProps {
 
 export default function SavedDestinations({ destinations }: SavedDestinationsProps) {
     return (
-        <div className="p-4">
+        <div className="p-4 animate-[optionSelector_300ms_ease-out]">
             <h1 className="text-4xl font-medium text-primary-color">{texts.profile.savedDestinations}</h1>
             <p className="text-sm font-light text-second-color">{texts.profile.destinationsText}</p>
             <div className="grid grid-cols-4 mt-5 gap-5">

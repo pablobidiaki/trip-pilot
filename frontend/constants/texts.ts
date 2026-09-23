@@ -404,6 +404,9 @@ const texts = {
         savedDestinations: "Destinos salvos",
         destinationsText: "Seus destinos favoritos, prontos para inspirar sua próxima viagem.",
         viewDestination: "Ver destino",
+        savedGuides: "Guias prontos salvos",
+        savedGuidesText: "Explore roteiros completos e prontos para inspirar sua próxima viagem.",
+        viewGuide: "Ver guia pronto"
     },
 
     real: "R$",

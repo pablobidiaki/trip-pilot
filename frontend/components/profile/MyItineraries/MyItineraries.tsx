@@ -11,7 +11,7 @@ interface MyItinerariesProps {
 
 export default function MyItineraries({ itineraries }: MyItinerariesProps) {
     return (
-        <div className="p-4">
+        <div className="p-4 animate-[optionSelector_300ms_ease-out]">
             <h1 className="text-4xl font-medium text-primary-color">{texts.profile.myItineraries}</h1>
             <p className="text-sm font-light text-second-color">{texts.profile.itineraryText}</p>
             <div className="grid grid-cols-4 mt-5 gap-5">
