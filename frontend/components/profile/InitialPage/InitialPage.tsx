@@ -7,12 +7,14 @@ import YourItinerariesCard from "./YourItinerariesCard"
 import { ItineraryInterface } from "@/interfaces/itinerary.interface"
 import DestinationSavedCard from "./DestinationSavedCard"
 import ReadyGuidesSavedCard from "./ReadyGuidesSavedCard"
+import { SavedDestinationInterface } from "@/interfaces/destination.interface"
+import { SavedReadyGuideInterface } from "@/interfaces/readyGuides.interface"
 
 interface InitialPageProps {
     session: any
     itineraries: ItineraryInterface[]
-    savedDestinations: any
-    savedReadyGuides: any
+    savedDestinations: SavedDestinationInterface[]
+    savedReadyGuides: SavedReadyGuideInterface[]
 }
 
 export default function InitialPage({ session, itineraries, savedDestinations, savedReadyGuides }: InitialPageProps) {
@@ -38,7 +40,7 @@ export default function InitialPage({ session, itineraries, savedDestinations, s
     ]
 
     return(
-        <div>
+        <div className="animate-[optionSelector_300ms_ease-out]">
             <div className="flex justify-between items-center">
                 <div className="mx-5 gap-2">
                     <p className="text-primary-color text-3xl font-medium">{texts.profile.hello} {session?.user?.name}</p>

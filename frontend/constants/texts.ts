@@ -380,6 +380,15 @@ const texts = {
         continueWithGoogle: "Continuar com Google",
     },
 
+    optionSelectorProfile:{
+        home: "Página Inicial",
+        myItineraries:"Meus Roteiros",
+        destinationsSaved: "Destinos Salvos",
+        guidesSaved: "Guias salvos",
+        configurations: "Configurações",
+        exit: "Sair"
+    },
+
     profile:{
         hello: "Olá, ",
         readyForNextAdventure: "Pronto para sua próxima aventura?",
