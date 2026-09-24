@@ -7,8 +7,9 @@ import CountryInfoModal from "./CountryInfoModal";
 import { UserInterface } from "@/interfaces/user.interface";
 import { GeoInterface } from "@/interfaces/map.interface";
 import { mapInitialPosition } from "@/constants/enum";
-import { Maximize, Plus, ZoomIn, ZoomOut } from "lucide-react";
+import { Maximize, ZoomIn, ZoomOut } from "lucide-react";
 import MapButton from "./MapButton";
+import ColorExplain from "./ColorExplain";
 
 interface MyMapProps {
     user: UserInterface
@@ -18,7 +19,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 
 export default function MyMap({ user }: MyMapProps) {
     const [visitedCountries, setVisitedCountries] = useState<string[]>(user.countriesVisited)
-    const [countrySelected, setCountrySelected] = useState<GeoInterface>()
+    const [countrySelected, setCountrySelected] = useState<GeoInterface | undefined>()
     const [isOpen, setIsOpen] = useState(false)
     const [visiteConfirmed, setVisiteConfirmed] = useState(false)
     const [visited, setVisited] = useState(false)
@@ -68,14 +69,21 @@ export default function MyMap({ user }: MyMapProps) {
                                         key={geo.rsmKey}
                                         geography={geo}
                                         onClick={() => toggleCountry(geo, isVisited)}
-                                        className={` ${isVisited ? 'fill-secondary-third-color' : 'fill-[#E2E8F0]'} outline-none stroke-white stroke-1 transition-all ${isVisited ? 'hover:fill-[#4338CA]' : 'hover:fill-[#CBD5E1]'} hover:cursor-pointer hover:outline-none`}
+                                        className={`${countrySelected?.id === geo.id && isOpen ? 'fill-gray-600' : isVisited ? 'fill-secondary-third-color hover:fill-[#4338CA]' : 'fill-[#E2E8F0] hover:fill-[#CBD5E1]'} outline-none stroke-white stroke-1 transition-all hover:cursor-pointer`}
                                     />
                                 )
                             })}
                         </Geographies>
                     </ZoomableGroup>
                 </ComposableMap>
-                
+
+                <div className="fixed bottom-7 left-55 bg-white p-2 rounded-lg shadow-2xl">
+                    <ColorExplain color="bg-secondary-third-color" text="Já visitei" />
+                    <ColorExplain color="bg-orange-400" text="Quero visitar" />
+                    <ColorExplain color="bg-gray-600" text="Selecionado" />
+                    <ColorExplain color="bg-[#E2E8F0]" text="País" />
+                </div>
+
                 <MapButton onClick={handleResetPosition} icon={<Maximize />} tailwindTags="bottom-7" toolTipText={texts.profile.originPosition} />
                 <MapButton onClick={handleZoomIn} icon={<ZoomIn />} tailwindTags="bottom-18.5" toolTipText={texts.profile.zoom} />
                 <MapButton onClick={handleZoomOut} icon={<ZoomOut />} tailwindTags="bottom-30" toolTipText={texts.profile.zoomOut} />

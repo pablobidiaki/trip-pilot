@@ -36,6 +36,10 @@ export default function CountryInfoModal({ visited, user, geo, isOpen, imageLoad
 
     if (!isOpen) return null
 
+    const handdleClose = () => {
+        onClose()
+    }
+
     const handleAddButton = () => {
         addCountryVisited(user.id, geo.id)
         onClose()
@@ -55,7 +59,7 @@ export default function CountryInfoModal({ visited, user, geo, isOpen, imageLoad
             <div className="relative w-60 rounded-xl bg-background-color" onClick={(e) => e.stopPropagation()}>
                 <div className="flex justify-between items-center p-2">
                     <h1 className=" font-medium text-primary-color">{geo.properties.name}</h1>
-                    <X onClick={onClose} className="cursor-pointer transition-all hover:duration-150 hover:text-red-500" />
+                    <X onClick={handdleClose} className="cursor-pointer transition-all hover:duration-150 hover:text-red-500" />
                 </div>
                 {imageLoading &&
                     <div className="absolute w-56 mx-2 h-38 z-100 bg-white">
