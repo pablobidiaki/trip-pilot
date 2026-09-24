@@ -88,10 +88,10 @@ export default function MyMap({ user }: MyMapProps) {
                 </ComposableMap>
 
                 <div className="fixed bottom-7 left-55 bg-white p-2 rounded-lg shadow-2xl">
-                    <ColorExplain color="bg-secondary-third-color" text="Já visitei" />
-                    <ColorExplain color="bg-orange-400" text="Quero visitar" />
-                    <ColorExplain color="bg-gray-600" text="Selecionado" />
-                    <ColorExplain color="bg-[#E2E8F0]" text="Países" />
+                    <ColorExplain color="bg-secondary-third-color" text={texts.profile.visited} />
+                    <ColorExplain color="bg-orange-400" text={texts.profile.wantVisit} />
+                    <ColorExplain color="bg-gray-600" text={texts.profile.selected} />
+                    <ColorExplain color="bg-[#E2E8F0]" text={texts.profile.countries} />
                 </div>
 
                 <MapButton onClick={handleResetPosition} icon={<Maximize />} tailwindTags="bottom-7" toolTipText={texts.profile.originPosition} />

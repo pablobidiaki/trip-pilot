@@ -416,7 +416,11 @@ const texts = {
         markNoWishlist: "Remover da lista de desejos",
         zoom: "Zoom",
         zoomOut: "Zoom Out",
-        originPosition: "Posição original"
+        originPosition: "Posição original",
+        visited: "Visitado",
+        wantVisit: "Quero visitar",
+        selected: "Selecionado",
+        countries: "Países"
     },
 
     real: "R$",
