@@ -101,4 +101,20 @@ export class UsersController {
     async removeCountryVisited(@Body() data: EditCountryDto){
         return await this.usersService.removeCountryVisited(data)
     }
+
+    @Patch('add/countryWishlist')
+    @ApiOperation({
+        summary: 'Add country in countryWishlist'
+    })
+    async addCountryCountryWishlist(@Body() data: EditCountryDto){
+        return await this.usersService.addCountryCountryWishlist(data)
+    }
+
+    @Patch('remove/countryWishlist')
+    @ApiOperation({
+        summary: 'Remove country in countryWishlist'
+    })
+    async removeCountryCountryWishlist(@Body() data: EditCountryDto){
+        return await this.usersService.removeCountryCountryWishlist(data)
+    }
 }

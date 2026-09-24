@@ -21,6 +21,7 @@ model User {
   password          String?
   image             String?
   countriesVisited  String[]            @default([])
+  countriesWishlist String[]            @default([])
   itinerary         Itinerary[]
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt

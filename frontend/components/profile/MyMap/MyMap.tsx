@@ -19,19 +19,24 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 
 export default function MyMap({ user }: MyMapProps) {
     const [visitedCountries, setVisitedCountries] = useState<string[]>(user.countriesVisited)
+    const [countriesWishlist, setCountriesWishlist] = useState<string[]>(user.countriesWishlist)
     const [countrySelected, setCountrySelected] = useState<GeoInterface | undefined>()
     const [isOpen, setIsOpen] = useState(false)
     const [visiteConfirmed, setVisiteConfirmed] = useState(false)
+    const [wishlistConfirmed, setWishlistConfirmed] = useState(false)
     const [visited, setVisited] = useState(false)
+    const [wishlist, setWishlist] = useState(false)
     const [imageLoading, setImageLoading] = useState(true)
     const [position, setPosition] = useState(mapInitialPosition)
 
-    const toggleCountry = (geo: any, isVisited: boolean) => {
+    const toggleCountry = (geo: any, isVisited: boolean, isWishlist: boolean) => {
         setImageLoading(true)
         setIsOpen(true)
         setCountrySelected(geo)
         setVisiteConfirmed(false)
+        setWishlistConfirmed(false)
         setVisited(isVisited)
+        setWishlist(isWishlist)
     }
 
     const handleResetPosition = () => {
@@ -46,12 +51,12 @@ export default function MyMap({ user }: MyMapProps) {
     }
 
     const handleZoomIn = () => setPosition({ center: position.center, zoom: position.zoom < 5 ? position.zoom + 0.5 : position.zoom })
-
     const handleZoomOut = () => setPosition({ center: position.center, zoom: position.zoom > 1 ? position.zoom - 0.5 : position.zoom })
 
     useEffect(() => {
         if (visiteConfirmed) setVisitedCountries((prev) => prev.includes(countrySelected!.id) ? prev.filter((id) => id !== countrySelected!.id) : [...prev, countrySelected!.id])
-    }, [visiteConfirmed])
+        if (wishlistConfirmed) setCountriesWishlist((prev) => prev.includes(countrySelected!.id) ? prev.filter((id) => id !== countrySelected!.id) : [...prev, countrySelected!.id])
+    }, [visiteConfirmed, wishlistConfirmed])
 
     return (
         <div className="w-full mx-auto p-2 rounded-xl max-h-200 animate-[optionSelector_300ms_ease-out]">
@@ -64,12 +69,17 @@ export default function MyMap({ user }: MyMapProps) {
                         <Geographies geography={geoUrl}>
                             {({ geographies }) => geographies.map((geo) => {
                                 const isVisited = visitedCountries.includes(geo?.id)
+                                const isInWishlist = countriesWishlist.includes(geo?.id)
                                 return (
                                     <Geography
                                         key={geo.rsmKey}
                                         geography={geo}
-                                        onClick={() => toggleCountry(geo, isVisited)}
-                                        className={`${countrySelected?.id === geo.id && isOpen ? 'fill-gray-600' : isVisited ? 'fill-secondary-third-color hover:fill-[#4338CA]' : 'fill-[#E2E8F0] hover:fill-[#CBD5E1]'} outline-none stroke-white stroke-1 transition-all hover:cursor-pointer`}
+                                        onClick={() => toggleCountry(geo, isVisited, isInWishlist)}
+                                        className={`outline-none stroke-white stroke-1 transition-all hover:cursor-pointer
+                                        ${countrySelected?.id === geo.id && isOpen ? 'fill-gray-600' :
+                                                isVisited ? 'fill-secondary-third-color hover:fill-[#4338CA]' :
+                                                    isInWishlist ? 'fill-orange-400 hover:fill-orange-500' :
+                                                        'fill-[#E2E8F0] hover:fill-[#CBD5E1]'}`}
                                     />
                                 )
                             })}
@@ -81,7 +91,7 @@ export default function MyMap({ user }: MyMapProps) {
                     <ColorExplain color="bg-secondary-third-color" text="Já visitei" />
                     <ColorExplain color="bg-orange-400" text="Quero visitar" />
                     <ColorExplain color="bg-gray-600" text="Selecionado" />
-                    <ColorExplain color="bg-[#E2E8F0]" text="País" />
+                    <ColorExplain color="bg-[#E2E8F0]" text="Países" />
                 </div>
 
                 <MapButton onClick={handleResetPosition} icon={<Maximize />} tailwindTags="bottom-7" toolTipText={texts.profile.originPosition} />
@@ -90,6 +100,7 @@ export default function MyMap({ user }: MyMapProps) {
             </div>
             {isOpen &&
                 <CountryInfoModal visited={visited}
+                    wishlist={wishlist}
                     geo={countrySelected}
                     isOpen={isOpen}
                     onClose={() => setIsOpen(false)}
@@ -97,6 +108,7 @@ export default function MyMap({ user }: MyMapProps) {
                     setVisiteConfirmed={setVisiteConfirmed}
                     imageLoading={imageLoading}
                     setImageLoading={setImageLoading}
+                    setWishListConfirmed={setWishlistConfirmed}
                 />}
         </div>
     );

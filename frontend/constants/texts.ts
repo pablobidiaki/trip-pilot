@@ -412,6 +412,8 @@ const texts = {
         myMapText: "Veja no mapa os lugares que já fizeram parte da sua jornada.",
         markVisited: "Marcar como visitado",
         markNoVisited: "Marcar como não visitado",
+        markWishlist: "Marcar na lista de desejos",
+        markNoWishlist: "Remover da lista de desejos",
         zoom: "Zoom",
         zoomOut: "Zoom Out",
         originPosition: "Posição original"

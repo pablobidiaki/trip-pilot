@@ -34,3 +34,29 @@ export async function removeCountryVisited(userId: string, country: string) {
         }),
     });
 }
+
+export async function addCountryWishlist(userId: string, country: string) {
+    await fetch(`http://localhost:3001/user/add/countryWishlist`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userId: userId,
+            country: country
+        }),
+    });
+}
+
+export async function removeCountryWishlist(userId: string, country: string) {
+    await fetch(`http://localhost:3001/user/remove/countryWishlist`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userId: userId,
+            country: country
+        }),
+    });
+}

@@ -166,4 +166,55 @@ export class UsersService {
       },
     });
   }
+
+  async addCountryCountryWishlist(data: EditCountryDto) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: data.userId,
+      },
+      select: {
+        countriesWishlist: true,
+      },
+    });
+
+    const countriesWishlist = [
+      ...(user?.countriesWishlist ?? []),
+      data.country,
+    ];
+
+    return this.prisma.user.update({
+      where: {
+        id: data.userId,
+      },
+      data: {
+        countriesWishlist,
+      },
+    });
+  }
+
+  async removeCountryCountryWishlist(data: EditCountryDto) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: data.userId,
+      },
+      select: {
+        countriesWishlist: true,
+      },
+    });
+
+    let teste = user?.countriesWishlist
+
+    const countriesWishlist = teste?.filter(
+      country => country !== data.country
+    )
+
+    return this.prisma.user.update({
+      where: {
+        id: data.userId,
+      },
+      data: {
+        countriesWishlist,
+      },
+    });
+  }
 }

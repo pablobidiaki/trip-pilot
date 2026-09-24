@@ -2,7 +2,7 @@
 
 import Loading from "@/components/loading/Loading/Loading"
 import { UserInterface } from "@/interfaces/user.interface"
-import { addCountryVisited, getCountryFlag, removeCountryVisited } from "@/services/map.service"
+import { addCountryVisited, addCountryWishlist, getCountryFlag, removeCountryVisited, removeCountryWishlist } from "@/services/map.service"
 import { X } from "lucide-react"
 import { useEffect, useState } from "react"
 import ModalButton from "./ModalButton"
@@ -12,16 +12,18 @@ import { toast } from "sonner"
 
 interface CountryInfoModalProps {
     visited: boolean
+    wishlist: boolean
     user: UserInterface
     geo: any
     isOpen: boolean
     imageLoading: boolean
     onClose: () => void
     setVisiteConfirmed: (value: boolean) => void
+    setWishListConfirmed: (value: boolean) => void
     setImageLoading: (value: boolean) => void
 }
 
-export default function CountryInfoModal({ visited, user, geo, isOpen, imageLoading, onClose, setVisiteConfirmed, setImageLoading }: CountryInfoModalProps) {
+export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen, imageLoading, onClose, setVisiteConfirmed, setWishListConfirmed, setImageLoading }: CountryInfoModalProps) {
     const [flagUrl, setFlagUrl] = useState("")
 
     useEffect(() => {
@@ -54,6 +56,20 @@ export default function CountryInfoModal({ visited, user, geo, isOpen, imageLoad
         toast.warning(`Você removeu '${geo.properties.name}' de visitado!`)
     }
 
+    const handleAddWishlist = () =>{
+        addCountryWishlist(user.id, geo.id)
+        onClose()
+        setWishListConfirmed(true)
+        toast.success(`Você adicionou '${geo.properties.name}' na lista de desejos!`)
+    }
+
+    const handleRemoveWishlist = () =>{
+        removeCountryWishlist(user.id, geo.id)
+        onClose()
+        setWishListConfirmed(true)
+        toast.warning(`Você removeu '${geo.properties.name}' da lista de desejos!`)
+    }
+
     return (
         <div className="fixed inset-0 z-50 w-fit top-22 h-fit flex justify-end left-369 animate-[optionSelector_300ms_ease-out]">
             <div className="relative w-60 rounded-xl bg-background-color" onClick={(e) => e.stopPropagation()}>
@@ -77,6 +93,17 @@ export default function CountryInfoModal({ visited, user, geo, isOpen, imageLoad
                             <ModalButton text={texts.profile.markVisited} tailwindTags="bg-blue-color text-white mt-5"/>
                         </div>
                     }
+
+                    {wishlist ?
+                        <div onClick={() => handleRemoveWishlist()}>
+                            <ModalButton text={texts.profile.markNoWishlist} tailwindTags="bg-red-500 text-white mt-5"/>
+                        </div>
+                        :
+                        <div onClick={() => handleAddWishlist()}>
+                            <ModalButton text={texts.profile.markWishlist} tailwindTags="bg-blue-color text-white mt-5"/>
+                        </div>
+                    }
+                    
                     <Link href={"/"}>
                         <ModalButton text={texts.profile.createScript} tailwindTags="bg-gray-200 text-black mt-2"/>
                     </Link>
