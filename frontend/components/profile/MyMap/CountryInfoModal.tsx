@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import ModalButton from "./ModalButton"
 import texts from "@/constants/texts"
 import Link from "next/link"
+import { toast } from "sonner"
 
 interface CountryInfoModalProps {
     visited: boolean
@@ -39,12 +40,14 @@ export default function CountryInfoModal({ visited, user, geo, isOpen, imageLoad
         addCountryVisited(user.id, geo.id)
         onClose()
         setVisiteConfirmed(true)
+        toast.success(`Você marcou '${geo.properties.name}' como visitado!`)
     }
 
     const handleRemoveButton = () => {
         removeCountryVisited(user.id, geo.id)
         onClose()
         setVisiteConfirmed(true)
+        toast.warning(`Você removeu '${geo.properties.name}' de visitado!`)
     }
 
     return (

@@ -26,3 +26,8 @@ export const AiModels: string[] = [
   "Gemini",
   "OpenAi"
 ]
+
+export const mapInitialPosition = {
+  center: [20, -40] as [number, number],
+  zoom: 1,
+}

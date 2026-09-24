@@ -411,7 +411,10 @@ const texts = {
         myMap: "Meu mapa",
         myMapText: "Veja no mapa os lugares que já fizeram parte da sua jornada.",
         markVisited: "Marcar como visitado",
-        markNoVisited: "Marcar como não visitado"
+        markNoVisited: "Marcar como não visitado",
+        zoom: "Zoom",
+        zoomOut: "Zoom Out",
+        originPosition: "Posição original"
     },
 
     real: "R$",
