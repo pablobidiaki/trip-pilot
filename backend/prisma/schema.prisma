@@ -20,6 +20,7 @@ model User {
   email             String              @unique
   password          String?
   image             String?
+  countriesVisited  String[]            @default([])
   itinerary         Itinerary[]
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt

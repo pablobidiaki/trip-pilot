@@ -7,6 +7,15 @@ export async function getUserIdByEmail(email: string | null | undefined) {
     return response.json()
 }
 
+export async function getUserById(userId: string) {
+    const response = await fetch(`http://localhost:3001/user/${userId}`)
+
+    if (!response.ok)
+        throw new Error("Erro ao buscar usuario")
+
+    return response.json()
+}
+
 export async function registerUser(data: {name: string, email: string, password: string}) {
     const response = await fetch("http://localhost:3001/user/register", {
         method: "POST",

@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Param, Post, Delete, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Delete, Query, Patch } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
-import { CreateUsersDto } from '../dtos/create-users-dto';
+import { AddCountryDto, CreateUsersDto } from '../dtos/create-users-dto';
 
 @ApiTags('Users')
 @Controller('user')
@@ -47,11 +47,7 @@ export class UsersController {
         summary: 'Get an especific user id by email',
     })
     async getIdByEmail(@Param('email') email: string) {
-        const user = await this.usersService.getIdByEmail(email)
-        return {
-            success: true,
-            user
-        }
+        return await this.usersService.getIdByEmail(email)
     }
 
     @Get(':id')
@@ -88,5 +84,13 @@ export class UsersController {
             success: true,
             user
         }
+    }
+
+    @Patch('countryVisited')
+    @ApiOperation({
+        summary: 'Add country in countriesVisited'
+    })
+    async addCountryVisited(@Body() data: AddCountryDto){
+        return await this.usersService.addCountryVisited(data)
     }
 }

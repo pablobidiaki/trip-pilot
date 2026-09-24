@@ -20,3 +20,17 @@ export class CreateUsersDto {
   @MinLength(8)
   password: string;
 }
+
+export class AddCountryDto{
+  @ApiProperty({
+    example: '8ab672ae-c515-46da-a3a3-3b47a4ba4c7c',
+  })
+  @IsNotEmpty()
+  userId: string;
+
+  @ApiProperty({
+    example: 'Brazil',
+  })
+  @IsNotEmpty()
+  country: string;
+}

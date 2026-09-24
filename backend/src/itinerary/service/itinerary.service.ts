@@ -94,13 +94,14 @@ export class ItineraryService {
         return endDate.toISOString().split('T')[0]
     }
 
-    async getCountryFlag(contry: string): Promise<string> {
+    async getCountryFlag(country: any): Promise<string> {
+        
         const response = await fetch(
-            `https://api.restcountries.com/countries/v5?q=${contry}`,
+            `https://api.restcountries.com/countries/v5?q=${country}`,
             { headers: { 'Authorization': `Bearer  ${process.env.REST_COUNTRIES_KEY}` } }
         );
         const data = await response.json();
-
+        
         return data.data.objects[0].flag.url_png
     }
 

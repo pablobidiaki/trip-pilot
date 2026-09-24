@@ -1,6 +1,7 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import * as bcrypt from "bcrypt"
-import { ConflictException, Injectable, UnauthorizedException  } from "@nestjs/common"
+import { ConflictException, Injectable, UnauthorizedException } from "@nestjs/common"
+import { AddCountryDto } from '../dtos/create-users-dto';
 
 
 interface teste {
@@ -23,7 +24,7 @@ export class UsersService {
       where: {
         email: email
       }
-    })  
+    })
   }
 
   getById(id: string) {
@@ -91,27 +92,52 @@ export class UsersService {
   async login(email: string, password: string) {
 
     const user = await this.prisma.user.findUnique({
-        where: { email }
+      where: { email }
     })
 
     if (!user || !user.password) {
-        throw new UnauthorizedException("Email ou senha inválidos")
+      throw new UnauthorizedException("Email ou senha inválidos")
     }
 
     const passwordMatch = await bcrypt.compare(
-        password,
-        user.password
+      password,
+      user.password
     )
 
     if (!passwordMatch) {
-        throw new UnauthorizedException("Email ou senha inválidos")
+      throw new UnauthorizedException("Email ou senha inválidos")
     }
 
     return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        image: user.image,
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      image: user.image,
     }
-}
+  }
+
+  async addCountryVisited(data: AddCountryDto){
+    const user = await this.prisma.user.findUnique({
+        where: {
+            id: data.userId,
+        },
+        select: {
+            countriesVisited: true,
+        },
+    });
+
+    const countriesVisited = [
+        ...(user?.countriesVisited ?? []),
+        data.country,
+    ];
+
+    return this.prisma.user.update({
+        where: {
+            id: data.userId,
+        },
+        data: {
+            countriesVisited,
+        },
+    });
+  }
 }

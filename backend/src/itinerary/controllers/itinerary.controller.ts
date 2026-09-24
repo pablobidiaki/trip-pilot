@@ -56,4 +56,15 @@ export class ItineraryController {
     async deleteAll() {
         return await this.itineraryService.deleteAll()
     }
+
+    @Get('flag/:countryIsoNumericNumber')
+    @ApiOperation({
+        summary: 'Get a country flag',
+    })
+    async getCountryFlag(@Param('countryIsoNumericNumber') countryIsoNumericNumber: string) {
+        const flag = await this.itineraryService.getCountryFlag(countryIsoNumericNumber)
+        return {
+            flag: flag
+        }
+    }
 }

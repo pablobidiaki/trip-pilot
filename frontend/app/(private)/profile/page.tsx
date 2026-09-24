@@ -13,6 +13,7 @@ import { SavedDestinationInterface } from "@/interfaces/destination.interface";
 import Loading from "@/components/loading/Loading/Loading";
 import texts from "@/constants/texts";
 import { SavedReadyGuideInterface } from "@/interfaces/readyGuides.interface";
+import { UserInterface } from "@/interfaces/user.interface";
 
 export default function Profile() {
     const { data: session, status } = useSession();
@@ -21,6 +22,7 @@ export default function Profile() {
     const [savedDestinations, setSavedDestinations] = useState<SavedDestinationInterface[]>([])
     const [savedReadyGuides, setSavedReadyGuides] = useState<SavedReadyGuideInterface[]>([])
     const [optionSelected, setOptionSelected] = useState(texts.optionSelectorProfile.home)
+    const [user, setUser] = useState<UserInterface>()
 
     useEffect(() => {
         if (status !== "authenticated") return;
@@ -28,9 +30,11 @@ export default function Profile() {
         const getData = async () => {
 
             const user = await getUserIdByEmail(session?.user?.email)
-            setItineraries(await getUserItineraries(user.user.id))
-            setSavedDestinations(await getFavoriteDestinations(user.user.id))
-            setSavedReadyGuides(await getFavoriteReadyGuides(user.user.id))
+            setUser(user)
+
+            setItineraries(await getUserItineraries(user.id))
+            setSavedDestinations(await getFavoriteDestinations(user.id))
+            setSavedReadyGuides(await getFavoriteReadyGuides(user.id))
         }
 
         getData()
@@ -47,7 +51,8 @@ export default function Profile() {
             }
 
             {session &&
-                <MainContent session={session}
+                <MainContent user={user!}
+                    session={session}
                     itineraries={itineraries}
                     savedDestinations={savedDestinations}
                     savedReadyGuides={savedReadyGuides}
