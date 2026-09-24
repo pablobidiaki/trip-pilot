@@ -24,7 +24,7 @@ interface MainContentProps {
 export default function MainContent({ user, session, itineraries, savedDestinations , savedReadyGuides, optionSelected, setOptionSelected }: MainContentProps) {
     return(
         <div className="w-full mx-4 bg-white rounded-2xl">
-            {optionSelected === texts.optionSelectorProfile.home && <InitialPage session={session} itineraries={itineraries} savedDestinations={savedDestinations} savedReadyGuides={savedReadyGuides} setOptionSelected={setOptionSelected}/>}
+            {optionSelected === texts.optionSelectorProfile.home && <InitialPage user={user!} session={session} itineraries={itineraries} savedDestinations={savedDestinations} savedReadyGuides={savedReadyGuides} setOptionSelected={setOptionSelected}/>}
             {optionSelected === texts.optionSelectorProfile.myItineraries && <MyItineraries itineraries={itineraries} />}
             {optionSelected === texts.optionSelectorProfile.destinationsSaved && <SavedDestinations destinations={savedDestinations}/>}
             {optionSelected === texts.optionSelectorProfile.guidesSaved && <SavedReadyGuides guides={savedReadyGuides}/>}

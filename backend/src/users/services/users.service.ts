@@ -1,7 +1,7 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import * as bcrypt from "bcrypt"
 import { ConflictException, Injectable, UnauthorizedException } from "@nestjs/common"
-import { AddCountryDto } from '../dtos/create-users-dto';
+import { EditCountryDto } from '../dtos/create-users-dto';
 
 
 interface teste {
@@ -116,28 +116,54 @@ export class UsersService {
     }
   }
 
-  async addCountryVisited(data: AddCountryDto){
+  async addCountryVisited(data: EditCountryDto) {
     const user = await this.prisma.user.findUnique({
-        where: {
-            id: data.userId,
-        },
-        select: {
-            countriesVisited: true,
-        },
+      where: {
+        id: data.userId,
+      },
+      select: {
+        countriesVisited: true,
+      },
     });
 
     const countriesVisited = [
-        ...(user?.countriesVisited ?? []),
-        data.country,
+      ...(user?.countriesVisited ?? []),
+      data.country,
     ];
 
     return this.prisma.user.update({
-        where: {
-            id: data.userId,
-        },
-        data: {
-            countriesVisited,
-        },
+      where: {
+        id: data.userId,
+      },
+      data: {
+        countriesVisited,
+      },
+    });
+  }
+
+  async removeCountryVisited(data: EditCountryDto) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: data.userId,
+      },
+      select: {
+        countriesVisited: true,
+      },
+    });
+
+    let teste = user?.countriesVisited
+
+    const countriesVisited = teste?.filter(
+      country => country !== data.country
+    )
+
+    return this.prisma.user.update({
+      where: {
+        id: data.userId,
+      },
+      data: {
+        countriesVisited,
+      },
     });
   }
 }

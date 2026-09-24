@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Delete, Query, Patch } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
-import { AddCountryDto, CreateUsersDto } from '../dtos/create-users-dto';
+import { EditCountryDto, CreateUsersDto } from '../dtos/create-users-dto';
 
 @ApiTags('Users')
 @Controller('user')
@@ -86,11 +86,19 @@ export class UsersController {
         }
     }
 
-    @Patch('countryVisited')
+    @Patch('add/countryVisited')
     @ApiOperation({
         summary: 'Add country in countriesVisited'
     })
-    async addCountryVisited(@Body() data: AddCountryDto){
+    async addCountryVisited(@Body() data: EditCountryDto){
         return await this.usersService.addCountryVisited(data)
+    }
+
+    @Patch('remove/countryVisited')
+    @ApiOperation({
+        summary: 'Remove country in countriesVisited'
+    })
+    async removeCountryVisited(@Body() data: EditCountryDto){
+        return await this.usersService.removeCountryVisited(data)
     }
 }

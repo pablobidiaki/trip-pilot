@@ -18,10 +18,15 @@ export default function MyMap({ user }: MyMapProps) {
     const [countrySelected, setCountrySelected] = useState<GeoInterface>()
     const [isOpen, setIsOpen] = useState(false)
     const [visiteConfirmed, setVisiteConfirmed] = useState(false)
-    const toggleCountry = (geo: any) => {
+    const [visited, setVisited] = useState(false)
+    const [imageLoading, setImageLoading] = useState(true)
+
+    const toggleCountry = (geo: any, isVisited: boolean) => {
+        setImageLoading(true)
         setIsOpen(true)
         setCountrySelected(geo)
         setVisiteConfirmed(false)
+        setVisited(isVisited)
     }
 
     useEffect(() => {
@@ -43,8 +48,8 @@ export default function MyMap({ user }: MyMapProps) {
                                     <Geography
                                         key={geo.rsmKey}
                                         geography={geo}
-                                        onClick={() => toggleCountry(geo)}
-                                        className={`${isVisited ? 'fill-[#4F46E5]' : 'fill-[#E2E8F0]'} outline-none stroke-white stroke-1 transition-all ${isVisited ? 'hover:fill-[#4338CA]' : 'hover:fill-[#CBD5E1]'} hover:cursor-pointer hover:outline-none`}
+                                        onClick={() => toggleCountry(geo, isVisited)}
+                                        className={` ${isVisited ? 'fill-[#4F46E5]' : 'fill-[#E2E8F0]'} outline-none stroke-white stroke-1 transition-all ${isVisited ? 'hover:fill-[#4338CA]' : 'hover:fill-[#CBD5E1]'} hover:cursor-pointer hover:outline-none `}
                                     />
                                 )
                             })}
@@ -53,12 +58,14 @@ export default function MyMap({ user }: MyMapProps) {
                 </ComposableMap>
             </div>
             {isOpen &&
-                <CountryInfoModal geo={countrySelected}
-                    visitedCountries={visitedCountries}
+                <CountryInfoModal visited={visited}
+                    geo={countrySelected}
                     isOpen={isOpen}
                     onClose={() => setIsOpen(false)}
                     user={user!}
                     setVisiteConfirmed={setVisiteConfirmed}
+                    imageLoading={imageLoading}
+                    setImageLoading={setImageLoading}
                 />}
         </div>
     );

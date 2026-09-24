@@ -10,7 +10,20 @@ export async function getCountryFlag(country: string): Promise<FlagInterface> {
 }
 
 export async function addCountryVisited(userId: string, country: string) {
-    await fetch(`http://localhost:3001/user/countryVisited`, {
+    await fetch(`http://localhost:3001/user/add/countryVisited`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userId: userId,
+            country: country
+        }),
+    });
+}
+
+export async function removeCountryVisited(userId: string, country: string) {
+    await fetch(`http://localhost:3001/user/remove/countryVisited`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',

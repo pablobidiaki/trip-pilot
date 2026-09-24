@@ -9,8 +9,10 @@ import DestinationSavedCard from "./DestinationSavedCard"
 import ReadyGuidesSavedCard from "./ReadyGuidesSavedCard"
 import { SavedDestinationInterface } from "@/interfaces/destination.interface"
 import { SavedReadyGuideInterface } from "@/interfaces/readyGuides.interface"
+import { UserInterface } from "@/interfaces/user.interface"
 
 interface InitialPageProps {
+    user: UserInterface
     session: any
     itineraries: ItineraryInterface[]
     savedDestinations: SavedDestinationInterface[]
@@ -18,7 +20,7 @@ interface InitialPageProps {
     setOptionSelected: (text: string) => void
 }
 
-export default function InitialPage({ session, itineraries, savedDestinations, savedReadyGuides, setOptionSelected }: InitialPageProps) {
+export default function InitialPage({ user, session, itineraries, savedDestinations, savedReadyGuides, setOptionSelected }: InitialPageProps) {
     const cardInfos = [
         {
             icon: <Briefcase className="text-purple-500" />,
@@ -35,7 +37,7 @@ export default function InitialPage({ session, itineraries, savedDestinations, s
         {
             icon: <Plane className="text-blue-500" />,
             title: texts.profile.visitedCountries,
-            value: 5,
+            value: user?.countriesVisited.length,
             bgColor: "bg-blue-100"
         }
     ]

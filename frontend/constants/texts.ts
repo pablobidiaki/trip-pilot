@@ -409,7 +409,9 @@ const texts = {
         savedGuidesText: "Explore roteiros completos e prontos para inspirar sua próxima viagem.",
         viewGuide: "Ver guia pronto",
         myMap: "Meu mapa",
-        myMapText: "Veja no mapa os lugares que já fizeram parte da sua jornada."
+        myMapText: "Veja no mapa os lugares que já fizeram parte da sua jornada.",
+        markVisited: "Marcar como visitado",
+        markNoVisited: "Marcar como não visitado"
     },
 
     real: "R$",

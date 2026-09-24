@@ -21,7 +21,7 @@ export class CreateUsersDto {
   password: string;
 }
 
-export class AddCountryDto{
+export class EditCountryDto{
   @ApiProperty({
     example: '8ab672ae-c515-46da-a3a3-3b47a4ba4c7c',
   })
