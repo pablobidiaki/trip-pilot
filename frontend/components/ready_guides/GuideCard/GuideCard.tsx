@@ -25,7 +25,7 @@ export default async function GuideCard({ id, image, title, cities, duration, ty
         <Link href={`/ready_guides/${id}`}>
             <div className="bg-white relative mb-2 mt-10 max-w-100 overflow-hidden rounded-2xl border border-gray-300 transition-all duration-200  hover:scale-101">
                 <div className="absolute right-2 mt-1">
-                    <FavoriteButton userId={user.user.id} readyGuideId={id}/>
+                    <FavoriteButton userId={user?.user?.id} readyGuideId={id}/>
                 </div>
 
                 <img

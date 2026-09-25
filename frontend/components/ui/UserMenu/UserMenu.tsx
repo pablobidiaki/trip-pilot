@@ -21,7 +21,7 @@ export default function UserMenu({ image, name, email}: UserMenuProps) {
             </div>
 
             {isOpen && (
-                <div className="absolute right-0 top-12 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
+                <div className="absolute right-0 top-10 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
                     <div className="p-4 border-b border-gray-100">
                         <div className="flex items-center gap-3">
                             <img src={image ? image : "/imgs/icons/user.png"} alt="user photo" className="w-10 h-10 rounded-full object-cover" />

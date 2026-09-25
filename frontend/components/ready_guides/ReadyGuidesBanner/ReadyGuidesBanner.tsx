@@ -9,7 +9,7 @@ export default function ReadyGuidesBanner() {
                 alt="Banner"
                 className="absolute inset-0 h-full w-full object-cover z-0 brightness-40"
             />
-            <div className="relative z-10 bg-white/20">
+            <div className="relative z-50 bg-white/20">
                 <Header />
             </div>
             <div className="relative z-10 mt-5 text-white">
