@@ -110,13 +110,12 @@ const texts = {
     },
 
     providedData: {
-        origin: "Origem: ",
-        destination: "Destino: ",
-        departureDate: "Data da viagem: ",
+        origin: "Origem",
+        destination: "Destino",
+        departureDate: "Período ",
         date: "Data",
-        durationDays: "Duração: ",
-        travelers: "Viajantes:",
-        budget: "Orçamento: ",
+        travelers: "Viajantes",
+        budget: "Orçamento",
         budgetTab: "Orçamento",
         travelersTab: "Viajantes",
         yourTravelTo: "Sua viagem para:"

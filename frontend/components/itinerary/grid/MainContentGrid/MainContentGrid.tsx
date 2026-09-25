@@ -21,8 +21,10 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
     return (
         <div className="mx-4 mt-2 animate-[optionSelector_300ms_ease-out]">
             <ItineraryBanner />
-            <div className="flex gap-5 relative">
+            <div className="relative">
                 <ProvidedData itinerary={itinerary} />
+            </div>
+            <div className="flex gap-5 relative">
                 <Accommodation accommodations={itinerary[0].itinerary.accommodations} />
             </div>
 
