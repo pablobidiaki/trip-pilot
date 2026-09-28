@@ -68,13 +68,13 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
                 <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Destinos salvos <span className="text-second-color ml-2 text-lg font-normal">({savedDestinations.length})</span></h1>
                 <p onClick={() => setOptionSelected(texts.optionSelectorProfile.destinationsSaved)} className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllDestinationsSaved}</p>
             </div>
-            <DestinationSavedCard savedDestinations={savedDestinations} />
+            <DestinationSavedCard user={user} savedDestinations={savedDestinations} />
 
             <div className="flex  justify-between items-center">
                 <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Guias prontos salvos <span className="text-second-color ml-2 text-lg font-normal">({savedReadyGuides.length})</span></h1>
                 <p onClick={() => setOptionSelected(texts.optionSelectorProfile.guidesSaved)} className="text-link-color underline text-lg font-medium mx-5 mt-5 cursor-pointer">{texts.profile.viewAllReadyGuidesSaved}</p>
             </div>  
-            <ReadyGuidesSavedCard savedReadyGuides={savedReadyGuides}/>
+            <ReadyGuidesSavedCard user={user} savedReadyGuides={savedReadyGuides}/>
 
             <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Recomendações</h1>
         </div>

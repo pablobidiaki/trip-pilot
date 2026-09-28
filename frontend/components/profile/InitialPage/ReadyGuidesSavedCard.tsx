@@ -1,16 +1,22 @@
+import FavoriteButton from "@/components/destination/DestinationBanner/FavoriteButton"
 import texts from "@/constants/texts"
 import { SavedReadyGuideInterface } from "@/interfaces/readyGuides.interface"
+import { UserInterface } from "@/interfaces/user.interface"
 import Link from "next/link"
 
 interface ReadyGuidesSavedCardProps {
+    user: UserInterface
     savedReadyGuides: SavedReadyGuideInterface[]
 }
 
-export default function ReadyGuidesSavedCard({ savedReadyGuides }: ReadyGuidesSavedCardProps) {
+export default function ReadyGuidesSavedCard({ user, savedReadyGuides }: ReadyGuidesSavedCardProps) {
     return (
         <div className="grid grid-cols-4 py-2 gap-5 px-4">
             {savedReadyGuides.map((guide, index) => (
                 <Link className="relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103" key={index} href={`ready_guides/${guide.readyGuide.id}`}>
+                    <div className="z-100 absolute top-2 right-2 ">
+                        <FavoriteButton userId={user?.id} readyGuideId={guide.readyGuide.id} />
+                    </div>
                     <img className="relative w-full h-52 object-cover brightness-50 rounded-t-2xl" src={guide.readyGuide.imageURL} />
                     <h1 className="mx-2 text-lg font-semibold text-gray-900 truncate">{guide.readyGuide.title}</h1>
                     <p className="text-sm line-clamp-2 text-second-color mx-2 mb-3">{guide.readyGuide.description}</p>

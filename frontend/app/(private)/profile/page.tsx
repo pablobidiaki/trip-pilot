@@ -39,7 +39,7 @@ export default function Profile() {
 
         getData()
 
-    }, [session, status])
+    }, [session, status, savedDestinations, savedReadyGuides])
 
     return (
         <div className="bg-background-color flex mt-2 animate-[optionSelector_300ms_ease-out]">
