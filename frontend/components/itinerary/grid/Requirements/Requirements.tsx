@@ -39,7 +39,7 @@ export default function Requirements({requirements}: RequirementsProps){
                         </div>
                     </div>
 
-                    <p className="bg-blue-100 p-2 mt-4 rounded-2xl text-second-color text-sm font-medium"><span className="text-blue-700 font-medium">Obs.: </span>{texts.requirements.observation}</p>
+                    <p className="bg-orange-100 p-2 mt-4 rounded-2xl text-second-color text-sm font-medium w-fit mx-auto"><span className="text-orange-500 font-medium">Obs.: </span>{texts.requirements.observation}</p>
                 </div>
             </div>
         </div>

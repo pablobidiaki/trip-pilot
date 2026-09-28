@@ -31,14 +31,14 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">1</span> {texts.itineraryTitles.accommodations}</h1>
             <div className="flex py-5 px-1">
                 <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1 my-auto mr-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105" />
-                <div className="relative w-75 h-75 mr-5">
+                <div className="relative w-75 h-92 mr-5">
                     {isLoading &&
                         <div className="absolute w-75 h-75 rounded-2xl bg-gray-100">
                             <Loading />
                         </div>
                     }
                     <iframe
-                        className="w-75 h-75 rounded-2xl"
+                        className="w-75 h-92 rounded-2xl"
                         loading="lazy"
                         src={accommodations[option].googleMapsEmbed}
                         onLoad={() => setIsLoading(false)}

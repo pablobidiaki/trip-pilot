@@ -18,7 +18,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-3"
+                tailwindTags="px-2 py-2"
             />
 
             <InfoRow icon={<Utensils size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
@@ -27,7 +27,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-3"
+                tailwindTags="px-2 py-2"
             />
 
             <InfoRow icon={<Binoculars size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
@@ -36,7 +36,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-3"
+                tailwindTags="px-2 py-2"
             />
 
             <InfoRow icon={<Car size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
@@ -45,7 +45,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-3"
+                tailwindTags="px-2 py-2"
             />
 
             <InfoRow icon={<ShoppingCart size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
@@ -54,19 +54,19 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-3"
+                tailwindTags="px-2 py-2"
             />
 
             <hr className="border-t border-dashed border-gray-300" />
-            <div className="text-green-600 m-4 flex justify-between items-center">
+            <div className="text-green-600 mx-2 mt-2 flex justify-between items-center">
                 <p className="font-medium">Total Estimado</p>
                 <p className="bg-green-100 p-2 rounded-2xl">{texts.real} {itinerary[0].itinerary.costEstimate.total.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}</p>
             </div>
-            <p className="m-4 mt-8 text-primary-color bg-blue-100 p-2 rounded-2xl">
-                <span className="text-blue-700 font-medium">{texts.tip}: </span>
+            <p className="m-4 mt-4 text-primary-color bg-orange-100 p-2 rounded-2xl">
+                <span className="text-orange-500 font-medium">{texts.tip}: </span>
                 {texts.costEstimate.youInformed} {texts.real} {itinerary[0].budgetTotal.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
