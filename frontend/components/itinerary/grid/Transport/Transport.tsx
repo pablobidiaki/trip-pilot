@@ -1,7 +1,6 @@
-import CardTitle from "../CardTitle/CardTitle";
 import texts from "@/constants/texts";
 
-import { CarFront, Plane, BusFront, Van } from "lucide-react"
+import { CarFront, BusFront } from "lucide-react"
 import TransportInfo from "./TransportInfo"
 import { TransportationInterface } from "@/interfaces/itinerary.interface";
 
@@ -11,8 +10,9 @@ interface TransportProps {
 
 export default function Transport({ transports }: TransportProps) {
     return (
-        <div className="border rounded-2xl border-gray-300 mt-8 bg-white">
-            <CardTitle icon={<Van />} title={texts.itineraryTitles.transportation} />
+        <div className="border rounded-2xl border-gray-100 mt-4 bg-white">
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">9</span> {texts.itineraryTitles.transportation}</h1>
+
             <TransportInfo icon={<CarFront />}
                 title={transports[0].type}
                 first_info={`Diaria: ~${texts.real} ${transports[0].averagePrice.toLocaleString("pt-BR", {
@@ -22,7 +22,7 @@ export default function Transport({ transports }: TransportProps) {
                 second_info="Ideal para conhecer atrações próximas"
             />
 
-            <hr className="border-gray-300" />
+            <hr className="border-gray-100 mx-2" />
 
             <TransportInfo icon={<BusFront />}
                 title={transports[1].type}

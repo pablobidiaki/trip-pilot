@@ -1,10 +1,8 @@
 import texts from "@/constants/texts";
-import CardTitle from "../CardTitle/CardTitle";
-import { Ticket } from "lucide-react";
 import TripRoute from "./TripRoute";
 import { Tickets } from "@/interfaces/itinerary.interface";
 
-interface HowToGetThereProps{
+interface HowToGetThereProps {
     tickets: Tickets[]
     destinationCountry: string
     destinationFlag: string
@@ -12,12 +10,13 @@ interface HowToGetThereProps{
     originFlag: string
 }
 
-export default function HowToGetThere({tickets, destinationCountry, destinationFlag, originCountry, originFlag}: HowToGetThereProps) {
+export default function HowToGetThere({ tickets, destinationCountry, destinationFlag, originCountry, originFlag }: HowToGetThereProps) {
     return (
-        <div className="bg-white border rounded-2xl max-w-2/3 border-gray-300 mt-8">
-            <CardTitle icon={<Ticket />} title={texts.itineraryTitles.flyDetails} />
-            <div className="m-4 flex justify-between items-center gap-5">
-                <div className="border border-gray-200 rounded-2xl">
+        <div className="bg-white border rounded-2xl max-w-2/3 border-gray-100 mt-8">
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">7</span> {texts.itineraryTitles.flyDetails}</h1>
+
+            <div className="m-4 flex justify-between items-center gap-5 ">
+                <div className="border border-gray-200 rounded-2xl bg-background-color">
                     <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">{texts.howToGetThere.go}</h1>
                     {tickets.map((ticket, index) => (
                         ticket.isGoing &&
@@ -37,7 +36,7 @@ export default function HowToGetThere({tickets, destinationCountry, destinationF
                     country_destination_name={destinationCountry}
                 />
 
-                <div className="border border-gray-200 rounded-2xl">
+                <div className="border border-gray-200 rounded-2xl bg-background-color">
                     <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">{texts.howToGetThere.return}</h1>
                     {tickets.map((ticket, index) => (
                         !ticket.isGoing &&

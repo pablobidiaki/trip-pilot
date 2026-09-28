@@ -1,7 +1,4 @@
 import texts from "@/constants/texts";
-import CardTitle from "../CardTitle/CardTitle";
-
-import { Lightbulb } from "lucide-react";
 import { TipsInterface } from "@/interfaces/itinerary.interface";
 
 interface TipsProps {

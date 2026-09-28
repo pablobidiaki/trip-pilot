@@ -1,7 +1,6 @@
 import texts from "@/constants/texts";
-import CardTitle from "../CardTitle/CardTitle";
 
-import { CircleCheck, CircleX, TableOfContents } from "lucide-react"
+import { CircleCheck, CircleX } from "lucide-react"
 import RequirementsInfo from "./RequirementsInfo";
 import { RequirementsInterface } from "@/interfaces/itinerary.interface";
 
