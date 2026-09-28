@@ -1,6 +1,5 @@
 import texts from "@/constants/texts";
-import CardTitle from "../CardTitle/CardTitle";
-import { CircleDollarSign, Bed, Utensils, Binoculars, Car, ShoppingCart } from "lucide-react"
+import { Bed, Utensils, Binoculars, Car, ShoppingCart } from "lucide-react"
 import InfoRow from "../InfoRow/InfoRow";
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
 
@@ -10,9 +9,10 @@ interface CostEstimateProps {
 
 export default function CostEstimate({ itinerary }: CostEstimateProps) {
     return (
-        <div className="border rounded-2xl border-gray-300 min-w-1/3 mt-8 bg-white">
-            <CardTitle icon={<CircleDollarSign />} title={texts.itineraryTitles.costEstimate} />
-            <InfoRow icon={<Bed />}
+        <div className="border rounded-2xl border-gray-100 max-w-1/3 mt-8 bg-white">
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">2</span> {texts.itineraryTitles.costEstimate}</h1>
+
+            <InfoRow icon={<Bed  size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />}
                 information={texts.costEstimate.accommodation}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.accommodations.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
@@ -21,7 +21,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                 tailwindTags="px-2 py-3"
             />
 
-            <InfoRow icon={<Utensils />}
+            <InfoRow icon={<Utensils size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
                 information={texts.costEstimate.food}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.food.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
@@ -30,7 +30,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                 tailwindTags="px-2 py-3"
             />
 
-            <InfoRow icon={<Binoculars />}
+            <InfoRow icon={<Binoculars size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
                 information={texts.costEstimate.tours}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.activities.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
@@ -39,7 +39,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                 tailwindTags="px-2 py-3"
             />
 
-            <InfoRow icon={<Car />}
+            <InfoRow icon={<Car size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
                 information={texts.costEstimate.transport}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.transport.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
@@ -47,8 +47,8 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                 })}`}
                 tailwindTags="px-2 py-3"
             />
-            
-            <InfoRow icon={<ShoppingCart />}
+
+            <InfoRow icon={<ShoppingCart size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
                 information={texts.costEstimate.shopAndExtras}
                 value={`${texts.real} ${itinerary[0].itinerary.costEstimate.extra.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,

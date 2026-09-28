@@ -96,17 +96,17 @@ const texts = {
 
     itineraryTitles: {
         mainTitle: "Seu roteiro personalizado",
-        providedData: "1. Dados informados",
-        accommodations: "2. Hospedagem sugerida",
-        tours: "3. Principais passeios",
-        costEstimate: "4. Custos Estimados",
-        weather: "5. Clima",
-        transportation: "6. Meio de transporte",
-        requirements: "7. O que é preciso para entrar",
-        tips: "8. Dicas importantes",
-        flyDetails: "9. Detalhes do voo",
-        tipicalFoods: "10. Comidas típicas",
-        itinerary: "11. Roteiro dia a dia"
+        providedData: "Dados informados",
+        accommodations: "Hospedagem sugerida",
+        tours: "Principais passeios",
+        costEstimate: "Custos Estimados",
+        weather: "Clima",
+        transportation: "Meio de transporte",
+        requirements: "O que é preciso para entrar",
+        tips: "Dicas importantes",
+        flyDetails: "Detalhes do voo",
+        tipicalFoods: "Comidas típicas",
+        itinerary: "Roteiro dia a dia"
     },
 
     providedData: {
@@ -124,11 +124,10 @@ const texts = {
     accommodations: {
         address: "Localização: ",
         include: "Inclui: ",
-        costEstimate: "Custo estimado por noite: ",
+        costEstimate: "Custo estimado por noite",
         reviews: "avaliações",
         roomType: "Tipo de quarto: ",
         averagePricePerPerson: "Diária média por pessoa: ",
-        
     },
 
     costEstimate: {
@@ -171,7 +170,7 @@ const texts = {
         connectionText: "Considere um eSIM ou plano internacional para acessar mapas e tradutor."
     },
 
-    tips:{
+    tips: {
         title: "Dicas para aproveitar melhor sua viagem",
         transport: "Transporte",
         internet: "Internet",
@@ -339,21 +338,21 @@ const texts = {
         tips: "Dicas",
         flights: "Voos",
         tipicalFoods: "Comidas",
-        itinerary: "Dia a dia"  
+        itinerary: "Dia a dia"
     },
 
     seasons: {
         summer: "Verão",
         winter: "Inverno",
         fall: "Outono",
-        spring:"Primavera"
+        spring: "Primavera"
     },
 
-    dayInformations:{
+    dayInformations: {
         dayItinerary: "Roteiro do dia"
     },
 
-    loginAndRegister:{
+    loginAndRegister: {
         dontHaveAccount: "Não tem conta?",
         createAccount: "Criar conta",
         alreadyHaveAccount: "Já tem uma conta?",
@@ -379,17 +378,17 @@ const texts = {
         continueWithGoogle: "Continuar com Google",
     },
 
-    optionSelectorProfile:{
+    optionSelectorProfile: {
         home: "Página Inicial",
-        myItineraries:"Meus Roteiros",
+        myItineraries: "Meus Roteiros",
         destinationsSaved: "Destinos Salvos",
         guidesSaved: "Guias salvos",
-        myMap:"Meu mapa",
+        myMap: "Meu mapa",
         configurations: "Configurações",
         exit: "Sair"
     },
 
-    profile:{
+    profile: {
         hello: "Olá, ",
         readyForNextAdventure: "Pronto para sua próxima aventura?",
         createScript: "Criar Roteiro",

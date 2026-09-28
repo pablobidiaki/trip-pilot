@@ -26,11 +26,12 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
             </div>
             <div className="flex gap-5 relative">
                 <Accommodation accommodations={itinerary[0].itinerary.accommodations} />
+                <CostEstimate itinerary={itinerary} />
             </div>
 
             <div className="flex justify-center gap-5">
                 <Tours tours={itinerary[0].itinerary.tours} />
-                <CostEstimate itinerary={itinerary} />
+                
 
                 <div className="flex flex-col justify-between max-w-1/3">
                     <Weather weather={itinerary[0].itinerary.weather} />

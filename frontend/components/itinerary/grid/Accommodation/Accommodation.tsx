@@ -2,7 +2,6 @@
 
 import texts from "@/constants/texts";
 import InfoRow from "../InfoRow/InfoRow";
-import CardTitle from "../CardTitle/CardTitle";
 import { MapPin, Package, BedDouble, ChevronLeft, ChevronRight, Hotel } from "lucide-react";
 import { AccommodationsInterface } from "@/interfaces/itinerary.interface";
 import { useState } from "react";
@@ -28,10 +27,10 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
     }
 
     return (
-        <div className="border rounded-2xl border-gray-300 w-full mt-8 bg-white">
-            <CardTitle icon={<Hotel />} title={texts.itineraryTitles.accommodations} />
+        <div className="border rounded-2xl border-gray-100 w-full mt-8 bg-white max-w-2/3">
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">1</span> {texts.itineraryTitles.accommodations}</h1>
             <div className="flex py-5 px-1">
-                <ChevronLeft onClick={minusButtonClicked} size={30} className=" cursor-pointer p-1 my-auto mr-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
+                <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1 my-auto mr-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105" />
                 <div className="relative w-75 h-75 mr-5">
                     {isLoading &&
                         <div className="absolute w-75 h-75 rounded-2xl bg-gray-100">
@@ -47,36 +46,33 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                     </iframe>
                 </div>
 
-                <div className="w-full flex-col justify-between">
-                    <h1 className="text-primary-color text-2xl font-medium mb-3">{accommodations[option].name}</h1>
+                <div className="w-full flex flex-col justify-between">
+                    <h1 className="text-primary-color text-2xl font-medium">{accommodations[option].name}</h1>
 
                     <ReviewBar rating={accommodations[option].rating}
                         reviews={accommodations[option].reviewsCount}
                     />
 
-                    <InfoRow icon={<MapPin />} information={texts.accommodations.address} value={accommodations[option].address} tailwindTags="mt-5" />
-                    <hr className="mx-2 text-gray-300 my-3" />
+                    <InfoRow icon={<MapPin size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>} information={texts.accommodations.address} value={accommodations[option].address} tailwindTags="mt-8 items-center" />
+                    <hr className="text-gray-300 my-3" />
 
-                    <InfoRow icon={<Package />} information={texts.accommodations.include} value={accommodations[option].includes} />
-                    <hr className="mx-2 text-gray-300 my-3" />
+                    <InfoRow icon={<Package size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>} information={texts.accommodations.include} value={accommodations[option].includes} />
+                    <hr className=" text-gray-300 my-3" />
 
-                    <div className="flex gap-2 mt-3">
-                        <BedDouble className="text-blue-600" />
-                        <p className=" text-second-color">{accommodations[option].roomType}</p>
-                    </div>
+                    <InfoRow icon={<BedDouble size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>} information={texts.accommodations.roomType} value={accommodations[option].roomType} />
+                    <hr className=" text-gray-300 my-3" />
 
-                    <div className="bg-blue-100 p-2 rounded-2xl mt-8">
-                        <p className="font-medium text-blue-900">{texts.accommodations.costEstimate}
-                            <span className="text-primary-color font-medium">{texts.real} {accommodations[option].costEstimate.toLocaleString("pt-BR", {
+                    <div className="flex gap-2 items-center justify-between">
+                        <p className="font-medium">{texts.accommodations.costEstimate}</p>
+                            <span className="text-green-500 text-sm p-2 bg-green-100 rounded-xl font-medium">{texts.real} {accommodations[option].costEstimate.toLocaleString("pt-BR", {
                                 minimumFractionDigits: 2,
                                 maximumFractionDigits: 2
                             })}
                             </span>
-                        </p>
                     </div>
                 </div>
 
-                <ChevronRight onClick={plusButtonClicked} size={30} className=" cursor-pointer p-1  my-auto ml-2 bg-blue-100 rounded-full shrink-0 hover:duration-200 hover:bg-blue-300 hover:text-white hover:scale-110" />
+                <ChevronRight onClick={plusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105" />
             </div>
         </div>
     )
