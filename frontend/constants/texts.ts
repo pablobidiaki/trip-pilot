@@ -426,6 +426,11 @@ const texts = {
         countries: "Países"
     },
 
+    exitConfirm:{
+        title: "Deseja sair?",
+        text: "Tem certeza que deseja sair desta página?"
+    },
+
     real: "R$",
     tip: "Dica",
     allReady: "Tudo pronto para sua viagem inesquecível!",
@@ -439,7 +444,9 @@ const texts = {
     price: "Preço",
     clear: "Limpar",
     today: "Hoje",
-    date: "Data"
+    date: "Data",
+    confirm: "Confirmar",
+    cancel: "Cancelar"
 }
 
 export default texts;

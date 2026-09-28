@@ -23,7 +23,7 @@ export default async function DestinationBanner({destination}: DestinationBanner
         <div className="relative overflow-hidden pb-15">
             <img src={destination[0].bannerURL} alt="Banner" className="absolute inset-0 h-full w-full object-cover z-0 brightness-40"/>
 
-            <div className="relative z-10 bg-white/20">
+            <div className="relative z-50 bg-white/20">
                 <Header />
             </div>
 
