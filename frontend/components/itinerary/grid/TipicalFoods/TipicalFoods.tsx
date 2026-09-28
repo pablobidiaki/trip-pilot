@@ -1,7 +1,5 @@
 import { TipicalFoodsInterface } from "@/interfaces/itinerary.interface"
 import TipicalFoodsCard from "./TipicalFoodsCard"
-import CardTitle from "../CardTitle/CardTitle"
-import { ChefHat } from "lucide-react"
 import texts from "@/constants/texts"
 
 interface TipicalFoodsProps {
@@ -10,17 +8,19 @@ interface TipicalFoodsProps {
 
 export default function TipicalFoods({ tipicalFoods }: TipicalFoodsProps) {
     return (
-        <div className="bg-white border rounded-2xl max-w-1/3 min-w-1/3 border-gray-300 mt-8">
-            <CardTitle icon={<ChefHat />} title={texts.itineraryTitles.tipicalFoods} />
-            {tipicalFoods.map((food, index) => (
-                <TipicalFoodsCard key={index}
-                    imageURL={food.imageURL}
-                    title={food.title}
-                    description={food.description}
-                    averagePrice={food.averagePrice}
-                    category={food.category}
-                />
-            ))}
+        <div className="bg-white border rounded-2xl  max-w-2/5 min-w-2/5 border-gray-100 mt-8">
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">4</span> {texts.itineraryTitles.tipicalFoods}</h1>
+            <div className="">
+                {tipicalFoods.map((food, index) => (
+                    <TipicalFoodsCard key={index}
+                        imageURL={food.imageURL}
+                        title={food.title}
+                        description={food.description}
+                        averagePrice={food.averagePrice}
+                        category={food.category}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

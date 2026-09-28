@@ -17,22 +17,21 @@ export default function TipicalFoodsCard({ imageURL, title, description, average
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="flex rounded-2xl m-4 border border-gray-200 min-h-30 max-h-30">
-            <div className="relative group cursor-pointer" onClick={() => setIsOpen(true)}>
-                <img src={imageURL} className="rounded-l-2xl min-h-30 max-h-30 max-w-32 transition-all group-hover:brightness-50" alt={`${title} image`}/>
+        <div className="flex max-h-40 rounded-2xl m-4 border border-gray-100 bg-background-color">
+            <div className="relative group cursor-pointer"  onClick={() => setIsOpen(true)}>
+                <img src={imageURL} className="max-h-40 min-w-40 max-w-40 rounded-l-2xl transition-all group-hover:brightness-50" alt={`${title} image`}/>
                 <Expand className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
                     size={28}
                 />
             </div>
-            <div className="mr-4 ml-2">
-                <p className="text-primary-color font-medium line-clamp-2">{texts.tipicalFood.name}<span className="text-second-color">{title}</span></p>
-                <p className="text-primary-color font-medium line-clamp-2">{texts.tipicalFood.description}<span className="text-second-color">{description}</span></p>
-                <p className="text-primary-color font-medium">{texts.tipicalFood.category}<span className="text-second-color">{category}</span></p>
-                <p className="text-primary-color font-medium">{texts.tipicalFood.averagePrice}
-                    <span className="text-second-color">{texts.real} {averagePrice.toLocaleString("pt-BR", {
+            <div className="flex flex-col mr-4 ml-2">
+                <p className="text-primary-color font-medium truncate text-2xl">{title}</p>
+                <p className="text-primary-color mb-2 text-sm italic ">{category}</p>
+                <p className="text-second-color line-clamp-2">{description}</p>
+                <p className="text-green-500 font-medium mt-auto">{texts.real} {averagePrice.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
-                    })}</span>
+                    })}
                 </p>
             </div>
 

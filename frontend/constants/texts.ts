@@ -320,6 +320,10 @@ const texts = {
         cultureText: "Informações sobre tradições, etiquetas e o que conhecer para uma experiência mais rica."
     },
 
+    tours:{
+        tourText: "Clique em uma das opções para visualizar todas informações!"
+    },
+
     tipicalFood: {
         name: "Nome: ",
         description: "Descrição: ",

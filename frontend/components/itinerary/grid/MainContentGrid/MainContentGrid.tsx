@@ -29,14 +29,9 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
                 <CostEstimate itinerary={itinerary} />
             </div>
 
-            <div className="flex justify-center gap-5">
+            <div className="flex justify-center gap-5 mx-3">
                 <Tours tours={itinerary[0].itinerary.tours} />
-                
-
-                <div className="flex flex-col justify-between max-w-1/3">
-                    <Weather weather={itinerary[0].itinerary.weather} />
-                    <Transport transports={itinerary[0].itinerary.transportation} />
-                </div>
+                <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood} />
             </div>
 
             <div className="flex justify-center gap-5">
@@ -51,7 +46,10 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
                     destinationCountry={itinerary[0].countryDestination}
                     destinationFlag={itinerary[0].countryDestinationFlagURL}
                 />
-                <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood} />
+                <div className="flex flex-col justify-between max-w-1/3">
+                    <Weather weather={itinerary[0].itinerary.weather} />
+                    <Transport transports={itinerary[0].itinerary.transportation} />
+                </div>
             </div>
 
             <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay} />

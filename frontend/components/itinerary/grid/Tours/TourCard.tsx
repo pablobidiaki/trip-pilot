@@ -16,21 +16,17 @@ export default function TourCard({ image, title, description, price }: TourCardP
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="flex gap-4 p-2 items-center">
-            <div className="relative group w-30 h-28">
-                <img src={image}
-                    alt="Tour tip image"
-                    className="cursor-pointer w-full h-full rounded-2xl object-cover transition-all group-hover:brightness-50"
-                    onClick={() => setIsOpen(true)}
-                />
+        <div onClick={() => setIsOpen(true)} className="flex items-end m-2 max-h-60 min-w-70 max-w-70 cursor-pointer">
+            <img src={image}
+                alt="Tour tip image"
+                className="relative w-full h-full rounded-xl object-cover brightness-30"
+            />
 
-                <Expand className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" size={28} />
-            </div>
-            <div>
-                <h1 className="text-primary-color font-medium text-xl truncate">{title}</h1>
-                <p className="text-second-color text-sm max-w-56 line-clamp-2">{description}</p>
-                {price == 0 ? <p className="text-green-500 font-medium mt-2">{texts.free}</p> :
-                    <p className="text-green-500 font-medium mt-2">{texts.real} {price.toLocaleString("pt-BR", {
+            <div className="absolute mx-2 z-10 max-w-70">
+                <h1 className="text-white font-medium line-clamp-1 max-w-66">{title}</h1>
+                <p className="text-gray-300 text-xs max-w-66 line-clamp-2">{description}</p>
+                {price == 0 ? <p className="text-sm bg-green-100 w-fit mb-2 px-2 rounded-xl text-green-500 font-medium mt-2">{texts.free}</p> :
+                    <p className="text-sm text-green-500 font-medium mt-2 px-2 bg-green-100 rounded-xl w-fit mb-2">{texts.real} {price.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
                     })} {texts.perPerson}
