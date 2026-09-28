@@ -17,7 +17,7 @@ export default function TipicalFoodsCard({ imageURL, title, description, average
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="flex max-h-40 rounded-2xl m-4 border border-gray-100 bg-background-color">
+        <div className="flex max-h-40 rounded-2xl m-4 border border-gray-100 bg-background-color transition-all hover:duration-200 hover:scale-101">
             <div className="relative group cursor-pointer"  onClick={() => setIsOpen(true)}>
                 <img src={imageURL} className="max-h-40 min-w-40 max-w-40 rounded-l-2xl transition-all group-hover:brightness-50" alt={`${title} image`}/>
                 <Expand className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
