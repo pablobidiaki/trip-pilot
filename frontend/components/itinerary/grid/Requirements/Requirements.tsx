@@ -11,8 +11,8 @@ interface RequirementsProps{
 
 export default function Requirements({requirements}: RequirementsProps){
     return(
-        <div className="bg-white border rounded-2xl border-gray-300 max-w-1/2 min-w-1/2 mt-8">
-            <CardTitle icon={<TableOfContents />} title={texts.itineraryTitles.requirements}/>
+        <div className="bg-white border rounded-2xl border-gray-100 max-w-1/2 min-w-1/2 mt-8">
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">5</span> {texts.itineraryTitles.requirements}</h1>
             <div className="flex justify-center gap-4 p-4">
                 <div>
                     <div className="flex justify-center gap-5">
