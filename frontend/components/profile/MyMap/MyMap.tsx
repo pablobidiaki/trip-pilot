@@ -28,6 +28,7 @@ export default function MyMap({ user }: MyMapProps) {
     const [wishlist, setWishlist] = useState(false)
     const [imageLoading, setImageLoading] = useState(true)
     const [position, setPosition] = useState(mapInitialPosition)
+    const [placeholderCountry, setPlaceholderCountry] = useState<string>()
 
     const toggleCountry = (geo: any, isVisited: boolean, isWishlist: boolean) => {
         setImageLoading(true)
@@ -74,6 +75,8 @@ export default function MyMap({ user }: MyMapProps) {
                                     <Geography
                                         key={geo.rsmKey}
                                         geography={geo}
+                                        onMouseEnter={() => setPlaceholderCountry(geo?.properties?.name)}
+                                        onMouseOut={() => setPlaceholderCountry("")}
                                         onClick={() => toggleCountry(geo, isVisited, isInWishlist)}
                                         className={`outline-none stroke-white stroke-1 transition-all hover:cursor-pointer
                                         ${countrySelected?.id === geo.id && isOpen ? 'fill-gray-600' :
@@ -87,7 +90,8 @@ export default function MyMap({ user }: MyMapProps) {
                     </ZoomableGroup>
                 </ComposableMap>
 
-                <div className="fixed bottom-7 left-55 bg-white p-2 rounded-lg shadow-2xl">
+                <div className="fixed bottom-7 left-55 bg-white p-2 rounded-lg shadow-2xl min-w-50">
+                    <p>{placeholderCountry}</p>
                     <ColorExplain color="bg-secondary-third-color" text={texts.profile.visited} />
                     <ColorExplain color="bg-orange-400" text={texts.profile.wantVisit} />
                     <ColorExplain color="bg-gray-600" text={texts.profile.selected} />
