@@ -11,15 +11,23 @@ import { UserInterface } from "@/interfaces/user.interface"
 import SearchBar from "@/components/ui/SearchBar/Searchbar"
 import removeAccents from "@/utils/removeAccents";
 
-interface DestinationBodyProps{
+interface DestinationBodyProps {
     user: UserInterface
 }
 
-export default function DestinationBody({user}: DestinationBodyProps) {
+export default function DestinationBody({ user }: DestinationBodyProps) {
     const [selected, setSelected] = useState("Todos")
     const [destinations, setDestinations] = useState<DestinationInterface[]>()
     const [search, setSearch] = useState("")
-    
+
+    const filteredDestinations = destinations?.filter((destination) =>
+        (
+            removeAccents(destination.country.toLowerCase()).includes(search.toLowerCase()) ||
+            removeAccents(destination.destination.toLowerCase()).includes(search.toLowerCase())
+        ) &&
+        (selected === "Todos" || destination.travelType === selected)
+    )
+
     useEffect(() => {
         const _getDestinations = async () => {
             const destinations = await getDestinations()
@@ -38,20 +46,24 @@ export default function DestinationBody({user}: DestinationBodyProps) {
 
             <div className="grid grid-cols-[4fr_1fr] gap-4">
                 <div className="grid grid-cols-3 gap-4">
-                    {destinations?.map((destination) => (
-                        (removeAccents(destination.country.toLowerCase()).includes(search.toLowerCase()) || removeAccents(destination.destination.toLowerCase()).includes(search.toLowerCase())) &&
-                        (selected === "Todos" || destination.travelType === selected) &&
-                        <DestinationCard
-                            key={destination.id}
-                            id={destination.id}
-                            image={destination.imageURL}
-                            name={destination.destination}
-                            description={destination.description}
-                            travel_type={destination.travelType}
-                            country={destination.country}
-                            user={user}
-                        />
-                    ))}
+                    {filteredDestinations?.length ? (
+                        filteredDestinations.map((destination) => (
+                            <DestinationCard
+                                key={destination.id}
+                                id={destination.id}
+                                image={destination.imageURL}
+                                name={destination.destination}
+                                description={destination.description}
+                                travel_type={destination.travelType}
+                                country={destination.country}
+                                user={user}
+                            />
+                        ))
+                    ) : (
+                        <div className="min-h-120 col-span-3 flex justify-center items-center py-20">
+                            <p>Nenhum roteiro encontrado</p>
+                        </div>
+                    )}
                 </div>
 
                 <WhyChoseTripPilot />
