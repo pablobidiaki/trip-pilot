@@ -13,7 +13,7 @@ export default function ReadyGuidesSavedCard({ user, savedReadyGuides }: ReadyGu
     return (
         <div className="grid grid-cols-4 py-2 gap-5 px-4">
             {savedReadyGuides.map((guide, index) => (
-                <Link className="relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103" key={index} href={`ready_guides/${guide.readyGuide.id}`}>
+                <Link className="relative bg-background-color border border-gray-100 rounded-2xl transition-all hover:duration-200 hover:scale-101" key={index} href={`ready_guides/${guide.readyGuide.id}`}>
                     <div className="z-100 absolute top-2 right-2 ">
                         <FavoriteButton userId={user?.id} readyGuideId={guide.readyGuide.id} />
                     </div>

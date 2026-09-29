@@ -5,7 +5,7 @@ import MainContent from "@/components/profile/MainContent";
 import { useSession } from "next-auth/react";
 import { getUserItineraries } from "@/services/itinerary.service";
 import { getUserIdByEmail } from "@/services/user.service";
-import { getFavoriteDestinations } from "@/services/destination.service";
+import { getDestinations, getFavoriteDestinations } from "@/services/destination.service";
 import { getFavoriteReadyGuides } from "@/services/readyGuides.service";
 import { useEffect, useState } from "react";
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
