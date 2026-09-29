@@ -18,7 +18,7 @@ export default function ButtonFilters({selected, setSelected}: ButtonFiltersProp
     ];
 
     return (
-        <div className="flex justify-evenly mt-10">
+        <div className="flex gap-25">
             {filters.map((filter) => (
                 <InfoItem
                     key={filter.text}

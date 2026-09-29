@@ -20,7 +20,7 @@ interface GuideCardProps {
 export default function GuideCard({ id, image, title, cities, duration, type, description, price, user }: GuideCardProps) {
     return (
         <Link href={`/ready_guides/${id}`}>
-            <div className="bg-white relative mb-2 mt-10 max-w-100 overflow-hidden rounded-2xl border border-gray-300 transition-all duration-200  hover:scale-101">
+            <div className="bg-white relative mb-2 mt-10 max-w-100 overflow-hidden rounded-2xl border border-gray-100 transition-all duration-200  hover:scale-101">
                 <div className="absolute right-2 mt-1">
                     <FavoriteButton userId={user?.id} readyGuideId={id}/>
                 </div>

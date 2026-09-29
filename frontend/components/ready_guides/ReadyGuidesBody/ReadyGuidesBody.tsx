@@ -6,6 +6,9 @@ import GuideCard from "../GuideCard/GuideCard";
 import { getReadyGuides } from "@/services/readyGuides.service";
 import { useEffect, useState } from "react";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
+import SearchBar from "@/components/ui/SearchBar/Searchbar";
+import texts from "@/constants/texts";
+import removeAccents from "@/utils/removeAccents";
 
 interface ReadyGuidesBodyProps {
     user: UserInterface
@@ -14,6 +17,7 @@ interface ReadyGuidesBodyProps {
 export default function ReadyGuidesBody({ user }: ReadyGuidesBodyProps) {
     const [selected, setSelected] = useState("Todos")
     const [readyGuides, setReadyGuides] = useState<ReadyGuideInterface[]>()
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         const _getReadyGuides = async () => {
@@ -25,10 +29,14 @@ export default function ReadyGuidesBody({ user }: ReadyGuidesBodyProps) {
 
     return (
         <div className="relative overflow-hidden bg-background-color -mt-5 rounded-t-4xl">
-            <ButtonFilters selected={selected} setSelected={setSelected}/>
+            <div className="flex items-center mt-10 justify-between mx-4">
+                <ButtonFilters selected={selected} setSelected={setSelected} />
+                <SearchBar placeholder={texts.readyGuides.searchBarPlaceholder} search={search} setSearch={setSearch} />
+            </div>
             <div className="grid grid-cols-4 justify-items-center">
                 {readyGuides?.map((guide, index) => (
-                    (selected === 'Todos' || selected === guide.travelType) &&
+                    (removeAccents(guide.title.toLowerCase()).includes(search.toLowerCase()) || guide.cities.some(city => removeAccents(city.toLowerCase()).includes(search.toLowerCase()))) && 
+                    selected === 'Todos' || selected === guide.travelType) &&
                     <GuideCard key={index}
                         id={guide.id}
                         image={guide.imageURL}
@@ -40,7 +48,7 @@ export default function ReadyGuidesBody({ user }: ReadyGuidesBodyProps) {
                         price={guide.price}
                         user={user}
                     />
-                ))}
+                )}
             </div>
         </div>
     )

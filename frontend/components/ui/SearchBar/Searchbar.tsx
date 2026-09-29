@@ -1,16 +1,18 @@
 import { Search } from "lucide-react"
 
 interface SearchBarProps{
-    placeholder: string,
+    search: string
+    placeholder: string
     tailwindTags?: string
+    setSearch: (value: string) => void
 }
 
-export default function SearchBar({placeholder, tailwindTags}: SearchBarProps){
+export default function SearchBar({search, placeholder, tailwindTags, setSearch}: SearchBarProps){
     return(
-        <div className={`flex justify-between bg-white border p-2 rounded-2xl ${tailwindTags}`}>
-            <input className="text-primary-color w-full outline-none" placeholder={placeholder}/>
-            <div className="bg-blue-600 p-2 rounded-full">
-                <Search/>
+        <div className={`flex justify-between bg-white border border-gray-100 p-2 rounded-2xl ${tailwindTags}`}>
+            <input onChange={(e) => setSearch(e.target.value)} value={search} className="text-primary-color w-full outline-none" placeholder={placeholder}/>
+            <div onClick={() => setSearch(search)} className="bg-blue-600 p-2 rounded-full">
+                <Search className="cursor-pointer text-white"/>
             </div>
         </div>
     )
