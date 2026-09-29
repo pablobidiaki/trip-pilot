@@ -2,9 +2,8 @@ import InfoItem from "@/components/ui/InfoItem/InfoItem";
 import texts from "@/constants/texts";
 import { Clock, Landmark } from "lucide-react";
 import Link from "next/link";
-import { auth } from "@/auth"
-import { getUserIdByEmail } from "@/services/user.service";
 import FavoriteButton from "@/components/destination/DestinationBanner/FavoriteButton";
+import { UserInterface } from "@/interfaces/user.interface";
 
 interface GuideCardProps {
     id: string,
@@ -14,18 +13,16 @@ interface GuideCardProps {
     duration: number,
     type: string,
     description: string,
-    price: number
+    price: number,
+    user: UserInterface
 }
 
-export default async function GuideCard({ id, image, title, cities, duration, type, description, price }: GuideCardProps) {
-    const session = await auth()
-    const user = await getUserIdByEmail(session?.user?.email)
-
+export default function GuideCard({ id, image, title, cities, duration, type, description, price, user }: GuideCardProps) {
     return (
         <Link href={`/ready_guides/${id}`}>
             <div className="bg-white relative mb-2 mt-10 max-w-100 overflow-hidden rounded-2xl border border-gray-300 transition-all duration-200  hover:scale-101">
                 <div className="absolute right-2 mt-1">
-                    <FavoriteButton userId={user?.user?.id} readyGuideId={id}/>
+                    <FavoriteButton userId={user?.id} readyGuideId={id}/>
                 </div>
 
                 <img
