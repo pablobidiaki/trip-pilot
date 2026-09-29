@@ -1,24 +1,18 @@
 export enum TripType {
-  Adventure = "Aventura",
   Beach = "Praia",
-  Family = "Familia",
-  Romantic = "Romantico",
-  Luxury = "Luxo",
-  Nature = "Natureza",
+  Adventure = "Aventura",
   Cultural = "Cultura",
-  Cruise = "Cruzeiro",
+  Nature = "Natureza",
+  Romantic = "Romantico",
   Economy = "Econômico"
 }
 
 export const TripTypesArray: string[] = [
-  "Aventura",
   "Praia",
-  "Familia",
-  "Romantico",
-  "Luxo",
-  "Natureza",
+  "Aventura",
   "Cultura",
-  "Cruzeiro",
+  "Natureza",
+  "Romantico",
   "Econômico"
 ]
 

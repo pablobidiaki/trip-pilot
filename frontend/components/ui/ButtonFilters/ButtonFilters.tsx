@@ -1,18 +1,18 @@
-"use client"
-
-import { useState } from "react";
 import InfoItem from "@/components/ui/InfoItem/InfoItem";
-import { Building2, Globe, Heart, Landmark, MountainSnow, Parasol, Wallet } from "lucide-react";
+import { Globe, Heart, Landmark, MountainSnow, Parasol, Trees, Wallet } from "lucide-react";
 
-export default function ButtonFilters() {
-    const [selected, setSelected] = useState("Todos");
+interface ButtonFiltersProps{
+    selected: string
+    setSelected: (value: string) => void
+}
 
+export default function ButtonFilters({selected, setSelected}: ButtonFiltersProps) {
     const filters = [
         { text: "Todos", icon: <Globe /> },
         { text: "Praia", icon: <Parasol /> },
         { text: "Aventura", icon: <MountainSnow /> },
-        { text: "Cultural", icon: <Landmark /> },
-        { text: "Urbano", icon: <Building2 /> },
+        { text: "Cultura", icon: <Landmark /> },
+        { text: "Natureza", icon: <Trees /> },
         { text: "Romântico", icon: <Heart /> },
         { text: "Econômico", icon: <Wallet /> },
     ];
@@ -24,7 +24,7 @@ export default function ButtonFilters() {
                     key={filter.text}
                     icon={filter.icon}
                     text={filter.text}
-                    tailwindTags="cursor-pointer"
+                    tailwindTags="hover:bg-[#9799ff] transition-all hover:text-white hover:duration-200 p-2 cursor-pointer"
                     selected={selected === filter.text}
                     onClick={() => setSelected(filter.text)}
                 />
