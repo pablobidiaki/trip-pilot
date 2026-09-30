@@ -74,7 +74,7 @@ export default function HeroForm() {
 
             router.push(`/itinerary/${itinerary.id}`)
         } catch (err) {
-            console.log(`Erro ao gerar roteiro ${err}`)
+            console.error(`Erro ao gerar roteiro ${err}`)
         } finally {
             setIsLoading(false)
         }
@@ -113,7 +113,7 @@ export default function HeroForm() {
                         )
                     )
                 })
-                .catch((error) => console.log("error", error))
+                .catch((error) => console.error("error", error))
         }, 300)
 
         return () => clearTimeout(timer)

@@ -1,34 +1,13 @@
-import { Body, Controller, Get, Param, Post, Delete, Query, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Delete, Patch, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
-import { EditCountryDto, CreateUsersDto } from '../dtos/create-users-dto';
+import { EditCountryDto } from '../dtos/create-users-dto';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.auth.guard';
 
 @ApiTags('Users')
 @Controller('user')
 export class UsersController {
     constructor(private readonly usersService: UsersService,) { }
-
-    @Post("register")
-    async register(@Body() data: CreateUsersDto) {
-        return this.usersService.register(
-            data.name,
-            data.email,
-            data.password
-        )
-    }
-
-    @Post("login")
-    async login(
-        @Body() data: {
-            email: string
-            password: string
-        }
-    ) {
-        return this.usersService.login(
-            data.email,
-            data.password
-        )
-    }
 
     @Get()
     @ApiOperation({
@@ -43,6 +22,7 @@ export class UsersController {
     }
 
     @Get(':email')
+    @UseGuards(JwtAuthGuard)
     @ApiOperation({
         summary: 'Get an especific user id by email',
     })

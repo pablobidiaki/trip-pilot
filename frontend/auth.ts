@@ -1,6 +1,24 @@
-import NextAuth from "next-auth"
-import Google from "next-auth/providers/google"
-import Credentials from "next-auth/providers/credentials"
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
+import Credentials from "next-auth/providers/credentials";
+import "next-auth";
+import "next-auth/jwt";
+
+declare module "next-auth" {
+  interface User {
+    accessToken?: string;
+  }
+
+  interface Session {
+    accessToken?: string;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    accessToken?: string;
+  }
+}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -8,6 +26,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
+
     Credentials({
       credentials: {
         email: {},
@@ -15,8 +34,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
 
       async authorize(credentials) {
-
-        const response = await fetch("http://localhost:3001/user/login",
+        const response = await fetch(
+          "http://localhost:3001/auth/login",
           {
             method: "POST",
             headers: {
@@ -27,39 +46,36 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               password: credentials.password,
             }),
           }
-        )
+        );
 
-        if (!response.ok) {
-          return null
+        if (!response.ok) return null
+
+        const result = await response.json();
+
+        const user = {
+          id: result.data.id,
+          name: result.data.name,
+          email: result.data.email,
+          image: result.data.image,
+          accessToken: result.accessToken,
         }
 
-        const user = await response.json()
-
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          image: user.image,
-        }
+        return user;
       },
     }),
   ],
-callbacks: {
-    async signIn({ user }) {
 
-    await fetch("http://localhost:3001/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: user.name,
-        email: user.email,
-        image: user.image,
-      }),
-    })
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) token.accessToken = user.accessToken;
+      
+      return token;
+    },
 
-    return true
-  },
-}
-})
+    async session({ session, token }) {
+      session.accessToken = token.accessToken;
+
+      return session;
+    },
+  }
+});

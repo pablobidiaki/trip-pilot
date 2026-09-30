@@ -5,7 +5,7 @@ import MainContent from "@/components/profile/MainContent";
 import { useSession } from "next-auth/react";
 import { getUserItineraries } from "@/services/itinerary.service";
 import { getUserIdByEmail } from "@/services/user.service";
-import { getDestinations, getFavoriteDestinations } from "@/services/destination.service";
+import { getFavoriteDestinations } from "@/services/destination.service";
 import { getFavoriteReadyGuides } from "@/services/readyGuides.service";
 import { useEffect, useState } from "react";
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
@@ -29,7 +29,7 @@ export default function Profile() {
 
         const getData = async () => {
 
-            const user = await getUserIdByEmail(session?.user?.email)
+            const user = await getUserIdByEmail(session?.accessToken!, session?.user?.email)
             setUser(user)
 
             setItineraries(await getUserItineraries(user.id))

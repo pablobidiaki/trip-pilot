@@ -7,6 +7,7 @@ import { ItineraryModule } from './itinerary/itinerary.module';
 import { DestinationModule } from './destination/destination.module';
 import { ReadyGuidesModule } from './readyGuide/readyGuide.module';
 import { ImagesModule } from './images/images.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { ImagesModule } from './images/images.module';
     DestinationModule,
     ReadyGuidesModule,
     ImagesModule,
-    LlmModule
+    LlmModule,
+    AuthModule
   ],
 })
 export class AppModule {}

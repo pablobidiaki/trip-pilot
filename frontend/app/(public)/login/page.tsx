@@ -19,7 +19,6 @@ export default function Login() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-
     const result = await signIn("credentials", { email, password, redirect: false})
 
     if (result?.error) {
@@ -45,16 +44,18 @@ export default function Login() {
           <h1 className="text-center text-4xl text-primary-color mt-10">{texts.loginAndRegister.welcomeAgain}</h1>
           <p className="text-center text-lg text-second-color mb-5">{texts.loginAndRegister.loginToContinue}</p>
           <form >
-            <InputWithTitle icon={<Mail />}
-              title={texts.loginAndRegister.email}
-              placeholder={texts.loginAndRegister.emailPlaceholder}
-              inputType="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required={true}
-            />
+            <div onClick={() => setError(false)}>
+              <InputWithTitle icon={<Mail />}
+                title={texts.loginAndRegister.email}
+                placeholder={texts.loginAndRegister.emailPlaceholder}
+                inputType="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required={true}
+              />
+            </div>
 
-            <div className="flex items-center rounded-xl gap-3">
+            <div onClick={() => setError(false)} className="flex items-center rounded-xl gap-3">
               <InputWithTitle icon={<LockKeyhole />}
                 title={texts.loginAndRegister.password}
                 placeholder={texts.loginAndRegister.passwordPlaceholder}

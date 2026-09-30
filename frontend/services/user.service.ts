@@ -1,5 +1,11 @@
-export async function getUserIdByEmail(email: string | null | undefined) {
-    const response = await fetch(`http://localhost:3001/user/${email}`)
+export async function getUserIdByEmail(accessToken: string, email: string | null | undefined) {
+    const response = await fetch(`http://localhost:3001/user/${email}`, {
+        method: "GET",
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        }
+    })
 
     if (!response.ok)
         throw new Error("Erro ao buscar usuario")

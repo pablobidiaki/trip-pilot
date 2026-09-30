@@ -1,15 +1,8 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import * as bcrypt from "bcrypt"
-import { ConflictException, Injectable, UnauthorizedException } from "@nestjs/common"
-import { EditCountryDto } from '../dtos/create-users-dto';
-
-
-interface teste {
-  id: string;
-  email: string;
-  name: string;
-  image: string;
-}
+import { ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common"
+import { CreateUsersDto, EditCountryDto } from '../dtos/create-users-dto';
+import { LoginInterface } from 'src/auth/interfaces/auth.interfaces';
 
 @Injectable()
 export class UsersService {
@@ -47,23 +40,22 @@ export class UsersService {
     return user
   }
 
-  async register(name: string, email: string, password: string) {
-    const existingUser = await this.prisma.user.findUnique({
+  async create(dto: CreateUsersDto) {
+    
+    const emailAlreadyRegistred = await this.prisma.user.findUnique({
       where: {
-        email: email
+        email: dto.email
       }
     })
 
-    if (existingUser) {
-      throw new ConflictException("Email já cadastrado")
-    }
+    if (emailAlreadyRegistred) throw new ConflictException("Email já cadastrado")
 
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(dto.password, 10)
 
     const user = await this.prisma.user.create({
       data: {
-        name,
-        email,
+        name: dto.name,
+        email: dto.email,
         password: hashedPassword
       }
     })
@@ -215,6 +207,27 @@ export class UsersService {
       data: {
         countriesWishlist,
       },
+    });
+  }
+
+  async findByEmail(dto: LoginInterface){
+    const user = await this.prisma.user.findFirst({
+      where: { email: dto.email }
+    });
+
+    if (!user) throw new HttpException("invalid_credentials", HttpStatus.UNAUTHORIZED);
+    
+    const areEqual = await bcrypt.compare(dto.password, user.password!);
+
+    if (!areEqual) throw new HttpException("invalid_credentials", HttpStatus.UNAUTHORIZED)
+
+    const { password: p, ...rest } = user;
+    return rest;
+  }
+
+  async findByPayload({ login }: any): Promise<any> {
+    return await this.prisma.user.findFirst({
+      where: login
     });
   }
 }
