@@ -12,7 +12,7 @@ import SearchBar from "@/components/ui/SearchBar/Searchbar"
 import removeAccents from "@/utils/removeAccents";
 
 interface DestinationBodyProps {
-    user: UserInterface
+    user?: UserInterface
 }
 
 export default function DestinationBody({ user }: DestinationBodyProps) {

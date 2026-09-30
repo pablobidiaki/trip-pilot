@@ -11,7 +11,7 @@ import texts from "@/constants/texts";
 import removeAccents from "@/utils/removeAccents";
 
 interface ReadyGuidesBodyProps {
-    user: UserInterface
+    user?: UserInterface
 }
 
 export default function ReadyGuidesBody({ user }: ReadyGuidesBodyProps) {

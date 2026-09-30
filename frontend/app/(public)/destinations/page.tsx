@@ -5,8 +5,9 @@ import { auth } from "@/auth"
 import { getUserIdByEmail } from "@/services/user.service"
 
 export default async function Destinations() {
+  let user
   const session = await auth()
-  const user = await getUserIdByEmail(session?.user?.email)
+  if (session) { user = await getUserIdByEmail(session?.accessToken!, session?.user?.email)}
 
   return (
     <div>

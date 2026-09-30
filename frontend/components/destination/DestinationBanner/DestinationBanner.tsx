@@ -15,13 +15,14 @@ interface DestinationBannerProps {
     destination: DestinationInterface[]
 }
 
-export default async function DestinationBanner({destination}: DestinationBannerProps) {
+export default async function DestinationBanner({ destination }: DestinationBannerProps) {
+    let user
     const session = await auth()
-    const user = await getUserIdByEmail(session?.user?.email)
-    
+    if (session) user = await getUserIdByEmail(session?.accessToken!, session?.user?.email)
+
     return (
         <div className="relative overflow-hidden pb-15">
-            <img src={destination[0].bannerURL} alt="Banner" className="absolute inset-0 h-full w-full object-cover z-0 brightness-40"/>
+            <img src={destination[0].bannerURL} alt="Banner" className="absolute inset-0 h-full w-full object-cover z-0 brightness-40" />
 
             <div className="relative z-50 bg-white/20">
                 <Header />
@@ -40,9 +41,11 @@ export default async function DestinationBanner({destination}: DestinationBanner
 
             </div>
 
-            <div className="absolute z-10 text-white right-4 top-20">
-                <FavoriteButton userId={user?.user?.id} destinationId={destination[0].id} />
-            </div>
+            {user &&
+                <div className="absolute z-10 text-white right-4 top-20">
+                    <FavoriteButton userId={user?.user?.id} destinationId={destination[0].id} />
+                </div>
+            }
         </div>
     )
 }
