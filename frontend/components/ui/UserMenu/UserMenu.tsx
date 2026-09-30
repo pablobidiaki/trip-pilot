@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { LogOut, User } from "lucide-react"
 import { signOut } from "next-auth/react"
+import ExitConfirm from "../ExitConfirm/ExitConfirm"
 
 interface UserMenuProps {
     image?: string | null
@@ -13,6 +14,7 @@ interface UserMenuProps {
 
 export default function UserMenu({ image, name, email}: UserMenuProps) {
     const [isOpen, setIsOpen] = useState(false)
+    const [exitConfirmIsOpen, setExitConfirmIsOpen] = useState(false)
 
     return (
         <div className="relative">
@@ -39,10 +41,12 @@ export default function UserMenu({ image, name, email}: UserMenuProps) {
                             <span className="text-sm">Meu perfil</span>
                         </Link>
 
-                        <button onClick={() => signOut()} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition text-left">
+                        <button onClick={() => setExitConfirmIsOpen(true)} className="cursor-pointer text-red-500 w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition text-left">
                             <LogOut size={18} />
-                            <span className="text-sm">Sair</span>
+                            <span className="text-sm ">Sair</span>
                         </button>
+
+                        {exitConfirmIsOpen && <ExitConfirm isOpen={exitConfirmIsOpen} onClose={() => setExitConfirmIsOpen(false)}/>}
                     </div>
                 </div>
             )}

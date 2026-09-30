@@ -16,12 +16,13 @@ interface createItineraryData {
     itinerary: object
 }
 
-export async function createItinerary(data: createItineraryData) {
+export async function createItinerary(accessToken: string, data: createItineraryData) {
     try {
         const response = await fetch("http://localhost:3001/itinerary", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${accessToken}`
             },
             body: JSON.stringify(data)
         });

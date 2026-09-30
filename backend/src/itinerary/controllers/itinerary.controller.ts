@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { ItineraryService } from '../service/itinerary.service';
 import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.auth.guard';
 
 @ApiTags('Itinerary')
 @Controller('itinerary')
@@ -34,6 +35,7 @@ export class ItineraryController {
 
 
     @Post()
+    @UseGuards(JwtAuthGuard)
     @ApiOperation({
         summary: 'Create a itinerary',
     })
