@@ -11,7 +11,7 @@ import { Toolbox } from "lucide-react";
 
 export default async function Home() {
   return (
-    <div id="criar-roteiro" className="bg-background-color">
+    <div id="criar-roteiro" className="bg-background-color animate-[optionSelector_300ms_ease-out]">
       <Hero />
       <HowItWorks />
       <PopularDestinations />

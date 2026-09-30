@@ -35,7 +35,7 @@ export default function HeroForm() {
     const [destination, setDestination] = useState("")
     const [days, setDays] = useState("")
     const [startDate, setStartDate] = useState("")
-    const [countryOrigin, setCountryOrigin ] = useState("")
+    const [countryOrigin, setCountryOrigin] = useState("")
     const [countryDestination, setCountryDestination] = useState("")
     const [budget, setBudget] = useState("")
     const [travelers, setTravelers] = useState("")
@@ -45,15 +45,15 @@ export default function HeroForm() {
 
     const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
-        
-        if(session == null) {
+
+        if (session == null) {
             toast.error("Você precisa estar logado para gerar um roteiro")
             return
         }
 
         setIsLoading(true)
-        
-         try {
+
+        try {
             const data = {
                 userId: session?.user?.email,
                 departure: departure,
@@ -87,12 +87,9 @@ export default function HeroForm() {
         }
 
         const timer = setTimeout(() => {
-            fetch(
-                `https://api.geoapify.com/v1/geocode/autocomplete?text=${search}&type=country&format=json&apiKey=${apiKey}`,
-                {
-                    method: "GET"
-                }
-            )
+            fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${search}&type=country&format=json&apiKey=${apiKey}`, {
+                method: "GET"
+            })
                 .then((response) => response.json())
                 .then((result) => {
                     const countries: Country[] = result.results
@@ -103,15 +100,7 @@ export default function HeroForm() {
                         }))
                         .filter((country: Country) => country.countryName)
 
-                    setCountries(
-                        countries.filter(
-                            (country, index, self) =>
-                                index ===
-                                self.findIndex(
-                                    (item) => item.countryCode === country.countryCode
-                                )
-                        )
-                    )
+                    setCountries(countries.filter((country, index, self) => index === self.findIndex((item) => item.countryCode === country.countryCode)))
                 })
                 .catch((error) => console.error("error", error))
         }, 300)
