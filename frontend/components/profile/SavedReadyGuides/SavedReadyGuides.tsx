@@ -14,6 +14,11 @@ export default function SavedReadyGuides({guides}: SavedReadyGuidesProps){
             <h1 className="text-4xl font-medium text-primary-color">{texts.profile.savedGuides}</h1>
             <p className="text-sm font-light text-second-color">{texts.profile.savedGuidesText}</p>
             <div className="grid grid-cols-4 mt-5 gap-5">
+                {guides.length === 0 &&
+                    <div className="flex items-center">
+                        <p className="text-second-color text-lg italic">{texts.profile.noneGuideSaved}</p>
+                    </div>
+                }
                 {guides.map((guide, index) => (
                     <Link key={index} href={`destinations/${guide.readyGuide.id}`} className="relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103">
                         <p className="absolute top-2 right-2 object-cover z-10 rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700">{guide.readyGuide.travelType}</p>

@@ -45,6 +45,7 @@ export default function HeroForm() {
 
     const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
+        console.log(session)
         
         if(session == null) {
             toast.error("Você precisa estar logado para gerar um roteiro")

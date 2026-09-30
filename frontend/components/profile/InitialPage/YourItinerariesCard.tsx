@@ -8,6 +8,14 @@ interface YourItinerariesCardProps {
 }
 
 export default function YourItinerariesCard({ itineraries }: YourItinerariesCardProps) {
+    if (itineraries.length === 0) {
+        return (
+            <div className="flex items-center mx-5 py-5">
+                <p className="text-second-color text-lg italic">{texts.profile.noneItineraryCreated}</p>
+            </div>
+        )
+    }
+
     return (
         <div className="grid grid-cols-4 py-2 gap-5 px-4">
             {itineraries.slice(0, 4).map((itinerary) => (
@@ -36,9 +44,7 @@ export default function YourItinerariesCard({ itineraries }: YourItinerariesCard
                             })}</p>
                         </div>
                     </div>
-                    
                 </Link>
-                
             ))}
         </div>
     )

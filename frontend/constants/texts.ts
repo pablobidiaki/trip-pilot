@@ -423,7 +423,10 @@ const texts = {
         visited: "Visitado",
         wantVisit: "Quero visitar",
         selected: "Selecionado",
-        countries: "Países"
+        countries: "Países",
+        noneItineraryCreated: "Você ainda não criou nenhum roteiro.",
+        noneDestinationSaved: "Você ainda não salvou nenhum destino.",
+        noneGuideSaved: "Você ainda não salvou nenhum guia."
     },
 
     exitConfirm:{

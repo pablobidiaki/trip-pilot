@@ -10,6 +10,13 @@ interface DestinationSavedCardProps {
 }
 
 export default function DestinationSavedCard({ user, savedDestinations }: DestinationSavedCardProps) {
+    if (savedDestinations.length === 0) {
+        return (
+            <div className="flex items-center mx-5 py-5">
+                <p className="text-second-color text-lg italic">{texts.profile.noneDestinationSaved}</p>
+            </div>
+        )
+    }
     return (
         <div className="grid grid-cols-4 py-2 gap-5 px-4">
             {savedDestinations.slice(0, 4).map((destination, index) => (
