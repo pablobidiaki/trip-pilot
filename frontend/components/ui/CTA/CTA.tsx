@@ -27,20 +27,19 @@ export default function CTA({ icon, title, text, buttonText, isHomePage, destina
     }
 
     return (
-        <div className="rounded-xl
-                        bg-linear-to-r
-                        from-blue-600
-                        to-violet-600
-                        mx-4
-                        mt-15
-                        p-4
-                        flex
-                        justify-evenly
-                        items-center">
+        <div className="rounded-xl bg-linear-to-r from-blue-600 to-violet-600 mx-2 mt-15 p-4 flex flex-col items-center
+        md:flex-row md:justify-evenly  
+        xl:justify-evenly xl:items-center
+        ">
             <span className="text-white">{icon}</span>
-            <div className="text-white">
-                <h1 className="text-5xl">{title}</h1>
-                <p className="text-gray-200">{text}</p>
+            <div className="text-white text-center">
+                <h1 className="text-4xl 
+                    md:text-2xl
+                    xl:text-5xl
+                ">{title}</h1>
+                <p className="text-gray-300 mb-3 text-sm
+                    xl:text-lg
+                ">{text}</p>
             </div>
             <div onClick={handleButton}>
                 <WhiteButton text={buttonText} type="button" />

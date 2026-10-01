@@ -15,7 +15,7 @@ interface CardProps {
 
 export default function ItineraryExamplesCard({ image, title, text, days, trip_type, price, route_to_itinerary }: CardProps) {
     return (
-        <div  className="cursor-pointer w-full border border-gray-100 rounded-2xl bg-white transition-all hover:duration-200 hover:scale-105
+        <div  className="cursor-pointer w-full border border-gray-100 rounded-2xl bg-white transition-all hover:duration-200 hover:scale-101
             2xl:w-[24%] 2xl:max-w-[24%] 
         ">
             <Link href={route_to_itinerary}>

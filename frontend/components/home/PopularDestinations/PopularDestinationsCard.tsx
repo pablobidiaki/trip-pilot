@@ -12,7 +12,7 @@ interface CardProps{
 
 export default function PopularDestinationsCard({image, title, text, routeToDestination}: CardProps){
     return(
-        <Link href={routeToDestination} className="relative w-full h-62.5 overflow-hidden rounded-2xl transition-all hover:duration-200 hover:scale-105 cursor-pointer">
+        <Link href={routeToDestination} className="relative w-full h-62.5 overflow-hidden rounded-2xl transition-all hover:duration-200 hover:scale-101 cursor-pointer">
             <img
                 src={image}
                 alt={`${title} image`}

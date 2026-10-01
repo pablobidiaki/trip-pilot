@@ -16,13 +16,13 @@ export default async function Home() {
       <HowItWorks />
       <PopularDestinations />
       <ItineraryExamples /> 
-      {/* <WhyUse /> */}
-      {/* <CTA icon={<Toolbox size={80} />}
+      <WhyUse />
+      <CTA icon={<Toolbox size={80} />}
         title={texts.readyToNextTravel.title}
         text={texts.readyToNextTravel.text}
         buttonText={texts.readyToNextTravel.buttonText}
         isHomePage={true}
-      /> */}
+      />
       {/* <Footer /> */}
     </div>
   );
