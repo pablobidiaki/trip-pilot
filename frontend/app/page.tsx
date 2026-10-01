@@ -23,7 +23,7 @@ export default async function Home() {
         buttonText={texts.readyToNextTravel.buttonText}
         isHomePage={true}
       />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

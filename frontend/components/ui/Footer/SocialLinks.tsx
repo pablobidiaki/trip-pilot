@@ -3,14 +3,17 @@ import Image from "next/image";
 
 export default function SocialLinks(){
     return(
-        <div className="w-1/6">
+        <div className="flex flex-col justify-center items-center mx-2 mt-10
+            md:w-[50%]
+            lg:w-[24%]
+        ">
             <Image src={"/imgs/icons/trip_pilot.png"} 
                    alt="TripPilot icon"
                    width={50}
                    height={50}
             />
 
-            <p className="text-second-color text-sm mt-3">{texts.footer.socialLinksText}</p>
+            <p className="text-second-color text-sm mt-3 text-center">{texts.footer.socialLinksText}</p>
 
             <div className="flex gap-5 mt-3">
                 <Image src={"/imgs/icons/instagram.png"} 
