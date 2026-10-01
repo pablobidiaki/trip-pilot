@@ -13,17 +13,17 @@ export default async function Home() {
   return (
     <div id="criar-roteiro" className="bg-background-color animate-[optionSelector_300ms_ease-out]">
       <Hero />
-      {/* <HowItWorks />
-      <PopularDestinations />
-      <ItineraryExamples /> 
-      <WhyUse />
-      <CTA icon={<Toolbox size={80} />}
+      {/* <HowItWorks /> */}
+      {/* <PopularDestinations /> */}
+      {/* <ItineraryExamples />  */}
+      {/* <WhyUse /> */}
+      {/* <CTA icon={<Toolbox size={80} />}
         title={texts.readyToNextTravel.title}
         text={texts.readyToNextTravel.text}
         buttonText={texts.readyToNextTravel.buttonText}
         isHomePage={true}
-      />
-      <Footer />*/}
+      /> */}
+      {/* <Footer /> */}
     </div>
   );
 }

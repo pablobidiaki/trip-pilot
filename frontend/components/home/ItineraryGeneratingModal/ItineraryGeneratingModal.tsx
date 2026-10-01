@@ -23,15 +23,19 @@ export default function ItineraryGeneratingModal({ isOpen }: ItineraryGenerating
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 animate-[optionSelector_300ms_ease-out]">
-            <div className="relative w-120 rounded-xl bg-white p-2">
+            <div className="relative w-90 rounded-xl bg-white p-2
+            md:w-120
+            ">
                 <Image src={"/imgs/icons/trip_pilot.png"}
                     alt="TripPilot icon"
                     width={85}
                     height={85}
                     className="mx-auto"
                 />
-                <h1 className="text-primary-color text-2xl text-center mt-3">Seu roteiro está sendo criado!</h1>
-                <p className="max-w-[55%] mt-5 text-second-color text-center mx-auto">Nossa IA está planejando sua viagem e buscando as melhores opções para você.</p>
+                <h1 className="text-primary-color text-2xl text-center mt-3">{texts.createItineraryModal.title}</h1>
+                <p className="max-w-[85%] mt-5 text-second-color text-center mx-auto
+                md:max-w-[55%]
+                ">{texts.createItineraryModal.text}</p>
 
                 <div className="flex items-center justify-center gap-1 my-5">
                     <Circle size={10}

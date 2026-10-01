@@ -19,7 +19,7 @@ const texts = {
 
     form: {
         exitPoint: "De onde você vai sair?",
-        exitPointPlaceholder: "Ex: São Paulo, Brasil",
+        exitPointPlaceholder: "Ex: Brasil, Chile...",
         destination: "Para onde você quer ir?",
         destinationPlaceholder: "Ex: Japão, Itália, Chile...",
         howDays: "Quantos dias?",
@@ -432,6 +432,11 @@ const texts = {
     exitConfirm:{
         title: "Deseja sair?",
         text: "Tem certeza que deseja sair desta página?"
+    },
+
+    createItineraryModal:{
+        title: "Seu roteiro está sendo criado!",
+        text: "Nossa IA está planejando sua viagem e buscando as melhores opções para você."
     },
 
     real: "R$",

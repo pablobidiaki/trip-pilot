@@ -113,17 +113,27 @@ export default function HeroForm() {
         let _destination = localStorage.getItem('destination')
 
         if (_destination != "") {
-            setDestination(_destination)
+            setDestination(_destination!)
             setDestinationSelected(true)
-            setCountryDestination(_destination)
+            setCountryDestination(_destination!)
         }
 
         localStorage.setItem('destination', '')
     })
 
     return (
-        <form className="bg-white p-4 max-w-3/7 mx-4 rounded-2xl" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-3">
+        <form onSubmit={handleSubmit} className="bg-white p-4 mx-2 rounded-2xl
+            lg:max-w-5/7
+            xl:max-w-3/5 xl:mb-7
+            2xl:max-w-1/2 2xl:mb-0
+            3xl:max-w-3/7 3xl:mb-5 3xl:py-5
+        ">
+            <div className="flex flex-col gap-2
+                md:grid md:grid-cols-2
+                xl:mb-8
+                2xl:mb-7
+                3xl:grid 3xl:grid-cols-2 3xl:mb-2
+            ">
                 <div className="relative">
                     <Input icon={<MapPin />}
                         title={texts.form.exitPoint}
@@ -208,7 +218,12 @@ export default function HeroForm() {
                 </div>
 
             </div>
-            <div className="my-4 grid grid-cols-3 gap-3">
+            <div className="flex flex-col mt-2 gap-2
+            md:grid md:grid-cols-3 md:mt-5
+            xl:mb-8
+            2xl:mb-7
+            3xl:mb-2 3xl:grid 3xl:grid-cols-3 3xl:gap-3
+            ">
                 <Input icon={<CalendarDays />}
                     title={texts.form.howDays}
                     placeholder={texts.form.howDaysPlaceholder}
@@ -231,7 +246,12 @@ export default function HeroForm() {
                     required={true}
                 />
             </div>
-            <div className="my-4 grid grid-cols-3 gap-3">
+            <div className="flex flex-col mt-2 gap-2 mb-4
+            md:grid md:grid-cols-3 md:mt-5
+            xl:mb-8
+            2xl:mb-7
+            3xl:mb-8 3xl:grid 3xl:grid-cols-3 3xl:gap-3
+            ">
                 <Input icon={<Users />}
                     title={texts.form.peopleQuantity}
                     placeholder={texts.form.peopleQuantityPlaceholder}
