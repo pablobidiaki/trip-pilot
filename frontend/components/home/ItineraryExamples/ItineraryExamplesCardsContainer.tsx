@@ -4,7 +4,11 @@ import { getReadyGuides } from "@/services/readyGuides.service";
 export default async function ItineraryExamplesCardsContainer() {
     const readyGuides = await getReadyGuides()
     return (
-        <div className="grid grid-cols-4 gap-20">
+        <div className="flex flex-col items-center gap-y-5
+        md:grid md:grid-cols-2 md:gap-2
+        xl:grid-cols-3
+        2xl:flex 2xl:flex-row 2xl:justify-between
+        ">
             {readyGuides.slice(0, 4).map((guide, index) => (
                 <ItineraryExamplesCard key={index}
                     image={guide.imageURL}

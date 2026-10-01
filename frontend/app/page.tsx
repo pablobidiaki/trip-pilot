@@ -15,7 +15,7 @@ export default async function Home() {
       <Hero />
       <HowItWorks />
       <PopularDestinations />
-      {/* <ItineraryExamples />  */}
+      <ItineraryExamples /> 
       {/* <WhyUse /> */}
       {/* <CTA icon={<Toolbox size={80} />}
         title={texts.readyToNextTravel.title}
