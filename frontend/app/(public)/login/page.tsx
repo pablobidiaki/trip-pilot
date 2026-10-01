@@ -19,7 +19,7 @@ export default function Login() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-    const result = await signIn("credentials", { email, password, redirect: false})
+    const result = await signIn("credentials", { email, password, redirect: false })
 
     if (result?.error) {
       setError(true)
@@ -30,17 +30,28 @@ export default function Login() {
   }
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="xl:grid xl:grid-cols-2">
       <Image src={"/imgs/login/image.png"}
         alt="Traveler image"
         width={1280}
         height={1080}
-        className="h-screen object-cover"
+        className="h-screen object-cover hidden
+        xl:flex
+        "
         loading="eager"
       />
       <div>
-        <p className="text-end p-5">{texts.loginAndRegister.dontHaveAccount} <Link href={"/register"} className="text-link-color ">{texts.loginAndRegister.createAccount}</Link></p>
-        <div className="max-w-[50%] mx-auto">
+        <p className="text-end p-1
+          lg:p-5
+        ">
+          {texts.loginAndRegister.dontHaveAccount}
+          <Link href={"/register"} className="text-link-color "> {texts.loginAndRegister.createAccount}</Link>
+        </p>
+        <div className="mx-2
+          md:max-w-[70%] md:mx-auto
+          lg:max-w-[40%]
+          xl:max-w-[70%]
+        ">
           <h1 className="text-center text-4xl text-primary-color mt-10">{texts.loginAndRegister.welcomeAgain}</h1>
           <p className="text-center text-lg text-second-color mb-5">{texts.loginAndRegister.loginToContinue}</p>
           <form >
@@ -72,18 +83,27 @@ export default function Login() {
             </p>
 
             {error && (
-              <p className="mt-10 mb-2 text-center text-red-500 italic">{texts.loginAndRegister.emailOrPasswordInvalid}</p>
+              <p className=" mb-2 text-center text-red-500 italic
+                lg:mt-10
+              ">
+                {texts.loginAndRegister.emailOrPasswordInvalid}
+              </p>
             )}
-            <button onClick={handleSubmit} className="bg-blue-color py-2 text-white rounded-xl w-full mb-10 cursor-pointer">{texts.loginAndRegister.enter}</button>
+            <button onClick={handleSubmit} className="bg-blue-color mb-5 py-2 text-white rounded-xl w-full cursor-pointer 
+              lg:mb-10
+            ">{texts.loginAndRegister.enter}</button>
           </form>
 
           <div className="flex items-center gap-3">
-            <hr className="flex-1 border-gray-100" />
+            <hr className="flex-1 border-gray-300" />
             <p>{texts.loginAndRegister.orContinueWith}</p>
-            <hr className="flex-1 border-gray-100" />
+            <hr className="flex-1 border-gray-300" />
           </div>
-          
-          <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }} className="w-full mt-10 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer">
+
+          <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }}
+            className="w-full mt-5  h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer
+          lg:mt-10
+          ">
             <img
               src="/imgs/icons/google.png"
               alt="Google"

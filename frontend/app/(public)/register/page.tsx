@@ -34,10 +34,14 @@ export default function Register() {
 
 return (
   <div>
-    <div className="grid grid-cols-2">
+    <div className="xl:grid xl:grid-cols-2">
       <div>
-        <p className="text-end p-5">{texts.loginAndRegister.alreadyHaveAccount} <Link href={"/login"} className="text-link-color ">{texts.loginAndRegister.enter}</Link></p>
-        <div className="max-w-[50%] mx-auto">
+        <p className="text-end p-1">{texts.loginAndRegister.alreadyHaveAccount} <Link href={"/login"} className="text-link-color ">{texts.loginAndRegister.enter}</Link></p>
+        <div className="mx-2
+          md:max-w-[70%] md:mx-auto
+          lg:max-w-[60%]
+          xl:max-w-[70%]
+        ">
           <h1 className="text-center text-4xl text-primary-color mt-0">{texts.loginAndRegister.createYourAccount}</h1>
           <p className="text-center text-lg text-second-color mb-5">{texts.loginAndRegister.createYourAccountText}</p>
           <form onSubmit={createUser}>
@@ -93,9 +97,9 @@ return (
           </form>
 
           <div className="flex items-center gap-3">
-            <hr className="flex-1 border-gray-100" />
+            <hr className="flex-1 border-gray-300" />
             <p>{texts.loginAndRegister.orContinueWith}</p>
-            <hr className="flex-1 border-gray-100" />
+            <hr className="flex-1 border-gray-300" />
           </div>
 
           <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }} className="w-full mt-5 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer">
@@ -114,7 +118,9 @@ return (
         alt="Traveler image"
         width={1280}
         height={1080}
-        className="h-screen object-cover"
+        className="h-screen object-cover hidden
+        xl:flex
+        "
         loading="eager"
       />
     </div>
