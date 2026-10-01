@@ -7,16 +7,16 @@ interface CardProps{
     image: string,
     title: string,
     text: string,
-    route_to_destination: string
+    routeToDestination: string
 }
 
-export default function PopularDestinationsCard({image, title, text, route_to_destination}: CardProps){
+export default function PopularDestinationsCard({image, title, text, routeToDestination}: CardProps){
     return(
-        <Link href={route_to_destination} className="relative w-80 h-62.5 overflow-hidden rounded-2xl transition-all hover:duration-200 hover:scale-105 cursor-pointer">
+        <Link href={routeToDestination} className="relative w-full h-62.5 overflow-hidden rounded-2xl transition-all hover:duration-200 hover:scale-105 cursor-pointer">
             <img
                 src={image}
                 alt={`${title} image`}
-                className="object-cover brightness-50 w-80 h-62.5"
+                className="object-cover brightness-50 w-full h-62.5"
             />
 
             <div>

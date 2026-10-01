@@ -14,8 +14,7 @@ export default async function Home() {
     <div id="criar-roteiro" className="bg-background-color animate-[optionSelector_300ms_ease-out]">
       <Hero />
       <HowItWorks />
-      
-      {/* <PopularDestinations /> */}
+      <PopularDestinations />
       {/* <ItineraryExamples />  */}
       {/* <WhyUse /> */}
       {/* <CTA icon={<Toolbox size={80} />}
