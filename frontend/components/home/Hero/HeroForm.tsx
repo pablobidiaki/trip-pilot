@@ -108,6 +108,19 @@ export default function HeroForm() {
         return () => clearTimeout(timer)
     }, [search, apiKey])
 
+
+    useEffect(() => {
+        let _destination = localStorage.getItem('destination')
+
+        if (_destination != "") {
+            setDestination(_destination)
+            setDestinationSelected(true)
+            setCountryDestination(_destination)
+        }
+
+        localStorage.setItem('destination', '')
+    })
+
     return (
         <form className="bg-white p-4 max-w-3/7 mx-4 rounded-2xl" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-3">

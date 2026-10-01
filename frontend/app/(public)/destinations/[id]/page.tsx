@@ -28,6 +28,7 @@ export default async function Destination({ params }: DestinationProps) {
                 text={`Deseja mudar algo? Crie agora o seu roteiro personalizado para ${destination[0].destination}`}
                 buttonText={texts.readyToNextTravel.buttonText}
                 isHomePage={false}
+                destination={destination[0].country}
             />
             <Footer />
         </div>

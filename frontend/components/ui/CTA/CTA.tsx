@@ -10,9 +10,10 @@ interface CTAProps {
     text: string
     buttonText: string
     isHomePage: boolean
+    destination: string
 }
 
-export default function CTA({ icon, title, text, buttonText, isHomePage }: CTAProps) {
+export default function CTA({ icon, title, text, buttonText, isHomePage, destination }: CTAProps) {
     const router = useRouter()
 
     const handleButton = () => {
@@ -21,6 +22,8 @@ export default function CTA({ icon, title, text, buttonText, isHomePage }: CTAPr
                 top: 0,
                 behavior: "smooth",
             }) : router.push("/#criar-roteiro")
+
+            localStorage.setItem('destination', destination)
     }
 
     return (
