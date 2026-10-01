@@ -16,7 +16,7 @@ export default function DayInfos({hour, title, description, tip}: DayInfosProps)
                     {tip && <p className="inline-block mt-2 border border-purple-300 py-1 px-2 rounded-2xl text-second-color"><span className="text-purple-500">Dica: </span> {tip}</p>}
                 </div>
             </div>
-            <hr className="my-2 border-gray-300" />
+            <hr className="my-2 border-gray-100" />
         </div>
     )
 }

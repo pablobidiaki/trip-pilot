@@ -86,6 +86,8 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
     const displayDate = value ? value.split("-").reverse().join("/") : ""
 
     const selectDate = (day: number) => {
+        if (isPastDate(day)) return
+
         const formattedDate = formatDate(day)
 
         onChange(formattedDate)
@@ -122,11 +124,21 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
             today.getMonth() === currentMonth &&
             today.getDate() === day
         )
+    }
 
+    const isPastDate = (day: number) => {
+        const today = new Date()
+
+        const date = new Date(currentYear, currentMonth, day)
+
+        today.setHours(0, 0, 0, 0)
+        date.setHours(0, 0, 0, 0)
+
+        return date < today
     }
     return (
         <div ref={containerRef} className="inline-block relative cursor-pointer" >
-            <div onClick={() => setOpen(!open)} className="flex items-center gap-2 rounded-2xl border-2 border-gray-300 p-1">
+            <div onClick={() => setOpen(!open)} className="flex items-center gap-2 rounded-2xl border-2 border-gray-100 p-1">
                 <span className="m-2 text-main-primary-color">
                     {icon}
                 </span>
@@ -170,8 +182,19 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
                         {Array.from({ length: daysInMonth }).map((_, index) => {
                             const day = index + 1
                             return (
-                                <button key={day} type="button" onClick={() => selectDate(day)} className={`relative mx-auto flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-all ${isSelected(day) ? "bg-main-primary-color font-semibold text-white" : "text-second-color hover:bg-blue-50 hover:text-main-primary-color"}`}>
+                                <button key={day}
+                                    type="button"
+                                    disabled={isPastDate(day)}
+                                    onClick={() => selectDate(day)}
+                                    className={`relative mx-auto flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-all ${isPastDate(day)
+                                            ? "cursor-not-allowed text-gray-300"
+                                            : isSelected(day)
+                                                ? "bg-main-primary-color font-semibold text-white"
+                                                : "text-second-color hover:bg-blue-50 hover:text-main-primary-color"
+                                        }`}
+                                >
                                     {day}
+
                                     {isToday(day) && !isSelected(day) && (
                                         <span className="absolute bottom-1 h-1 w-1 rounded-full bg-main-primary-color" />
                                     )}

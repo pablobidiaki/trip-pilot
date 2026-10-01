@@ -15,7 +15,7 @@ interface CardProps {
 
 export default function ItineraryExamplesCard({ image, title, text, days, trip_type, price, route_to_itinerary }: CardProps) {
     return (
-        <Link href={route_to_itinerary} className="cursor-pointer border border-gray-300 rounded-2xl bg-white transition-all hover:duration-200 hover:scale-105">
+        <Link href={route_to_itinerary} className="cursor-pointer border border-gray-100 rounded-2xl bg-white transition-all hover:duration-200 hover:scale-105">
             <img src={image}
                 alt={`${title} image`}
                 className="h-40 w-full mask-cover rounded-t-2xl mb-4"
@@ -29,7 +29,7 @@ export default function ItineraryExamplesCard({ image, title, text, days, trip_t
                 <InfoItem icon={<CircleDollarSign size={20} />} text={trip_type} />
             </div>
 
-            <hr className="mx-4 my-2 border-gray-300" />
+            <hr className="mx-4 my-2 border-gray-100" />
 
             <div className="flex justify-between  mx-4 mb-4">
                 <p className="text-second-color">{texts.startingAt}

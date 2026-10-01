@@ -57,7 +57,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                 tailwindTags="px-2 py-2"
             />
 
-            <hr className="border-t border-dashed border-gray-300" />
+            <hr className="border-t border-dashed border-gray-100" />
             <div className="text-green-600 mx-2 mt-2 flex justify-between items-center">
                 <p className="font-medium">Total Estimado</p>
                 <p className="bg-green-100 p-2 rounded-2xl">{texts.real} {itinerary[0].itinerary.costEstimate.total.toLocaleString("pt-BR", {

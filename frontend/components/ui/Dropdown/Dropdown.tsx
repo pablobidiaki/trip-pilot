@@ -46,7 +46,7 @@ export default function Dropdown({
     return (
         <div ref={dropdownRef} className="relative">
             <div onClick={() => setOpen(!open)}
-                className="flex cursor-pointer items-center rounded-2xl border-2 border-gray-300 p-1 transition-all duration-200 hover:border-blue-300">
+                className="flex cursor-pointer items-center rounded-2xl border-2 border-gray-100 p-1 transition-all duration-200 hover:border-blue-300">
                 <span className="m-2 text-main-primary-color">
                     {icon}
                 </span>

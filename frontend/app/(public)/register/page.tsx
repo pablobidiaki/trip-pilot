@@ -93,12 +93,12 @@ return (
           </form>
 
           <div className="flex items-center gap-3">
-            <hr className="flex-1 border-gray-300" />
+            <hr className="flex-1 border-gray-100" />
             <p>{texts.loginAndRegister.orContinueWith}</p>
-            <hr className="flex-1 border-gray-300" />
+            <hr className="flex-1 border-gray-100" />
           </div>
 
-          <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }} className="w-full mt-5 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-300 hover:bg-gray-50 cursor-pointer">
+          <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }} className="w-full mt-5 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer">
             <img
               src="/imgs/icons/google.png"
               alt="Google icon"
