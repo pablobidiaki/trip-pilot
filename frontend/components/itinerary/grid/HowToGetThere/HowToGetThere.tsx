@@ -12,7 +12,7 @@ interface HowToGetThereProps {
 
 export default function HowToGetThere({ tickets, destinationCountry, destinationFlag, originCountry, originFlag }: HowToGetThereProps) {
     return (
-        <div className="bg-white border rounded-2xl max-w-2/3 border-gray-100 mt-8">
+        <div className="bg-white border rounded-2xl border-gray-100 mt-8 w-full">
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">7</span> {texts.itineraryTitles.flyDetails}</h1>
 
             <div className="m-4 flex justify-between items-center gap-5 ">

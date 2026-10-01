@@ -13,9 +13,9 @@ export default async function Home() {
   return (
     <div id="criar-roteiro" className="bg-background-color animate-[optionSelector_300ms_ease-out]">
       <Hero />
-      <HowItWorks />
+      {/* <HowItWorks />
       <PopularDestinations />
-      <ItineraryExamples />
+      <ItineraryExamples /> 
       <WhyUse />
       <CTA icon={<Toolbox size={80} />}
         title={texts.readyToNextTravel.title}
@@ -23,7 +23,7 @@ export default async function Home() {
         buttonText={texts.readyToNextTravel.buttonText}
         isHomePage={true}
       />
-      <Footer />
+      <Footer />*/}
     </div>
   );
 }

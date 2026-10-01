@@ -10,7 +10,7 @@ interface CTAProps {
     text: string
     buttonText: string
     isHomePage: boolean
-    destination: string
+    destination?: string
 }
 
 export default function CTA({ icon, title, text, buttonText, isHomePage, destination }: CTAProps) {
@@ -23,7 +23,7 @@ export default function CTA({ icon, title, text, buttonText, isHomePage, destina
                 behavior: "smooth",
             }) : router.push("/#criar-roteiro")
 
-            localStorage.setItem('destination', destination)
+            localStorage.setItem('destination', destination!)
     }
 
     return (

@@ -39,14 +39,14 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
                 <Tips tips={itinerary[0].itinerary.tips} />
             </div>
 
-            <div className="flex justify-center gap-5">
+            <div className="flex justify-center gap-5 w-full">
                 <HowToGetThere tickets={itinerary[0].itinerary.ticket}
                     originCountry={itinerary[0].countryOrigin}
                     originFlag={itinerary[0].countryOriginFlagURL}
                     destinationCountry={itinerary[0].countryDestination}
                     destinationFlag={itinerary[0].countryDestinationFlagURL}
                 />
-                <div className="flex flex-col justify-between max-w-1/3">
+                <div className="flex flex-col justify-between w-[35%]">
                     <Weather weather={itinerary[0].itinerary.weather} />
                     <Transport transports={itinerary[0].itinerary.transportation} />
                 </div>

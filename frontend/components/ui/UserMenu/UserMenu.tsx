@@ -3,8 +3,9 @@
 import { useState } from "react"
 import Link from "next/link"
 import { LogOut, User } from "lucide-react"
-import { signOut } from "next-auth/react"
+import { MountainSnow, Signpost, Tent } from "lucide-react"
 import ExitConfirm from "../ExitConfirm/ExitConfirm"
+import texts from "@/constants/texts"
 
 interface UserMenuProps {
     image?: string | null
@@ -12,7 +13,7 @@ interface UserMenuProps {
     email?: string | null
 }
 
-export default function UserMenu({ image, name, email}: UserMenuProps) {
+export default function UserMenu({ image, name, email }: UserMenuProps) {
     const [isOpen, setIsOpen] = useState(false)
     const [exitConfirmIsOpen, setExitConfirmIsOpen] = useState(false)
 
@@ -41,12 +42,27 @@ export default function UserMenu({ image, name, email}: UserMenuProps) {
                             <span className="text-sm">Meu perfil</span>
                         </Link>
 
+                        <Link className={"flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition"} href={'/'}>
+                            <MountainSnow size={18}/>
+                            <span>{texts.header.createScript}</span>
+                        </Link>
+                        <Link className={"flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition"} href={'/ready_guides'}>
+                            <Signpost size={18} />
+                            <span>{texts.header.readyGuides}</span>
+                        </Link>
+                        <Link className={"flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition"} href={'/destinations'}>
+                            <Tent size={18} />
+                            <span>{texts.header.destinations}</span>
+                        </Link>
+                        {/* <p><Link href={'/pro'}>{texts.header.pro}</Link></p> */}
+
+
                         <button onClick={() => setExitConfirmIsOpen(true)} className="cursor-pointer text-red-500 w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition text-left">
                             <LogOut size={18} />
                             <span className="text-sm ">Sair</span>
                         </button>
 
-                        {exitConfirmIsOpen && <ExitConfirm isOpen={exitConfirmIsOpen} onClose={() => setExitConfirmIsOpen(false)}/>}
+                        {exitConfirmIsOpen && <ExitConfirm isOpen={exitConfirmIsOpen} onClose={() => setExitConfirmIsOpen(false)} />}
                     </div>
                 </div>
             )}

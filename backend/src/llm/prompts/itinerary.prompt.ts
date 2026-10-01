@@ -51,7 +51,7 @@ export function createItineraryPrompt(dto) {
 
         ### tours
 
-        Liste entre 5 e 10 atrações.
+        Liste entre 3 e 6 atrações, nunca mais que 6.
 
         Cada atração deve possuir:
         - name (nome da atração)

@@ -3,7 +3,7 @@ const texts = {
         createScript: "Criar roteiro",
         readyGuides: "Guias prontos",
         destinations: "Destinos",
-        pro: "Pro 👑",
+        // pro: "Pro 👑",
         login: "Entrar",
         startFree: "Começar grátis"
     },

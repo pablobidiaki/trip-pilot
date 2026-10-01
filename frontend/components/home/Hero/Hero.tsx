@@ -6,14 +6,14 @@ import texts from "@/constants/texts";
 
 export default function Hero(){
     return(
-        <div className="relative h-screen overflow-hidden">
+        <div className="relative h-screen w-screen overflow-hidden">
             <img
                 src="/imgs/background.png"
                 className="absolute inset-0 h-full w-full object-cover z-0"
                 alt="Background image"
             />
-
-            <div className="relative z-10">
+    
+            <div className="relative w-screen z-10">
                 <Header />
                 
                 <h1 className="text-primary-color text-8xl font-medium max-w-3/6 mt-8 mx-4">
