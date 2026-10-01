@@ -6,7 +6,10 @@ import { NotebookPen, BrainCircuit, Plane } from "lucide-react";
 
 export default function HowItWorksCardsCointainer(){
     return(
-        <div className="flex justify-evenly">
+        <div className="flex flex-col items-center
+        lg:flex lg:flex-row lg:justify-between lg:mx-2
+        2xl:justify-evenly
+        ">
             <InfoCard icon={<NotebookPen className="text-blue-600" />} 
                             iconBgColor="bg-blue-300"
                             title={texts.howItWorks.informeYourTravelTitle} 
