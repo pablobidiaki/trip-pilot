@@ -32,8 +32,8 @@ export default function DestinationCard({ id, image, name, description, travel_t
                 }
                 <div className="absolute mx-2 bottom-2 left-2 right-5">
                     <div>
-                        <p className="text-white text-3xl font-medium mb-1">{name}</p>
-                        <p className="text-[#c4c4c4] text-xs mb-1">{description}</p>
+                        <p className="text-white text-3xl font-medium mb-1 line-clamp-2">{name}</p>
+                        <p className="text-[#c4c4c4] text-xs mb-1 line-clamp-3">{description}</p>
                         <div className="flex gap-5">
                             <InfoItem icon={<Luggage size={20} className="text-[#c4c4c4]" />} text={travel_type} tailwindTextTags="text-[#c4c4c4] text-xs" />
                             <InfoItem icon={<MapPin size={20} className="text-[#c4c4c4]" />} text={country} tailwindTextTags="text-[#c4c4c4] text-xs" />

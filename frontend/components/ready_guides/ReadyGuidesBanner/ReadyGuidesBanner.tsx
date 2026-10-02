@@ -12,8 +12,13 @@ export default function ReadyGuidesBanner() {
                 <Header />
             </div>
             <div className="relative z-10 mt-5 text-white">
-                <h1 className="mx-auto text-center text-7xl max-w-3xl font-medium">{texts.readyGuides.title}</h1>
-                <h2 className="mx-auto text-center mt-1 text-2xl font-thin max-w-xl">{texts.readyGuides.subtitle}</h2>
+                <h1 className="mx-auto text-center text-3xl 
+                    lg:text-7xl lg:max-w-3xl lg:medium
+                ">{texts.readyGuides.title}</h1>
+                <h2 className="mx-auto text-center mt-1 font-thin text-xs max-w-55 text-gray-300
+                    md:text-lg md:max-w-120
+                    lg:text-2xl lg:max-w-150
+                ">{texts.readyGuides.subtitle}</h2>
             </div>
         </div>
     )

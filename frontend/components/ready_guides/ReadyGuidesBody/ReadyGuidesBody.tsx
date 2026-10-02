@@ -36,13 +36,19 @@ export default function ReadyGuidesBody({ user }: ReadyGuidesBodyProps) {
     }, [readyGuides])
 
     return (
-        <div className="relative overflow-hidden bg-background-color -mt-5 rounded-t-4xl">
-            <div className="flex items-center mt-10 justify-between mx-4">
+        <div className="relative overflow-hidden bg-background-color -mt-6 rounded-t-4xl px-2">
+            <div className="flex flex-col items-center mt-4 justify-between mx-2
+                xl:flex-row
+            ">
                 <ButtonFilters selected={selected} setSelected={setSelected} />
                 <SearchBar placeholder={texts.readyGuides.searchBarPlaceholder} search={search} setSearch={setSearch} />
             </div>
-            <div className="grid grid-cols-4 justify-items-center">
-                {filteredreadyGuides?.length ? (
+            <div className="grid grid-cols-1 gap-4
+                    md:grid-cols-2
+                    lg:grid-cols-3 lg:gap-2
+                    2xl:grid-cols-4 2xl:gap-4
+                ">
+                {filteredreadyGuides?.length ? (    
                     filteredreadyGuides?.map((guide, index) => (
                         <GuideCard key={index}
                             id={guide.id}
