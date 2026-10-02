@@ -34,18 +34,23 @@ export default function DestinationBody({ user }: DestinationBodyProps) {
             setDestinations(destinations)
         }
         _getDestinations()
-    }, [destinations])
+    }, [destinations])  
 
     return (
-        <div className="relative h-full overflow-hidden bg-white -mt-5 rounded-t-4xl">
-            <div className="flex items-center mt-10 justify-between mx-4">
+        <div className="relative h-full overflow-hidden bg-white -mt-6 rounded-t-4xl">
+            <div className="flex flex-col items-center mt-4 justify-between mx-2
+                xl:flex-row
+            ">
                 <ButtonFilters selected={selected} setSelected={setSelected} />
                 <SearchBar placeholder={texts.readyGuides.searchBarPlaceholder} search={search} setSearch={setSearch} />
             </div>
-            <h1 className="text-primary-color mt-10 mx-4 text-3xl font-medium">{texts.destinations.featuredDestinations}</h1>
+            <h1 className="text-primary-color mt-4 mx-4 text-3xl font-medium">{texts.destinations.featuredDestinations}</h1>
 
-            <div className="grid grid-cols-[4fr_1fr] gap-4">
-                <div className="grid grid-cols-3 gap-4">
+            <div className="xl:grid xl:grid-cols-[4fr_1fr] ">
+                <div className="grid grid-cols-1 gap-4
+                    md:grid-cols-2
+                    xl:grid-cols-3
+                ">
                     {filteredDestinations?.length ? (
                         filteredDestinations.map((destination) => (
                             <DestinationCard
@@ -65,7 +70,7 @@ export default function DestinationBody({ user }: DestinationBodyProps) {
                         </div>
                     )}
                 </div>
-
+                    
                 <WhyChoseTripPilot />
 
             </div>

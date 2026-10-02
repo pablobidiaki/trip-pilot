@@ -217,7 +217,7 @@ const texts = {
     readyGuides: {
         title: "Guias prontos para a sua próxima aventura",
         subtitle: "Escolha entre roteiros completos e prontos para diversos distinos incríveis.",
-        searchBarPlaceholder: "Para onde você quer ir?",
+        searchBarPlaceholder: "Ex: Brasil, China",
         generalInfos: "Informações gerais",
         dayToDay: "Roteiro dia a dia",
         include: "Incluso",

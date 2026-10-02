@@ -10,7 +10,9 @@ export default function WhyChoseTripPilot(){
         {icon: <Handshake />, title:texts.destinations.everythingInOnePlace, text: texts.destinations.plan}
     ]
     return(
-        <div className="h-fit bg-purple-50 mx-4 rounded-2xl mt-4">
+        <div className="h-fit bg-purple-50 mx-4 rounded-2xl mt-4 hidden p-0.5
+            xl:block
+        ">
             <h1 className="text-center mt-2 text-primary-color text-xl font-medium">{texts.destinations.whyChoseTripPilot}</h1>
 
             {reasons.map(reason => (

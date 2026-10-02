@@ -12,8 +12,16 @@ export default function DestinationsBanner(){
                 <Header />
             </div>
             <div className="relative z-10 mt-5 mx-4 text-white">
-                <h1 className="text-6xl max-w-2/5 font-medium">{texts.destinations.title}</h1>
-                <h2 className="mt-1 text-2xl font-thin max-w-xl">{texts.destinations.subtitle}</h2>
+                <h1 className="text-3xl max-w-4/5 font-medium
+                    md:max-w-3/5
+                    lg:max-w-2/5
+                    xl:text-6xl xl:max-w-2/5
+                ">{texts.destinations.title}</h1>
+                <h2 className="mt-1 text-xs font-light text-gray-300 max-w-4/5
+                    md:max-w-3/5
+                    lg:max-w-2/5
+                    xl:text-xl xl:max-w-2/5
+                ">{texts.destinations.subtitle}</h2>
             </div>
         </div>
     )
