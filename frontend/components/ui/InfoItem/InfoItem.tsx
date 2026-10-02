@@ -13,7 +13,7 @@ export default function InfoItem({icon, text, tailwindTags, tailwindTextTags, se
     return (
         <button
             onClick={onClick}
-            className={`${tailwindTags} flex items-center gap-2 rounded-full py-2 ${selected
+            className={`${tailwindTags} flex items-center gap-2 py-2 rounded-lg ${selected
                     ? "bg-[#6366F1] text-white px-2"
                     : "bg-transparent text-gray-700"
                 }`}

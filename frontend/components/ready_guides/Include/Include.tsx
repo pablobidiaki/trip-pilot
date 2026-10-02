@@ -11,13 +11,17 @@ export default function Include(){
         {icon: <Map />, title: "Roteiro personalizado", text: "Roteiro completo com os principais destinos, atrações, dicas e informações uteis para aproveitar ao maximo sua viagem"},
     ]
     return(
-        <div className="max-w-7/12 mx-auto">
+        <div className="lg:max-w-10/12 lg:mx-auto
+            xl:max-w-8/12
+        ">
             <InfoCard icon={<Gift />} 
                          title={"O que esta incluso"} 
                          text="Confira tudo o que está incluso no seu guia de viagem para a Itália Clássica, para que você aproveite sua experiência com mais tranquilidade e organização."
                          tailwindTags="bg-purple-50"
             />
-            <div className="grid grid-cols-2 gap-5 mt-5">
+            <div className="grid grid-cols-1 mt-5 gap-5
+                lg:grid-cols-2
+            ">
                 {includes.map(include => (
                     <InfoCard key={include.title}
                                  icon={include.icon}

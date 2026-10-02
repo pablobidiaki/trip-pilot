@@ -9,7 +9,7 @@ interface DayCostEstimateCardProps{
 
 export default function DayCostEstimateCard({icon, text, price}: DayCostEstimateCardProps){
     return(
-        <div className=" flex items-center justify-between">
+        <div className="flex items-center justify-between">
             <InfoItem icon={icon} text={text}/>
             <p>{price}</p>
         </div>

@@ -8,7 +8,10 @@ interface GeneralInfosProps{
 
 export default function GeneralInfos({guide}: GeneralInfosProps){
     return(
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start
+            md:flex md:flex-col
+            lg:grid
+        ">
             <GeneralItineraryInfos guide={guide}/>
             <GeneralInfosInclude />
         </div>

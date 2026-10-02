@@ -7,16 +7,18 @@ import DayTips from "./DayTips";
 import DayCostEstimate from "./DayCostEstimate";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
-interface DayToDayProps{
+interface DayToDayProps {
     guide: ReadyGuideInterface[]
 }
 
-export default function DayToDayProps({guide}: DayToDayProps) {
+export default function DayToDayProps({ guide }: DayToDayProps) {
     const [selected, setSelected] = useState("1")
 
     return (
         <div className="flex">
-            <div className="flex justify-center">
+            <div className="flex gap-2
+                xl:
+            ">
                 <div>
                     {guide[0].itinerary.map(day => (
                         <Calendar key={day.day}
@@ -29,11 +31,18 @@ export default function DayToDayProps({guide}: DayToDayProps) {
                     ))}
                 </div>
 
-                <DayItinerary guide={guide} daySelected={selected}/>
-                
-                <div className="max-w-2/12">
-                    <DayTips guide={guide} daySelected={selected}/>
-                    <DayCostEstimate guide={guide} daySelected={selected}/>
+                <div className="flex flex-col
+                    xl:flex-row
+                ">
+                    <DayItinerary guide={guide} daySelected={selected} />
+
+                    <div className="md:grid md:grid-cols-2 md:gap-2
+                        lg:gap-5
+                        xl:max-w-4/12 xl:flex xl:flex-col
+                    ">
+                        <DayCostEstimate guide={guide} daySelected={selected} />
+                        <DayTips guide={guide} daySelected={selected} />
+                    </div>
                 </div>
             </div>
         </div>

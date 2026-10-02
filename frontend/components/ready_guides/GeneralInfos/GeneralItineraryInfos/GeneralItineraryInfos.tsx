@@ -8,10 +8,20 @@ interface GeneralItineraryInfosProps{
 
 export default function GeneralItineraryInfos({guide}: GeneralItineraryInfosProps){
     return(
-        <div className="lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-200 mx-4">
-            <h1 className="text-primary-color font-medium px-2 mt-2 text-3xl">{texts.readyGuides.overview}</h1>
-            <p className="px-2 text-second-color text-sm">{guide[0].overviewResume}</p>
-            <div className="grid md:grid-cols-3 gap-8 items-center p-2 mt-4">
+        <div className="bg-white rounded-2xl border border-gray-100 mx-2
+            lg:col-span-8
+            2xl:col-span-9
+        ">
+            <h1 className="text-primary-color font-medium px-2 mt-2 text-2xl
+                lg:text-3xl
+            ">{texts.readyGuides.overview}</h1>
+            <p className="px-2 text-second-color text-xs
+                lg:text-sm
+            ">{guide[0].overviewResume}</p>
+            <div className="items-center p-2 mt-4
+                lg:grid lg:grid-cols-2 lg:p-0
+                2xl:grid-cols-3
+            ">
                 {guide[0].overview.map((day, index) => (
                     <GeneralInfoCard key={index} image={day.imageURL} days={day.days} title={day.title} description={day.description}/>
                 ))}

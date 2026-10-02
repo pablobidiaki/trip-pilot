@@ -31,14 +31,21 @@ export default function UtilInfos({guide}: UtilInfosProps) {
     ]
 
     return (
-        <div className="max-w-8/12 mx-auto">
+        <div className="
+            lg:max-w-10/12 lg:mx-auto
+            xl:max-w-11/12
+            2xl:max-w-8/12
+        ">
             <InfoCard icon={<Info />}
                 title={texts.utilInfo.utilInfosTitle}
                 text={texts.utilInfo.utilInfosText}
                 tailwindTags="bg-purple-50"
             />
             <UtilInfosTitle icon={<Plane />} title="Antes da viagem" />
-            <div className="grid grid-cols-3 gap-5 mb-10">
+            <div className="grid grid-cols-1 gap-5 mb-10
+                md:grid-cols-2
+                xl:grid-cols-3
+            ">
                 {beforeTravelInfos.map(info => (
                     <UtilInfoCard key={info.title}
                         icon={info.icon}
@@ -52,7 +59,10 @@ export default function UtilInfos({guide}: UtilInfosProps) {
             </div>
 
             <UtilInfosTitle icon={<Landmark />} title="Durante a viagem" />
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 gap-5
+                md:grid-cols-2 
+                xl:grid-cols-3
+            ">
                 {duringTravelInfos.map(info => (
                     <UtilInfoCard key={info.title}
                         icon={info.icon}

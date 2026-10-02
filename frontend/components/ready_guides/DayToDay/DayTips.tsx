@@ -9,7 +9,9 @@ interface DayTipsProps {
 
 export default function DayTips({ guide, daySelected }: DayTipsProps) {
     return (
-        <div className="bg-purple-100 py-2 px-3 mt-3 rounded-2xl">
+        <div className="bg-purple-100 py-2 px-3 mt-5 rounded-2xl
+            xl:mt-0
+        ">
             <div className="flex items-center gap-3 font-bold mt-2">
                 <Lightbulb className="text-purple-500" />
                 <h1>{texts.readyGuides.tipsToday}</h1>

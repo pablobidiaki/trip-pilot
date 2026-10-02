@@ -27,25 +27,33 @@ export default function GuideTabs({ guide }: GuideTabsProps) {
     ]
 
     return (
-        <div>
-            <div className="flex justify-evenly py-10 bg-background-color">
-                {tabs.map(tab => (
-                    <InfoItem key={tab.text}
-                        text={tab.text}
-                        icon={tab.icon}
-                        tailwindTags="cursor-pointer"
-                        selected={selected === tab.text}
-                        onClick={() => setSelected(tab.text)}
-                    />
-                ))}
+        <div className="mx-2">
+            <div className="w-full min-w-0 overflow-x-auto scrollbar-hide my-10
+                md:overflow-visible
+                xl:flex xl:justify-evenly xl:bg-background-color
+            ">
+                <div className="flex w-max gap-3 
+                    md:w-full md:justify-between
+                    lg:justify-evenly
+                ">
+                    {tabs.map(tab => (
+                        <InfoItem key={tab.text}
+                            text={tab.text}
+                            icon={tab.icon}
+                            tailwindTags="cursor-pointer"
+                            selected={selected === tab.text}
+                            onClick={() => setSelected(tab.text)}   
+                            tailwindTextTags="md:text-sm rounded-lg"
+                        />
+                    ))}
+                </div>
             </div>
 
-            {selected === texts.readyGuides.generalInfos && <GeneralInfos guide={guide}/>}
-            {selected === texts.readyGuides.dayToDay && <DayToDay guide={guide}/>}
+            {selected === texts.readyGuides.generalInfos && <GeneralInfos guide={guide} />}
+            {selected === texts.readyGuides.dayToDay && <DayToDay guide={guide} />}
             {selected === texts.readyGuides.include && <Include />}
-            {selected === texts.readyGuides.accommodation && <Accommodation guide={guide}/>}
-            {selected === texts.readyGuides.utilInfos && <UtilInfos guide={guide}/>}
-
+            {selected === texts.readyGuides.accommodation && <Accommodation guide={guide} />}
+            {selected === texts.readyGuides.utilInfos && <UtilInfos guide={guide} />}
         </div>
 
     )

@@ -7,7 +7,9 @@ interface AccommodationProps {
 
 export default function Accommodation({ guide }: AccommodationProps) {
     return (
-        <div className="max-w-9/12 mx-auto ">
+        <div className="
+            lg:max-w-9/12 lg:mx-auto
+        ">
             {guide[0].accommodations.map(hotel => (
                 <AccomodationCard key={hotel.days}
                     image={hotel.imageURL}
