@@ -14,7 +14,10 @@ interface DestinationBodyProps {
 export default function DestinationBody({ destination }: DestinationBodyProps) {
     return (
         <div>
-            <div className="my-10 mx-4 grid grid-cols-6 gap-20 ">
+            <div className="my-10 mx-2 grid grid-cols-2 gap-2
+                md:grid-cols-3
+                xl:grid-cols-6
+            ">
                 <DestinationInfos  icon={<Calendar1 size={35} className=""/>} title={texts.destination.bestTime} description={destination[0].bestTime}/>
                 <DestinationInfos  icon={<Cloud size={35} className=""/>} title={texts.destination.weather} description={destination[0].weather}/>
                 <DestinationInfos  icon={<Plane size={35} className=""/>} title={texts.destination.travelType} description={destination[0].travelType}/>
@@ -24,10 +27,12 @@ export default function DestinationBody({ destination }: DestinationBodyProps) {
             </div>
             <Attractions destination={destination}/>
             <WhatToDo destination={destination} />
-            <div className="flex justify-between">
+            <div className="flex flex-col justify-between
+                xl:flex-row
+            ">
                 <UtilInformations destination={destination}/>
                 <CostEstimate destination={destination} />
-            </div>
+            </div> 
         </div>
     )
 }

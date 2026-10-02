@@ -15,7 +15,7 @@ export default function CostEstimate({ destination }: CostEstimateProps) {
                 <h1 className="text-3xl text-primary-color font-medium">{texts.destination.costEstimated}</h1>
             </div>
 
-            <div className="bg-white p-2 rounded-2xl border border-gray-200 h-fit">
+            <div className="bg-white p-2 rounded-2xl border border-gray-100 h-fit">
                 <InfoRow icon={<Bed />} information={texts.costEstimate.accommodation} value={destination[0].averageCost.accommodations} tailwindTags="px-2 py-3" />
                 <InfoRow icon={<Utensils />} information={texts.costEstimate.food} value={destination[0].averageCost.food} tailwindTags="px-2 py-3" />
                 <InfoRow icon={<Binoculars />} information={texts.costEstimate.tours} value={destination[0].averageCost.tours} tailwindTags="px-2 py-3" />

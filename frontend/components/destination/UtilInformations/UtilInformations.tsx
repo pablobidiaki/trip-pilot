@@ -19,7 +19,9 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
                 <h1 className="text-3xl text-primary-color font-medium">{texts.destination.utilInfos}</h1>
             </div>
 
-            <div className=" grid grid-cols-3 gap-3">
+            <div className=" grid grid-cols-1 gap-3
+                md:grid-cols-3
+            ">
                 <ExpandableCard icon={<File />}
                     title={texts.destination.documents}
                     texts={destination[0].usefulInformation.documents}

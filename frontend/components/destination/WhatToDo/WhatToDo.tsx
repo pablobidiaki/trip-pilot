@@ -19,7 +19,11 @@ export default function WhatToDo({ destination }: WhatToDoProps) {
                 <ShieldQuestionMark size={35} className="text-primary-color font-medium" />
                 <h1 className="text-3xl text-primary-color font-medium">{texts.destination.whatToDo}</h1>
             </div>
-            <div className=" grid grid-cols-5 gap-10">
+            <div className=" grid grid-cols-1 gap-10
+                md:grid-cols-2
+                lg:grid-cols-3
+                xl:grid-cols-5
+            ">
                 <ExpandableCard icon={<Leaf size={40}/>}
                     title={texts.destination.nature}
                     texts={destination[0].whatToDo.nature}

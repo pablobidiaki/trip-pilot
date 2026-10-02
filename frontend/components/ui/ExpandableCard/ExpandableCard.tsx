@@ -12,7 +12,7 @@ export default function ExpandableCard({ icon, title, texts, isOpen, onClick }: 
     return (
         <div className="relative">
             <div onClick={onClick}
-                 className="bg-white rounded-2xl border border-gray-200 py-10 cursor-pointer transition-all duration-300 hover:bg-gray-200">
+                 className="bg-white rounded-2xl border border-gray-100 py-10 cursor-pointer transition-all duration-300 hover:bg-gray-200">
                 <div className="flex flex-col items-center ">
                     <span>{icon}</span>
                     <h1 className="text-primary-color font-medium text-xl mb-2 text-center">{title}</h1>
