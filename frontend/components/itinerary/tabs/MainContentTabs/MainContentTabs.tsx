@@ -19,7 +19,7 @@ interface MainContentTabsProps {
 
 export default function MainContentTabs({ itinerary, optionSelected }: MainContentTabsProps) {
     return (
-        <div className="mt-1 mx-4 w-full h-full animate-[optionSelector_300ms_ease-out]">
+        <div className="mt-1 mx-2 h-full animate-[optionSelector_300ms_ease-out]">
             {optionSelected === texts.tabsOptions.providedData && <ProviedData itinerary={itinerary} />}
             {optionSelected === texts.tabsOptions.accommodations && <Accommodation itinerary={itinerary} />}
             {optionSelected === texts.tabsOptions.tours && <Tours tours={itinerary[0].itinerary.tours} />}

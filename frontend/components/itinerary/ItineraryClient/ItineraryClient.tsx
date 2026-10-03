@@ -17,7 +17,7 @@ interface ItineraryClientProps {
 export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
     const [isGrid, setIsGrid] = useState(false)
     const [optionSelected, setOptionSelected] = useState(texts.tabsOptions.providedData)
-    
+
     return (
         <div className="relative bg-background-color">
             {isGrid &&
@@ -30,9 +30,18 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
                 <Header />
             </div>
 
-            <div className="flex gap">
-                <div className="mt-2">
-                    <Toggle isGrid={isGrid} onChange={setIsGrid} />
+            <div className="flex flex-col
+                md:flex-row 
+            ">
+                <div className="w-full min-w-0
+                    md:w-fit md:mr-15
+                    lg:mr-2
+                ">
+                    <div className="w-fit mx-auto
+                        md:w-fit md:mx-0
+                    ">
+                        <Toggle isGrid={isGrid} onChange={setIsGrid} />
+                    </div>
                     {!isGrid && (
                         <div className="mt-2 animate-[optionSelector_300ms_ease-out]">
                             <OptionSelector
@@ -43,9 +52,11 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
                     )}
                 </div>
                 {isGrid &&
-                    <MainContentGrid itinerary={itinerary}/>
+                    <MainContentGrid itinerary={itinerary} />
                 }
-                {!isGrid && <MainContentTabs itinerary={itinerary} optionSelected={optionSelected} />}
+                <div className="2xl:w-full">
+                    {!isGrid && <MainContentTabs itinerary={itinerary} optionSelected={optionSelected} />}
+                </div>
             </div>
 
             {isGrid && <Footer />}

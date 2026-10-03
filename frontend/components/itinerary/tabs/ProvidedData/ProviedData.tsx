@@ -10,14 +10,27 @@ interface ProviedDataProps {
 
 export default function ProviedData({ itinerary }: ProviedDataProps) {
     return (
-        <div className="relative animate-[optionSelector_300ms_ease-out]">
-            <div className="bg-white rounded-2xl max-w-[60%] mx-auto shadow-2xl shadow-gray-300">
-                <h1 className="text-center text-4xl p-2 pt-2 text-primary-color ">{texts.providedData.yourTravelTo} <span className="capitalize">{itinerary[0].destination}</span></h1>
+        <div className="relative mt-5 animate-[optionSelector_300ms_ease-out]
+            md:mt-0      
+            xl:mx-auto
+            2xl:max-w-[60%]
+        ">
+            <div className="bg-white rounded-2xl shadow-2xl shadow-gray-300
+                md:w-full
+                xl:max-w-[80%] xl:mx-auto
+            ">
+                <h1 className="text-center text-xl p-2 pt-2 text-primary-color 
+                    xl:text-4xl
+                ">{texts.providedData.yourTravelTo} <span className="capitalize">{itinerary[0].destination}</span></h1>
 
                 <div className="flex w-fit mx-auto gap-4 mt-5 items-center capitalize">
-                    <p className="text-second-color text-2xl">{itinerary[0].departure}</p>
-                    <MoveRight size={40} className="text-second-color" />
-                    <p className="text-second-color text-2xl">{itinerary[0].destination}</p>
+                    <p className="text-second-color text-lg
+                        xl:text-2xl
+                    ">{itinerary[0].departure}</p>
+                    <MoveRight size={30} className="text-second-color" />
+                    <p className="text-second-color text-lg
+                        xl:text-2xl
+                    ">{itinerary[0].destination}</p>
                 </div>
                 <div className="flex justify-center gap-15 mt-5">
                     <img src={itinerary[0].countryOriginFlagURL} className="w-20 shadow-2xl shadow-gray-500" />
@@ -29,7 +42,9 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                     <p className="text-second-color">{formatDate(itinerary[0].endDate)}</p>
                 </div>
                 <p className="text-center text-second-color">{itinerary[0].days} {texts.days}</p>
-                <div className="flex justify-center gap-10 mt-10">
+                <div className="grid grid-cols-2 items-center mx-2 gap-10 justify-center mt-10
+                    lg:flex lg:justify-center
+                ">
                     <ProvidedDataCard icon={<CalendarDays />}
                         title={texts.providedData.date}
                         value={formatDate(itinerary[0].startDate)}
@@ -53,8 +68,13 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                         }).toString()}`}
                     />
                 </div>
-                <p className="mx-auto text-center text-second-color text-xl mt-15">Seu roteiro está pronto! Explore as abas ao lado para conferir todos os detalhes.</p>
-                <p className="mx-auto text-center text-second-color text-sm pb-5 italic">{texts.aiWarning}</p>
+                <p className="mx-auto text-center text-second-color text-lg mt-15
+                    xl:text-xl
+                ">Seu roteiro está pronto! Explore as abas ao lado para conferir todos os detalhes.</p>
+                <p className="mx-auto text-center text-second-color text-xs pb-5 italic
+                    lg:mx-2
+                    xl:text-sm
+                ">{texts.aiWarning}</p>
             </div>
         </div>
     )
