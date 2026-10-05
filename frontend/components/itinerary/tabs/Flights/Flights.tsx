@@ -13,30 +13,35 @@ interface FlightsProps {
 
 export default function Flights({ tickets, countryDestinationFlag, countryOriginFlag, countryDestinationName, countryOriginName }: FlightsProps) {
     return (
-        <div className="relative animate-[optionSelector_300ms_ease-out]">
-            <div className="bg-white max-w-[75%] mx-auto rounded-2xl pb-5">
+        <div className="relative my-5 animate-[optionSelector_300ms_ease-out]">
+            <div className="bg-white  rounded-2xl pb-5
+                md:mt-0
+                xl:max-w-[75%] xl:mx-auto 
+            ">
                 <h1 className="text-primary-color text-2xl font-medium text-center pt-2">{texts.flights.title}</h1>
                 <div className="flex justify-center gap-25 mt-5">
                     <div className="flex flex-col items-center">
                         <p className="text-primary-color">{texts.howToGetThere.boarding}</p>
-                        <img src={countryOriginFlag} className="max-w-30 shadow-2xl shadow-gray-300" />
+                        <img src={countryOriginFlag} className="max-w-30 " />
                         <p className="text-second-color capitalize">{countryOriginName}</p>
                     </div>
                     <div className="flex flex-col items-center">
                         <p className="text-primary-color">{texts.howToGetThere.disembarkation}</p>
-                        <img src={countryDestinationFlag} className="max-w-30 shadow-2xl shadow-gray-300" />
+                        <img src={countryDestinationFlag} className="max-w-30 " />
                         <p className="text-second-color capitalize">{countryDestinationName}</p>
                     </div>
                 </div>
-                <div className="flex justify-evenly gap-10 mt-5">
-                    <div className="border border-gray-200 rounded-2xl shadow-2xl shadow-gray-300">
+                <div className="flex flex-col gap-10 mt-5
+                    lg:flex-row lg:justify-evenly
+                ">
+                    <div className="border border-gray-100 rounded-2xl ">
                         <p className="text-center text-2xl text-primary-color p-1">{texts.howToGetThere.go}</p>
                         <hr/>
                         {tickets.map((ticket, index) => (
                             ticket.isGoing && <FlightsTimeLine key={index} index={index+1} boardingPoint={ticket.boardingPoint} disembarkationPoint={ticket.disembarkationPoint} flyTime={ticket.flyTime} />
                         ))}
                     </div>
-                    <div className="border border-gray-200 rounded-2xl shadow-2xl shadow-gray-300">
+                    <div className="border border-gray-100 rounded-2xl ">
                         <p className="text-center text-2xl text-primary-color p-1">{texts.howToGetThere.return}</p>
                         <hr/>
                         {tickets.map((ticket, index) => (
