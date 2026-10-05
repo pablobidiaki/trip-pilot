@@ -25,7 +25,9 @@ export default function TemperatureThermometer({ temperature }: TemperatureTherm
     }
 
     return (
-        <div className="flex items-center gap-5 w-[70%] mx-auto">
+        <div className="flex items-center gap-5 mx-auto
+            lg:w-[70%]
+        ">
             <span className="text-sm text-second-color ml-4">{minTemperature}{texts.weather.graus}</span>
             <div className={`w-full h-3 bg-gray-200 rounded-full overflow-hidden`}>
                 <div

@@ -20,8 +20,8 @@ export default function Weather({ weather }: WeatherProps) {
     )
 
     return (
-        <div className="flex justify-center px-4 py-10 animate-[optionSelector_300ms_ease-out]">
-            <div className="w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-gray-300">
+        <div className="w-full flex justify-center px-2 py-5 animate-[optionSelector_300ms_ease-out]">
+            <div className="overflow-hidden rounded-3xl bg-white shadow-2xl shadow-gray-300">
                 {currentSeason && (
                     <div className="relative h-64 w-full sm:h-80">
                         <Image
@@ -42,7 +42,9 @@ export default function Weather({ weather }: WeatherProps) {
                 <p className="text-3xl font-bold text-primary-color text-center mb-2">{weather.averageTemperature}{texts.weather.graus}</p>
                 <TemperatureThermometer temperature={weather.averageTemperature} />
                 
-                <div className="max-w-[50%] p-2 my-8 bg-gray-100 mx-auto rounded-2xl shadow-2xl shadow-gray-300">
+                <div className="max-w-[80%] p-2 my-8 bg-gray-100 mx-auto rounded-2xl
+                    lg:max-w-[50%]
+                ">
                     <p className="text-center mb-2 font-medium text-primary-color">{texts.weather.recommendation}</p>
                     <p className=" text-second-color text-center text-sm"> {weather.recommendation}</p>
                 </div>
