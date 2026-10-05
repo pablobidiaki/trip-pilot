@@ -10,9 +10,14 @@ interface TipsProps {
 export default function Tips({ tips }: TipsProps) {
     return (
         <div className="relative animate-[optionSelector_300ms_ease-out]">
-            <div className="max-w-[60%] mx-auto bg-white shadow-2xl shadow-gray-300 rounded-2xl pb-2">
+            <div className=" mx-auto bg-white shadow-2xl shadow-gray-300 rounded-2xl pb-2
+                xl:max-w-[60%]
+                2xl:max-w-[50%]
+            ">
                 <h1 className="text-4xl text-primary-color text-center pt-2 mb-8 font-medium">{texts.tips.title}</h1>
-                <div className="grid grid-cols-2 gap-x-15">
+                <div className="grid grid-cols-1 gap-x-15
+                    lg:grid-cols-2
+                ">
                     {tips.map((tip, index) => (
                         <TipsCard key={index} title={tip.type} text={tip.text}/>
                     ))}
