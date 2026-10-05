@@ -15,7 +15,11 @@ interface TipicalFoodsCardProps {
 export default function TipicalFoodsCard({ imageURL, name, description, category, averagePrice }: TipicalFoodsCardProps) {
     const [isLoading, setIsLoading] = useState(true)
     return (
-        <div className="group w-100 h-fit bg-white rounded-2xl shadow-xl shadow-gray-300 transition-all hover:duration-200 hover:scale-105 cursor-default">
+        <div className="group h-fit bg-white rounded-2xl border border-gray-100 transition-all hover:duration-200 hover:scale-105 cursor-default mb-5
+            lg:w-150 lg:mx-auto
+            xl:w-80
+            2xl:w-100
+        ">
             <div className="relative w-full h-75">
                 {isLoading && (
                     <div className="absolute inset-0 z-10 flex items-center justify-center rounded-t-2xl bg-white">
