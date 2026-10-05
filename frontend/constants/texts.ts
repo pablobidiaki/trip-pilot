@@ -155,6 +155,7 @@ const texts = {
     },
 
     requirements: {
+        title:"O que você precisa para entrar ?",
         observation: "Regras podem mudar. Confira sempre informações atualizadas antes da viagem.",
         visaTrue: "Necessário visto.",
         visaFalse: "Não é necessário visto.",
@@ -167,7 +168,9 @@ const texts = {
         connection: "Conectividade",
         documentText: "Mantenha cópias digitais do passaporte e reservas.",
         paymentText: "Tenha uma opção de pagamento internacional disponível.",
-        connectionText: "Considere um eSIM ou plano internacional para acessar mapas e tradutor."
+        connectionText: "Considere um eSIM ou plano internacional para acessar mapas e tradutor.",
+        noneDocument:"Não é necessário nenhum documento",
+        noneVaccine:"Não é necessário nenhuma vacina"
     },
 
     tips: {
