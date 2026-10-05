@@ -13,13 +13,15 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
         <div className="relative mt-5 animate-[optionSelector_300ms_ease-out]
             md:mt-0      
             xl:mx-auto
-            2xl:max-w-[60%]
+            2xl:w-full
         ">
             <div className="bg-white rounded-2xl shadow-2xl shadow-gray-300
                 md:w-full
                 xl:max-w-[80%] xl:mx-auto
+                2xl:max-w-[55%]
             ">
                 <h1 className="text-center text-xl p-2 pt-2 text-primary-color 
+                    md:text-2xl
                     xl:text-4xl
                 ">{texts.providedData.yourTravelTo} <span className="capitalize">{itinerary[0].destination}</span></h1>
 
@@ -68,11 +70,10 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                         }).toString()}`}
                     />
                 </div>
-                <p className="mx-auto text-center text-second-color text-lg mt-15
+                <p className="mx-auto text-center text-second-color text-lg mt-15 px-2
                     xl:text-xl
-                ">Seu roteiro está pronto! Explore as abas ao lado para conferir todos os detalhes.</p>
-                <p className="mx-auto text-center text-second-color text-xs pb-5 italic
-                    lg:mx-2
+                ">{texts.itinerary.proviededDataText}</p>
+                <p className="mx-auto text-center text-second-color text-xs pb-5 italic px-2
                     xl:text-sm
                 ">{texts.aiWarning}</p>
             </div>

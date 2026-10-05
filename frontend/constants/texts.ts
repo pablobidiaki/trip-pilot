@@ -202,7 +202,8 @@ const texts = {
         evening: "Noite: ",
         viewHours: "Visualizar roteiro por hora",
         pexelsCredits: "As imagens utilizadas nesta página são fornecidas pelo",
-        tip: "Clique em uma das opções para ver o roteiro detalhado por horas!"
+        tip: "Clique em uma das opções para ver o roteiro detalhado por horas!",
+        proviededDataText: "Seu roteiro está pronto! Explore as abas ao lado para conferir todos os detalhes."
     },
 
     weather: {

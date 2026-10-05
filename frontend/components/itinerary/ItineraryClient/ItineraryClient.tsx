@@ -33,8 +33,8 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
             <div className="flex flex-col
                 md:flex-row 
             ">
-                <div className="w-full min-w-0
-                    md:w-fit md:mr-15
+                <div className="w-full
+                    md:w-fit md:mr-2
                     lg:mr-2
                 ">
                     <div className="w-fit mx-auto
@@ -51,11 +51,8 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
                         </div>
                     )}
                 </div>
-                {isGrid &&
-                    <MainContentGrid itinerary={itinerary} />
-                }
-                <div className="2xl:w-full">
-                    {!isGrid && <MainContentTabs itinerary={itinerary} optionSelected={optionSelected} />}
+                <div className="w-full">
+                    {isGrid ?<MainContentGrid itinerary={itinerary} /> : <MainContentTabs itinerary={itinerary} optionSelected={optionSelected} />}
                 </div>
             </div>
 
