@@ -58,7 +58,9 @@ export default function DayToDay({ itinerary }: DayToDayProps) {
     }
 
     return (
-        <div className="relative animate-[optionSelector_300ms_ease-out]">
+        <div className="relative my-5 animate-[optionSelector_300ms_ease-out]
+            md:mt-0
+        ">
             <div ref={sliderRef}
                 className={`bg-white p-2 rounded-2xl flex max-w-full gap-10 overflow-x-auto px-2 select-none scrollbar-hide ${isDragging ? "cursor-grabbing" : "cursor-grab" }`}
                 onMouseDown={handleMouseDown}
