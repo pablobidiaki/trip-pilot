@@ -44,6 +44,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                         <div className="absolute rounded-2xl bg-gray-100 w-full h-60
                             lg:w-75 lg:h-92
                             xl:max-w-55
+                            2xl:min-w-70
                         ">
                             <Loading />
                         </div>
@@ -52,6 +53,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                         className="rounded-2xl w-full h-60
                             lg:w-75 lg:h-92
                             xl:max-w-55
+                            2xl:min-w-70
                         "
                         loading="lazy"
                         src={accommodations[option].googleMapsEmbed}

@@ -11,10 +11,10 @@ interface ImageFullScreenProps {
     description: string
     isOpen: boolean,
     price: number
-    onClick: () => void
+    onClose: () => void
 }
 
-export default function ImageFullScreen({ title, image, description, price, isOpen, onClick }: ImageFullScreenProps) {
+export default function ImageFullScreen({ title, image, description, price, isOpen, onClose }: ImageFullScreenProps) {
     useEffect(() => {
         if (isOpen) document.body.style.overflow = "hidden"
         else document.body.style.overflow = ""
@@ -24,33 +24,32 @@ export default function ImageFullScreen({ title, image, description, price, isOp
         }
     }, [isOpen])
 
+    if (!isOpen) return null
+
     return (
-        <div onClick={onClick}>
-            {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 animate-[optionSelector_300ms_ease-out]">
-                    <div className="relative w-full max-w-4xl rounded-2xl bg-white p-6" onClick={(e) => e.stopPropagation()}>
-                        <button className="cursor-pointer absolute right-4 top-4 z-10 rounded-full bg-black/60 p-2 text-white hover:bg-black/80" onClick={onClick}>
-                            <X size={20} />
-                        </button>
+        <div onClick={onClose} className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 animate-[optionSelector_300ms_ease-out]">
+            <div className="relative max-w-4xl rounded-2xl bg-white p-6" onClick={(e) => e.stopPropagation()}>
+                <button className="cursor-pointer absolute right-4 top-4 z-100 rounded-full bg-black/60 p-2 text-white hover:bg-black/80" onClick={onClose}>
+                    <X size={20} />
+                </button>
 
-                        <h1 className="text-2xl font-medium text-primary-color text-center"> {title} </h1>
-                        <p className="text-second-color text-center">{description}</p>
-                        <p className="text-green-600 font-semibold text-center mb-4">{price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        })} ${texts.perPerson}`}
-                        </p>
+                <h1 className="text-2xl font-medium text-primary-color text-center"> {title} </h1>
+                <p className="text-second-color text-center">{description}</p>
+                <p className="text-green-600 font-semibold text-center mb-4">{price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                })} ${texts.perPerson}`}
+                </p>
 
-                        <img src={image}
-                            alt={title}
-                            className="max-h-[70vh] w-full object-contain"
-                        />
-                        <p className="text-center text-second-color text-sm font-light mt-5">{texts.itinerary.pexelsCredits}
-                            <Link href={"https://www.pexels.com/pt-br/"} target="_blank" className="text-link-color"> Pexels.</Link>
-                        </p>
-                    </div>
-                </div>
-            )}
+                <img src={image}
+                    alt={title}
+                    className="max-h-[70vh] w-full object-contain"
+                />
+                <p className="text-center text-second-color text-sm font-light mt-5">{texts.itinerary.pexelsCredits}
+                    <Link href={"https://www.pexels.com/pt-br/"} target="_blank" className="text-link-color"> Pexels.</Link>
+                </p>
+            </div>
         </div>
+
     );
 }

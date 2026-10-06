@@ -17,6 +17,7 @@ export default function ItineraryDays({ itineraryDays }: ItineraryDaysProps) {
             <div className="grid grid-cols-1 gap-4 p-4
                 lg:grid-cols-2 lg:gap-2 lg:gap-y-5
                 xl:grid-cols-3
+                2xl:grid-cols-4
             ">
                 {itineraryDays.map((day, index) => (
                     <ItineraryDaysCard key={index}
