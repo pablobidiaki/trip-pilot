@@ -19,6 +19,7 @@ export default function Tours({ tours }: ToursProps) {
             <p className="text-center text-primary italic mt-2">{texts.tours.tourText}</p>
             <div className="overflow-hidden w-full">
                 <div className="grid grid-cols-1
+                    md:grid-cols-2
                     xl:grid-cols-3
                 ">
                     {tours.map((tour, tourIndex) => (

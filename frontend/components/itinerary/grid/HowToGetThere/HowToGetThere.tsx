@@ -31,7 +31,9 @@ export default function HowToGetThere({ tickets, destinationCountry, destination
             <div className="m-2 flex flex-col justify-between items-center gap-5 
                 xl:flex-row
             ">
-                <div className="border border-gray-200 rounded-2xl bg-background-color">
+                <div className="border border-gray-200 rounded-2xl bg-background-color 
+                    md:mt-5 md:w-[85%]
+                ">
                     <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">{texts.howToGetThere.go}</h1>
                     {tickets.map((ticket, index) => (
                         ticket.isGoing &&
@@ -52,11 +54,13 @@ export default function HowToGetThere({ tickets, destinationCountry, destination
                     />
                 </div>
 
-                <div className="border border-gray-200 rounded-2xl bg-background-color">
+                <div className="border border-gray-200 rounded-2xl bg-background-color
+                    md:w-[85%]
+                ">
                     <h1 className="text-primary-color text-xl font-medium my-2 px-2 text-center">{texts.howToGetThere.return}</h1>
                     {tickets.map((ticket, index) => (
                         !ticket.isGoing &&
-                        <div key={index} className=" mb-5">
+                        <div key={index} className="w-full mb-5">
                             <hr />
                             <h2 className="text-primary-color text-xl font-medium my-2 px-2">{index + 1}º voo</h2>
                             <p className="text-primary-color font-medium px-2">{texts.howToGetThere.boardingPoint} <span className="text-second-color">{ticket.boardingPoint}</span></p>

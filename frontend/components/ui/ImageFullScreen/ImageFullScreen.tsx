@@ -15,7 +15,7 @@ export default function ImageFullScreen({ title, image, description, price, isOp
     return (
         <div onClick={onClick}>
             {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 animate-[optionSelector_300ms_ease-out]">
                     <div className="relative w-full max-w-4xl rounded-2xl bg-white p-6" onClick={(e) => e.stopPropagation()}>
                         <button className="cursor-pointer absolute right-4 top-4 z-10 rounded-full bg-black/60 p-2 text-white hover:bg-black/80" onClick={onClick}>
                             <X size={20} />

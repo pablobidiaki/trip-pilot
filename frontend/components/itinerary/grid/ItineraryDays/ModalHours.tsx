@@ -25,7 +25,7 @@ export default function ModalHours({ isOpen, day, hours, onClose }: ModalProps) 
     if (!isOpen) return null
 
     return (
-        <div onClick={onClose} className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+        <div onClick={onClose} className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 animate-[optionSelector_300ms_ease-out]">
             <div onClick={(e) => e.stopPropagation()} className="relative w-full h-full bg-white p-5 overflow-y-auto
                     xl:w-auto xl:h-auto xl:max-w-5xl xl:max-h-[90vh] xl:rounded-xl xl:p-6
                 ">
