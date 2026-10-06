@@ -27,18 +27,28 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
     }
 
     return (
-        <div className="border rounded-2xl border-gray-100 w-full mt-8 bg-white max-w-2/3">
+        <div className="border rounded-2xl border-gray-100 w-full mt-5 bg-white
+            xl:max-2/3
+        ">
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">1</span> {texts.itineraryTitles.accommodations}</h1>
-            <div className="flex py-5 px-1">
-                <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1 my-auto mr-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105" />
-                <div className="relative w-75 h-92 mr-5">
+            <div className="flex flex-col py-5 px-1
+                xl:flex-row
+            ">
+                <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1 my-auto mr-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105 hidden" />
+                <div className="relative w-full h-60
+                    xl:w-75 xl:h-92 xl:mr-5
+                ">
                     {isLoading &&
-                        <div className="absolute w-75 h-75 rounded-2xl bg-gray-100">
+                        <div className="absolute rounded-2xl bg-gray-100 w-full h-60
+                            xl:w-75 xl:h-75
+                        ">
                             <Loading />
                         </div>
                     }
                     <iframe
-                        className="w-75 h-92 rounded-2xl"
+                        className="rounded-2xl w-full h-60
+                            xl:w-75 xl:h-92
+                        "
                         loading="lazy"
                         src={accommodations[option].googleMapsEmbed}
                         onLoad={() => setIsLoading(false)}
@@ -53,25 +63,30 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                         reviews={accommodations[option].reviewsCount}
                     />
 
-                    <InfoRow icon={<MapPin size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>} information={texts.accommodations.address} value={accommodations[option].address} tailwindTags="mt-8 items-center" />
+                    <InfoRow icon={<MapPin size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />} information={texts.accommodations.address} value={accommodations[option].address} tailwindTags="mt-8 items-center text-xs gap-5 xl:text-lg" />
                     <hr className="text-gray-300 my-3" />
 
-                    <InfoRow icon={<Package size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>} information={texts.accommodations.include} value={accommodations[option].includes} />
+                    <InfoRow icon={<Package size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />} information={texts.accommodations.include} value={accommodations[option].includes} tailwindTags="text-xs gap-5 xl:text-lg"/>
                     <hr className=" text-gray-300 my-3" />
 
-                    <InfoRow icon={<BedDouble size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>} information={texts.accommodations.roomType} value={accommodations[option].roomType} />
+                    <InfoRow icon={<BedDouble size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />} information={texts.accommodations.roomType} value={accommodations[option].roomType} tailwindTags="text-xs gap-5 xl:text-lg"/>
                     <hr className=" text-gray-300 my-3" />
 
                     <div className="flex gap-2 items-center justify-between">
                         <p className="font-medium">{texts.accommodations.costEstimate}</p>
-                            <span className="text-green-500 text-sm p-2 bg-green-100 rounded-xl font-medium">{texts.real} {accommodations[option].costEstimate.toLocaleString("pt-BR", {
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2
-                            })}
-                            </span>
+                        <span className="text-green-500 text-sm p-2 bg-green-100 rounded-xl font-medium">{texts.real} {accommodations[option].costEstimate.toLocaleString("pt-BR", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        })}
+                        </span>
                     </div>
                 </div>
 
+                <ChevronRight onClick={plusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105 hidden" />
+            </div>
+
+            <div className="w-fit mx-auto flex gap-8 pb-5">
+                <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105" />
                 <ChevronRight onClick={plusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105" />
             </div>
         </div>

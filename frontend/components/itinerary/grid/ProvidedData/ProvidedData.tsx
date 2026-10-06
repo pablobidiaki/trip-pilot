@@ -11,7 +11,9 @@ interface ProvidedDataProps {
 
 export default function ProvidedData({ itinerary }: ProvidedDataProps) {
     return (
-        <div className="flex gap-2 justify-between mt-8 rounded-2xl px-2 py-4 bg-white">
+        <div className="flex flex-col gap-2 justify-between mt-8 rounded-2xl px-2 py-4 bg-white
+            xl:flex-row
+        ">
             <DataCard icon={<MapPin />} title={texts.providedData.origin} text={itinerary[0].departure} />
             <DataCard icon={<FlagTriangleRight />} title={texts.providedData.destination} text={itinerary[0].destination} />
             <DataCard icon={<CalendarDays />} title={texts.providedData.departureDate} text={formatDate(itinerary[0].startDate)} />

@@ -19,34 +19,44 @@ interface MainContentGridProps{
 
 export default function MainContentGrid({itinerary}: MainContentGridProps){
     return (
-        <div className="mx-4 mt-2 animate-[optionSelector_300ms_ease-out]">
+        <div className="mx-2 mt-2 animate-[optionSelector_300ms_ease-out]">
             <ItineraryBanner />
             <div className="relative">
                 <ProvidedData itinerary={itinerary} />
             </div>
-            <div className="flex gap-5 relative">
+            <div className="flex flex-col gap-5 relative
+                xl:flex-row
+            ">
                 <Accommodation accommodations={itinerary[0].itinerary.accommodations} />
                 <CostEstimate itinerary={itinerary} />
             </div>
 
-            <div className="flex justify-center gap-5 mx-3">
+            <div className="flex flex-col justify-center gap-5
+                xl:flex-row
+            ">
                 <Tours tours={itinerary[0].itinerary.tours} />
                 <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood} />
             </div>
 
-            <div className="flex justify-center gap-5">
+            <div className="flex flex-col justify-center gap-5
+                xl:flex-row
+            ">
                 <Requirements requirements={itinerary[0].itinerary.requirements} />
                 <Tips tips={itinerary[0].itinerary.tips} />
             </div>
 
-            <div className="flex justify-center gap-5 w-full">
+            <div className="flex flex-col justify-center gap-5 w-full
+                xl:flex-row
+            ">
                 <HowToGetThere tickets={itinerary[0].itinerary.ticket}
                     originCountry={itinerary[0].countryOrigin}
                     originFlag={itinerary[0].countryOriginFlagURL}
                     destinationCountry={itinerary[0].countryDestination}
                     destinationFlag={itinerary[0].countryDestinationFlagURL}
                 />
-                <div className="flex flex-col justify-between w-[35%]">
+                <div className="flex flex-col justify-between
+                    xl:flex-row xl:w-[35%]
+                ">
                     <Weather weather={itinerary[0].itinerary.weather} />
                     <Transport transports={itinerary[0].itinerary.transportation} />
                 </div>

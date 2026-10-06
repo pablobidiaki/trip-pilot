@@ -14,11 +14,8 @@ interface ModalProps {
 
 export default function ModalHours({ isOpen, day, hours, onClose }: ModalProps) {
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = "hidden"
-        } else {
-            document.body.style.overflow = ""
-        }
+        if (isOpen) document.body.style.overflow = "hidden"
+        else document.body.style.overflow = ""
 
         return () => {
             document.body.style.overflow = ""
@@ -28,27 +25,42 @@ export default function ModalHours({ isOpen, day, hours, onClose }: ModalProps) 
     if (!isOpen) return null
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={onClose} >
-            <div className="relative rounded-xl bg-white p-6 pt-2" onClick={(e) => e.stopPropagation()}>
-                <button onClick={onClose} className="absolute right-4 top-2 text-xl">
-                    <X className="cursor-pointer transition-all hover:duration-150 hover:text-red-500 " />
+        <div onClick={onClose} className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+            <div onClick={(e) => e.stopPropagation()} className="relative w-full h-full bg-white p-5 overflow-y-auto
+                    xl:w-auto xl:h-auto xl:max-w-5xl xl:max-h-[90vh] xl:rounded-xl xl:p-6
+                ">
+
+                <button onClick={onClose} className="absolute right-4 top-4 text-xl">
+                    <X className="cursor-pointer transition-colors hover:text-red-500" />
                 </button>
-                <h1 className="text-2xl font-medium text-primary-color mb-3 text-center">{day}</h1>
-                <div className="grid grid-cols-2 gap-5" >
-                {hours.map((hour, index) => (
+
+                <h1 className="mb-5 text-center text-2xl font-medium text-primary-color">{day}</h1>
+
+                <div className="grid grid-cols-1 gap-5
+                        xl:grid-cols-2
+                    ">
+                    {hours.map((hour, index) => (
                         <div key={index}>
-                            <div className="flex gap-1 text-primary-color text-lg font-medium">
+                            <div className="flex gap-1 text-lg font-medium text-primary-color">
                                 <p>{hour.hour} -</p>
-                                <p> {hour.title}</p>
+                                <p>{hour.title}</p>
                             </div>
-                            <p className="text-second-color text-sm">{hour.description}</p>
-                            {hour.tip && <p className="text-second-color text-sm px-2 py-1 border border-purple-300 rounded-2xl mt-2 w-fit "><span className="text-purple-500">{texts.tip}:</span> {hour.tip}</p>}
-                            <hr className="mt-3 mb-1" />
+                            <p className="text-sm text-second-color"> {hour.description} </p>
+
+                            {hour.tip && (
+                                <p className="mt-2 w-fit rounded-2xl border border-purple-300 px-2 py-1 text-sm text-second-color">
+                                    <span className="text-purple-500">
+                                        {texts.tip}:
+                                    </span>{" "}
+                                    {hour.tip}
+                                </p>
+                            )}
+
+                            <hr className="mb-1 mt-3" />
                         </div>
-                ))}
+                    ))}
                 </div>
             </div>
-
         </div>
     )
 }

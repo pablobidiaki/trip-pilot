@@ -10,7 +10,7 @@ interface TransportProps {
 
 export default function Transport({ transports }: TransportProps) {
     return (
-        <div className="border rounded-2xl border-gray-100 mt-4 bg-white">
+        <div className="border rounded-2xl border-gray-100 mt-5 bg-white">
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">9</span> {texts.itineraryTitles.transportation}</h1>
 
             <TransportInfo icon={<CarFront />}

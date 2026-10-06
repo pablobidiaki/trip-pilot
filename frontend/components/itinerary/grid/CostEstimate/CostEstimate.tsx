@@ -9,7 +9,9 @@ interface CostEstimateProps {
 
 export default function CostEstimate({ itinerary }: CostEstimateProps) {
     return (
-        <div className="border rounded-2xl border-gray-100 max-w-1/3 mt-8 bg-white">
+        <div className="border rounded-2xl border-gray-100 bg-white
+            xl:max-w-1/3 xl:mt-8
+        ">
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">2</span> {texts.itineraryTitles.costEstimate}</h1>
 
             <InfoRow icon={<Bed  size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />}
@@ -18,7 +20,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-2"
+                tailwindTags="px-2 py-2 text-sm xl:text-lg"
             />
 
             <InfoRow icon={<Utensils size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
@@ -27,7 +29,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-2"
+                tailwindTags="px-2 py-2 text-sm xl:text-lg"
             />
 
             <InfoRow icon={<Binoculars size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
@@ -36,7 +38,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-2"
+                tailwindTags="px-2 py-2 text-sm xl:text-lg"
             />
 
             <InfoRow icon={<Car size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
@@ -45,7 +47,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-2"
+                tailwindTags="px-2 py-2 text-sm xl:text-lg"
             />
 
             <InfoRow icon={<ShoppingCart size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
@@ -54,7 +56,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
-                tailwindTags="px-2 py-2"
+                tailwindTags="px-2 py-2 text-sm xl:text-lg"
             />
 
             <hr className="border-t border-dashed border-gray-100" />

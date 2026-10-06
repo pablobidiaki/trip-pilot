@@ -23,7 +23,9 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
             {isGrid &&
                 <img src={"/imgs/itinerary/banner.png"}
                     alt="Banner"
-                    className="w-full absolute z-0"
+                    className="w-full absolute z-0 hidden
+                        lg:block
+                    "
                 />
             }
             <div className="relative">
@@ -52,7 +54,7 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
                     )}
                 </div>
                 <div className="w-full">
-                    {isGrid ?<MainContentGrid itinerary={itinerary} /> : <MainContentTabs itinerary={itinerary} optionSelected={optionSelected} />}
+                    {isGrid ? <MainContentGrid itinerary={itinerary} /> : <MainContentTabs itinerary={itinerary} optionSelected={optionSelected} />}
                 </div>
             </div>
 

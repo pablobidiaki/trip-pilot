@@ -16,7 +16,9 @@ export default function TourCard({ image, title, description, price }: TourCardP
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div onClick={() => setIsOpen(true)} className="flex items-end m-2 max-h-60 min-w-70 max-w-70 cursor-pointer transition-all hover:duration-200 hover:scale-101">
+        <div onClick={() => setIsOpen(true)} className="flex items-end m-2 max-h-60 cursor-pointer transition-all hover:duration-200 hover:scale-101
+            xl:min-w-70 xl:max-w-70
+        ">
             <img src={image}
                 alt="Tour tip image"
                 className="relative w-full h-full rounded-xl object-cover brightness-30"
