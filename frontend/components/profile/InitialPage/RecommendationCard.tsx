@@ -16,13 +16,19 @@ export default function RecommendationCard({ type, readyGuide, destination, path
             <p className="absolute mt-2 ml-2 object-cover z-50 rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700">{type}</p>
             <img className="relative rounded-t-2xl min-h-55 max-h-55" src={readyGuide ? readyGuide?.imageURL : destination?.imageURL} />
             <h1 className="mx-2 text-primary text-2xl truncate">{readyGuide ? readyGuide?.title : destination?.destination}</h1>
-            <p className="mx-2  text-second-color text-sm line-clamp-2">{readyGuide ? readyGuide?.description : destination?.description}</p>
-            <p className="mx-2 text-primary-color mt-2 text-lg truncate">{readyGuide ?
+            <p className="mx-2  text-second-color text-xs line-clamp-2
+                lg:text-sm
+            ">{readyGuide ? readyGuide?.description : destination?.description}</p>
+            <p className="mx-2 text-primary-color mt-2 truncateline-clamp-2 text-xs
+                lg:text-sm
+            ">{readyGuide ?
                 readyGuide.cities.map((city, index) => (
                     <span key={index} className="mr-3">{city}</span>
                 )) : destination?.country}
             </p>
-            <p className="mx-2 mt-2 text-green-500 text-xl font-medium">{texts.real} {readyGuide ? readyGuide?.price.toLocaleString("pt-BR", {
+            <p className="mx-2 mt-2 text-green-500 text-sm font-medium
+                lg:text-xl
+            ">{texts.real} {readyGuide ? readyGuide?.price.toLocaleString("pt-BR", {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             }) : destination?.averageCost.total.toLocaleString("pt-BR", {

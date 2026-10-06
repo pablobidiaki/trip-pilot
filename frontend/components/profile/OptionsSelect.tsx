@@ -38,8 +38,12 @@ export default function OptionsSelect({ optionSelected, setOptionSelected }: opt
                     className={`py-2 pl-2 pr-4 cursor-pointer flex gap-2 rounded-r-2xl items-center ${optionSelected === option.text ? 'bg-gray-300' : ''} ${option.text === "Sair" ? 'text-red-500' : 'text-primary-color'} hover:bg-gray-200`}
                     onClick={() => handdleOption(option.text)}
                 >
-                    <span>{option.icon}</span>
-                    <p className={`text-lg whitespace-nowrap`}>{option.text}</p>
+                    <span className="hidden
+                        lg:block
+                    ">{option.icon}</span>
+                    <p className="text-xs whitespace-nowrap
+                        lg:text-lg
+                    ">{option.text}</p>
                 </div>
             ))}
 
