@@ -15,7 +15,9 @@ export default function HowToGetThere({ tickets, destinationCountry, destination
         <div className="bg-white border rounded-2xl border-gray-100 mt-5 w-full">
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">7</span> {texts.itineraryTitles.flyDetails}</h1>
 
-            <div className="flex justify-center gap-25 mt-5">
+            <div className="flex justify-center gap-25 mt-5
+                xl:hidden
+            ">
                 <div className="flex flex-col items-center">
                     <p className="text-primary-color">{texts.howToGetThere.boarding}</p>
                     <img src={originFlag} className="max-w-30 " />
@@ -46,7 +48,9 @@ export default function HowToGetThere({ tickets, destinationCountry, destination
                         </div>
                     ))}
                 </div>
-                <div className="hidden">
+                <div className="hidden
+                    xl:block
+                ">
                     <TripRoute country_origin_flag={originFlag}
                         country_origin_name={originCountry}
                         country_destination_flag={destinationFlag}

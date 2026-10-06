@@ -31,8 +31,8 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
                 <CostEstimate itinerary={itinerary} />
             </div>
 
-            <div className="flex flex-col justify-center gap-5
-                xl:flex-row
+            <div className="flex flex-col justify-center gap-5 
+                xl:flex-row xl:mx-2
             ">
                 <Tours tours={itinerary[0].itinerary.tours} />
                 <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood} />
@@ -55,7 +55,7 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
                     destinationFlag={itinerary[0].countryDestinationFlagURL}
                 />
                 <div className="flex flex-col justify-between
-                    xl:flex-row xl:w-[35%]
+                    xl:w-[35%]
                 ">
                     <Weather weather={itinerary[0].itinerary.weather} />
                     <Transport transports={itinerary[0].itinerary.transportation} />

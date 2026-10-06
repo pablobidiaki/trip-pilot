@@ -43,6 +43,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                     {isLoading &&
                         <div className="absolute rounded-2xl bg-gray-100 w-full h-60
                             lg:w-75 lg:h-92
+                            xl:max-w-55
                         ">
                             <Loading />
                         </div>
@@ -50,6 +51,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                     <iframe
                         className="rounded-2xl w-full h-60
                             lg:w-75 lg:h-92
+                            xl:max-w-55
                         "
                         loading="lazy"
                         src={accommodations[option].googleMapsEmbed}
@@ -65,13 +67,13 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                         reviews={accommodations[option].reviewsCount}
                     />
 
-                    <InfoRow icon={<MapPin size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />} information={texts.accommodations.address} value={accommodations[option].address} tailwindTags="mt-8 items-center text-xs gap-5 xl:text-lg" />
+                    <InfoRow icon={<MapPin size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>} information={texts.accommodations.address} value={accommodations[option].address} tailwindTags="mt-8 items-center text-xs gap-5 xl:text-sm xl:gap-8" />
                     <hr className="text-gray-300 my-3" />
 
-                    <InfoRow icon={<Package size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />} information={texts.accommodations.include} value={accommodations[option].includes} tailwindTags="text-xs gap-5 xl:text-lg"/>
+                    <InfoRow icon={<Package size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />} information={texts.accommodations.include} value={accommodations[option].includes} tailwindTags="text-xs gap-5 xl:text-sm xl:gap-8 "/>
                     <hr className=" text-gray-300 my-3" />
 
-                    <InfoRow icon={<BedDouble size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />} information={texts.accommodations.roomType} value={accommodations[option].roomType} tailwindTags="text-xs gap-5 xl:text-lg"/>
+                    <InfoRow icon={<BedDouble size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />} information={texts.accommodations.roomType} value={accommodations[option].roomType} tailwindTags="text-xs gap-5 xl:text-sm xl:gap-8"/>
                     <hr className=" text-gray-300 my-3" />
 
                     <div className="flex gap-2 items-center justify-between">

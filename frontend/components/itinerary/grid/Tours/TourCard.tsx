@@ -17,14 +17,16 @@ export default function TourCard({ image, title, description, price }: TourCardP
 
     return (
         <div onClick={() => setIsOpen(true)} className="flex items-end m-2 max-h-60 min-h-60 cursor-pointer transition-all hover:duration-200 hover:scale-101
-            xl:min-w-70 xl:max-w-70
+            2xl:min-w-70 2xl:max-w-70
         ">
             <img src={image}
                 alt="Tour tip image"
                 className="relative w-full h-full rounded-xl object-cover brightness-30"
             />
 
-            <div className="absolute px-2 mx-2 z-10 max-w-64">
+            <div className="absolute px-2 mx-2 z-10 max-w-64
+                xl:max-w-50 xl:mx-0
+            ">
                 <h1 className="text-white font-medium line-clamp-1 max-w-66">{title}</h1>
                 <p className="text-gray-300 text-xs max-w-66 line-clamp-2">{description}</p>
                 {price == 0 ? <p className="text-sm bg-green-100 w-fit mb-2 px-2 rounded-xl text-green-500 font-medium mt-2">{texts.free}</p> :

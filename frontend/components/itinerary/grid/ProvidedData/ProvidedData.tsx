@@ -11,7 +11,7 @@ interface ProvidedDataProps {
 
 export default function ProvidedData({ itinerary }: ProvidedDataProps) {
     return (
-        <div className="flex flex-col gap-2 justify-between mt-8 rounded-2xl px-2 py-4 bg-white
+        <div className="flex flex-col gap-2 justify-between mt-8 rounded-2xl px-2 py-4 bg-white border border-gray-100
             lg:grid lg:grid-cols-3
             xl:flex-row
         ">

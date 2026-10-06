@@ -27,7 +27,7 @@ export default function ItineraryDaysCard({ day, title, image, morning, afternoo
                 md:w-full
             ">
                 <img src={image} alt="Imagem tour" className="max-h-40 w-full
-                    md:max-h-50
+                    md:max-h-50 md:md:min-h-50
                 "/>
                 <p className="mx-2 text-second-color italic text-sm">{day}</p>
                 <p className="mx-2 text-primary-color font-medium text-xl mb-2">{title}</p>
