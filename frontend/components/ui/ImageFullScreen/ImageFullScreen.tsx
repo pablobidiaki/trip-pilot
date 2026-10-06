@@ -1,6 +1,9 @@
+"use client"
+
 import texts from "@/constants/texts";
 import { X } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 interface ImageFullScreenProps {
     title: string;
@@ -12,6 +15,15 @@ interface ImageFullScreenProps {
 }
 
 export default function ImageFullScreen({ title, image, description, price, isOpen, onClick }: ImageFullScreenProps) {
+    useEffect(() => {
+        if (isOpen) document.body.style.overflow = "hidden"
+        else document.body.style.overflow = ""
+
+        return () => {
+            document.body.style.overflow = ""
+        }
+    }, [isOpen])
+
     return (
         <div onClick={onClick}>
             {isOpen && (
@@ -28,7 +40,7 @@ export default function ImageFullScreen({ title, image, description, price, isOp
                             maximumFractionDigits: 2
                         })} ${texts.perPerson}`}
                         </p>
-                        
+
                         <img src={image}
                             alt={title}
                             className="max-h-[70vh] w-full object-contain"

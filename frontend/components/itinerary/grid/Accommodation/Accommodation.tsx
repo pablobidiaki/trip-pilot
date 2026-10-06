@@ -32,22 +32,24 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
         ">
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">1</span> {texts.itineraryTitles.accommodations}</h1>
             <div className="flex flex-col py-5 px-1
-                xl:flex-row
+                lg:flex-row
             ">
-                <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1 my-auto mr-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105 hidden" />
+                <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1 my-auto mr-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105 hidden
+                    lg:block
+                "/>
                 <div className="relative w-full h-60
-                    xl:w-75 xl:h-92 xl:mr-5
+                    lg:w-75 lg:h-92 lg:mr-5
                 ">
                     {isLoading &&
                         <div className="absolute rounded-2xl bg-gray-100 w-full h-60
-                            xl:w-75 xl:h-75
+                            lg:w-75 lg:h-92
                         ">
                             <Loading />
                         </div>
                     }
                     <iframe
                         className="rounded-2xl w-full h-60
-                            xl:w-75 xl:h-92
+                            lg:w-75 lg:h-92
                         "
                         loading="lazy"
                         src={accommodations[option].googleMapsEmbed}
@@ -82,12 +84,18 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
                     </div>
                 </div>
 
-                <ChevronRight onClick={plusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105 hidden" />
+                <ChevronRight onClick={plusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1 my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105 hidden
+                    lg:block
+                "/>
             </div>
 
             <div className="w-fit mx-auto flex gap-8 pb-5">
-                <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105" />
-                <ChevronRight onClick={plusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105" />
+                <ChevronLeft onClick={minusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105
+                    lg:hidden
+                " />
+                <ChevronRight onClick={plusButtonClicked} size={30} className="text-orange-500 cursor-pointer p-1  my-auto ml-2 bg-orange-100 rounded-full shrink-0 hover:duration-200 hover:bg-orange-300 hover:scale-105
+                    lg:hidden
+                " />
             </div>
         </div>
     )

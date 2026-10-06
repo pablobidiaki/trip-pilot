@@ -21,6 +21,7 @@ export default function ItineraryDaysCard({ day, title, image, morning, afternoo
     return (
         <div className="flex border border-gray-100 rounded-2xl bg-background-color 
             md:max-w-[75%] md:min-w-[75%] md:mx-auto
+            lg:max-w-full lg:min-w-full
         ">
             <div onClick={() => setIsModalOpen(true)} className="flex flex-col overflow-hidden rounded-2xl cursor-pointer transition-transform hover:scale-101
                 md:w-full
