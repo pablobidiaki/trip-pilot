@@ -18,6 +18,7 @@ export default function YourItinerariesCard({ itineraries }: YourItinerariesCard
 
     return (
         <div className="grid grid-cols-1 py-2 gap-5 px-2
+            md:grid-cols-2
             xl:grid-cols-4
         ">
             {itineraries.slice(0, 4).map((itinerary) => (

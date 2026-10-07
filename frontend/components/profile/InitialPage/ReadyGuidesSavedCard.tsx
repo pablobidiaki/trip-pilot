@@ -20,6 +20,7 @@ export default function ReadyGuidesSavedCard({ user, savedReadyGuides }: ReadyGu
 
     return (
         <div className="grid grid-cols-1 py-2 gap-5 px-2
+            md:grid-cols-2
             lg:grid-cols-4
         ">
             {savedReadyGuides.map((guide, index) => (

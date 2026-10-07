@@ -19,6 +19,7 @@ export default function DestinationSavedCard({ user, savedDestinations }: Destin
     }
     return (
         <div className="grid grid-cols-1 py-2 gap-5 px-2
+            md:grid-cols-2
             lg:grid-cols-4
         ">
             {savedDestinations.slice(0, 4).map((destination, index) => (
