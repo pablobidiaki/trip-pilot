@@ -10,23 +10,33 @@ interface SavedDestinationsProps {
 
 export default function SavedDestinations({ destinations }: SavedDestinationsProps) {
     return (
-        <div className="p-4 animate-[optionSelector_300ms_ease-out]">
-            <h1 className="text-4xl font-medium text-primary-color">{texts.profile.savedDestinations}</h1>
-            <p className="text-sm font-light text-second-color">{texts.profile.destinationsText}</p>
-            <div className="grid grid-cols-4 mt-5 gap-5">
+        <div className="p-2 animate-[optionSelector_300ms_ease-out]">
+            <h1 className="font-medium text-primary-color
+                md:text-2xl
+            ">{texts.profile.savedDestinations}</h1>
+            <p className="text-xs font-light text-second-color
+                md:text-sm
+            ">{texts.profile.destinationsText}</p>
+            <div className="grid grid-cols-1 mt-5 gap-5
+                lg:grid-cols-2
+                xl:grid-cols-3
+                2xl:grid-cols-4
+            ">
                 {destinations.length === 0 &&
                     <div className="flex items-center">
                         <p className="text-second-color text-lg italic">{texts.profile.noneDestinationSaved}</p>
                     </div>
                 }
                 {destinations.map((destination, index) => (
-                    <Link key={index} href={`destinations/${destination.destination.id}`} className="relative bg-background-color border rounded-2xl transition-all hover:duration-200 hover:scale-103">
+                    <Link key={index} href={`destinations/${destination.destination.id}`} className="relative bg-background-color border border-gray-100 rounded-2xl transition-all hover:duration-200 hover:scale-103">
                         <p className="absolute top-2 right-2 object-cover z-10 rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700">{destination.destination.travelType}</p>
                         <img className="w-full h-60 object-cover brightness-50 rounded-t-2xl" src={destination.destination.imageURL} alt={destination.destination.destination} />
                         <div>
                             <p className="text-2xl font-semibold text-gray-900 truncate mx-2">{destination.destination.destination}</p>
                             <p className="mx-2 text-second-color text-sm mt-2 line-clamp-2">{destination.destination.description}</p>
-                            <div className="grid grid-cols-3 gap-2 mx-2  mt-3 text-center">
+                            <div className="grid grid-cols-1 gap-2 mx-2  mt-3 text-center
+                                md:grid-cols-3
+                            ">
                                 <div className="flex flex-col items-center">
                                     <div className="bg-green-100 rounded-full p-2">
                                         <Languages className="text-green-500" />
