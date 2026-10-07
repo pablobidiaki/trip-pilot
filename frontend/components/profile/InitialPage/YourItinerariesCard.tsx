@@ -19,17 +19,18 @@ export default function YourItinerariesCard({ itineraries }: YourItinerariesCard
     return (
         <div className="grid grid-cols-1 py-2 gap-5 px-2
             md:grid-cols-2
-            xl:grid-cols-4
+            xl:grid-cols-3
+            2xl:grid-cols-4
         ">
             {itineraries.slice(0, 4).map((itinerary) => (
                 <Link href={`/itinerary/${itinerary.id}`} className="relative bg-background-color border border-gray-100 rounded-xl transition-all hover:duration-200 hover:scale-101
-                    xl:w-85
+                    
                 " key={itinerary.id}>
                     <img className="absolute top-2 right-2 w-5 object-cover z-10
                         xl:w-8
                     " src={itinerary.countryDestinationFlagURL} alt={itinerary.countryDestination} />
                     <img className="object-cover brightness-50 rounded-t-xl w-full max-h-45 min-h-45
-                        xl:w-85 xl:h-52
+                        xl:max-h-52 xl:min-h-52
                     " src={itinerary.itinerary.tours[0].imageURL} alt={itinerary.itinerary.tours[0].name} />
                     <div>
                         <div className="flex items-center justify-between mt-1 mx-2 mb-2">

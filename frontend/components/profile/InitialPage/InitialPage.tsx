@@ -82,7 +82,7 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
                 </Link>
             </div>
             <div className="grid grid-cols-1 items-stretch gap-5 p-5
-                md:grid-cols-3
+                md:flex md:px-2
             ">
                 {cardInfos.map((info, index) => (
                     <InitialPageInfoCard key={index} icon={info.icon} title={info.title} value={info.value} bgColor={info.bgColor} />
@@ -121,7 +121,8 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
             <h1 className="text-primary-color text-2xl font-medium mx-5 mt-5">Recomendações</h1>
             <div className="grid grid-cols-1 py-2 gap-5 px-2 pb-10
                 md:grid-cols-2
-                lg:grid-cols-4
+                xl:grid-cols-3
+                2xl:grid-cols-4
             ">
                 {destinations?.slice(0, 2).map((destinations, index) => (
                     <RecommendationCard key={index} type="Destino" destination={destinations} path={'destinations'} />
