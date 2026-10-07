@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/c
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { ItineraryService } from '../service/itinerary.service';
 import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.auth.guard';
+import { JwtAuthGuard } from '../../auth/guards/jwt.auth.guard';
 
 @ApiTags('Itinerary')
 @Controller('itinerary')
