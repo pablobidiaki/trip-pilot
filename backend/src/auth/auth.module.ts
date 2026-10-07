@@ -9,7 +9,7 @@ import { JwtStrategy } from './jwt.strategy';
 @Module({
   imports: [
     JwtModule.register({
-      secret: "trip-pilot-super-secret-key-2026",
+      secret: process.env.SECRETKEY,
       signOptions: {
         expiresIn: '1d',
       },

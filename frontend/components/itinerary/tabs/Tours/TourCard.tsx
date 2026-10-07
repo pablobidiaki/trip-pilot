@@ -60,7 +60,7 @@ export default function TourCard({ imageURL, title, description, price }: TourCa
                     </p>
                 </div>
             </div>
-            {isOpen && <ImageFullScreen image={imageURL} title={title} description={description} price={price} isOpen={isOpen} onClick={() => setIsOpen(false)} />}
+            {isOpen && <ImageFullScreen image={imageURL} title={title} description={description} price={price} isOpen={isOpen} onClose={() => setIsOpen(false)} />}
         </div>
     );
 }

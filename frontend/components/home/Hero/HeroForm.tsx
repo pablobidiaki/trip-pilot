@@ -51,6 +51,16 @@ export default function HeroForm() {
             return
         }
 
+        if (departureSelected == false) {
+            toast.error("Selecione a origem da sua viagem!")
+            return
+        }
+
+        if (destinationSelected == false) {
+            toast.error("Selecione o destino da sua viagem!")
+            return
+        }
+
         setIsLoading(true)
 
         try {
