@@ -14,6 +14,7 @@ import Loading from "@/components/loading/Loading/Loading";
 import texts from "@/constants/texts";
 import { SavedReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 import { UserInterface } from "@/interfaces/user.interface";
+import OptionsSelectMobile from "@/components/profile/OptionsSelectMobile";
 
 export default function Profile() {
     const { data: session, status } = useSession();
@@ -42,8 +43,11 @@ export default function Profile() {
     }, [session, status, savedDestinations, savedReadyGuides])
 
     return (
-        <div className="bg-background-color flex mt-2 animate-[optionSelector_300ms_ease-out]">
+        <div className="bg-background-color flex flex-col mt-2 animate-[optionSelector_300ms_ease-out]
+            md:flex-row
+        ">
             <OptionsSelect optionSelected={optionSelected} setOptionSelected={setOptionSelected} />
+            <OptionsSelectMobile optionSelected={optionSelected} setOptionSelected={setOptionSelected}/>
             {status === 'loading' &&
                 <div className="bg-white rounded-2xl mx-4 w-full ">
                     <Loading />

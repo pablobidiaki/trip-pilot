@@ -10,6 +10,7 @@ import { mapInitialPosition } from "@/constants/enum";
 import { Maximize, ZoomIn, ZoomOut } from "lucide-react";
 import MapButton from "./MapButton";
 import ColorExplain from "./ColorExplain";
+import ActionsAndInfos from "./ActionsAndInfos";
 
 interface MyMapProps {
     user: UserInterface
@@ -28,7 +29,7 @@ export default function MyMap({ user }: MyMapProps) {
     const [wishlist, setWishlist] = useState(false)
     const [imageLoading, setImageLoading] = useState(true)
     const [position, setPosition] = useState(mapInitialPosition)
-    const [placeholderCountry, setPlaceholderCountry] = useState<string>()
+    const [placeholderCountry, setPlaceholderCountry] = useState<string>("")
 
     const toggleCountry = (geo: any, isVisited: boolean, isWishlist: boolean) => {
         setImageLoading(true)
@@ -64,9 +65,7 @@ export default function MyMap({ user }: MyMapProps) {
             <h1 className="text-xl sm:text-2xl font-medium text-primary-color">{texts.profile.myMap}</h1>
             <p className="text-second-color text-xs sm:text-sm font-light mb-3 sm:mb-4">{texts.profile.myMapText}</p>
 
-            <div className="relative w-full max-h-[70vh] sm:max-h-180 rounded-xl overflow-hidden bg-blue-50 touch-none hidden
-                lg:block
-            ">
+            <div className="relative w-full max-h-[80vh] rounded-xl overflow-hidden bg-blue-50 touch-none">
                 <ComposableMap
                     projectionConfig={{ scale: 140 }}
                     className="w-full h-auto"
@@ -95,17 +94,14 @@ export default function MyMap({ user }: MyMapProps) {
                     </ZoomableGroup>
                 </ComposableMap>
 
-                <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-white/90 backdrop-blur-sm p-1.5 sm:p-2 rounded-lg shadow-lg text-[10px] sm:text-sm min-w-0 sm:min-w-50 max-w-[55%] sm:max-w-none">
-                    <p className="hidden sm:block">{placeholderCountry}</p>
-                    <ColorExplain color="bg-secondary-third-color" text={texts.profile.visited} />
-                    <ColorExplain color="bg-orange-400" text={texts.profile.wantVisit} />
-                    <ColorExplain color="bg-gray-600" text={texts.profile.selected} />
-                    <ColorExplain color="bg-[#E2E8F0]" text={texts.profile.countries} />
+                <div className="hidden
+                    md:block
+                ">
+                    <ActionsAndInfos placeholderCountry={placeholderCountry} handleResetPosition={handleResetPosition} handleZoomIn={handleZoomIn} handleZoomOut={handleZoomOut} />
                 </div>
-
-                <MapButton onClick={handleResetPosition} icon={<Maximize />} tailwindTags="bottom-3 sm:bottom-7" toolTipText={texts.profile.originPosition} />
-                <MapButton onClick={handleZoomIn} icon={<ZoomIn />} tailwindTags="bottom-14 sm:bottom-18.5" toolTipText={texts.profile.zoom} />
-                <MapButton onClick={handleZoomOut} icon={<ZoomOut />} tailwindTags="bottom-25 sm:bottom-30" toolTipText={texts.profile.zoomOut} />
+            </div>
+            <div className="md:hidden">
+                <ActionsAndInfos placeholderCountry={placeholderCountry} handleResetPosition={handleResetPosition} handleZoomIn={handleZoomIn} handleZoomOut={handleZoomOut} />
             </div>
 
             {isOpen &&
@@ -121,10 +117,6 @@ export default function MyMap({ user }: MyMapProps) {
                     setWishListConfirmed={setWishlistConfirmed}
                 />
             }
-
-            <p className="text-primary-color
-                lg:hidden
-            ">Está opção só está disponivel para telas maiores.</p>
         </div>
     )
 }

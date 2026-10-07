@@ -29,7 +29,9 @@ export default function OptionsSelect({ optionSelected, setOptionSelected }: opt
     }
 
     return (
-        <div className="flex flex-col gap-5 w-fit h-fit bg-white rounded-r-2xl">
+        <div className="flex-col gap-5 w-fit h-fit bg-white rounded-r-2xl hidden
+            md:flex
+        ">
             <Link href="/">
                 <img src="/imgs/icons/trip_pilot.png" alt="Logo" className="w-16 h-16 mx-auto my-2" />
             </Link>
