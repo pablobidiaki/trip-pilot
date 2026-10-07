@@ -71,7 +71,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
     }
 
     return (
-        <div className="fixed inset-0 z-50 w-fit top-22 h-fit flex justify-end left-369 animate-[optionSelector_300ms_ease-out]">
+        <div className="absolute z-50 w-fit top-2 h-fit flex justify-end right-2 animate-[optionSelector_300ms_ease-out]">
             <div className="relative w-60 rounded-xl bg-background-color" onClick={(e) => e.stopPropagation()}>
                 <div className="flex justify-between items-center p-2">
                     <h1 className=" font-medium text-primary-color">{geo.properties.name}</h1>

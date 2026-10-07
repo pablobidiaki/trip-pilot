@@ -99,24 +99,25 @@ export default function MyMap({ user }: MyMapProps) {
                 ">
                     <ActionsAndInfos placeholderCountry={placeholderCountry} handleResetPosition={handleResetPosition} handleZoomIn={handleZoomIn} handleZoomOut={handleZoomOut} />
                 </div>
+
+                {isOpen &&
+                    <CountryInfoModal visited={visited}
+                        wishlist={wishlist}
+                        geo={countrySelected}
+                        isOpen={isOpen}
+                        onClose={() => setIsOpen(false)}
+                        user={user!}
+                        setVisiteConfirmed={setVisiteConfirmed}
+                        imageLoading={imageLoading}
+                        setImageLoading={setImageLoading}
+                        setWishListConfirmed={setWishlistConfirmed}
+                    />
+                }
+
             </div>
             <div className="md:hidden">
                 <ActionsAndInfos placeholderCountry={placeholderCountry} handleResetPosition={handleResetPosition} handleZoomIn={handleZoomIn} handleZoomOut={handleZoomOut} />
             </div>
-
-            {isOpen &&
-                <CountryInfoModal visited={visited}
-                    wishlist={wishlist}
-                    geo={countrySelected}
-                    isOpen={isOpen}
-                    onClose={() => setIsOpen(false)}
-                    user={user!}
-                    setVisiteConfirmed={setVisiteConfirmed}
-                    imageLoading={imageLoading}
-                    setImageLoading={setImageLoading}
-                    setWishListConfirmed={setWishlistConfirmed}
-                />
-            }
         </div>
     )
 }
