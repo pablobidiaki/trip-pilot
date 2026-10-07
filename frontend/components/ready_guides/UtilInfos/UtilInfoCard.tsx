@@ -1,16 +1,28 @@
+"use client"
+
+import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface"
 import { ChevronRight } from "lucide-react"
-import { ReactNode } from "react"
+import { ReactNode, useEffect, useState } from "react"
 
 interface UtilInfoCardProps {
     icon: ReactNode,
     title: string,
     text: string,
     isOpen: boolean,
-    guide: any
+    selected: string
+    guide: ReadyGuideInterface
     onClick: () => void
 }
 
-export default function UtilInfoCard({ icon, title, text, isOpen, guide, onClick }: UtilInfoCardProps) {
+export default function UtilInfoCard({ icon, title, text, isOpen, selected, guide, onClick }: UtilInfoCardProps) {
+    const [info, setInfo] = useState<string[]>()
+
+    useEffect(() => {
+        type UsefulInformationKey = keyof typeof guide.usefulInformation;
+        const selectedKey = selected as UsefulInformationKey;
+        setInfo(guide.usefulInformation[selectedKey])
+
+    }, [selected])
     return (
         <div className="relative">
             <div onClick={onClick} className="h-full cursor-pointer flex justify-between items-center border border-gray-200 rounded-2xl bg-purple-50 mt-5 p-2 transition-all duration-200 hover:bg-purple-100">
@@ -23,7 +35,7 @@ export default function UtilInfoCard({ icon, title, text, isOpen, guide, onClick
 
                 {isOpen && (
                     <div className="absolute left-0 top-full mt-5 z-20 bg-white border border-gray-200 rounded-2xl p-4 shadow-lg w-full">
-                        {guide.map((text, index) => (
+                        {info?.map((text, index) => (
                             <p key={index} className="text-second-color font-light text-sm">- {text} </p>
                         ))}
                     </div>

@@ -59,11 +59,23 @@ export interface ReadyGuideInterface {
     overview: Overview[]
     itinerary: Itinerary[]
     accommodations: Accommodations[]
-    usefulInformation: JSON
+    usefulInformation: usefulInformation
 }
 
 export interface SavedReadyGuideInterface{
     id: string
     readyGuideId: string
     readyGuide: ReadyGuideInterface
+}
+
+interface usefulInformation{
+    baggage:string[]
+    culture:string[]
+    documents:string[]
+    exchangeRate:string[]
+    internet:string[]
+    localTransport:string[]
+    powerOutletAndVoltage:string[]
+    security:string[]
+    vaccinesAndHealth:string[]
 }

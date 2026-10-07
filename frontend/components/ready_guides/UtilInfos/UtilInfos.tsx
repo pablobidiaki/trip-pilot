@@ -16,18 +16,18 @@ export default function UtilInfos({guide}: UtilInfosProps) {
     const [selected, setSelected] = useState("")
 
     const beforeTravelInfos = [
-        { icon: <Scroll />, title: texts.utilInfo.documentsTitle, text: texts.utilInfo.documentsText, json_key: "documents" },
-        { icon: <Shield />, title: texts.utilInfo.vaccinesAndHealthTitle, text: texts.utilInfo.vaccinesAndHealthText, json_key: "vaccinesAndHealth" },
-        { icon: <Backpack />, title: texts.utilInfo.baggageTitle, text: texts.utilInfo.baggageText, json_key: "baggage" },
-        { icon: <CircleDollarSign />, title: texts.utilInfo.exchangeRateTitle, text: texts.utilInfo.exchangeRateText, json_key: "exchangeRate" },
-        { icon: <Plug />, title: texts.utilInfo.powerOutletAndVoltageTitle, text: texts.utilInfo.powerOutletAndVoltageText, json_key: "powerOutletAndVoltage" },
-        { icon: <Smartphone />, title: texts.utilInfo.internetTitle, text: texts.utilInfo.internetText, json_key: "internet" }
+        { icon: <Scroll />, title: texts.utilInfo.documentsTitle, text: texts.utilInfo.documentsText, jsonKey: "documents" },
+        { icon: <Shield />, title: texts.utilInfo.vaccinesAndHealthTitle, text: texts.utilInfo.vaccinesAndHealthText, jsonKey: "vaccinesAndHealth" },
+        { icon: <Backpack />, title: texts.utilInfo.baggageTitle, text: texts.utilInfo.baggageText, jsonKey: "baggage" },
+        { icon: <CircleDollarSign />, title: texts.utilInfo.exchangeRateTitle, text: texts.utilInfo.exchangeRateText, jsonKey: "exchangeRate" },
+        { icon: <Plug />, title: texts.utilInfo.powerOutletAndVoltageTitle, text: texts.utilInfo.powerOutletAndVoltageText, jsonKey: "powerOutletAndVoltage" },
+        { icon: <Smartphone />, title: texts.utilInfo.internetTitle, text: texts.utilInfo.internetText, jsonKey: "internet" }
     ]
 
     const duringTravelInfos = [
-        { icon: <BusFront />, title: texts.utilInfo.transportTitle, text: texts.utilInfo.transportText, json_key: "localTransport" },
-        { icon: <Landmark />, title: texts.utilInfo.cultureTitle, text: texts.utilInfo.cultureText, json_key: "culture" },
-        { icon: <Shield />, title: texts.utilInfo.securityTitle, text: texts.utilInfo.securityText, json_key: "security" }
+        { icon: <BusFront />, title: texts.utilInfo.transportTitle, text: texts.utilInfo.transportText, jsonKey: "localTransport" },
+        { icon: <Landmark />, title: texts.utilInfo.cultureTitle, text: texts.utilInfo.cultureText, jsonKey: "culture" },
+        { icon: <Shield />, title: texts.utilInfo.securityTitle, text: texts.utilInfo.securityText, jsonKey: "security" }
     ]
 
     return (
@@ -51,9 +51,10 @@ export default function UtilInfos({guide}: UtilInfosProps) {
                         icon={info.icon}
                         title={info.title}
                         text={info.text}
-                        isOpen={selected === info.json_key}
-                        guide={guide[0].usefulInformation[selected as keyof typeof guide[0]['usefulInformation']]}
-                        onClick={() => setSelected(selected === info.json_key ? "" : info.json_key)}
+                        isOpen={selected === info.jsonKey}
+                        selected={selected}
+                        guide={guide[0]}
+                        onClick={() => setSelected(selected === info.jsonKey ? "" : info.jsonKey)}
                     />
                 ))}
             </div>
@@ -68,9 +69,10 @@ export default function UtilInfos({guide}: UtilInfosProps) {
                         icon={info.icon}
                         title={info.title}
                         text={info.text}
-                        isOpen={selected === info.json_key}
-                        guide={guide[0].usefulInformation[selected as keyof typeof guide[0]['usefulInformation']]}
-                        onClick={() => setSelected(selected === info.json_key ? "" : info.json_key)}
+                        isOpen={selected === info.jsonKey}
+                        selected={selected}
+                        guide={guide[0]}
+                        onClick={() => setSelected(selected === info.jsonKey ? "" : info.jsonKey)}
                     />
                 ))}
             </div>
