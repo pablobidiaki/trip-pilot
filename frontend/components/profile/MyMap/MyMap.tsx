@@ -48,7 +48,7 @@ export default function MyMap({ user }: MyMapProps) {
     const handleMoveEnd = (positionProps: ZoomPanCallbackProps) => {
         setPosition({
             center: positionProps.coordinates as [number, number],
-            zoom: positionProps.zoom,
+            zoom: positionProps.zoom as number,
         })
     }
 
