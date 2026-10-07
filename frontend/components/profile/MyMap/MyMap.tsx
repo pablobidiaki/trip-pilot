@@ -7,9 +7,6 @@ import CountryInfoModal from "./CountryInfoModal";
 import { UserInterface } from "@/interfaces/user.interface";
 import { GeoInterface } from "@/interfaces/map.interface";
 import { mapInitialPosition } from "@/constants/enum";
-import { Maximize, ZoomIn, ZoomOut } from "lucide-react";
-import MapButton from "./MapButton";
-import ColorExplain from "./ColorExplain";
 import ActionsAndInfos from "./ActionsAndInfos";
 
 interface MyMapProps {
@@ -73,8 +70,8 @@ export default function MyMap({ user }: MyMapProps) {
                     <ZoomableGroup zoom={position.zoom} center={position.center} onMoveEnd={handleMoveEnd}>
                         <Geographies geography={geoUrl}>
                             {({ geographies }) => geographies.map((geo) => {
-                                const isVisited = visitedCountries.includes(geo?.id)
-                                const isInWishlist = countriesWishlist.includes(geo?.id)
+                                const isVisited = visitedCountries.includes(String(geo?.id))
+                                const isInWishlist = countriesWishlist.includes(String(geo?.id))
                                 return (
                                     <Geography
                                         key={geo.rsmKey}
