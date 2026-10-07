@@ -60,12 +60,17 @@ export default function MyMap({ user }: MyMapProps) {
     }, [visiteConfirmed, wishlistConfirmed])
 
     return (
-        <div className="w-full mx-auto p-2 rounded-xl max-h-200 animate-[optionSelector_300ms_ease-out]">
-            <h1 className="text-2xl font-medium text-primary-color">{texts.profile.myMap}</h1>
-            <p className="text-second-color text-sm font-light mb-4">{texts.profile.myMapText}</p>
+        <div className="w-full mx-auto p-2 sm:p-4 rounded-xl animate-[optionSelector_300ms_ease-out]">
+            <h1 className="text-xl sm:text-2xl font-medium text-primary-color">{texts.profile.myMap}</h1>
+            <p className="text-second-color text-xs sm:text-sm font-light mb-3 sm:mb-4">{texts.profile.myMapText}</p>
 
-            <div className="max-h-180 rounded-xl overflow-hidden bg-blue-50">
-                <ComposableMap projectionConfig={{ scale: 140 }}>
+            <div className="relative w-full max-h-[70vh] sm:max-h-180 rounded-xl overflow-hidden bg-blue-50 touch-none hidden
+                lg:block
+            ">
+                <ComposableMap
+                    projectionConfig={{ scale: 140 }}
+                    className="w-full h-auto"
+                >
                     <ZoomableGroup zoom={position.zoom} center={position.center} onMoveEnd={handleMoveEnd}>
                         <Geographies geography={geoUrl}>
                             {({ geographies }) => geographies.map((geo) => {
@@ -79,7 +84,7 @@ export default function MyMap({ user }: MyMapProps) {
                                         onMouseOut={() => setPlaceholderCountry("")}
                                         onClick={() => toggleCountry(geo, isVisited, isInWishlist)}
                                         className={`outline-none stroke-white stroke-1 transition-all hover:cursor-pointer
-                                        ${countrySelected?.id === geo.id && isOpen ? 'fill-gray-600' :
+                                    ${countrySelected?.id === geo.id && isOpen ? 'fill-gray-600' :
                                                 isVisited ? 'fill-secondary-third-color hover:fill-[#4338CA]' :
                                                     isInWishlist ? 'fill-orange-400 hover:fill-orange-500' :
                                                         'fill-[#E2E8F0] hover:fill-[#CBD5E1]'}`}
@@ -90,18 +95,19 @@ export default function MyMap({ user }: MyMapProps) {
                     </ZoomableGroup>
                 </ComposableMap>
 
-                <div className="fixed bottom-7 left-55 bg-white p-2 rounded-lg shadow-2xl min-w-50">
-                    <p>{placeholderCountry}</p>
+                <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-white/90 backdrop-blur-sm p-1.5 sm:p-2 rounded-lg shadow-lg text-[10px] sm:text-sm min-w-0 sm:min-w-50 max-w-[55%] sm:max-w-none">
+                    <p className="hidden sm:block">{placeholderCountry}</p>
                     <ColorExplain color="bg-secondary-third-color" text={texts.profile.visited} />
                     <ColorExplain color="bg-orange-400" text={texts.profile.wantVisit} />
                     <ColorExplain color="bg-gray-600" text={texts.profile.selected} />
                     <ColorExplain color="bg-[#E2E8F0]" text={texts.profile.countries} />
                 </div>
 
-                <MapButton onClick={handleResetPosition} icon={<Maximize />} tailwindTags="bottom-7" toolTipText={texts.profile.originPosition} />
-                <MapButton onClick={handleZoomIn} icon={<ZoomIn />} tailwindTags="bottom-18.5" toolTipText={texts.profile.zoom} />
-                <MapButton onClick={handleZoomOut} icon={<ZoomOut />} tailwindTags="bottom-30" toolTipText={texts.profile.zoomOut} />
+                <MapButton onClick={handleResetPosition} icon={<Maximize />} tailwindTags="bottom-3 sm:bottom-7" toolTipText={texts.profile.originPosition} />
+                <MapButton onClick={handleZoomIn} icon={<ZoomIn />} tailwindTags="bottom-14 sm:bottom-18.5" toolTipText={texts.profile.zoom} />
+                <MapButton onClick={handleZoomOut} icon={<ZoomOut />} tailwindTags="bottom-25 sm:bottom-30" toolTipText={texts.profile.zoomOut} />
             </div>
+
             {isOpen &&
                 <CountryInfoModal visited={visited}
                     wishlist={wishlist}
@@ -113,7 +119,12 @@ export default function MyMap({ user }: MyMapProps) {
                     imageLoading={imageLoading}
                     setImageLoading={setImageLoading}
                     setWishListConfirmed={setWishlistConfirmed}
-                />}
+                />
+            }
+
+            <p className="text-primary-color
+                lg:hidden
+            ">Está opção só está disponivel para telas maiores.</p>
         </div>
-    );
+    )
 }
