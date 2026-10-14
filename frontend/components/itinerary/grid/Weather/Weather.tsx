@@ -12,7 +12,7 @@ export default function Weather({ weather }: WeatherProps) {
         <div className="bg-white border rounded-2xl border-gray-100
             xl:mt-5
         ">
-            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">8</span> {texts.itineraryTitles.weather}</h1>
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2">{texts.itineraryTitles.weather}</h1>
 
             <div className="mx-4 text-primary-color">
                 <p className="my-2">{texts.weather.seasonText} <span className="text-second-color">{weather.season}</span></p>

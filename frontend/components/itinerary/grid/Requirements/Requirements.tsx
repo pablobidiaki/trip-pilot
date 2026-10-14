@@ -13,7 +13,7 @@ export default function Requirements({requirements}: RequirementsProps){
         <div className="bg-white border rounded-2xl border-gray-100 mt-5
             xl:max-w-1/2 xl:min-w-1/2
         ">
-            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">5</span> {texts.itineraryTitles.requirements}</h1>
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2">{texts.itineraryTitles.requirements}</h1>
             <div className="flex justify-center gap-4 p-4">
                 <div>
                     <div className="flex justify-center gap-5">

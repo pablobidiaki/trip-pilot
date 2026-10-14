@@ -30,7 +30,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
         <div className="border rounded-2xl border-gray-100 w-full mt-5 bg-white
             xl:max-2/3
         ">
-            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">1</span> {texts.itineraryTitles.accommodations}</h1>
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2">{texts.itineraryTitles.accommodations}</h1>
             <div className="flex flex-col py-5 px-1
                 lg:flex-row
             ">

@@ -12,7 +12,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
         <div className="border rounded-2xl border-gray-100 bg-white
             xl:max-w-1/3 xl:mt-5
         ">
-            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2"><span className="bg-orange-100 text-orange-500 px-2 rounded-lg">2</span> {texts.itineraryTitles.costEstimate}</h1>
+            <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2">{texts.itineraryTitles.costEstimate}</h1>
 
             <InfoRow icon={<Bed  size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />}
                 information={texts.costEstimate.accommodation}
