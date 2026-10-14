@@ -30,7 +30,7 @@ export default function Login() {
   }
 
   return (
-    <div className="xl:grid xl:grid-cols-2">
+    <div className="xl:grid xl:grid-cols-2 animate-[optionSelector_300ms_ease-out]">
       <Image src={"/imgs/login/image.png"}
         alt="Traveler image"
         width={1280}
