@@ -102,7 +102,7 @@ export default function Login() {
 
           <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }}
             className="w-full mt-5  h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer
-          lg:mt-10
+              lg:mt-10
           ">
             <img
               src="/imgs/icons/google.png"
