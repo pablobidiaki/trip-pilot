@@ -1,5 +1,7 @@
+const apiKey = process.env.NEXT_PUBLIC_API_URL
+
 export async function getUserIdByEmail(accessToken: string, email: string | null | undefined) {
-    const response = await fetch(`http://localhost:3001/user/${email}`, {
+    const response = await fetch(`${apiKey}/user/${email}`, {
         method: "GET",
         headers:{
             "Content-Type": "application/json",
@@ -14,7 +16,7 @@ export async function getUserIdByEmail(accessToken: string, email: string | null
 }
 
 export async function getUserById(userId: string) {
-    const response = await fetch(`http://localhost:3001/user/${userId}`)
+    const response = await fetch(`${apiKey}/user/${userId}`)
 
     if (!response.ok)
         throw new Error("Erro ao buscar usuario")
@@ -23,7 +25,7 @@ export async function getUserById(userId: string) {
 }
 
 export async function registerUser(data: {name: string, email: string, password: string}) {
-    const response = await fetch("http://localhost:3001/user/register", {
+    const response = await fetch(`${apiKey}/user/register`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

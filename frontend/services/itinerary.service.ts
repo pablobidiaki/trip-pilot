@@ -1,5 +1,7 @@
 import { ItineraryInterface } from "@/interfaces/itinerary.interface"
 
+const apiKey = process.env.NEXT_PUBLIC_API_URL
+
 interface createItineraryData {
     userId: any
     departure: string,
@@ -18,7 +20,7 @@ interface createItineraryData {
 
 export async function createItinerary(accessToken: string, data: createItineraryData) {
     try {
-        const response = await fetch("http://localhost:3001/itinerary", {
+        const response = await fetch(`${apiKey}/itinerary`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -46,7 +48,7 @@ export async function createItinerary(accessToken: string, data: createItinerary
 }
 
 export async function getItinerary(id: string): Promise<ItineraryInterface[]> {
-    const response = await fetch(`http://localhost:3001/itinerary/${id}`)
+    const response = await fetch(`${apiKey}/itinerary/${id}`)
 
     if (!response.ok)
         throw new Error("Erro ao buscar itinerary")
@@ -55,7 +57,7 @@ export async function getItinerary(id: string): Promise<ItineraryInterface[]> {
 }  
 
 export async function getUserItineraries(userId: any): Promise<ItineraryInterface[]> {
-    const response = await fetch(`http://localhost:3001/itinerary/user/${userId}`)
+    const response = await fetch(`${apiKey}/itinerary/user/${userId}`)
 
     if (!response.ok)
         throw new Error("Erro ao buscar itinerary")

@@ -1,7 +1,9 @@
 import { DestinationInterface } from "@/interfaces/destination.interface";
 
+const apiKey = process.env.NEXT_PUBLIC_API_URL
+
 export async function getDestinations(): Promise<DestinationInterface[]> {
-    const response = await fetch("http://localhost:3001/destination")
+    const response = await fetch(`${apiKey}/destination`)
 
     if (!response.ok)
         throw new Error("Erro ao buscar destinos")
@@ -10,7 +12,7 @@ export async function getDestinations(): Promise<DestinationInterface[]> {
 }
 
 export async function getDestination(id: string): Promise<DestinationInterface[]> {
-    const response = await fetch(`http://localhost:3001/destination/${id}`)
+    const response = await fetch(`${apiKey}/destination/${id}`)
 
     if (!response.ok)
         throw new Error("Erro ao buscar destino")
@@ -20,7 +22,7 @@ export async function getDestination(id: string): Promise<DestinationInterface[]
 
 export async function favoriteDestination(userId: string, destinationId: string) {
     try {
-        const response = await fetch("http://localhost:3001/destination/favorite", {
+        const response = await fetch(`${apiKey}/destination/favorite`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -47,7 +49,7 @@ export async function favoriteDestination(userId: string, destinationId: string)
 }
 
 export async function getFavoriteDestinations(userId: string) {
-    const response = await fetch(`http://localhost:3001/destination/favorite/${userId}`)
+    const response = await fetch(`${apiKey}/destination/favorite/${userId}`)
 
     if (!response.ok)
         throw new Error("Erro ao buscar destinos favoritos")

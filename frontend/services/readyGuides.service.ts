@@ -1,7 +1,9 @@
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
+const apiKey = process.env.NEXT_PUBLIC_API_URL
+
 export async function getReadyGuides(): Promise<ReadyGuideInterface[]> {
-    const response = await fetch("http://localhost:3001/readyGuide")
+    const response = await fetch(`${apiKey}/readyGuide`)
 
     if(!response.ok)
         throw new Error("Erro ao buscar guias")
@@ -10,7 +12,7 @@ export async function getReadyGuides(): Promise<ReadyGuideInterface[]> {
 }   
 
 export async function getReadyGuide(id: string): Promise<ReadyGuideInterface[]> {
-    const response = await fetch(`http://localhost:3001/readyGuide/${id}`)
+    const response = await fetch(`${apiKey}/readyGuide/${id}`)
 
     if(!response.ok)
         throw new Error("Erro ao buscar guias")
@@ -20,7 +22,7 @@ export async function getReadyGuide(id: string): Promise<ReadyGuideInterface[]> 
 
 export async function favoriteReadyGuide(userId: string, readyGuideId: string) {
     try {
-        const response = await fetch("http://localhost:3001/readyGuide/favorite", {
+        const response = await fetch("${apiKey}/readyGuide/favorite", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -47,7 +49,7 @@ export async function favoriteReadyGuide(userId: string, readyGuideId: string) {
 }
 
 export async function getFavoriteReadyGuides(userId: string) {
-    const response = await fetch(`http://localhost:3001/readyGuide/favorite/${userId}`)
+    const response = await fetch(`${apiKey}/readyGuide/favorite/${userId}`)
 
     if (!response.ok)
         throw new Error("Erro ao buscar destinos favoritos")
