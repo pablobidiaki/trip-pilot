@@ -1,8 +1,20 @@
+"use client"
+
+import { useEffect, useState } from "react";
 import PopularDestinationsCard from "./PopularDestinationsCard";
 import { getDestinations } from "@/services/destination.service";
+import { DestinationInterface } from "@/interfaces/destination.interface";
 
-export default async function PopularDestinationsCardContainer() {
-    const destinations = await getDestinations()
+export default function PopularDestinationsCardContainer() {
+    const [destinations, setDestinations] = useState<DestinationInterface[]>()
+
+    useEffect(() => {
+        const _getDestinations = async () => {
+            const destinations = await getDestinations()
+            setDestinations(destinations)
+        }
+        _getDestinations()
+    }, [destinations])
 
     return (
         <div className="flex flex-col items-center gap-y-5
@@ -10,7 +22,7 @@ export default async function PopularDestinationsCardContainer() {
         xl:grid-cols-3
         2xl:flex 2xl:flex-row 2xl:justify-between
         ">
-            {destinations.slice(0, 5).map((destination, index) => (
+            {destinations!.slice(0, 5).map((destination, index) => (
                 <PopularDestinationsCard key={index}
                     image={destination.imageURL}
                     title={destination.destination}

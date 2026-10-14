@@ -3,6 +3,8 @@ import Link from "next/link";
 import PopularDestinationsCardContainer from "./PopularDestinationCardsContainer";
 
 export default function PopularDestinations(){
+    
+
     return(
         <div className="mx-2 mt-10">
             <div className="flex items-center justify-between mb-2">
