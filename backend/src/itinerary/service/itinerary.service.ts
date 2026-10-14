@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
-import { LlmService } from 'src/llm/services/llm.service';
-import { ImagesService } from 'src/images/services/images.service';
-import { UsersService } from 'src/users/services/users.service';
+import { LlmService } from '../../llm/services/llm.service';
+import { ImagesService } from '../../images/services/images.service';
+import { UsersService } from '../../users/services/users.service';
 
 @Injectable()
 export class ItineraryService {

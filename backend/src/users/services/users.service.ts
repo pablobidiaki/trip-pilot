@@ -2,7 +2,7 @@ import { PrismaService } from '../../prisma/prisma.service';
 import * as bcrypt from "bcrypt"
 import { ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common"
 import { CreateUsersDto, EditCountryDto } from '../dtos/create-users-dto';
-import { LoginInterface } from 'src/auth/interfaces/auth.interfaces';
+import { LoginInterface } from '../../auth/interfaces/auth.interfaces';
 
 @Injectable()
 export class UsersService {
