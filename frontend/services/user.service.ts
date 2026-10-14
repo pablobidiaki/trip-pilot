@@ -25,7 +25,7 @@ export async function getUserById(userId: string) {
 }
 
 export async function registerUser(data: {name: string, email: string, password: string}) {
-    const response = await fetch(`${apiKey}/user/register`, {
+    const response = await fetch(`${apiKey}/auth/register`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
