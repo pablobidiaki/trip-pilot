@@ -10,7 +10,7 @@ export default async function ItineraryExamplesCardsContainer() {
         xl:grid-cols-3
         2xl:flex 2xl:flex-row 2xl:justify-between
         ">
-            {readyGuides.slice(0, 4).map((guide, index) => (
+            {(readyGuides ?? []).slice(0, 4).map((guide, index) => (
                 <ItineraryExamplesCard key={index}
                     image={guide.imageURL}
                     title={guide.title}
