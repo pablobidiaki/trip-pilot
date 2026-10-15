@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable, UnauthorizedException  } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../../users/services/users.service';
 import { JwtService } from "@nestjs/jwt";
 import { CreateUserDto } from '../dtos/create.user.dto';
@@ -61,39 +61,38 @@ export class AuthService {
         return user;
     }
 
-    async googleLogin(idToken: string) {
+    async googleLogin(idToken: string): Promise<any> {
         const ticket = await this.googleClient.verifyIdToken({
             idToken,
             audience: process.env.AUTH_GOOGLE_ID,
         });
 
-        const payload = ticket.getPayload();
+        const googlePayload = ticket.getPayload();
 
-        if (!payload?.email || !payload.email_verified) {
+        if (!googlePayload?.email || !googlePayload.email_verified) {
             throw new UnauthorizedException("Conta Google inválida");
         }
 
-        const email = payload.email.toLowerCase();
+        const email = googlePayload.email.toLowerCase();
 
         let user = await this.usersService.findByEmail(email);
 
         if (!user) {
             user = await this.usersService.createGoogleUser({
-                name: payload.name || email,
+                name: googlePayload.name || email,
                 email,
             });
         }
-        
-        const accessToken = this._createToken(user);
+
+        const token = this._createToken(user);
 
         return {
-            success: true,
+            ...token,
             data: {
                 id: user.id,
                 name: user.name,
                 email: user.email,
             },
-            accessToken,
         };
     }
 }

@@ -100,7 +100,7 @@ export default function Login() {
             <hr className="flex-1 border-gray-300" />
           </div>
 
-          <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }}
+          <button type="button" onClick={() => { signIn("google", { redirectTo: "/" }) }}
             className="w-full mt-5  h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer
               lg:mt-10
           ">

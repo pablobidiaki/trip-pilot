@@ -23,8 +23,8 @@ declare module "next-auth/jwt" {
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google({
-      clientId: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+      clientId: process.env.AUTH_GOOGLE_ID!,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET!,
     }),
 
     Credentials({
@@ -48,27 +48,50 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
         );
 
-        if (!response.ok) return null
+        if (!response.ok) return null;
 
         const result = await response.json();
 
-        const user = {
-          id: result.data.id,
+        return {
+          id: String(result.data.id),
           name: result.data.name,
           email: result.data.email,
           image: result.data.image,
           accessToken: result.accessToken,
-        }
-
-        return user;
+        };
       },
     }),
   ],
 
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) token.accessToken = user.accessToken;
-      
+    async jwt({ token, user, account }) {
+      if (user?.accessToken) {
+        token.accessToken = user.accessToken;
+      }
+
+      if (account?.provider === "google" && account.id_token) {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/google`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idToken: account.id_token,
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Não foi possível autenticar no backend");
+        }
+
+        const result = await response.json();
+
+        token.accessToken = result.accessToken;
+      }
+
       return token;
     },
 
@@ -77,5 +100,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return session;
     },
-  }
+  },
 });

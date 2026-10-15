@@ -32,11 +32,6 @@ export default function Register() {
     }
   }
 
-  const handleGoogleButton = () => {
-    
-    signIn("google", { callbackUrl: "/" })
-  }
-
   return (
     <div className="animate-[optionSelector_300ms_ease-out]">
       <div className="xl:grid xl:grid-cols-2">
@@ -107,7 +102,7 @@ export default function Register() {
               <hr className="flex-1 border-gray-300" />
             </div>
 
-            <button type="button" onClick={() => { signIn("google", { callbackUrl: "/" }) }} className=" w-full mt-5 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer">
+            <button type="button" onClick={() => { signIn("google", { redirectTo: "/" }) }} className=" w-full mt-5 h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer">
               <img
                 src="/imgs/icons/google.png"
                 alt="Google icon"
@@ -124,8 +119,8 @@ export default function Register() {
           width={1280}
           height={1080}
           className="h-screen object-cover hidden
-        xl:flex
-        "
+            xl:flex
+          "
           loading="eager"
         />
       </div>
