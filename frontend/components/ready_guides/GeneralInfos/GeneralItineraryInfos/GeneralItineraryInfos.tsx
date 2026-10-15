@@ -19,8 +19,8 @@ export default function GeneralItineraryInfos({guide}: GeneralItineraryInfosProp
                 lg:text-sm
             ">{guide[0].overviewResume}</p>
             <div className="items-center p-2 mt-4
-                lg:grid lg:grid-cols-2 lg:p-0
-                2xl:grid-cols-3
+                lg:grid lg:grid-cols-2 lg:p-0 lg:items-start
+                2xl:grid-cols-3 
             ">
                 {guide[0].overview.map((day, index) => (
                     <GeneralInfoCard key={index} image={day.imageURL} days={day.days} title={day.title} description={day.description}/>
