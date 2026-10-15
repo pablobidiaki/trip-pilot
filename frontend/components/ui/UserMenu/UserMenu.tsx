@@ -39,7 +39,7 @@ export default function UserMenu({ image, name, email }: UserMenuProps) {
                     <div className="p-2">
                         <Link href="/profile" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition">
                             <User size={18} />
-                            <span className="text-sm">Meu perfil</span>
+                            <span>Meu perfil</span>
                         </Link>
 
                         <Link className={"flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition"} href={'/'}>

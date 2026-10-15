@@ -22,7 +22,7 @@ export default function PopularDestinationsCardContainer() {
         xl:grid-cols-3
         2xl:flex 2xl:flex-row 2xl:justify-between
         ">
-            {destinations!.slice(0, 5).map((destination, index) => (
+            {(destinations ?? []).slice(0, 5).map((destination, index) => (
                 <PopularDestinationsCard key={index}
                     image={destination.imageURL}
                     title={destination.destination}

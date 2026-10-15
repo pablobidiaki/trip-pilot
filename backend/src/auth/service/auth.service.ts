@@ -45,9 +45,9 @@ export class AuthService {
             sub: user.id,
             email: user.email,
         };
-
-        const accessToken = this.jwtService.sign(payload);
-
+        
+        const accessToken = this.jwtService.sign(payload, {secret: process.env.SECRETKEY!});
+        
         return {
             accessToken,
             expiresIn: process.env.EXPIRESIN,
@@ -83,7 +83,6 @@ export class AuthService {
                 email,
             });
         }
-
         const token = this._createToken(user);
 
         return {

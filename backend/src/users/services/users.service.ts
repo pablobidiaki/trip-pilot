@@ -231,12 +231,9 @@ export class UsersService {
     });
   }
 
-  async createGoogleUser(dto: {
-    name: string;
-    email: string;
-  }) {
+  async createGoogleUser(dto: {name: string, email: string}) {
     return this.prisma.user.create({
-      data: {
+      data: {    
         name: dto.name,
         email: dto.email,
         password: null,

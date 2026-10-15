@@ -21,6 +21,10 @@ declare module "next-auth/jwt" {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  session: {
+    strategy: "jwt",
+  },
+
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID!,
@@ -49,14 +53,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         );
 
         if (!response.ok) return null;
+        
 
         const result = await response.json();
+
+        if (!result.data?.id || !result.accessToken) return null
+      
 
         return {
           id: String(result.data.id),
           name: result.data.name,
           email: result.data.email,
-          image: result.data.image,
+          image: result.data.image ?? null,
           accessToken: result.accessToken,
         };
       },
@@ -65,9 +73,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   callbacks: {
     async jwt({ token, user, account }) {
-      if (user?.accessToken) {
-        token.accessToken = user.accessToken;
-      }
+      if (user?.accessToken) token.accessToken = user.accessToken;
 
       if (account?.provider === "google" && account.id_token) {
         const response = await fetch(
@@ -83,11 +89,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
         );
 
-        if (!response.ok) {
-          throw new Error("Não foi possível autenticar no backend");
-        }
-
+        if (!response.ok) throw new Error("Falha na autenticação do backend");
+        
         const result = await response.json();
+
+        if (!result.accessToken) throw new Error("Backend não retornou accessToken");
+        
 
         token.accessToken = result.accessToken;
       }
@@ -97,7 +104,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     async session({ session, token }) {
       session.accessToken = token.accessToken;
-
       return session;
     },
   },

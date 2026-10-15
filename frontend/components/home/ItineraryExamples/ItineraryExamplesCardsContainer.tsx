@@ -3,6 +3,7 @@ import { getReadyGuides } from "@/services/readyGuides.service";
 
 export default async function ItineraryExamplesCardsContainer() {
     const readyGuides = await getReadyGuides()
+    
     return (
         <div className="flex flex-col items-center gap-y-5
         md:grid md:grid-cols-2 md:gap-2
