@@ -35,7 +35,9 @@ export default function DayItineraryProps({ guide, daySelected }: DayItineraryPr
                     alt='City image'
                     width={1150}
                     height={1150}
-                    className="rounded-xl w-full"
+                    className="rounded-xl w-full
+                        lg:max-w-[65%] mx-auto
+                    "
                 />
 
                 <p className="text-primary-color mt-5 font-medium text-xl">{texts.readyGuides.yourDayWithDetails}</p>
