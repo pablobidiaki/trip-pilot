@@ -7,7 +7,7 @@ import texts from "@/constants/texts";
 export default function Hero() {
     return (
         <div className="relative overflow-hidden pb-5
-        xl:h-screen
+         xl:h-screen
         ">
             <img
                 src="/imgs/background.png"

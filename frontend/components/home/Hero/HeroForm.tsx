@@ -257,10 +257,10 @@ export default function HeroForm() {
                 />
             </div>
             <div className="flex flex-col mt-2 gap-2 mb-4
-            md:grid md:grid-cols-3 md:mt-5
+            md:grid md:grid-cols-2 md:mt-5
             xl:mb-8
             2xl:mb-7
-            3xl:mb-8 3xl:grid 3xl:grid-cols-3 3xl:gap-3
+            3xl:mb-8 3xl:grid 3xl:grid-cols-2 3xl:gap-3
             ">
                 <Input icon={<Users />}
                     title={texts.form.peopleQuantity}
@@ -276,12 +276,12 @@ export default function HeroForm() {
                     value={travelType}
                     onChange={setTravelType}
                 />
-                <Dropdown icon={<BrainCircuit />}
+                {/* <Dropdown icon={<BrainCircuit />}
                     title={texts.form.aiModel}
                     options={AiModels}
                     value={aiProvider}
                     onChange={setAiProvider}
-                />
+                /> */}
             </div>
 
             <GradientButton text={texts.form.buttonText} type="submit" />
