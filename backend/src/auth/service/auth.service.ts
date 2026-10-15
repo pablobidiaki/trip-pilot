@@ -1,11 +1,13 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, UnauthorizedException  } from '@nestjs/common';
 import { UsersService } from '../../users/services/users.service';
 import { JwtService } from "@nestjs/jwt";
 import { CreateUserDto } from '../dtos/create.user.dto';
 import { JwtPayloadInterface, LoginInterface, RegistrationStatusInterface, UserInterface } from '../interfaces/auth.interfaces';
+import { OAuth2Client } from "google-auth-library";
 
 @Injectable()
 export class AuthService {
+    private googleClient = new OAuth2Client(process.env.AUTH_GOOGLE_ID);
     constructor(
         private readonly jwtService: JwtService,
         private readonly usersService: UsersService,
@@ -29,7 +31,7 @@ export class AuthService {
     }
 
     async login(dto: LoginInterface): Promise<any> {
-        const user = await this.usersService.findByEmail(dto);
+        const user = await this.usersService.findByLogin(dto);
         const token = this._createToken(user);
 
         return {
@@ -57,5 +59,41 @@ export class AuthService {
         if (!user) throw new HttpException("INVALID_TOKEN", HttpStatus.UNAUTHORIZED);
 
         return user;
+    }
+
+    async googleLogin(idToken: string) {
+        const ticket = await this.googleClient.verifyIdToken({
+            idToken,
+            audience: process.env.AUTH_GOOGLE_ID,
+        });
+
+        const payload = ticket.getPayload();
+
+        if (!payload?.email || !payload.email_verified) {
+            throw new UnauthorizedException("Conta Google inválida");
+        }
+
+        const email = payload.email.toLowerCase();
+
+        let user = await this.usersService.findByEmail(email);
+
+        if (!user) {
+            user = await this.usersService.createGoogleUser({
+                name: payload.name || email,
+                email,
+            });
+        }
+        
+        const accessToken = this._createToken(user);
+
+        return {
+            success: true,
+            data: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+            },
+            accessToken,
+        };
     }
 }

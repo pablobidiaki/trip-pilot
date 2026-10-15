@@ -16,4 +16,9 @@ export class AuthController {
     async login(@Body() dto: LoginInterface) {
         return this.authService.login(dto)
     }
+
+    @Post("google")
+    async googleLogin(@Body() body: { idToken: string }) {
+        return this.authService.googleLogin(body.idToken);
+    }
 }

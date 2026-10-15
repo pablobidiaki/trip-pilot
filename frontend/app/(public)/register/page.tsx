@@ -32,6 +32,11 @@ export default function Register() {
     }
   }
 
+  const handleGoogleButton = () => {
+    
+    signIn("google", { callbackUrl: "/" })
+  }
+
   return (
     <div className="animate-[optionSelector_300ms_ease-out]">
       <div className="xl:grid xl:grid-cols-2">

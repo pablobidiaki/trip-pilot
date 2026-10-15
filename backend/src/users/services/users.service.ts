@@ -41,7 +41,7 @@ export class UsersService {
   }
 
   async create(dto: CreateUsersDto) {
-    
+
     const emailAlreadyRegistred = await this.prisma.user.findUnique({
       where: {
         email: dto.email
@@ -210,19 +210,38 @@ export class UsersService {
     });
   }
 
-  async findByEmail(dto: LoginInterface){
+  async findByLogin(dto: LoginInterface) {
     const user = await this.prisma.user.findFirst({
       where: { email: dto.email }
     });
 
     if (!user) throw new HttpException("invalid_credentials", HttpStatus.UNAUTHORIZED);
-    
+
     const areEqual = await bcrypt.compare(dto.password, user.password!);
 
     if (!areEqual) throw new HttpException("invalid_credentials", HttpStatus.UNAUTHORIZED)
 
     const { password: p, ...rest } = user;
     return rest;
+  }
+
+  async findByEmail(email: string) {
+    return this.prisma.user.findUnique({
+      where: { email },
+    });
+  }
+
+  async createGoogleUser(dto: {
+    name: string;
+    email: string;
+  }) {
+    return this.prisma.user.create({
+      data: {
+        name: dto.name,
+        email: dto.email,
+        password: null,
+      },
+    });
   }
 
   async findByPayload({ login }: any): Promise<any> {
