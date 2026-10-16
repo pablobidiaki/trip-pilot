@@ -49,7 +49,7 @@ export default async function DestinationBanner({ destination }: DestinationBann
 
             {user &&
                 <div className="absolute z-10 text-white right-4 top-18">
-                    <FavoriteButton userId={user?.user?.id} destinationId={destination[0].id} />
+                    <FavoriteButton userId={user?.id} destinationId={destination[0].id} />
                 </div>
             }
         </div>

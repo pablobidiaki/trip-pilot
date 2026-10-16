@@ -4,23 +4,41 @@ import GuideInfoCard from "../GuideInfoCard/GuideInfoCard";
 import GradientButton from "@/components/ui/Buttons/GradientButton";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 import texts from "@/constants/texts";
+import FavoriteButton from "@/components/destination/DestinationBanner/FavoriteButton";
+import { getUserIdByEmail } from "@/services/user.service";
+import { auth } from "@/auth"
 
 interface GuideHeroProps {
     guide: ReadyGuideInterface[]
 }
 
-export default function GuideHero({ guide }: GuideHeroProps) {
+export default async function GuideHero({ guide }: GuideHeroProps) {
+    let user
+    const session = await auth()
+    if (session) user = await getUserIdByEmail(session?.accessToken!, session?.user?.email)
+
+
+    console.log(user.id)
+    console.log(guide[0].id)
     return (
         <div className="flex flex-col justify-center bg-white
             lg:mt-10 lg:pb-5 lg:gap-2 lg:flex-row lg:ml-2
         ">
-            <img src={guide[0].imageURL}
-                alt="Main image"
-                className="w-full max-h-90 mb-1
-                    lg:w-[40%] lg:mb-0 lg:rounded-2xl
-            "/>
+            <div className="relative w-full lg:w-[60%] 2xl:w-fit">
+                <img src={guide[0].imageURL}
+                    alt="Main image"
+                    className="w-full max-h-90 mb-1 relative
+                    lg:mb-0 lg:rounded-2xl lg:h-full
+                    
+                "/>
+
+                <div className="absolute top-3 right-3 z-100">
+                    <FavoriteButton userId={user?.id} readyGuideId={guide[0].id} />
+                </div>
+            </div>
+
             <div className="flex flex-col
-                2xl:max-w-[28%]
+                2xl:max-w-[45%]
             ">
                 {/* <div className="flex items-center gap-2">
                     <Heart className="text-red-500 fill-red-500" />
@@ -49,17 +67,11 @@ export default function GuideHero({ guide }: GuideHeroProps) {
                 </div>
 
                 <div className="grid grid-cols-1 gap-2 mx-2
-                    md:flex md:justify-between 
+                    md:flex md:justify-between
                 ">
                     <GuideInfoCard icon={<Calendar />} title={texts.readyGuides.bestTime} text={guide[0].bestTime} />
                     <GuideInfoCard icon={<Languages />} title={texts.readyGuides.language} text={guide[0].language} />
                     <GuideInfoCard icon={<CircleDollarSign />} title={texts.readyGuides.currency} text={guide[0].currenty} />
-                </div>
-
-                <div className="mt-5 mx-2
-                    xl:mt-auto
-                ">
-                    <GradientButton text={texts.readyGuides.saveGuide} type="button" />
                 </div>
             </div>
         </div>

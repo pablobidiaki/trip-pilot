@@ -21,8 +21,15 @@ export default function FavoriteButton({ userId, destinationId, readyGuideId }: 
     const handleFavoriteClick = async () => {
         try {
             let text = ""
-            if (!isFavorited) text = "Destino favoritado com sucesso!"
-            else text = "Destino removido dos favoritos com sucesso!"
+
+            if (destinationId) {
+                if (!isFavorited) text = "Destino favoritado com sucesso!"
+                else text = "Destino removido dos favoritos com sucesso!"
+            }else{
+                if (!isFavorited) text = "Guia favoritado com sucesso!"
+                else text = "Guia removido dos favoritos com sucesso!"
+            }
+
 
             if (destinationId) await favoriteDestination(userId, destinationId)
             if (readyGuideId) await favoriteReadyGuide(userId, readyGuideId)
@@ -37,12 +44,12 @@ export default function FavoriteButton({ userId, destinationId, readyGuideId }: 
 
     const isFavorite = async () => {
         let isFavorite
-        
+
         const destinations = await getFavoriteDestinations(userId)
         const readyGuides = await getFavoriteReadyGuides(userId)
 
-        if(destinationId) isFavorite = destinations.some((saved: SavedDestinationInterface) => saved.destinationId === destinationId)
-        if(readyGuideId) isFavorite = readyGuides.some((saved: SavedReadyGuideInterface) => saved.readyGuideId === readyGuideId)
+        if (destinationId) isFavorite = destinations.some((saved: SavedDestinationInterface) => saved.destinationId === destinationId)
+        if (readyGuideId) isFavorite = readyGuides.some((saved: SavedReadyGuideInterface) => saved.readyGuideId === readyGuideId)
 
         setIsFavorited(isFavorite)
     }

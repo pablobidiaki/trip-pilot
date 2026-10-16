@@ -16,7 +16,7 @@ interface DestinationCardProps {
 
 export default function DestinationCard({ id, image, name, description, travel_type, country, user }: DestinationCardProps) {
     return (
-        <div className="relative h-80 overflow-hidden rounded-2xl m-4">
+        <div className="relative h-80 overflow-hidden rounded-2xl m-4 animate-[optionSelector_300ms_ease-out]">
             <Link href={`/destinations/${id}`}>
                 <img
                     src={image}

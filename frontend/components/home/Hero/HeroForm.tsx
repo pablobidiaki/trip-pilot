@@ -84,6 +84,7 @@ export default function HeroForm() {
 
             router.push(`/itinerary/${itinerary.id}`)
         } catch (err) {
+            toast.error("O modelo está passando por alta demanda. Tente novamente mais tarde!")
             console.error(`Erro ao gerar roteiro ${err}`)
         } finally {
             setIsLoading(false)

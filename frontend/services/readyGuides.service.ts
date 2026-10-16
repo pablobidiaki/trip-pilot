@@ -22,7 +22,7 @@ export async function getReadyGuide(id: string): Promise<ReadyGuideInterface[]> 
 
 export async function favoriteReadyGuide(userId: string, readyGuideId: string) {
     try {
-        const response = await fetch("${apiKey}/readyGuide/favorite", {
+        const response = await fetch(`${apiKey}/readyGuide/favorite`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

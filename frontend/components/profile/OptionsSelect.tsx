@@ -19,7 +19,7 @@ export default function OptionsSelect({ optionSelected, setOptionSelected }: opt
         { icon: <Tent />, text: texts.optionSelectorProfile.destinationsSaved },
         { icon: <Signpost />, text: texts.optionSelectorProfile.guidesSaved },
         { icon: <Map />, text: texts.optionSelectorProfile.myMap },
-        { icon: <Cog />, text: texts.optionSelectorProfile.configurations },
+        // { icon: <Cog />, text: texts.optionSelectorProfile.configurations },
         { icon: <LogOut />, text: texts.optionSelectorProfile.exit },
     ]
 

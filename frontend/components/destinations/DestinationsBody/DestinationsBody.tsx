@@ -37,7 +37,7 @@ export default function DestinationBody({ user }: DestinationBodyProps) {
     }, [destinations])  
 
     return (
-        <div className="relative h-full overflow-hidden bg-white -mt-6 rounded-t-4xl">
+        <div className="relative h-full overflow-hidden bg-white -mt-6 rounded-t-4xl ">
             <div className="flex flex-col items-center mt-4 justify-between mx-2
                 xl:flex-row
             ">

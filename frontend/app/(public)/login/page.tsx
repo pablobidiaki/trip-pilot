@@ -78,9 +78,9 @@ export default function Login() {
               <Eye onClick={() => setViewPassword(!viewPassword)} className="cursor-pointer mt-2" />
             </div>
 
-            <p className="mt-2 text-end text-link-color font-medium mb-10 cursor-pointer">
+            {/* <p className="mt-2 text-end text-link-color font-medium mb-10 cursor-pointer">
               {texts.loginAndRegister.forgotPassword}
-            </p>
+            </p> */}
 
             {error && (
               <p className=" mb-2 text-center text-red-500 italic
