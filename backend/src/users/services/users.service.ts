@@ -1,12 +1,15 @@
 import { PrismaService } from '../../prisma/prisma.service';
-import * as bcrypt from "bcrypt"
 import { ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common"
 import { CreateUsersDto, EditCountryDto } from '../dtos/create-users-dto';
 import { LoginInterface } from '../../auth/interfaces/auth.interfaces';
+import { ICrypto } from 'src/core/crypto/ICrypto';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly crypto: ICrypto
+  ) { }
 
   getAll() {
     return this.prisma.user.findMany()
@@ -50,7 +53,7 @@ export class UsersService {
 
     if (emailAlreadyRegistred) throw new ConflictException("Email já cadastrado")
 
-    const hashedPassword = await bcrypt.hash(dto.password, 10)
+    const hashedPassword = await this.crypto.hash(dto.password)
 
     const user = await this.prisma.user.create({
       data: {
@@ -87,18 +90,11 @@ export class UsersService {
       where: { email }
     })
 
-    if (!user || !user.password) {
-      throw new UnauthorizedException("Email ou senha inválidos")
-    }
+    if (!user || !user.password) throw new UnauthorizedException("Email ou senha inválidos")
+    
+    const passwordMatch = await this.crypto.compare(password, user.password)
 
-    const passwordMatch = await bcrypt.compare(
-      password,
-      user.password
-    )
-
-    if (!passwordMatch) {
-      throw new UnauthorizedException("Email ou senha inválidos")
-    }
+    if (!passwordMatch) throw new UnauthorizedException("Email ou senha inválidos")
 
     return {
       id: user.id,
@@ -143,9 +139,9 @@ export class UsersService {
       },
     });
 
-    let teste = user?.countriesVisited
+    let countries = user?.countriesVisited
 
-    const countriesVisited = teste?.filter(
+    const countriesVisited = countries?.filter(
       country => country !== data.country
     )
 
@@ -217,7 +213,7 @@ export class UsersService {
 
     if (!user) throw new HttpException("invalid_credentials", HttpStatus.UNAUTHORIZED);
 
-    const areEqual = await bcrypt.compare(dto.password, user.password!);
+    const areEqual = await this.crypto.compare(dto.password, user.password!);
 
     if (!areEqual) throw new HttpException("invalid_credentials", HttpStatus.UNAUTHORIZED)
 
