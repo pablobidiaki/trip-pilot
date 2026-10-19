@@ -75,7 +75,7 @@ export class AuthService {
 
         const email = googlePayload.email.toLowerCase();
 
-        let user = await this.usersService.findByEmail(email);
+        let user = await this.usersService.getUserByEmail(email);
 
         if (!user) {
             user = await this.usersService.createGoogleUser({

@@ -3,64 +3,39 @@ import { ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedE
 import { CreateUsersDto, EditCountryDto } from '../dtos/create-users-dto';
 import { LoginInterface } from '../../auth/interfaces/auth.interfaces';
 import { ICrypto } from 'src/core/crypto/ICrypto';
+import { IUserRepository } from '../repositories/IUserRepository';
 
 @Injectable()
 export class UsersService {
   constructor(
     private readonly prisma: PrismaService,
+    private readonly userRepository: IUserRepository,
     private readonly crypto: ICrypto
   ) { }
 
   getAll() {
-    return this.prisma.user.findMany()
+    return this.userRepository.findAll()
   }
 
-  getIdByEmail(email: string) {
-    return this.prisma.user.findUnique({
-      where: {
-        email: email
-      }
-    })
+  getUserByEmail(email: string) {
+    return this.userRepository.findOneByEmail(email)
   }
 
   getById(id: string) {
-    const user = this.prisma.user.findUnique({
-      where: {
-        id: id
-      }
-    })
-
-    return user
-  }
-
-  async getByEmail(email: string) {
-    const user = this.prisma.user.findUnique({
-      where: {
-        email: email,
-      },
-    })
-
-    return user
+    return this.userRepository.findOne(id)
   }
 
   async create(dto: CreateUsersDto) {
-
-    const emailAlreadyRegistred = await this.prisma.user.findUnique({
-      where: {
-        email: dto.email
-      }
-    })
+    const emailAlreadyRegistred = await this.userRepository.findOneByEmail(dto.email)
 
     if (emailAlreadyRegistred) throw new ConflictException("Email já cadastrado")
 
-    const hashedPassword = await this.crypto.hash(dto.password)
+    const hashedPassword = await this.crypto.hash(dto.password!)
 
-    const user = await this.prisma.user.create({
-      data: {
-        name: dto.name,
-        email: dto.email,
-        password: hashedPassword
-      }
+    const user = await this.userRepository.create({
+      name: dto.name,
+      email: dto.email,
+      password: hashedPassword
     })
 
     return {
@@ -71,27 +46,19 @@ export class UsersService {
   }
 
   deleteAll() {
-    return this.prisma.user.deleteMany()
+    return this.userRepository.removeAll()
   }
 
   deleteById(id: string) {
-    const user = this.prisma.user.deleteMany({
-      where: {
-        id: id
-      }
-    })
-
-    return user
+    return this.userRepository.removeOne(id)
   }
 
   async login(email: string, password: string) {
 
-    const user = await this.prisma.user.findUnique({
-      where: { email }
-    })
+    const user = await this.userRepository.findOneByEmail(email)
 
     if (!user || !user.password) throw new UnauthorizedException("Email ou senha inválidos")
-    
+
     const passwordMatch = await this.crypto.compare(password, user.password)
 
     if (!passwordMatch) throw new UnauthorizedException("Email ou senha inválidos")
@@ -190,9 +157,9 @@ export class UsersService {
       },
     });
 
-    let teste = user?.countriesWishlist
+    let countries = user?.countriesWishlist
 
-    const countriesWishlist = teste?.filter(
+    const countriesWishlist = countries?.filter(
       country => country !== data.country
     )
 
@@ -207,9 +174,7 @@ export class UsersService {
   }
 
   async findByLogin(dto: LoginInterface) {
-    const user = await this.prisma.user.findFirst({
-      where: { email: dto.email }
-    });
+    const user = await this.userRepository.findOneByEmail(dto.email)
 
     if (!user) throw new HttpException("invalid_credentials", HttpStatus.UNAUTHORIZED);
 
@@ -218,23 +183,12 @@ export class UsersService {
     if (!areEqual) throw new HttpException("invalid_credentials", HttpStatus.UNAUTHORIZED)
 
     const { password: p, ...rest } = user;
+
     return rest;
   }
 
-  async findByEmail(email: string) {
-    return this.prisma.user.findUnique({
-      where: { email },
-    });
-  }
-
-  async createGoogleUser(dto: {name: string, email: string}) {
-    return this.prisma.user.create({
-      data: {    
-        name: dto.name,
-        email: dto.email,
-        password: null,
-      },
-    });
+  async createGoogleUser(dto: CreateUsersDto) {
+    return this.userRepository.create(dto)
   }
 
   async findByPayload({ login }: any): Promise<any> {

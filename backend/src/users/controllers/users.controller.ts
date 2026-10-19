@@ -27,7 +27,7 @@ export class UsersController {
         summary: 'Get an especific user id by email',
     })
     async getIdByEmail(@Param('email') email: string) {
-        return await this.usersService.getIdByEmail(email)
+        return await this.usersService.getUserByEmail(email)
     }
 
     @Get(':id')

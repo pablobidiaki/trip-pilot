@@ -38,8 +38,7 @@ export class ItineraryService {
     }
 
     async create(dto: CreateItineraryDto) {
-
-        const userId = await this.usersService.getByEmail(dto.userId)
+        const userId = await this.usersService.getUserByEmail(dto.userId)
         if (!userId) throw new Error('User not found')
 
         const itineraryJson = await this.llmService.generate(dto)
