@@ -1,55 +1,33 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../../prisma/prisma.service";
 import { CreateGuideDto } from "../dtos/create-guide-dto";
+import { IReadyGuideRepository } from "../repositories/IReadyGuideRepository";
 
 @Injectable()
 export class ReadyGuideService {
-    constructor(private readonly prisma: PrismaService) { }
+    constructor(private readonly prisma: PrismaService,
+    private readonly readyGuideRepository: IReadyGuideRepository
+
+    ) { }
 
     create(dto: CreateGuideDto) {
-        return this.prisma.readyGuides.create({
-            data: {
-                imageURL: dto.imageURL,
-                title: dto.title,
-                description: dto.description,
-                travelType: dto.travelType,
-                bestTime: dto.bestTime,
-                language: dto.language,
-                currenty: dto.currenty,
-                overviewResume: dto.overviewResume,
-                cities: dto.cities,
-                days: dto.days,
-                price: dto.price,
-                overview: dto.overview,
-                itinerary: dto.itinerary,
-                accommodations: dto.accommodations,
-                usefulInformation: dto.usefulInformation
-            }
-        })
+        return this.readyGuideRepository.create(dto)
     }
 
     getAll() {
-        return this.prisma.readyGuides.findMany()
+        return this.readyGuideRepository.findAll()
     }
 
     get(id: string) {
-        return this.prisma.readyGuides.findMany({
-            where: {
-                id: id
-            }
-        })
+        return this.readyGuideRepository.findOne(id)
     }
 
     deleteAll() {
-        return this.prisma.readyGuides.deleteMany()
+        return this.readyGuideRepository.removeAll()
     }
 
     delete(id: string) {
-        return this.prisma.readyGuides.deleteMany({
-            where: {
-                id: id
-            }
-        })
+        return this.readyGuideRepository.removeOne(id)
     }
 
     async favorite(userId: string, readyGuideId: string) {
