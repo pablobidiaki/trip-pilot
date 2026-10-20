@@ -2,7 +2,7 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common"
 import { CreateUsersDto, EditCountryDto } from '../dtos/create-users-dto';
 import { LoginInterface } from '../../auth/interfaces/auth.interfaces';
-import { ICrypto } from 'src/core/crypto/ICrypto';
+import { ICrypto } from '../../core/crypto/ICrypto';
 import { IUserRepository } from '../repositories/IUserRepository';
 
 @Injectable()
