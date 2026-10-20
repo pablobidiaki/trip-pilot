@@ -9,7 +9,7 @@ import { useState } from "react";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
 interface UtilInfosProps{
-    guide: ReadyGuideInterface[]
+    guide: ReadyGuideInterface
 }
 
 export default function UtilInfos({guide}: UtilInfosProps) {
@@ -53,7 +53,7 @@ export default function UtilInfos({guide}: UtilInfosProps) {
                         text={info.text}
                         isOpen={selected === info.jsonKey}
                         selected={selected}
-                        guide={guide[0]}
+                        guide={guide}
                         onClick={() => setSelected(selected === info.jsonKey ? "" : info.jsonKey)}
                     />
                 ))}
@@ -71,7 +71,7 @@ export default function UtilInfos({guide}: UtilInfosProps) {
                         text={info.text}
                         isOpen={selected === info.jsonKey}
                         selected={selected}
-                        guide={guide[0]}
+                        guide={guide}
                         onClick={() => setSelected(selected === info.jsonKey ? "" : info.jsonKey)}
                     />
                 ))}

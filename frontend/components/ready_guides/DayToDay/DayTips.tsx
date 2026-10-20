@@ -3,7 +3,7 @@ import {  Lightbulb } from "lucide-react";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
 interface DayTipsProps {
-    guide: ReadyGuideInterface[],
+    guide: ReadyGuideInterface,
     daySelected: string
 }
 
@@ -17,7 +17,7 @@ export default function DayTips({ guide, daySelected }: DayTipsProps) {
                 <h1>{texts.readyGuides.tipsToday}</h1>
             </div>
 
-            {guide[0].itinerary.map(resumeDay => (
+            {guide.itinerary.map(resumeDay => (
                 resumeDay.day.toString() == daySelected &&
                 resumeDay.dayTips.map((tip, index) => (
                     <p key={index} className="mt-3 text-sm text-second-color">{index + 1}. {tip}</p>

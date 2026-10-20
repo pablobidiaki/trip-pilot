@@ -8,7 +8,7 @@ import DayCostEstimate from "./DayCostEstimate";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
 interface DayToDayProps {
-    guide: ReadyGuideInterface[]
+    guide: ReadyGuideInterface
 }
 
 export default function DayToDayProps({ guide }: DayToDayProps) {
@@ -20,7 +20,7 @@ export default function DayToDayProps({ guide }: DayToDayProps) {
                 xl:
             ">
                 <div>
-                    {guide[0].itinerary.map(day => (
+                    {guide.itinerary.map(day => (
                         <Calendar key={day.day}
                             day={day.day.toString()}
                             date={day.abbreviatedDate}

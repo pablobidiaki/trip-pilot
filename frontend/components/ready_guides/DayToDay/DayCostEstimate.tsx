@@ -5,13 +5,13 @@ import { Car, CircleEllipsis, Handbag, Ticket, Utensils } from "lucide-react";
 import DayCostEstimateCard from "./DayCostEstimateCard";
 
 interface DayCostEstimateProps {
-    guide: ReadyGuideInterface[],
+    guide: ReadyGuideInterface,
     daySelected: string
 }
 
 export default function DayCostEstimate({ guide, daySelected }: DayCostEstimateProps) {
     return (
-        guide[0].itinerary.map((resumeDay, index) => (
+        guide.itinerary.map((resumeDay, index) => (
             resumeDay.day.toString() == daySelected &&
             <div key={index} className="border border-gray-100 rounded-2xl mt-5 py-2 px-3 bg-white
                 xl:mt-0

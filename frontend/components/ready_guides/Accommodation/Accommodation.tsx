@@ -2,7 +2,7 @@ import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface"
 import AccomodationCard from "./AccomodationCard"
 
 interface AccommodationProps {
-    guide: ReadyGuideInterface[]
+    guide: ReadyGuideInterface
 }
 
 export default function Accommodation({ guide }: AccommodationProps) {
@@ -10,7 +10,7 @@ export default function Accommodation({ guide }: AccommodationProps) {
         <div className="
             lg:max-w-9/12 lg:mx-auto
         ">
-            {guide[0].accommodations.map(hotel => (
+            {guide.accommodations.map(hotel => (
                 <AccomodationCard key={hotel.days}
                     image={hotel.imageURL}
                     days={hotel.days}

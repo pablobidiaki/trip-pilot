@@ -3,13 +3,13 @@ import DayInfos from "./DayInfos";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
 interface DayItineraryProps {
-    guide: ReadyGuideInterface[],
+    guide: ReadyGuideInterface,
     daySelected: string
 }
 
 export default function DayItineraryProps({ guide, daySelected }: DayItineraryProps) {
     return (
-        guide[0].itinerary.map((resumeDay, index) => (
+        guide.itinerary.map((resumeDay, index) => (
             resumeDay.day.toString() == daySelected &&
             <div key={index} className="bg-white p-2 rounded-2xl
                 xl:mx-2 xl:w-full

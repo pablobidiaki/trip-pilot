@@ -9,7 +9,7 @@ import { getUserIdByEmail } from "@/services/user.service";
 import { auth } from "@/auth"
 
 interface GuideHeroProps {
-    guide: ReadyGuideInterface[]
+    guide: ReadyGuideInterface
 }
 
 export default async function GuideHero({ guide }: GuideHeroProps) {
@@ -17,15 +17,12 @@ export default async function GuideHero({ guide }: GuideHeroProps) {
     const session = await auth()
     if (session) user = await getUserIdByEmail(session?.accessToken!, session?.user?.email)
 
-
-    console.log(user.id)
-    console.log(guide[0].id)
     return (
         <div className="flex flex-col justify-center bg-white
             lg:mt-10 lg:pb-5 lg:gap-2 lg:flex-row lg:ml-2
         ">
             <div className="relative w-full lg:w-[60%] 2xl:w-fit">
-                <img src={guide[0].imageURL}
+                <img src={guide.imageURL}
                     alt="Main image"
                     className="w-full max-h-90 mb-1 relative
                     lg:mb-0 lg:rounded-2xl lg:h-full
@@ -33,7 +30,7 @@ export default async function GuideHero({ guide }: GuideHeroProps) {
                 "/>
 
                 <div className="absolute top-3 right-3 z-100">
-                    <FavoriteButton userId={user?.id} readyGuideId={guide[0].id} />
+                    <FavoriteButton userId={user?.id} readyGuideId={guide.id} />
                 </div>
             </div>
 
@@ -48,30 +45,30 @@ export default async function GuideHero({ guide }: GuideHeroProps) {
                 <h1 className="text-2xl font-medium mx-2
                     
                 ">
-                    {guide[0].title}
+                    {guide.title}
                 </h1>
                 <div className="flex gap-2 mx-2">
-                    {guide[0].cities.map((city, index) => (
+                    {guide.cities.map((city, index) => (
                         <h2 key={index} className="text-primary-color">{city} </h2>
                     ))}
                 </div>
                 <p className="text-xs text-second-color my-2 mx-2
                     lg:text-sm
                 ">
-                    {guide[0].description}
+                    {guide.description}
                 </p>
 
                 <div className="flex gap-5 mb-2 mx-2">
-                    <InfoItem icon={<Clock />} text={`${guide[0].days.toString()} dias`} />
-                    <InfoItem icon={<Landmark />} text={guide[0].travelType} />
+                    <InfoItem icon={<Clock />} text={`${guide.days.toString()} dias`} />
+                    <InfoItem icon={<Landmark />} text={guide.travelType} />
                 </div>
 
                 <div className="grid grid-cols-1 gap-2 mx-2
                     md:flex md:justify-between
                 ">
-                    <GuideInfoCard icon={<Calendar />} title={texts.readyGuides.bestTime} text={guide[0].bestTime} />
-                    <GuideInfoCard icon={<Languages />} title={texts.readyGuides.language} text={guide[0].language} />
-                    <GuideInfoCard icon={<CircleDollarSign />} title={texts.readyGuides.currency} text={guide[0].currenty} />
+                    <GuideInfoCard icon={<Calendar />} title={texts.readyGuides.bestTime} text={guide.bestTime} />
+                    <GuideInfoCard icon={<Languages />} title={texts.readyGuides.language} text={guide.language} />
+                    <GuideInfoCard icon={<CircleDollarSign />} title={texts.readyGuides.currency} text={guide.currenty} />
                 </div>
             </div>
         </div>
