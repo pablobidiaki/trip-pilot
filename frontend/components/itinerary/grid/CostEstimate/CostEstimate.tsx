@@ -4,7 +4,7 @@ import InfoRow from "../InfoRow/InfoRow";
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
 
 interface CostEstimateProps {
-    itinerary: ItineraryInterface[]
+    itinerary: ItineraryInterface
 }
 
 export default function CostEstimate({ itinerary }: CostEstimateProps) {
@@ -16,7 +16,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
 
             <InfoRow icon={<Bed  size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg" />}
                 information={texts.costEstimate.accommodation}
-                value={`${texts.real} ${itinerary[0].itinerary.costEstimate.accommodations.toLocaleString("pt-BR", {
+                value={`${texts.real} ${itinerary.itinerary.costEstimate.accommodations.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
@@ -25,7 +25,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
 
             <InfoRow icon={<Utensils size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
                 information={texts.costEstimate.food}
-                value={`${texts.real} ${itinerary[0].itinerary.costEstimate.food.toLocaleString("pt-BR", {
+                value={`${texts.real} ${itinerary.itinerary.costEstimate.food.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
@@ -34,7 +34,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
 
             <InfoRow icon={<Binoculars size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
                 information={texts.costEstimate.tours}
-                value={`${texts.real} ${itinerary[0].itinerary.costEstimate.activities.toLocaleString("pt-BR", {
+                value={`${texts.real} ${itinerary.itinerary.costEstimate.activities.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
@@ -43,7 +43,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
 
             <InfoRow icon={<Car size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
                 information={texts.costEstimate.transport}
-                value={`${texts.real} ${itinerary[0].itinerary.costEstimate.transport.toLocaleString("pt-BR", {
+                value={`${texts.real} ${itinerary.itinerary.costEstimate.transport.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
@@ -52,7 +52,7 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
 
             <InfoRow icon={<ShoppingCart size={35} className="text-orange-500 p-2 bg-orange-100 rounded-lg"/>}
                 information={texts.costEstimate.shopAndExtras}
-                value={`${texts.real} ${itinerary[0].itinerary.costEstimate.extra.toLocaleString("pt-BR", {
+                value={`${texts.real} ${itinerary.itinerary.costEstimate.extra.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}`}
@@ -62,14 +62,14 @@ export default function CostEstimate({ itinerary }: CostEstimateProps) {
             <hr className="border-t border-dashed border-gray-100" />
             <div className="text-green-600 mx-2 mt-2 flex justify-between items-center">
                 <p className="font-medium">Total Estimado</p>
-                <p className="bg-green-100 p-2 rounded-2xl">{texts.real} {itinerary[0].itinerary.costEstimate.total.toLocaleString("pt-BR", {
+                <p className="bg-green-100 p-2 rounded-2xl">{texts.real} {itinerary.itinerary.costEstimate.total.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })}</p>
             </div>
             <p className="m-4 mt-4 text-primary-color bg-orange-100 p-2 rounded-2xl">
                 <span className="text-orange-500 font-medium">{texts.tip}: </span>
-                {texts.costEstimate.youInformed} {texts.real} {itinerary[0].budgetTotal.toLocaleString("pt-BR", {
+                {texts.costEstimate.youInformed} {texts.real} {itinerary.budgetTotal.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 })} {texts.costEstimate.itsPossibleAdjust}

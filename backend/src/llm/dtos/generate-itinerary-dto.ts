@@ -69,5 +69,5 @@ export class CreateItineraryLlmDto {
             example: 'gemini',
         })
         @IsString()
-        aiProvider: string
+        aiProvider?: string
 }

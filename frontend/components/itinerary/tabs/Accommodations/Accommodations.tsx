@@ -9,7 +9,7 @@ import { BedDouble, MapPin, Package } from "lucide-react"
 import texts from "@/constants/texts"
 
 interface MainContentTabsProps {
-    itinerary: ItineraryInterface[]
+    itinerary: ItineraryInterface
 }
 
 export default function Accommodation({ itinerary }: MainContentTabsProps) {
@@ -19,7 +19,7 @@ export default function Accommodation({ itinerary }: MainContentTabsProps) {
             xl:grid-cols-2
             2xl:grid-cols-3
         ">
-            {itinerary[0].itinerary.accommodations.map((accommodation, index) => (
+            {itinerary.itinerary.accommodations.map((accommodation, index) => (
                 <div key={index} className="w-full overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl mb-5
                     lg:flex
                     xl:flex-col

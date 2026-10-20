@@ -64,3 +64,31 @@ export async function getUserItineraries(userId: any): Promise<ItineraryInterfac
 
     return response.json()
 }
+
+export async function deleteItinerary(accessToken: string, id: string) {
+    try {
+        const response = await fetch(`${apiKey}/itinerary/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${accessToken}`
+            },
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+
+            console.error("Erro retornado pelo backend:", errorData);
+
+            throw new Error(
+                errorData.message || "Erro ao gerar roteiro"
+            );
+        }
+
+        return await response.json();
+
+    } catch (error) {
+        console.error("Erro:", error);
+        throw error;
+    }
+}

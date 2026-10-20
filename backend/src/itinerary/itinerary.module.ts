@@ -4,6 +4,7 @@ import { ItineraryService } from './service/itinerary.service';
 import { LlmModule } from '../llm/llm.module';
 import { ImagesModule } from '../images/images.module';
 import { UsersModule } from '../users/users.module';
+import { PrismaItineraryRepositoryModule } from './repositories/PrismaItineraryRepository.module';
 
 @Module({
     controllers: [ItineraryController],
@@ -11,7 +12,8 @@ import { UsersModule } from '../users/users.module';
     imports: [
         LlmModule,
         ImagesModule,
-        UsersModule
+        UsersModule,
+        PrismaItineraryRepositoryModule
     ]
 })
 

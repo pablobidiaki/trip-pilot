@@ -1,3 +1,5 @@
+import { deleteItinerary } from "@/services/itinerary.service";
+
 const texts = {
     header: {
         createScript: "Criar roteiro",
@@ -430,7 +432,12 @@ const texts = {
         countries: "Países",
         noneItineraryCreated: "Você ainda não criou nenhum roteiro.",
         noneDestinationSaved: "Você ainda não salvou nenhum destino.",
-        noneGuideSaved: "Você ainda não salvou nenhum guia."
+        noneGuideSaved: "Você ainda não salvou nenhum guia.",
+    },
+
+    deleteItinerary:{
+        title: "Deseja deletar esse roteiro?",
+        text: "Tem certeza que deseja deletar este roteiro?"
     },
 
     exitConfirm:{
@@ -458,7 +465,8 @@ const texts = {
     today: "Hoje",
     date: "Data",
     confirm: "Confirmar",
-    cancel: "Cancelar"
+    cancel: "Cancelar",
+    delete: "Deletar"
 }
 
 export default texts;

@@ -75,7 +75,7 @@ export class CreateItineraryDto {
         example: 'gemini',
     })
     @IsString()
-    aiProvider: string
+    aiProvider?: string
 
     @ApiProperty({
         type: [Object],

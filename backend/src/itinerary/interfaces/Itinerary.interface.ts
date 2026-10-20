@@ -1,0 +1,133 @@
+export interface createItineraryDto {
+    userId: string
+    departure:string
+    destination:string
+    startDate: string
+    endDate: string
+    countryOrigin:string
+    countryDestination:string
+    countryOriginFlagURL:string
+    countryDestinationFlagURL:string
+    travelType:string
+    currency:string
+    days: number
+    travelers: number
+    budgetTotal:number
+    itinerary: JSON
+}
+
+export interface TipsInterface{
+    type: string
+    text: string
+}
+
+export interface ToursInterface {
+    imageURL: string
+    name: string
+    description: string
+    price: number
+}
+
+export interface Tickets {
+    isGoing: boolean
+    boardingPoint: string
+    flyTime: string
+    disembarkationPoint: string
+}
+
+export interface WeatherInterface {
+    season: string
+    recommendation: string
+    averageTemperature: number
+}
+
+export interface RequirementsInterface {
+    visa: boolean
+    passport: boolean
+    vaccines: string[]
+    documents: string[]
+}
+
+export interface CostEstimateInterface {
+    ticket: number
+    accommodations: number
+    food: number
+    transport: number
+    activities: number
+    extra: number
+    total: number
+}
+
+export interface AccommodationsInterface {
+    googleMapsEmbed: string
+    name: string
+    rating: number
+    address: string
+    includes: string
+    roomType: string
+    reviewsCount: number
+    costEstimate: number
+}
+
+export interface TransportationInterface{
+    type: string
+    averagePrice: number
+}
+
+export interface TipicalFoodsInterface {
+    imageURL: string
+    title: string
+    description: string
+    averagePrice: number
+    category: string
+}
+
+export interface Hours{
+    hour: string
+    title: string
+    description: string
+    tip: string
+}
+
+export interface DayToDayInterface{
+    imageURL: string
+    day: string
+    title: string
+    morning: string
+    afternoon: string
+    night: string
+    dayCostEstimate: number
+    hours: Hours[]
+}
+
+export interface Itinerary {
+    tips: TipsInterface[]
+    tours: ToursInterface[]
+    ticket: Tickets[]
+    weather: WeatherInterface
+    requirements: RequirementsInterface
+    costEstimate: CostEstimateInterface
+    accommodations: AccommodationsInterface[]
+    transportation: TransportationInterface[]
+    tipicalFood: TipicalFoodsInterface[]
+    dayToDay: DayToDayInterface[]
+}
+
+export interface ItineraryInterface {
+    id: string
+    userId: any
+    departure: string
+    destination: string
+    startDate: string
+    endDate: string
+    countryOrigin: string
+    countryDestination: string
+    countryOriginFlagURL: string
+    countryDestinationFlagURL: string
+    travelType: string
+    currency: string
+    days: number
+    travelers: number
+    budgetTotal: number
+    itinerary: Itinerary
+}

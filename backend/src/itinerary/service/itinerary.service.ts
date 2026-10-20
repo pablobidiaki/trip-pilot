@@ -1,40 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../../prisma/prisma.service';
 import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
 import { LlmService } from '../../llm/services/llm.service';
 import { ImagesService } from '../../images/services/images.service';
 import { UsersService } from '../../users/services/users.service';
+import { IItineraryRepository } from '../repositories/IItineraryRepository';
 
 @Injectable()
 export class ItineraryService {
-    constructor(private readonly prisma: PrismaService,
-        private readonly llmService: LlmService,
+    constructor(private readonly llmService: LlmService,
         private readonly imagesService: ImagesService,
-        private readonly usersService: UsersService
+        private readonly usersService: UsersService,
+        private readonly itineraryRepository: IItineraryRepository
     ) { }
 
     getAll() {
-        return this.prisma.itinerary.findMany()
+        return this.itineraryRepository.findAll()
     }
 
     getUserItineraries(userId: string) {
-        const itineraries = this.prisma.itinerary.findMany({
-            where: {
-                userId: userId
-            }
-        })
-        
-        return itineraries
+        return this.itineraryRepository.findUserItineraries(userId)
     }
 
-    get(id: string) {
-        const itinerary = this.prisma.itinerary.findMany({
-            where: {
-                id: id
-            }
-        })
-
-        return itinerary
+    async get(id: string) {
+        return await this.itineraryRepository.findOne(id)
     }
 
     async create(dto: CreateItineraryDto) {
@@ -48,41 +36,33 @@ export class ItineraryService {
 
         const finalItinerary = await this.getAllImagesURLs(JSON.parse(itineraryJson))
 
-        const itinerary = this.prisma.itinerary.create({
-            data: {
-                userId: userId.id,
-                departure: dto.departure,
-                destination: dto.destination,
-                startDate: dto.startDate,
-                endDate: endDate,
-                countryOrigin: dto.countryOrigin,
-                countryDestination: dto.countryDestination,
-                countryOriginFlagURL: countryOriginFlag,
-                countryDestinationFlagURL: countryDestinationFlag,
-                travelType: dto.travelType,
-                currency: dto.currency,
-                days: dto.days,
-                travelers: dto.travelers,
-                budgetTotal: dto.budgetTotal,
-                itinerary: finalItinerary
-            },
-        });
+        const itinerary = this.itineraryRepository.create({
+            userId: userId.id,
+            departure: dto.departure,
+            destination: dto.destination,
+            startDate: dto.startDate,
+            endDate: endDate,
+            countryOrigin: dto.countryOrigin,
+            countryDestination: dto.countryDestination,
+            countryOriginFlagURL: countryOriginFlag,
+            countryDestinationFlagURL: countryDestinationFlag,
+            travelType: dto.travelType,
+            currency: dto.currency,
+            days: dto.days,
+            travelers: dto.travelers,
+            budgetTotal: dto.budgetTotal,
+            itinerary: finalItinerary
+        })
 
         return itinerary
     }
 
     deleteAll() {
-        return this.prisma.itinerary.deleteMany()
+        return this.itineraryRepository.removeAll()
     }
 
     delete(id: string) {
-        const itinerary = this.prisma.itinerary.deleteMany({
-            where: {
-                id: id
-            }
-        })
-
-        return itinerary
+        return this.itineraryRepository.removeOne(id)
     }
 
     calculateEndDate(startDate: string, days: number): string {
@@ -94,13 +74,13 @@ export class ItineraryService {
     }
 
     async getCountryFlag(country: any): Promise<string> {
-        
+
         const response = await fetch(
             `https://api.restcountries.com/countries/v5?q=${country}`,
             { headers: { 'Authorization': `Bearer  ${process.env.REST_COUNTRIES_KEY}` } }
         );
         const data = await response.json();
-        
+
         return data.data.objects[0].flag.url_png
     }
 

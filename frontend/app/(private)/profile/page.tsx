@@ -29,7 +29,6 @@ export default function Profile() {
         if (status !== "authenticated") return;
 
         const getData = async () => {
-
             const user = await getUserIdByEmail(session?.accessToken!, session?.user?.email)
             setUser(user)
 

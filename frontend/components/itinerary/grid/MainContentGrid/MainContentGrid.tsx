@@ -14,7 +14,7 @@ import ItineraryDays from "../ItineraryDays/ItineraryDays"
 import texts from "@/constants/texts"
 
 interface MainContentGridProps{
-    itinerary: ItineraryInterface[]
+    itinerary: ItineraryInterface
 }
 
 export default function MainContentGrid({itinerary}: MainContentGridProps){
@@ -27,42 +27,42 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
             <div className="flex flex-col gap-5 relative
                 xl:flex-row
             ">
-                <Accommodation accommodations={itinerary[0].itinerary.accommodations} />
+                <Accommodation accommodations={itinerary.itinerary.accommodations} />
                 <CostEstimate itinerary={itinerary} />
             </div>
 
             <div className="flex flex-col justify-center gap-5 
                 xl:flex-row xl:mx-2
             ">
-                <Tours tours={itinerary[0].itinerary.tours} />
-                <TipicalFoods tipicalFoods={itinerary[0].itinerary.tipicalFood} />
+                <Tours tours={itinerary.itinerary.tours} />
+                <TipicalFoods tipicalFoods={itinerary.itinerary.tipicalFood} />
             </div>
 
             <div className="flex flex-col justify-center gap-5
                 xl:flex-row
             ">
-                <Requirements requirements={itinerary[0].itinerary.requirements} />
-                <Tips tips={itinerary[0].itinerary.tips} />
+                <Requirements requirements={itinerary.itinerary.requirements} />
+                <Tips tips={itinerary.itinerary.tips} />
             </div>
 
             <div className="flex flex-col justify-center gap-5 w-full
                 xl:flex-row
             ">
-                <HowToGetThere tickets={itinerary[0].itinerary.ticket}
-                    originCountry={itinerary[0].countryOrigin}
-                    originFlag={itinerary[0].countryOriginFlagURL}
-                    destinationCountry={itinerary[0].countryDestination}
-                    destinationFlag={itinerary[0].countryDestinationFlagURL}
+                <HowToGetThere tickets={itinerary.itinerary.ticket}
+                    originCountry={itinerary.countryOrigin}
+                    originFlag={itinerary.countryOriginFlagURL}
+                    destinationCountry={itinerary.countryDestination}
+                    destinationFlag={itinerary.countryDestinationFlagURL}
                 />
                 <div className="flex flex-col justify-between
                     xl:w-[35%]
                 ">
-                    <Weather weather={itinerary[0].itinerary.weather} />
-                    <Transport transports={itinerary[0].itinerary.transportation} />
+                    <Weather weather={itinerary.itinerary.weather} />
+                    <Transport transports={itinerary.itinerary.transportation} />
                 </div>
             </div>
 
-            <ItineraryDays itineraryDays={itinerary[0].itinerary.dayToDay} />
+            <ItineraryDays itineraryDays={itinerary.itinerary.dayToDay} />
 
             <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.aiWarning}</p>
             <p className="text-center mt-2 text-second-color">{texts.goodTravel}</p>
