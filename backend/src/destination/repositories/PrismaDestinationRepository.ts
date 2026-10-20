@@ -1,12 +1,13 @@
 import { PrismaService } from "src/prisma/prisma.service";
 import { Injectable } from "@nestjs/common";
 import { IDestinationRepository } from "./IDestinationRepository";
+import { CreateDestinationDto } from "../dtos/create-destination-dto";
 
 @Injectable()
 export class PrismaDestinationRepository implements IDestinationRepository{
     constructor(private readonly prisma: PrismaService) {}
 
-    async create(data: any): Promise<any>{
+    async create(data: CreateDestinationDto): Promise<any>{
         return this.prisma.destinations.create({data})
     }
 
