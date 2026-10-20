@@ -42,7 +42,7 @@ export default function MyItineraries({ itineraries }: MyItinerariesProps) {
                 }
                 {itineraries.map((itinerary, index) => (
                     <div key={index} className="relative bg-background-color border border-gray-100 rounded-2xl transition-all hover:duration-200 hover:scale-101">
-                        <Link  href={`itinerary/${itinerary.id}`}>
+                        <Link href={`itinerary/${itinerary.id}`}>
                             <p className="absolute top-2 right-2 object-cover z-10 rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700">{itinerary.travelType}</p>
                             <img className="w-full h-60 object-cover brightness-50 rounded-t-2xl" src={itinerary.itinerary.tours[0].imageURL} alt={itinerary.itinerary.tours[0].name} />
                             <div>
@@ -51,8 +51,8 @@ export default function MyItineraries({ itineraries }: MyItinerariesProps) {
                                     <img className="max-w-10 shadow-2xl shadow-gray-500" src={itinerary.countryDestinationFlagURL} />
                                 </div>
                                 <div className="flex flex-col justify-between gap-2 mx-2  mt-2
-                                md:flex-row md:justify-evenly
-                            ">
+                                    md:flex-row md:justify-evenly
+                                ">
                                     <div className="flex flex-col items-center">
                                         <div className="bg-blue-100 rounded-full p-2">
                                             <Calendar className="text-blue-500" />

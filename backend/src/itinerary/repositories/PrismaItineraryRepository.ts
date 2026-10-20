@@ -1,13 +1,12 @@
 import { PrismaService } from "src/prisma/prisma.service";
 import { Injectable } from "@nestjs/common";
 import { IItineraryRepository } from "./IItineraryRepository";
-import { CreateItineraryDto } from '../dtos/create-itinerary-dto';
 
 @Injectable()
 export class PrismaItineraryRepository implements IItineraryRepository{
     constructor(private readonly prisma: PrismaService) {}
 
-    async create(data: any){
+    async create(data: any): Promise<any>{
         return this.prisma.itinerary.create({data})
     }
 
@@ -17,10 +16,6 @@ export class PrismaItineraryRepository implements IItineraryRepository{
 
     async findOne(id: string): Promise<any> {
         return this.prisma.itinerary.findUnique({where: {id}})
-    }
-
-    async update(id: string, data: Partial<CreateItineraryDto>): Promise<any> {
-        return this.prisma.itinerary.update({where: {id}, data})
     }
     
     async removeAll(): Promise<any> {

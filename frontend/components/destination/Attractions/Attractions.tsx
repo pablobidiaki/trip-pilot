@@ -4,7 +4,7 @@ import { Landmark } from "lucide-react";
 import AttractionsCard from "./AttractionsCard";
 
 interface AttractionsProps {
-    destination: DestinationInterface[]
+    destination: DestinationInterface
 }
 
 export default function Attractions({ destination }: AttractionsProps) {
@@ -19,7 +19,7 @@ export default function Attractions({ destination }: AttractionsProps) {
                 lg:grid-cols-3
                 xl:grid-cols-6 xl:gap-2
             ">
-                 {destination[0].attractions.map((destination_item, index) => (
+                 {destination.attractions.map((destination_item, index) => (
                     <AttractionsCard key={index}
                                      image={destination_item.image}
                                      name={destination_item.name}

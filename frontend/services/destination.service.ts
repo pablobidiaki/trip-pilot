@@ -11,7 +11,7 @@ export async function getDestinations(): Promise<DestinationInterface[]> {
     return response.json()
 }
 
-export async function getDestination(id: string): Promise<DestinationInterface[]> {
+export async function getDestination(id: string): Promise<DestinationInterface> {
     const response = await fetch(`${apiKey}/destination/${id}`)
 
     if (!response.ok)

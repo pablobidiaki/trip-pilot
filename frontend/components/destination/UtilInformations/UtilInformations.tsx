@@ -7,7 +7,7 @@ import { BusFront, CircleDollarSign, Drama, File, HeartPulse, Luggage, Plug, Shi
 import texts from "@/constants/texts";
 
 interface UtilInformationsProps {
-    destination: DestinationInterface[]
+    destination: DestinationInterface
 }
 
 export default function UtilInformations({ destination }: UtilInformationsProps) {
@@ -24,7 +24,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
             ">
                 <ExpandableCard icon={<File />}
                     title={texts.destination.documents}
-                    texts={destination[0].usefulInformation.documents}
+                    texts={destination.usefulInformation.documents}
                     isOpen={selectedCard === texts.destination.documents}
                     onClick={() =>
                         setSelectedCard(
@@ -36,7 +36,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
 
                 <ExpandableCard icon={<HeartPulse />}
                     title={texts.destination.vaccinesAndHealth}
-                    texts={destination[0].usefulInformation.vaccinesAndHealth}
+                    texts={destination.usefulInformation.vaccinesAndHealth}
                     isOpen={selectedCard === texts.destination.vaccinesAndHealth}
                     onClick={() =>
                         setSelectedCard(
@@ -48,7 +48,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
 
                 <ExpandableCard icon={<Luggage />}
                     title={texts.destination.baggage}
-                    texts={destination[0].usefulInformation.baggage}
+                    texts={destination.usefulInformation.baggage}
                     isOpen={selectedCard === texts.destination.baggage}
                     onClick={() =>
                         setSelectedCard(
@@ -60,7 +60,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
 
                 <ExpandableCard icon={<CircleDollarSign />}
                     title={texts.destination.exchangeRate}
-                    texts={destination[0].usefulInformation.exchangeRate}
+                    texts={destination.usefulInformation.exchangeRate}
                     isOpen={selectedCard === texts.destination.exchangeRate}
                     onClick={() =>
                         setSelectedCard(
@@ -72,7 +72,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
 
                 <ExpandableCard icon={<Plug />}
                     title={texts.destination.powerOutletAndVoltage}
-                    texts={destination[0].usefulInformation.powerOutletAndVoltage}
+                    texts={destination.usefulInformation.powerOutletAndVoltage}
                     isOpen={selectedCard === texts.destination.powerOutletAndVoltage}
                     onClick={() =>
                         setSelectedCard(
@@ -84,7 +84,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
 
                 <ExpandableCard icon={<Wifi />}
                     title={texts.destination.internet}
-                    texts={destination[0].usefulInformation.internet}
+                    texts={destination.usefulInformation.internet}
                     isOpen={selectedCard === texts.destination.internet}
                     onClick={() =>
                         setSelectedCard(
@@ -96,7 +96,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
 
                 <ExpandableCard icon={<ShieldUser />}
                     title={texts.destination.security}
-                    texts={destination[0].usefulInformation.security}
+                    texts={destination.usefulInformation.security}
                     isOpen={selectedCard === texts.destination.security}
                     onClick={() =>
                         setSelectedCard(
@@ -108,7 +108,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
 
                 <ExpandableCard icon={<Drama />}
                     title={texts.destination.culture}
-                    texts={destination[0].usefulInformation.culture}
+                    texts={destination.usefulInformation.culture}
                     isOpen={selectedCard === texts.destination.culture}
                     onClick={() =>
                         setSelectedCard(
@@ -120,7 +120,7 @@ export default function UtilInformations({ destination }: UtilInformationsProps)
 
                 <ExpandableCard icon={<BusFront />}
                     title={texts.destination.transport}
-                    texts={destination[0].usefulInformation.localTransport}
+                    texts={destination.usefulInformation.localTransport}
                     isOpen={selectedCard === texts.destination.transport}
                     onClick={() =>
                         setSelectedCard(

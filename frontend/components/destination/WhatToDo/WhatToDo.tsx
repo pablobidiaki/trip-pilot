@@ -7,7 +7,7 @@ import { DestinationInterface } from "@/interfaces/destination.interface";
 import { ChefHat, Drama, Leaf, PartyPopper, ShieldQuestionMark, Store } from "lucide-react";
 
 interface WhatToDoProps {
-    destination: DestinationInterface[]
+    destination: DestinationInterface
 }
 
 export default function WhatToDo({ destination }: WhatToDoProps) {
@@ -26,7 +26,7 @@ export default function WhatToDo({ destination }: WhatToDoProps) {
             ">
                 <ExpandableCard icon={<Leaf size={40}/>}
                     title={texts.destination.nature}
-                    texts={destination[0].whatToDo.nature}
+                    texts={destination.whatToDo.nature}
                     isOpen={selectedCard === texts.destination.nature}
                     onClick={() =>
                         setSelectedCard(
@@ -38,7 +38,7 @@ export default function WhatToDo({ destination }: WhatToDoProps) {
 
                 <ExpandableCard icon={<Drama size={40}/>}
                     title={texts.destination.culture}
-                    texts={destination[0].whatToDo.culture}
+                    texts={destination.whatToDo.culture}
                     isOpen={selectedCard === texts.destination.culture}
                     onClick={() =>
                         setSelectedCard(
@@ -50,7 +50,7 @@ export default function WhatToDo({ destination }: WhatToDoProps) {
 
                 <ExpandableCard icon={<ChefHat size={40} />}
                     title={texts.destination.tipicalFoods}
-                    texts={destination[0].whatToDo.tipicalFood}
+                    texts={destination.whatToDo.tipicalFood}
                     isOpen={selectedCard === texts.destination.tipicalFoods}
                     onClick={() =>
                         setSelectedCard(
@@ -61,7 +61,7 @@ export default function WhatToDo({ destination }: WhatToDoProps) {
                 />
                 <ExpandableCard icon={<Store size={40}/>}
                     title={texts.destination.famousStores}
-                    texts={destination[0].whatToDo.famousStores}
+                    texts={destination.whatToDo.famousStores}
                     isOpen={selectedCard === texts.destination.famousStores}
                     onClick={() =>
                         setSelectedCard(
@@ -72,7 +72,7 @@ export default function WhatToDo({ destination }: WhatToDoProps) {
                 />
                 <ExpandableCard icon={<PartyPopper size={40}/>}
                     title={texts.destination.nightLife}
-                    texts={destination[0].whatToDo.nightLife}
+                    texts={destination.whatToDo.nightLife}
                     isOpen={selectedCard === texts.destination.nightLife}
                     onClick={() =>
                         setSelectedCard(

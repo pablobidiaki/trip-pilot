@@ -1,7 +1,7 @@
-import { createItineraryDto, ItineraryInterface } from "../interfaces/Itinerary.interface";
+import { ItineraryInterface } from "../interfaces/Itinerary.interface";
 
 export abstract class IItineraryRepository {
-    abstract create(createItineraryDto: createItineraryDto): Promise<void>
+    abstract create(data: any): Promise<any>
     abstract findAll(): Promise<ItineraryInterface[]>
     abstract findOne(id: string): Promise<ItineraryInterface>
     abstract findUserItineraries(userId: string): Promise<ItineraryInterface[]>

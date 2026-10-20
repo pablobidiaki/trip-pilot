@@ -1,4 +1,4 @@
-export interface createItineraryDto {
+export interface CreateItineraryDto {
     userId: string
     departure:string
     destination:string

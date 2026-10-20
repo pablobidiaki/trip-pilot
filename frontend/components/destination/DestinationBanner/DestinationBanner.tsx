@@ -12,7 +12,7 @@ import Link from "next/link"
 import FavoriteButton from "./FavoriteButton"
 
 interface DestinationBannerProps {
-    destination: DestinationInterface[]
+    destination: DestinationInterface
 }
 
 export default async function DestinationBanner({ destination }: DestinationBannerProps) {
@@ -22,7 +22,7 @@ export default async function DestinationBanner({ destination }: DestinationBann
 
     return (
         <div className="relative overflow-hidden pb-15 w-full">
-            <img src={destination[0].bannerURL} alt="Banner" className="absolute inset-0 h-full w-full object-cover z-0 brightness-50" />
+            <img src={destination.bannerURL} alt="Banner" className="absolute inset-0 h-full w-full object-cover z-0 brightness-50" />
 
             <div className="relative z-50 bg-white/20">
                 <Header />
@@ -39,17 +39,17 @@ export default async function DestinationBanner({ destination }: DestinationBann
                 <h1 className="text-xl font-medium
                     md:text-2xl
                     lg:text-4xl lg:max-w-[50%]
-                ">{destination[0].destination}</h1>
+                ">{destination.destination}</h1>
                 <h2 className="mt-1 text-xs font-thin text-gray-300
                     md:text-sm md:max-w-[50%]
                     lg:text-xl lg:max-w-xl
-                ">{destination[0].description}</h2>
+                ">{destination.description}</h2>
 
             </div>
 
             {user &&
                 <div className="absolute z-10 text-white right-4 top-18">
-                    <FavoriteButton userId={user?.id} destinationId={destination[0].id} />
+                    <FavoriteButton userId={user?.id} destinationId={destination.id} />
                 </div>
             }
         </div>

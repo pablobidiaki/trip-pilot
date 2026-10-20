@@ -1,55 +1,48 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../../prisma/prisma.service";
 import { CreateDestinationDto } from "../dtos/create-destination-dto";
+import { IDestinationRepository } from "../repositories/IDestinationRepository";
 
 @Injectable()
 export class DestinationService {
-    constructor(private readonly prisma: PrismaService) { }
+    constructor(private readonly prisma: PrismaService,
+        private readonly destinationRepository: IDestinationRepository
+    ) { }
 
     create(dto: CreateDestinationDto) {
-        return this.prisma.destinations.create({
-            data: {
-                imageURL: dto.imageURL,
-                bannerURL: dto.bannerURL,
-                destination: dto.destination,
-                description: dto.description,
-                country: dto.country,
-                travelType: dto.travelType,
-                bestTime: dto.bestTime,
-                language: dto.language,
-                currenty: dto.currenty,
-                weather: dto.weather,
-                dayReccomended: dto.dayReccomended,
-                usefulInformation: dto.usefulInformation,
-                whatToDo: dto.whatToDo,
-                attractions: dto.attractions,
-                averageCost: dto.averageCost
-            }
+        return this.destinationRepository.create({
+            imageURL: dto.imageURL,
+            bannerURL: dto.bannerURL,
+            destination: dto.destination,
+            description: dto.description,
+            country: dto.country,
+            travelType: dto.travelType,
+            bestTime: dto.bestTime,
+            language: dto.language,
+            currenty: dto.currenty,
+            weather: dto.weather,
+            dayReccomended: dto.dayReccomended,
+            usefulInformation: dto.usefulInformation,
+            whatToDo: dto.whatToDo,
+            attractions: dto.attractions,
+            averageCost: dto.averageCost
         })
     }
 
     getAll() {
-        return this.prisma.destinations.findMany()
+        return this.destinationRepository.findAll()
     }
 
     get(id: string) {
-        return this.prisma.destinations.findMany({
-            where: {
-                id: id
-            }
-        })
+        return this.destinationRepository.findOne(id)
     }
 
     deleteAll() {
-        return this.prisma.destinations.deleteMany()
+        return this.destinationRepository.removeAll()
     }
 
     delete(id: string) {
-        return this.prisma.destinations.deleteMany({
-            where: {
-                id: id
-            }
-        })
+        return this.destinationRepository.removeOne(id)
     }
 
     async favorite(userId: string, destinationId: string) {

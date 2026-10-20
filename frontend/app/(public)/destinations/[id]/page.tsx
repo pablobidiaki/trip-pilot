@@ -16,7 +16,7 @@ export default async function Destination({ params }: DestinationProps) {
 
     const destination = await getDestination(id);
 
-    if (!destination || destination.length === 0)
+    if (!destination)
         notFound();
 
     return (
@@ -25,10 +25,10 @@ export default async function Destination({ params }: DestinationProps) {
             <DestinationBody destination={destination} />
             <CTA icon={<BrainCircuit size={80} />}
                 title={texts.destination.alterTravel}
-                text={`Deseja mudar algo? Crie agora o seu roteiro personalizado para ${destination[0].destination}`}
+                text={`Deseja mudar algo? Crie agora o seu roteiro personalizado para ${destination.destination}`}
                 buttonText={texts.readyToNextTravel.buttonText}
                 isHomePage={false}
-                destination={destination[0].country}
+                destination={destination.country}
             />
             <Footer />
         </div>
