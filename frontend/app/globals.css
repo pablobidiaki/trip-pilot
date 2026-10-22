@@ -187,3 +187,35 @@ input[type="number"]::-webkit-outer-spin-button {
 @theme{
   --breakpoint-3xl: 120rem;
 }
+
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in-left {
+    animation: slide-in-left 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in-right {
+    animation: slide-in-right 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}

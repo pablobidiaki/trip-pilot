@@ -137,7 +137,7 @@ export default function HeroForm() {
             lg:max-w-5/7
             xl:max-w-3/5 xl:mb-7
             2xl:max-w-1/2 2xl:mb-0
-            3xl:max-w-3/7 3xl:mb-5 3xl:py-5
+            3xl:max-w-3/7 3xl:mb-5 3xl:py-5 3xl:mx-auto
         ">
             <div className="flex flex-col gap-2
                 md:grid md:grid-cols-2

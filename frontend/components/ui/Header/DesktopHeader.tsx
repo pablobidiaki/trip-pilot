@@ -16,10 +16,10 @@ interface DesktopHeaderProps {
 export default function DesktopHeader({ session, status }: DesktopHeaderProps) {    
     return (
         <div>
-            <div className="bg-transparent text-primary-color font-medium flex justify-between px-4 py-3 items-center">
+            <div className="bg-transparent font-medium flex justify-between px-4 py-3 items-center text-white">
                 <div>
                     <Link href={'/'}>
-                        <Image src="/imgs/icons/trip_pilot.png"
+                        <Image src="/imgs/icons/logo.png"
                             alt="Logo TripPilot"
                             width={40}
                             height={40}

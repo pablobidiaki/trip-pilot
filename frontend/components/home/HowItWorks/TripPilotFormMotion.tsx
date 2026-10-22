@@ -3,7 +3,7 @@
 
 import { ReactNode, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Plane, CalendarDays, Wallet, Users, ChevronDown, ArrowRight, Check, Backpack, } from "lucide-react";
+import { MapPin, CalendarDays, Users, ChevronDown, ArrowRight, Check, Backpack, DollarSign, } from "lucide-react";
 
 interface AnimatedFieldProps {
   label: string,
@@ -14,7 +14,6 @@ interface AnimatedFieldProps {
 }
 
 const BLUE = "#65A7FF";
-
 const ease = [0.22, 1, 0.36, 1] as const;
 
 function AnimatedField({ label, icon, value, delay, suffix }: AnimatedFieldProps) {
@@ -27,11 +26,8 @@ function AnimatedField({ label, icon, value, delay, suffix }: AnimatedFieldProps
 
     const type = (index: number) => {
       setDisplayed(value.slice(0, index));
-      if (index < value.length) {
-        timeout = setTimeout(() => type(index + 1), 48);
-      } else {
-        timeout = setTimeout(() => setFocused(false), 650);
-      }
+      if (index < value.length) timeout = setTimeout(() => type(index + 1), 48);
+      else timeout = setTimeout(() => setFocused(false), 650);
     };
 
     const typing = setTimeout(() => type(1), delay * 1000 + 250);
@@ -47,7 +43,7 @@ function AnimatedField({ label, icon, value, delay, suffix }: AnimatedFieldProps
     <motion.div initial={{ opacity: 0, y: 18, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.65, delay, ease }}
-      className="rounded-2xl border p-4 transition-colors duration-300 text-black"
+      className="rounded-2xl border p-4 transition-colors duration-300"
       style={{
         borderColor: focused ? `${BLUE}95` : "#F3F4F6",
         background: focused ? `${BLUE}0D` : "#fff",
@@ -84,7 +80,7 @@ function AnimatedField({ label, icon, value, delay, suffix }: AnimatedFieldProps
             />
           )}
         </span>
-        {suffix && <span className="shrink-0 text-white/40">{suffix}</span>}
+        {suffix && <span className="shrink-0 text-white">{suffix}</span>}
       </div>
     </motion.div>
   );
@@ -95,28 +91,24 @@ export default function TripPilotFormMotion() {
 
   useEffect(() => {
     const timer = setTimeout(() => setSubmitted(true), 7200);
-    const reset = setTimeout(() => setSubmitted(false), 10800);
-
+   
     return () => {
       clearTimeout(timer);
-      clearTimeout(reset);
-    };
+    }
   }, [submitted]);
 
   return (
-    <div className="flex min-h-screen px-5 py-2 font-sans text-white">
-      <div className=" absolute inset-0">
+    <div className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 flex px2 text-white border border-gray-100 rounded-lg bg-white">
         <motion.div initial={{ opacity: 0, y: 45, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.85, delay: 0.25, ease }}
-          className="max-w-127.5 m-5 overflow-hidden bg-background-color p-2
-        ">
-          <h2 className="text-black text-xl font-bold text-center mx-auto mb-5">Gere seu roteiro</h2>
+          className="py-2 px-3">
+          <h2 className="text-primary-color text-xl font-bold mx-1 mb-5">1º Preencher o formulário</h2>
 
-          <div className="space-y-3">
-            <div className="grid grid-cols-2 gap-3">
+          <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-1">
               <AnimatedField label="De onde você vai sair?"
-                icon={<Plane size={20} />}
+                icon={<MapPin size={20} />}
                 value="Brasil"
                 delay={0.9}
                 suffix={<ArrowRight size={15} />}
@@ -136,7 +128,7 @@ export default function TripPilotFormMotion() {
                 value="5 dias"
                 delay={3.1}
               />
-              <AnimatedField label="Quantidade de pessoas"
+              <AnimatedField label="Viajantes"
                 icon={<Users size={20} />}
                 value="2 pessoas"
                 delay={3.7}
@@ -145,7 +137,7 @@ export default function TripPilotFormMotion() {
 
             <div className="grid grid-cols-2 gap-3">
               <AnimatedField label="Orçamento"
-                icon={<Wallet size={20} />}
+                icon={<DollarSign size={20} />}
                 value="R$ 22,000"
                 delay={4.5}
               />
@@ -185,7 +177,6 @@ export default function TripPilotFormMotion() {
             </AnimatePresence>
           </motion.div>
         </motion.div>
-      </div>
     </div>
   );
 }

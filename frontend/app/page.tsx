@@ -6,7 +6,6 @@ import WhyUse from "@/components/home/WhyUse/WhyUse";
 import HowItWorks from "@/components/home/HowItWorks/HowItWorks"
 import ItineraryExamples from "@/components/home/ItineraryExamples/ItineraryExamples";
 import PopularDestinations from "@/components/home/PopularDestinations/PopularDestinations";
-
 import { Toolbox } from "lucide-react";
 
 export default async function Home() {
