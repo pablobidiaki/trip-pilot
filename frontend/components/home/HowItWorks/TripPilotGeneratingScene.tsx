@@ -32,6 +32,8 @@ const steps = [
     },
 ];
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export default function TripPilotGeneratingScene() {
     const [started, setStarted] = useState(false);
 
@@ -46,11 +48,15 @@ export default function TripPilotGeneratingScene() {
     return (
         <div>
             {started ?
-                <div className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 flex px-3 py-2 font-sans text-white bg-white rounded-lg border border-gray-100">
+                <motion.div initial={{ opacity: 0, y: 45, scale: 0.94 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ duration: 0.85, delay: 0.25, ease }}
+                            className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 flex px-3 py-2 font-sans text-white bg-white rounded-lg border border-gray-100">
                     <div className="w-full text-white">
                         <motion.div key={1}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
+                            initial={{ opacity: 0, y: 45, scale: 0.94 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ duration: 0.85, delay: 0.25, ease }}
                             className="max-w-127.5
                 ">
                             <div className="pb-5">
@@ -73,7 +79,7 @@ export default function TripPilotGeneratingScene() {
                                             <motion.div key={step.title}
                                                 initial={{ opacity: 0.2, x: -12 }}
                                                 animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: index , duration: 0.5 }}
+                                                transition={{ delay: index, duration: 0.5 }}
                                                 className="flex items-center gap-3 mb-6
                                     ">
                                                 <motion.div initial={{ backgroundColor: "#fff" }}
@@ -102,9 +108,9 @@ export default function TripPilotGeneratingScene() {
                             </div>
                         </motion.div>
                     </div>
-                </div>
+                </motion.div>
                 :
-                <div className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 bg-background-color"/>
+                <div className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 bg-background-color" />
             }
         </div>
     )

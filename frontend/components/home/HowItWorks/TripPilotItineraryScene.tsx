@@ -21,6 +21,8 @@ const days = [
     }
 ];
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export default function TripPilotItineraryScene() {
     const [submitted, setSubmitted] = useState(false)
     const [started, setStarted] = useState(false);
@@ -51,7 +53,9 @@ export default function TripPilotItineraryScene() {
     return (
         <div>
             {started ?
-                <div className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 bg-white h-fit text-primary-color border border-gray-100 rounded-lg">
+                <motion.div initial={{ opacity: 0, y: 45, scale: 0.94 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ duration: 0.85, delay: 0.25, ease }} className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 bg-white h-fit text-primary-color border border-gray-100 rounded-lg">
                     <h1 className="text-primary-color text-xl font-bold px-3 py-2">3º Aproveitar</h1>
                     <div className="px-3">
                         <motion.div initial="hidden"
@@ -123,7 +127,7 @@ export default function TripPilotItineraryScene() {
                             })}
                         </div>
                     </div>
-                </div> 
+                </motion.div> 
                 :
                 <div className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 bg-background-color" />
             }

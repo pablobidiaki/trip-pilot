@@ -90,7 +90,7 @@ export default function TripPilotFormMotion() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setSubmitted(true), 7200);
+    const timer = setTimeout(() => setSubmitted(true), 5000);
    
     return () => {
       clearTimeout(timer);
@@ -110,14 +110,14 @@ export default function TripPilotFormMotion() {
               <AnimatedField label="De onde você vai sair?"
                 icon={<MapPin size={20} />}
                 value="Brasil"
-                delay={0.9}
+                delay={0.5}
                 suffix={<ArrowRight size={15} />}
               />
 
               <AnimatedField label="Para onde você quer ir?"
                 icon={<MapPin size={20} />}
                 value="Japão"
-                delay={2.1}
+                delay={1.0}
                 suffix={<ChevronDown size={15} />}
               />
             </div>
@@ -126,12 +126,12 @@ export default function TripPilotFormMotion() {
               <AnimatedField label="Duração"
                 icon={<CalendarDays size={20} />}
                 value="5 dias"
-                delay={3.1}
+                delay={1.5}
               />
               <AnimatedField label="Viajantes"
                 icon={<Users size={20} />}
                 value="2 pessoas"
-                delay={3.7}
+                delay={2.0}
               />
             </div>
 
@@ -139,19 +139,19 @@ export default function TripPilotFormMotion() {
               <AnimatedField label="Orçamento"
                 icon={<DollarSign size={20} />}
                 value="R$ 22,000"
-                delay={4.5}
+                delay={2.5}
               />
               <AnimatedField label="Tipo de viagem"
                 icon={<Backpack size={20} />}
                 value="Aventura"
-                delay={5.3}
+                delay={3.0}
               />
             </div>
           </div>
 
           <motion.div initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 6.2, duration: 0.6, ease }}
+            transition={{ delay: 3.5, duration: 0.6, ease }}
             className="mt-4">
 
             <AnimatePresence mode="wait">
@@ -167,7 +167,7 @@ export default function TripPilotFormMotion() {
               ) : (
                 <motion.div key="button"
                   animate={{ boxShadow: [`0 0 0px ${BLUE}00`, `0 0 30px ${BLUE}25`, `0 0 0px ${BLUE}00`] }}
-                  transition={{ duration: 2.5, repeat: Infinity }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
                   className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-sm font-bold"
                   style={{ background: `linear-gradient(100deg, #397BE6, #7856DD)` }}
                 >
