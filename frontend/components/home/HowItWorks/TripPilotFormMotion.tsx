@@ -1,8 +1,8 @@
 
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { MapPin, CalendarDays, Users, ChevronDown, ArrowRight, Check, Backpack, DollarSign, } from "lucide-react";
 
 interface AnimatedFieldProps {
@@ -10,24 +10,32 @@ interface AnimatedFieldProps {
   icon: ReactNode,
   value: string,
   delay: number,
+  started?: boolean;
   suffix?: ReactNode
 }
 
 const BLUE = "#65A7FF";
 const ease = [0.22, 1, 0.36, 1] as const;
 
-function AnimatedField({ label, icon, value, delay, suffix }: AnimatedFieldProps) {
+function AnimatedField({ label, icon, value, delay, started, suffix }: AnimatedFieldProps) {
   const [displayed, setDisplayed] = useState("");
   const [focused, setFocused] = useState(false);
 
   useEffect(() => {
+    if (!started) return;
+
     let timeout: ReturnType<typeof setTimeout>;
+
     const start = setTimeout(() => setFocused(true), delay * 1000);
 
     const type = (index: number) => {
       setDisplayed(value.slice(0, index));
-      if (index < value.length) timeout = setTimeout(() => type(index + 1), 48);
-      else timeout = setTimeout(() => setFocused(false), 650);
+
+      if (index < value.length) {
+        timeout = setTimeout(() => type(index + 1), 48);
+      } else {
+        timeout = setTimeout(() => setFocused(false), 650);
+      }
     };
 
     const typing = setTimeout(() => type(1), delay * 1000 + 250);
@@ -37,12 +45,16 @@ function AnimatedField({ label, icon, value, delay, suffix }: AnimatedFieldProps
       clearTimeout(typing);
       clearTimeout(timeout);
     };
-  }, [value, delay]);
+  }, [value, delay, started]);
 
   return (
-    <motion.div initial={{ opacity: 0, y: 18, scale: 0.97 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.65, delay, ease }}
+    <motion.div initial={{ opacity: 0, y: 18, scale: 1 }}
+      animate={
+        started
+          ? { opacity: 1, y: 0, scale: 1 }
+          : { opacity: 0, y: 18, scale: 1 }
+      }
+      transition={{ duration: 0.65, delay: started ? delay : 0, ease }}
       className="rounded-2xl border p-4 transition-colors duration-300"
       style={{
         borderColor: focused ? `${BLUE}95` : "#F3F4F6",
@@ -58,7 +70,7 @@ function AnimatedField({ label, icon, value, delay, suffix }: AnimatedFieldProps
         <AnimatePresence>
           {!focused && displayed === value && (
             <motion.span
-              initial={{ opacity: 0, scale: 0.5 }}
+              initial={{ opacity: 0, scale: 1 }}
               animate={{ opacity: 1, scale: 1 }}
               className="ml-auto"
             >
@@ -88,95 +100,123 @@ function AnimatedField({ label, icon, value, delay, suffix }: AnimatedFieldProps
 
 export default function TripPilotFormMotion() {
   const [submitted, setSubmitted] = useState(false);
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.3,
+  });
+
+  const [started, setStarted] = useState(false);
+  useEffect(() => {
+    if (!started) return;
+
+    const timer = setTimeout(() => setSubmitted(true), 5000);
+
+    return () => clearTimeout(timer);
+  }, [started]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setSubmitted(true), 5000);
-   
-    return () => {
-      clearTimeout(timer);
+    if (isInView) {
+      setStarted(true);
     }
-  }, [submitted]);
+  }, [isInView]);
 
   return (
-    <div className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 flex px2 text-white border border-gray-100 rounded-lg bg-white">
-        <motion.div initial={{ opacity: 0, y: 45, scale: 0.94 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.85, delay: 0.25, ease }}
-          className="py-2 px-3">
-          <h2 className="text-primary-color text-xl font-bold mx-1 mb-5">1º Preencher o formulário</h2>
+    <div ref={ref} className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 flex px2 text-white border border-gray-100 rounded-lg bg-white">
+      <motion.div initial={{ opacity: 0, y: 45, scale: 1 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.85, delay: 0.25, ease }}
+        className="py-2 px-3">
+        <h2 className="text-primary-color text-xl font-bold mx-1 mb-5">1º Preencher o formulário</h2>
 
-          <div className="space-y-2">
-            <div className="grid grid-cols-2 gap-1">
-              <AnimatedField label="De onde você vai sair?"
-                icon={<MapPin size={20} />}
-                value="Brasil"
-                delay={0.5}
-                suffix={<ArrowRight size={15} />}
-              />
+        <div className="space-y-2">
+          <div className="grid grid-cols-2 gap-1">
+            <AnimatedField label="De onde você vai sair?"
+              icon={<MapPin size={20} />}
+              value="Brasil"
+              delay={0.5}
+              started={started}
+              suffix={<ArrowRight size={15} />}
+            />
 
-              <AnimatedField label="Para onde você quer ir?"
-                icon={<MapPin size={20} />}
-                value="Japão"
-                delay={1.0}
-                suffix={<ChevronDown size={15} />}
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <AnimatedField label="Duração"
-                icon={<CalendarDays size={20} />}
-                value="5 dias"
-                delay={1.5}
-              />
-              <AnimatedField label="Viajantes"
-                icon={<Users size={20} />}
-                value="2 pessoas"
-                delay={2.0}
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <AnimatedField label="Orçamento"
-                icon={<DollarSign size={20} />}
-                value="R$ 22,000"
-                delay={2.5}
-              />
-              <AnimatedField label="Tipo de viagem"
-                icon={<Backpack size={20} />}
-                value="Aventura"
-                delay={3.0}
-              />
-            </div>
+            <AnimatedField label="Para onde você quer ir?"
+              icon={<MapPin size={20} />}
+              value="Japão"
+              delay={1.0}
+              started={started}
+              suffix={<ChevronDown size={15} />}
+            />
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.5, duration: 0.6, ease }}
-            className="mt-4">
+          <div className="grid grid-cols-2 gap-3">
+            <AnimatedField label="Duração"
+              icon={<CalendarDays size={20} />}
+              value="5 dias"
+              delay={1.5}
+              started={started}
+            />
+            <AnimatedField label="Viajantes"
+              icon={<Users size={20} />}
+              value="2 pessoas"
+              delay={2.0}
+              started={started}
+            />
+          </div>
 
-            <AnimatePresence mode="wait">
-              {submitted ? (
-                <motion.div key="done"
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl border bg-green-500 py-4 text-sm font-bold text-white"
-                >
-                  Nossa IA está criando seu roteiro
-                </motion.div>
-              ) : (
-                <motion.div key="button"
-                  animate={{ boxShadow: [`0 0 0px ${BLUE}00`, `0 0 30px ${BLUE}25`, `0 0 0px ${BLUE}00`] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-sm font-bold"
-                  style={{ background: `linear-gradient(100deg, #397BE6, #7856DD)` }}
-                >
-                  Planejar minha viagem com IA
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
+          <div className="grid grid-cols-2 gap-3">
+            <AnimatedField label="Orçamento"
+              icon={<DollarSign size={20} />}
+              value="R$ 22,000"
+              delay={2.5}
+              started={started}
+            />
+            <AnimatedField label="Tipo de viagem"
+              icon={<Backpack size={20} />}
+              value="Aventura"
+              delay={3.0}
+              started={started}
+            />
+          </div>
+        </div>
+
+        <motion.div initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 3.5, duration: 0.6, ease }}
+          className="mt-4">
+
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div key="done"
+                initial={{ opacity: 0, scale: 1 }}
+                animate={
+                  started
+                    ? { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 0, y: 45, scale: 1 }
+                }
+                transition={{ duration: 0.25, delay: started ? 0.1 : 0, ease }}
+                exit={{ opacity: 0, scale: 1 }}
+                className="flex w-full items-center justify-center gap-2 rounded-2xl border bg-green-500 py-4 text-sm font-bold text-white"
+              >
+                Nossa IA está criando seu roteiro
+              </motion.div>
+            ) : (
+              <motion.div key="button"
+                animate={
+                  started
+                    ? { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 0, y: 45, scale: 1 }
+                }
+                transition={{ duration: 0.85, delay: started ? 0.25 : 0, ease }}
+                className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-sm font-bold"
+                style={{ background: `linear-gradient(100deg, #397BE6, #7856DD)` }}
+              >
+                Planejar minha viagem com IA
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
+      </motion.div>
     </div>
   );
 }
