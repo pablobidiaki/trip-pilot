@@ -7,12 +7,15 @@ import HowItWorks from "@/components/home/HowItWorks/HowItWorks"
 import ItineraryExamples from "@/components/home/ItineraryExamples/ItineraryExamples";
 import PopularDestinations from "@/components/home/PopularDestinations/PopularDestinations";
 import { Toolbox } from "lucide-react";
+import NextTrip from "@/components/home/NextTrip/NextTrip";
+
 
 export default async function Home() {
   return (
     <div id="criar-roteiro" className="bg-background-color animate-[optionSelector_300ms_ease-out]">
       <Hero />
       <HowItWorks />
+      <NextTrip />
       <PopularDestinations />
       <ItineraryExamples /> 
       <WhyUse />
