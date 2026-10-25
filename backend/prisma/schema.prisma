@@ -57,6 +57,7 @@ model ReadyGuides {
   title             String
   description       String
   travelType        String
+  continent         String
   bestTime          String
   language          String
   currenty          String
@@ -81,6 +82,7 @@ model Destinations {
   description       String
   country           String
   travelType        String
+  continent         String
   bestTime          String
   language          String
   currenty          String

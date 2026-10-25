@@ -7,17 +7,12 @@ interface DropdownProps {
     icon: ReactNode
     title: string
     options: string[]
+    bottom?: boolean
     value: string
     onChange: (value: string) => void
 }
 
-export default function Dropdown({
-    icon,
-    title,
-    options,
-    value,
-    onChange
-}: DropdownProps) {
+export default function Dropdown({ icon, title, options, bottom, value, onChange}: DropdownProps) {
 
     const [open, setOpen] = useState(false)
 
@@ -44,9 +39,9 @@ export default function Dropdown({
     }
 
     return (
-        <div ref={dropdownRef} className="relative">
+        <div ref={dropdownRef} className={`relative`}>
             <div onClick={() => setOpen(!open)}
-                className="flex cursor-pointer items-center rounded-2xl border-2 border-gray-100 p-1 transition-all duration-200 hover:border-blue-300">
+                className="flex cursor-pointer items-center rounded-2xl border border-gray-100 p-1 transition-all duration-200 hover:border-blue-300">
                 <span className="m-2 text-main-primary-color">
                     {icon}
                 </span>
@@ -61,7 +56,7 @@ export default function Dropdown({
             </div>
             {open && (
 
-                <div className="absolute left-0 bottom-full z-50 mt-2 w-full overflow-hidden rounded-2xl border border-gray-200 bg-white p-1 shadow-xl animate-[optionSelector_200ms_ease-out]">
+                <div className={`absolute left-0 z-50 w-full overflow-hidden rounded-2xl border border-gray-200 bg-white p-1 shadow-xl animate-[optionSelector_200ms_ease-out] ${bottom ? "top-full mt-2" : "bottom-full mb-2"}`}>
                     {options.map((option, index) => (
                         <button key={index}
                             type="button"

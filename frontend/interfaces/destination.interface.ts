@@ -42,6 +42,7 @@ export interface DestinationInterface {
     description: string
     country: string
     travelType: string
+    continent: string
     bestTime: string
     language: string
     currenty: string

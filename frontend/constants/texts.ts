@@ -34,6 +34,7 @@ const texts = {
         peopleQuantity: "Quantidade de pessoas",
         peopleQuantityPlaceholder: "Ex: 2",
         type: "Tipo de viagem",
+        continent: "Continente",
         aiModel: "Modelo de IA"
     },
 

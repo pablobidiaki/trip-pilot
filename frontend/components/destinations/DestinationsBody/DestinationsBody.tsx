@@ -1,57 +1,69 @@
-"use client"
+"use client";
 
-import ButtonFilters from "@/components/ui/ButtonFilters/ButtonFilters"
-import texts from "@/constants/texts"
-import DestinationCard from "../DestinationsCard/DestinationsCard"
-import WhyChoseTripPilot from "../WhyChoseTripPilot/WhyChoseTripPilot"
-import { getDestinations } from "@/services/destination.service"
-import { useEffect, useState } from "react"
-import { DestinationInterface } from "@/interfaces/destination.interface"
-import { UserInterface } from "@/interfaces/user.interface"
-import SearchBar from "@/components/ui/SearchBar/Searchbar"
+import texts from "@/constants/texts";
+import DestinationCard from "../DestinationsCard/DestinationsCard";
+import { getDestinations } from "@/services/destination.service";
+import { useEffect, useMemo, useState } from "react";
+import { DestinationInterface } from "@/interfaces/destination.interface";
+import { UserInterface } from "@/interfaces/user.interface";
+import SearchBar from "@/components/ui/SearchBar/Searchbar";
 import removeAccents from "@/utils/removeAccents";
+import Dropdown from "@/components/ui/Dropdown/Dropdown";
+import { Earth, Plane } from "lucide-react";
+import { ContinentsFilter, TripTypeFilter } from "@/constants/enum";
 
 interface DestinationBodyProps {
-    user?: UserInterface
+    user?: UserInterface;
 }
 
 export default function DestinationBody({ user }: DestinationBodyProps) {
-    const [selected, setSelected] = useState("Todos")
-    const [destinations, setDestinations] = useState<DestinationInterface[]>()
-    const [search, setSearch] = useState("")
-
-    const filteredDestinations = destinations?.filter((destination) =>
-        (
-            removeAccents(destination.country.toLowerCase()).includes(search.toLowerCase()) ||
-            removeAccents(destination.destination.toLowerCase()).includes(search.toLowerCase())
-        ) &&
-        (selected === "Todos" || destination.travelType === selected)
-    )
+    const [travelType, setTravelType] = useState("Todos");
+    const [destinations, setDestinations] = useState<DestinationInterface[]>([]);
+    const [search, setSearch] = useState("");
+    const [continentSelected, setContinentSelected] = useState("Todos");
 
     useEffect(() => {
-        const _getDestinations = async () => {
-            const destinations = await getDestinations()
-            setDestinations(destinations)
-        }
-        _getDestinations()
-    }, [destinations])  
+        const fetchDestinations = async () => {
+            try {
+                const data = await getDestinations();
+                setDestinations(data ?? []);
+            } catch (error) {
+                console.error("Erro ao buscar destinos:", error);
+            }
+        };
+
+        fetchDestinations();
+    }, []);
+
+    useEffect(() => {
+        if (localStorage.getItem("continentSelected")) setContinentSelected(localStorage.getItem("continentSelected")!)
+    }, []);
+
+    useEffect(() => {
+        return () => {
+            localStorage.removeItem("continentSelected");
+        };
+    }, []);
+
+    const filteredDestinations = useMemo(() => {
+        const normalizedSearch = removeAccents(search.toLowerCase().trim());
+
+        return destinations.filter((destination) => {
+            const matchesSearch = removeAccents(destination.country.toLowerCase()).includes(normalizedSearch) || removeAccents(destination.destination.toLowerCase()).includes(normalizedSearch);
+            const matchesType = travelType === "Todos" || destination.travelType === travelType;
+            const matchesContinent = continentSelected === "Todos" || destination.continent === continentSelected;
+
+            return matchesSearch && matchesType && matchesContinent;
+        });
+    }, [destinations, search, travelType, continentSelected]);
 
     return (
-        <div className="relative h-full overflow-hidden bg-white -mt-6 rounded-t-4xl ">
-            <div className="flex flex-col items-center mt-4 justify-between mx-2
-                xl:flex-row
-            ">
-                <ButtonFilters selected={selected} setSelected={setSelected} />
-                <SearchBar placeholder={texts.readyGuides.searchBarPlaceholder} search={search} setSearch={setSearch} />
-            </div>
-            <h1 className="text-primary-color mt-4 mx-4 text-3xl font-medium">{texts.destinations.featuredDestinations}</h1>
+        <div className="relative -mt-15 h-full overflow-hidden rounded-t-4xl bg-white">
+            <h1 className="mx-4 mt-4 text-3xl font-medium text-primary-color"> {texts.destinations.featuredDestinations} </h1>
 
-            <div className="xl:grid xl:grid-cols-[4fr_1fr] ">
-                <div className="grid grid-cols-1 gap-4
-                    md:grid-cols-2
-                    xl:grid-cols-3
-                ">
-                    {filteredDestinations?.length ? (
+            <div className="xl:grid xl:grid-cols-[4fr_1fr]">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    {filteredDestinations.length > 0 ? (
                         filteredDestinations.map((destination) => (
                             <DestinationCard
                                 key={destination.id}
@@ -60,20 +72,43 @@ export default function DestinationBody({ user }: DestinationBodyProps) {
                                 name={destination.destination}
                                 description={destination.description}
                                 travel_type={destination.travelType}
+                                continent={destination.continent}
                                 country={destination.country}
                                 user={user}
                             />
                         ))
                     ) : (
-                        <div className="min-h-120 col-span-3 flex justify-center items-center py-20">
+                        <div className="col-span-full flex min-h-120 items-center justify-center py-20">
                             <p>Nenhum roteiro encontrado</p>
                         </div>
                     )}
                 </div>
-                    
-                <WhyChoseTripPilot />
+                <div className="mx-4 mt-4 gap-2 flex flex-col 
+                "
+                >
+                    <SearchBar placeholder={texts.readyGuides.searchBarPlaceholder}
+                        search={search}
+                        setSearch={setSearch}
+                    />
+                    <Dropdown icon={<Plane />}
+                        title={texts.form.type}
+                        options={TripTypeFilter}
+                        bottom={true}
+                        value={travelType!}
+                        onChange={setTravelType}
+                        
+                    />
+
+                    <Dropdown icon={<Earth />}
+                        title={texts.form.continent}
+                        options={ContinentsFilter}
+                        bottom={true}
+                        value={continentSelected}
+                        onChange={setContinentSelected}
+                    />
+                </div>
 
             </div>
         </div>
-    )
+    );
 }

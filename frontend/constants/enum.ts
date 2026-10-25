@@ -1,11 +1,12 @@
-export enum TripType {
-  Beach = "Praia",
-  Adventure = "Aventura",
-  Cultural = "Cultura",
-  Nature = "Natureza",
-  Romantic = "Romantico",
-  Economy = "Econômico"
-}
+export const TripTypeFilter: string[] = [
+  "Todos",
+  "Praia",
+  "Aventura",
+  "Cultura",
+  "Natureza",
+  "Romantico",
+  "Econômico"
+]
 
 export const TripTypesArray: string[] = [
   "Praia",
@@ -14,6 +15,27 @@ export const TripTypesArray: string[] = [
   "Natureza",
   "Romantico",
   "Econômico"
+]
+
+export const Continents: string[] = [
+  "América do Norte",
+  "América do Sul",
+  "Europa",
+  "África",
+  "Ásia",
+  "Oceania",
+  "Antártida"
+]
+
+export const ContinentsFilter: string[] = [
+  "Todos",
+  "América do Norte",
+  "América do Sul",
+  "Europa",
+  "África",
+  "Ásia",
+  "Oceania",
+  "Antártida"
 ]
 
 export const AiModels: string[] = [

@@ -27,6 +27,12 @@ export class CreateGuideDto {
     travelType: string
 
     @ApiProperty({
+        example: 'Europa',
+    })
+    @IsString()
+    continent: string
+
+    @ApiProperty({
         example: 'Mar a Maio - Set a Nov',
     })
     @IsString()

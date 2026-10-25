@@ -10,23 +10,7 @@ export class DestinationService {
     ) { }
 
     create(dto: CreateDestinationDto) {
-        return this.destinationRepository.create({
-            imageURL: dto.imageURL,
-            bannerURL: dto.bannerURL,
-            destination: dto.destination,
-            description: dto.description,
-            country: dto.country,
-            travelType: dto.travelType,
-            bestTime: dto.bestTime,
-            language: dto.language,
-            currenty: dto.currenty,
-            weather: dto.weather,
-            dayReccomended: dto.dayReccomended,
-            usefulInformation: dto.usefulInformation,
-            whatToDo: dto.whatToDo,
-            attractions: dto.attractions,
-            averageCost: dto.averageCost
-        })
+        return this.destinationRepository.create(dto)
     }
 
     getAll() {

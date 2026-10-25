@@ -1,5 +1,5 @@
 import InfoItem from "@/components/ui/InfoItem/InfoItem"
-import { Luggage, MapPin } from "lucide-react"
+import { Earth, Luggage, MapPin } from "lucide-react"
 import Link from "next/link"
 import FavoriteButton from "@/components/destination/DestinationBanner/FavoriteButton"
 import { UserInterface } from "@/interfaces/user.interface"
@@ -10,11 +10,12 @@ interface DestinationCardProps {
     name: string,
     description: string,
     travel_type: string,
+    continent: string,
     country: string,
     user?: UserInterface
 }
 
-export default function DestinationCard({ id, image, name, description, travel_type, country, user }: DestinationCardProps) {
+export default function DestinationCard({ id, image, name, description, travel_type, continent, country, user }: DestinationCardProps) {
     return (
         <div className="relative h-80 overflow-hidden rounded-2xl m-4 animate-[optionSelector_300ms_ease-out]">
             <Link href={`/destinations/${id}`}>
@@ -37,6 +38,7 @@ export default function DestinationCard({ id, image, name, description, travel_t
                         <div className="flex gap-5">
                             <InfoItem icon={<Luggage size={20} className="text-[#c4c4c4]" />} text={travel_type} tailwindTextTags="text-[#c4c4c4] text-xs" />
                             <InfoItem icon={<MapPin size={20} className="text-[#c4c4c4]" />} text={country} tailwindTextTags="text-[#c4c4c4] text-xs" />
+                            <InfoItem icon={<Earth size={20} className="text-[#c4c4c4]" />} text={continent} tailwindTextTags="text-[#c4c4c4] text-xs" />
                         </div>
                     </div>
                 </div>
