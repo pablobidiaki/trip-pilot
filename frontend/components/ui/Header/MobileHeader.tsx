@@ -14,7 +14,7 @@ export default function MobileHeader({ session, status }: MobileHeaderProps) {
     return (
         <div className="flex justify-between items-center px-2 py-2">
             <Link href={'/'}>
-                <Image src="/imgs/icons/trip_pilot.png"
+                <Image src="/imgs/icons/logo.png"
                     alt="Logo TripPilot"
                     width={40}
                     height={40}

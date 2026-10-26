@@ -21,7 +21,7 @@ export default function DestinationCard({ id, image, name, description, travel_t
             <Link href={`/destinations/${id}`}>
                 <img
                     src={image}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover brightness-70"
                     alt={name}
                 />
 
@@ -35,10 +35,10 @@ export default function DestinationCard({ id, image, name, description, travel_t
                     <div>
                         <p className="text-white text-3xl font-medium mb-1 line-clamp-2">{name}</p>
                         <p className="text-[#c4c4c4] text-xs mb-1 line-clamp-3">{description}</p>
-                        <div className="flex gap-5">
-                            <InfoItem icon={<Luggage size={20} className="text-[#c4c4c4]" />} text={travel_type} tailwindTextTags="text-[#c4c4c4] text-xs" />
-                            <InfoItem icon={<MapPin size={20} className="text-[#c4c4c4]" />} text={country} tailwindTextTags="text-[#c4c4c4] text-xs" />
-                            <InfoItem icon={<Earth size={20} className="text-[#c4c4c4]" />} text={continent} tailwindTextTags="text-[#c4c4c4] text-xs" />
+                        <div className="flex justify-between mt-5 truncate">
+                            <p className="text-[#c4c4c4] text-xs ">{travel_type}</p>
+                            <p className="text-[#c4c4c4] text-xs ">{country}</p>
+                            <p className="text-[#c4c4c4] text-xs ">{continent}</p>
                         </div>
                     </div>
                 </div>

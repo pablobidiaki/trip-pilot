@@ -13,7 +13,7 @@ export default async function Destinations() {
     <div>
       <DestinationsBanner />
       <DestinationBody user={user}/>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
