@@ -12,16 +12,17 @@ interface GuideCardProps {
     cities: string[],
     duration: number,
     type: string,
+    continent: string
     description: string,
     price: number,
     user?: UserInterface
 }
 
-export default function GuideCard({ id, image, title, cities, duration, type, description, price, user }: GuideCardProps) {
+export default function GuideCard({ id, image, title, cities, duration, type, continent, description, price, user }: GuideCardProps) {
 
     return (
         <Link href={`/ready_guides/${id}`}>
-            <div className="bg-white relative mb-2 mt-10 w-full overflow-hidden rounded-2xl border border-gray-100 transition-all duration-200  hover:scale-101 animate-[optionSelector_300ms_ease-out]">
+            <div className="bg-white relative mb-2 mt-4 w-full overflow-hidden rounded-2xl border border-gray-100 transition-all duration-200  hover:scale-101 animate-[optionSelector_300ms_ease-out]">
                 {user &&
                     <div className="absolute right-2 mt-1">
                         <FavoriteButton userId={user?.id} readyGuideId={id} />
@@ -42,9 +43,10 @@ export default function GuideCard({ id, image, title, cities, duration, type, de
                     ))}
                 </div>
 
-                <div className="flex gap-5 mx-2 my-2">
-                    <InfoItem icon={<Clock />} text={`${duration.toString()} dias`} />
-                    <InfoItem icon={<Landmark />} text={type} />
+                <div className="flex justify-between truncate mx-2 mb-3 mt-5">
+                    <p className="text-second-color text-xs">{`${duration.toString()} dias`}</p>
+                    <p className="text-second-color text-xs">{type}</p>
+                    <p className="text-second-color text-xs">{continent}</p>
                 </div>
 
                 <p className="text-primary-color mx-2 text-sm line-clamp-2">{description}</p>

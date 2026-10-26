@@ -12,7 +12,10 @@ export default async function ReadyGuides() {
     <div>
       <ReadyGuidesBanner />
       <ReadyGuidesBody user={user}/>
-      <Footer />
+      <div className="m-10">
+        <Footer />
+
+      </div>
     </div>
   );
 }

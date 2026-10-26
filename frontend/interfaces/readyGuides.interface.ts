@@ -49,6 +49,7 @@ export interface ReadyGuideInterface {
     title: string
     description: string
     travelType: string
+    continent: string
     bestTime: string
     language: string
     currenty: string

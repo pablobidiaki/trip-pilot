@@ -8,11 +8,12 @@ interface DropdownProps {
     title: string
     options: string[]
     bottom?: boolean
+    tailwindTags?: string
     value: string
     onChange: (value: string) => void
 }
 
-export default function Dropdown({ icon, title, options, bottom, value, onChange}: DropdownProps) {
+export default function Dropdown({ icon, title, options, bottom, tailwindTags, value, onChange}: DropdownProps) {
 
     const [open, setOpen] = useState(false)
 
@@ -39,7 +40,7 @@ export default function Dropdown({ icon, title, options, bottom, value, onChange
     }
 
     return (
-        <div ref={dropdownRef} className={`relative`}>
+        <div ref={dropdownRef} className={`relative ${tailwindTags}`}>
             <div onClick={() => setOpen(!open)}
                 className="flex cursor-pointer items-center rounded-2xl border border-gray-100 p-1 transition-all duration-200 hover:border-blue-300">
                 <span className="m-2 text-main-primary-color">
