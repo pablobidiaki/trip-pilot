@@ -5,7 +5,8 @@ export const TripTypeFilter: string[] = [
   "Cultura",
   "Natureza",
   "Romantico",
-  "Econômico"
+  "Econômico",
+  "Maravilhas do mundo"
 ]
 
 export const TripTypesArray: string[] = [
@@ -14,7 +15,8 @@ export const TripTypesArray: string[] = [
   "Cultura",
   "Natureza",
   "Romantico",
-  "Econômico"
+  "Econômico",
+  "Maravilhas do mundo"
 ]
 
 export const Continents: string[] = [

@@ -1,3 +1,5 @@
+"use client"
+
 import Header from "@/components/ui/Header/Header";
 import texts from "@/constants/texts";
 
@@ -31,7 +33,7 @@ export default function Hero() {
                         {texts.home.mainText}
                     </p>
                     <div className="w-fit mx-auto mt-15 animate-slide-in-left">
-                        <button className="text-primary-color bg-background-color px-4 py-4 rounded-lg text-2xl cursor-pointer">
+                        <button onClick={() => document.getElementById("form")?.scrollIntoView({behavior: "smooth", block: "start"})} className="text-primary-color bg-background-color px-4 py-4 rounded-lg text-2xl cursor-pointer">
                             Planejar minha viagem
                         </button>
                     </div>

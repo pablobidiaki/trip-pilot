@@ -8,17 +8,20 @@ import ItineraryExamples from "@/components/home/ItineraryExamples/ItineraryExam
 import PopularDestinations from "@/components/home/PopularDestinations/PopularDestinations";
 import { Toolbox } from "lucide-react";
 import NextTrip from "@/components/home/NextTrip/NextTrip";
-
+import HeroForm from "@/components/home/Hero/HeroForm";
+import SevenWondersOfWorld from "@/components/home/SevenWondersOfWorld/SevenWondersOfWorld";
 
 export default async function Home() {
   return (
-    <div id="criar-roteiro" className="bg-background-color animate-[optionSelector_300ms_ease-out]">
+    <div className="bg-background-color animate-[optionSelector_300ms_ease-out]">
       <Hero />
       <HowItWorks />
+      <HeroForm />
       <NextTrip />
       <PopularDestinations />
       <ItineraryExamples /> 
       <WhyUse />
+      <SevenWondersOfWorld />
       <CTA icon={<Toolbox size={80} />}
         title={texts.readyToNextTravel.title}
         text={texts.readyToNextTravel.text}

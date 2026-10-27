@@ -141,6 +141,10 @@ input[type="number"]::-webkit-outer-spin-button {
   --sidebar-ring: oklch(0.556 0 0); 
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50; 

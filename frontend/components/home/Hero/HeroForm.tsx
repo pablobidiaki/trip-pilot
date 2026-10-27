@@ -42,52 +42,68 @@ export default function HeroForm() {
     const [travelType, setTravelType] = useState("Aventura")
     const [aiProvider, setAiProvider] = useState("Gemini")
     const [isLoading, setIsLoading] = useState(false)
+    const [formIncomplete, setFormIncomplete] = useState<boolean>()
 
     const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        if (session == null) {
-            toast.error("Você precisa estar logado para gerar um roteiro")
-            return
-        }
 
-        if (departureSelected == false) {
-            toast.error("Selecione a origem da sua viagem!")
-            return
-        }
-
-        if (destinationSelected == false) {
-            toast.error("Selecione o destino da sua viagem!")
-            return
-        }
-
-        setIsLoading(true)
-
-        try {
-            const data = {
-                userId: session?.user?.email,
-                departure: departure,
-                destination: destination,
-                days: Number(days),
-                startDate: startDate,
-                countryOrigin: countryOrigin,
-                countryDestination: countryDestination,
-                currency: "BRL",
-                budgetTotal: Number(budget),
-                travelers: Number(travelers),
-                travelType: travelType,
-                aiProvider: aiProvider,
-                itinerary: {}
+        if (!isFormCompleted()) {
+            if (session == null) {
+                toast.error("Você precisa estar logado para gerar um roteiro")
+                return
             }
 
-            const itinerary = await createItinerary(session.accessToken!, data)
+            if (departureSelected == false) {
+                toast.error("Selecione a origem da sua viagem!")
+                return
+            }
 
-            router.push(`/itinerary/${itinerary.id}`)
-        } catch (err) {
-            toast.error("O modelo está passando por alta demanda. Tente novamente mais tarde!")
-            console.error(`Erro ao gerar roteiro ${err}`)
-        } finally {
-            setIsLoading(false)
+            if (destinationSelected == false) {
+                toast.error("Selecione o destino da sua viagem!")
+                return
+            }
+        }
+        else {
+            setIsLoading(true)
+
+            try {
+                const data = {
+                    userId: session?.user?.email,
+                    departure: departure,
+                    destination: destination,
+                    days: Number(days),
+                    startDate: startDate,
+                    countryOrigin: countryOrigin,
+                    countryDestination: countryDestination,
+                    currency: "BRL",
+                    budgetTotal: Number(budget),
+                    travelers: Number(travelers),
+                    travelType: travelType,
+                    aiProvider: aiProvider,
+                    itinerary: {}
+                }
+
+                const itinerary = await createItinerary(session!.accessToken!, data)
+
+                router.push(`/itinerary/${itinerary.id}`)
+            } catch (err) {
+                toast.error("O modelo está passando por alta demanda. Tente novamente mais tarde!")
+                console.error(`Erro ao gerar roteiro ${err}`)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+    }
+
+    const isFormCompleted = () => {
+        if (departure == "" || destination == "" || days == "" || startDate == "" || budget == "" || travelers == "" || travelType == "") {
+            setFormIncomplete(true)
+            return false
+        }
+        else {
+             setFormIncomplete(false)
+            return true
         }
     }
 
@@ -133,161 +149,167 @@ export default function HeroForm() {
     })
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-4 mx-2 rounded-2xl
-            lg:max-w-5/7
-            xl:max-w-3/5 xl:mb-7
-            2xl:max-w-1/2 2xl:mb-0
-            3xl:max-w-3/7 3xl:mb-5 3xl:py-5 3xl:mx-auto
-        ">
-            <div className="flex flex-col gap-2
-                md:grid md:grid-cols-2
+        <div id="form" className="scroll-mt-50">
+            <h1 className="text-center text-5xl text-primary-color mt-15">Para onde vamos viajar?</h1>
+            <h1 className="text-center text-xl font-light text-second-color">Conte um pouco sobre sua viagem. A IA cuida do planejamento para você</h1>
+
+            <form  onSubmit={handleSubmit} className="bg-white p-4 mx-2 rounded-2xl mt-10
+                lg:max-w-5/7
+                xl:max-w-3/5 xl:mb-7
+                2xl:max-w-1/2 2xl:mb-0
+                3xl:max-w-3/7 3xl:mb-5 3xl:py-5 3xl:mx-auto
+            ">
+                <div onClick={() => setFormIncomplete(false)} className="flex flex-col gap-2
+                    md:grid md:grid-cols-2
+                    xl:mb-8
+                    2xl:mb-7
+                    3xl:grid 3xl:grid-cols-2 3xl:mb-2
+                ">
+                    <div className="relative">
+                        <Input icon={<MapPin />}
+                            title={texts.form.exitPoint}
+                            placeholder={texts.form.exitPointPlaceholder}
+                            type="text"
+                            value={departure}
+                            onChange={(e) => {
+                                setSearch(e.target.value)
+                                setDeparture(e.target.value)
+                                setDepartureSelected(false)
+                            }}
+                            //required={true}
+                            tailwindTags="w-full"
+                        />
+
+                        {departure && !departureSelected && countries.length > 0 && (
+                            <div className="absolute top-full left-0 z-50 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+                                {countries.slice(0, 5).map((country) => (
+                                    <button key={country.countryCode}
+                                        className="w-full px-4 py-3 text-left transition-colors bg-gray-100 hover:bg-gray-200 border-b border-b-gray-300 cursor-pointer flex items-center gap-3"
+                                        type="button"
+                                        onClick={() => {
+                                            setSearch("")
+                                            setDeparture(country.countryNamePtBR)
+                                            setCountries([])
+                                            setDepartureSelected(true)
+                                            setCountryOrigin(country.countryName)
+                                        }}
+                                    >
+                                        <img className="w-8 h-6 object-cover"
+                                            src={`https://flags.restcountries.com/v5/w640/${country.countryCode}.png`}
+                                            alt={`Bandeira de ${country.countryNamePtBR}`}
+                                        />
+
+                                        <span> {country.countryNamePtBR} </span>
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="relative">
+                        <Input icon={<MapPin />}
+                            title={texts.form.destination}
+                            placeholder={texts.form.destinationPlaceholder}
+                            type="text"
+                            value={destination}
+                            onChange={(e) => {
+                                setSearch(e.target.value)
+                                setDestination(e.target.value)
+                                setDestinationSelected(false)
+                            }}
+                            //required={true}
+                            tailwindTags="w-full"
+                        />
+
+                        {destination && !destinationSelected && countries.length > 0 && (
+                            <div className="absolute top-full left-0 z-50 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+                                {countries.slice(0, 5).map((country) => (
+                                    <button key={country.countryCode}
+                                        className="w-full px-4 py-3 text-left transition-colors bg-gray-100 hover:bg-gray-200 border-b border-b-gray-300 cursor-pointer flex items-center gap-3"
+                                        type="button"
+                                        onClick={() => {
+                                            setSearch("")
+                                            setDestination(country.countryNamePtBR)
+                                            setCountries([])
+                                            setDestinationSelected(true)
+                                            setCountryDestination(country.countryName)
+                                        }}>
+
+                                        <img
+                                            className="w-8 h-6 object-cover"
+                                            src={`https://flags.restcountries.com/v5/w640/${country.countryCode}.png`}
+                                            alt={`Bandeira de ${country.countryNamePtBR}`}
+                                        />
+
+                                        <span>{country.countryNamePtBR}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                </div>
+                <div onClick={() => setFormIncomplete(false)} className="flex flex-col mt-2 gap-2
+                md:grid md:grid-cols-3 md:mt-5
                 xl:mb-8
                 2xl:mb-7
-                3xl:grid 3xl:grid-cols-2 3xl:mb-2
-            ">
-                <div className="relative">
-                    <Input icon={<MapPin />}
-                        title={texts.form.exitPoint}
-                        placeholder={texts.form.exitPointPlaceholder}
-                        type="text"
-                        value={departure}
-                        onChange={(e) => {
-                            setSearch(e.target.value)
-                            setDeparture(e.target.value)
-                            setDepartureSelected(false)
-                        }}
-                        required={true}
-                        tailwindTags="w-full"
+                3xl:mb-2 3xl:grid 3xl:grid-cols-3 3xl:gap-3
+                ">
+                    <Input icon={<CalendarDays />}
+                        title={texts.form.howDays}
+                        placeholder={texts.form.howDaysPlaceholder}
+                        type='number'
+                        value={days}
+                        onChange={(e) => setDays(e.target.value)}
+                    //required={true}
                     />
-
-                    {departure && !departureSelected && countries.length > 0 && (
-                        <div className="absolute top-full left-0 z-50 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
-                            {countries.slice(0, 5).map((country) => (
-                                <button key={country.countryCode}
-                                    className="w-full px-4 py-3 text-left transition-colors bg-gray-100 hover:bg-gray-200 border-b border-b-gray-300 cursor-pointer flex items-center gap-3"
-                                    type="button"
-                                    onClick={() => {
-                                        setSearch("")
-                                        setDeparture(country.countryNamePtBR)
-                                        setCountries([])
-                                        setDepartureSelected(true)
-                                        setCountryOrigin(country.countryName)
-                                    }}
-                                >
-                                    <img className="w-8 h-6 object-cover"
-                                        src={`https://flags.restcountries.com/v5/w640/${country.countryCode}.png`}
-                                        alt={`Bandeira de ${country.countryNamePtBR}`}
-                                    />
-
-                                    <span> {country.countryNamePtBR} </span>
-                                </button>
-                            ))}
-                        </div>
-                    )}
+                    <DatePicker icon={<Calendar1 size={22} />}
+                        title={texts.form.when}
+                        value={startDate}
+                        onChange={setStartDate}
+                    />
+                    <Input icon={<DollarSign />}
+                        title={texts.form.budget}
+                        placeholder={texts.form.budgetPlaceholder}
+                        type='number'
+                        value={budget}
+                        onChange={(e) => setBudget(e.target.value)}
+                    //required={true}
+                    />
+                </div>
+                <div onClick={() => setFormIncomplete(false)} className="flex flex-col mt-2 gap-2 mb-4
+                md:grid md:grid-cols-2 md:mt-5
+                xl:mb-8
+                2xl:mb-7
+                3xl:mb-8 3xl:grid 3xl:grid-cols-2 3xl:gap-3
+                ">
+                    <Input icon={<Users />}
+                        title={texts.form.peopleQuantity}
+                        placeholder={texts.form.peopleQuantityPlaceholder}
+                        type='number'
+                        value={travelers}
+                        onChange={(e) => setTravelers(e.target.value)}
+                    //required={true}
+                    />
+                    <Dropdown icon={<Backpack />}
+                        title={texts.form.type}
+                        options={TripTypesArray}
+                        value={travelType}
+                        onChange={setTravelType}
+                    />
+                    {/* <Dropdown icon={<BrainCircuit />}
+                        title={texts.form.aiModel}
+                        options={AiModels}
+                        value={aiProvider}
+                        onChange={setAiProvider}
+                    /> */}
                 </div>
 
-                <div className="relative">
-                    <Input icon={<MapPin />}
-                        title={texts.form.destination}
-                        placeholder={texts.form.destinationPlaceholder}
-                        type="text"
-                        value={destination}
-                        onChange={(e) => {
-                            setSearch(e.target.value)
-                            setDestination(e.target.value)
-                            setDestinationSelected(false)
-                        }}
-                        required={true}
-                        tailwindTags="w-full"
-                    />
+                {formIncomplete && <p className="text-center text-red-500 italic mb-5">Preencha todos os campos</p>}
+                <GradientButton text={texts.form.buttonText} type="submit" />
 
-                    {destination && !destinationSelected && countries.length > 0 && (
-                        <div className="absolute top-full left-0 z-50 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
-                            {countries.slice(0, 5).map((country) => (
-                                <button key={country.countryCode}
-                                    className="w-full px-4 py-3 text-left transition-colors bg-gray-100 hover:bg-gray-200 border-b border-b-gray-300 cursor-pointer flex items-center gap-3"
-                                    type="button"
-                                    onClick={() => {
-                                        setSearch("")
-                                        setDestination(country.countryNamePtBR)
-                                        setCountries([])
-                                        setDestinationSelected(true)
-                                        setCountryDestination(country.countryName)
-                                    }}>
-
-                                    <img
-                                        className="w-8 h-6 object-cover"
-                                        src={`https://flags.restcountries.com/v5/w640/${country.countryCode}.png`}
-                                        alt={`Bandeira de ${country.countryNamePtBR}`}
-                                    />
-
-                                    <span>{country.countryNamePtBR}</span>
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                </div>
-
-            </div>
-            <div className="flex flex-col mt-2 gap-2
-            md:grid md:grid-cols-3 md:mt-5
-            xl:mb-8
-            2xl:mb-7
-            3xl:mb-2 3xl:grid 3xl:grid-cols-3 3xl:gap-3
-            ">
-                <Input icon={<CalendarDays />}
-                    title={texts.form.howDays}
-                    placeholder={texts.form.howDaysPlaceholder}
-                    type='number'
-                    value={days}
-                    onChange={(e) => setDays(e.target.value)}
-                    required={true}
-                />
-                <DatePicker icon={<Calendar1 size={22} />}
-                    title={texts.form.when}
-                    value={startDate}
-                    onChange={setStartDate}
-                />
-                <Input icon={<DollarSign />}
-                    title={texts.form.budget}
-                    placeholder={texts.form.budgetPlaceholder}
-                    type='number'
-                    value={budget}
-                    onChange={(e) => setBudget(e.target.value)}
-                    required={true}
-                />
-            </div>
-            <div className="flex flex-col mt-2 gap-2 mb-4
-            md:grid md:grid-cols-2 md:mt-5
-            xl:mb-8
-            2xl:mb-7
-            3xl:mb-8 3xl:grid 3xl:grid-cols-2 3xl:gap-3
-            ">
-                <Input icon={<Users />}
-                    title={texts.form.peopleQuantity}
-                    placeholder={texts.form.peopleQuantityPlaceholder}
-                    type='number'
-                    value={travelers}
-                    onChange={(e) => setTravelers(e.target.value)}
-                    required={true}
-                />
-                <Dropdown icon={<Backpack />}
-                    title={texts.form.type}
-                    options={TripTypesArray}
-                    value={travelType}
-                    onChange={setTravelType}
-                />
-                {/* <Dropdown icon={<BrainCircuit />}
-                    title={texts.form.aiModel}
-                    options={AiModels}
-                    value={aiProvider}
-                    onChange={setAiProvider}
-                /> */}
-            </div>
-
-            <GradientButton text={texts.form.buttonText} type="submit" />
-
-            <ItineraryGeneratingModal isOpen={isLoading} />
-        </form>
+                <ItineraryGeneratingModal isOpen={isLoading} />
+            </form>
+        </div>
     )
 }

@@ -4,7 +4,7 @@ import ItineraryExamplesCardsContainer from "./ItineraryExamplesCardsContainer";
 
 export default function ItineraryExamples(){
     return(
-        <div className="mx-2 mt-15">
+        <div className="mx-4 mt-15">
             <div className="flex justify-between items-center mb-2">
                 <h1 className="text-primary-color font-medium text-xl
                 md:text-3xl">{texts.itineraryExample.title}</h1>
