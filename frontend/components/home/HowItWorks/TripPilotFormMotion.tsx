@@ -49,11 +49,7 @@ function AnimatedField({ label, icon, value, delay, started, suffix }: AnimatedF
 
   return (
     <motion.div initial={{ opacity: 0, y: 18, scale: 1 }}
-      animate={
-        started
-          ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 18, scale: 1 }
-      }
+      animate={started ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 18, scale: 1 }}
       transition={{ duration: 0.65, delay: started ? delay : 0, ease }}
       className="rounded-2xl border p-4 transition-colors duration-300"
       style={{
@@ -123,16 +119,19 @@ export default function TripPilotFormMotion() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 flex px2 text-white border border-gray-100 rounded-lg bg-white">
+    <div ref={ref} className="min-h-104.5 max-h-104.5 flex text-white border border-gray-100 rounded-lg bg-white
+      md:min-w-lg md:max-w-lg 
+      2xl:min-w-md 2xl:max-w-md
+    ">
       <motion.div initial={{ opacity: 0, y: 45, scale: 1 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.85, delay: 0.25, ease }}
-        className="py-2 px-3">
+        className="py-2 px-3 w-full">
         <h2 className="text-primary-color text-xl font-bold mx-1 mb-5">1º Preencher o formulário</h2>
 
         <div className="space-y-2">
           <div className="grid grid-cols-2 gap-1">
-            <AnimatedField label="De onde você vai sair?"
+            <AnimatedField label="Saida"
               icon={<MapPin size={20} />}
               value="Brasil"
               delay={0.5}
@@ -140,7 +139,7 @@ export default function TripPilotFormMotion() {
               suffix={<ArrowRight size={15} />}
             />
 
-            <AnimatedField label="Para onde você quer ir?"
+            <AnimatedField label="Destino"
               icon={<MapPin size={20} />}
               value="Japão"
               delay={1.0}
@@ -171,7 +170,7 @@ export default function TripPilotFormMotion() {
               delay={2.5}
               started={started}
             />
-            <AnimatedField label="Tipo de viagem"
+            <AnimatedField label="Tipo"
               icon={<Backpack size={20} />}
               value="Aventura"
               delay={3.0}

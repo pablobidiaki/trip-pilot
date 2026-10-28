@@ -61,17 +61,17 @@ export default function TripPilotGeneratingScene() {
   }, [isInView]);
 
   return (
-    <div
-      ref={ref}
-      className="min-w-lg max-w-lg min-h-104.5 max-h-104.5"
-    >
+    <div ref={ref} className="min-h-104.5
+      2xl:min-w-md 2xl:max-w-md md:max-h-104.5
+    ">
       {started ? (
-        <motion.div
-          initial={{ opacity: 0, y: 45, scale: 0.94 }}
+        <motion.div initial={{ opacity: 0, y: 45, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.85, delay: 0.25, ease }}
-          className="min-w-lg max-w-lg min-h-104.5 max-h-104.5 flex px-3 py-2 font-sans text-white bg-white rounded-lg border border-gray-100"
-        >
+          className="min-h-104.5  flex px-3 py-2 font-sans text-white bg-white rounded-lg border border-gray-100
+            md:min-w-lg md:md:max-w-lg md:max-h-104.5
+            2xl:max-w-md 2xl:min-w-md
+          ">
           <div className="w-full text-white">
             <div className="max-w-127.5">
               <div className="pb-5">
