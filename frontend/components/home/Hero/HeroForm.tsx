@@ -149,15 +149,18 @@ export default function HeroForm() {
     })
 
     return (
-        <div id="form" className="scroll-mt-50">
+        <div id="form" className=" scroll-mt-10
+
+            2xl:scroll-mt-50
+        ">
             <h1 className="text-center text-5xl text-primary-color mt-15">Para onde vamos viajar?</h1>
             <h1 className="text-center text-xl font-light text-second-color">Conte um pouco sobre sua viagem. A IA cuida do planejamento para você</h1>
 
             <form  onSubmit={handleSubmit} className="bg-white p-4 mx-2 rounded-2xl mt-10
-                lg:max-w-5/7
+                lg:max-w-5/7 lg:mx-auto
                 xl:max-w-3/5 xl:mb-7
                 2xl:max-w-1/2 2xl:mb-0
-                3xl:max-w-3/7 3xl:mb-5 3xl:py-5 3xl:mx-auto
+                3xl:max-w-3/7 3xl:mb-5 3xl:py-5
             ">
                 <div onClick={() => setFormIncomplete(false)} className="flex flex-col gap-2
                     md:grid md:grid-cols-2

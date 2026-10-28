@@ -19,13 +19,13 @@ export default function CTA({ icon, title, text, buttonText, isHomePage, destina
     const handleButton = () => {
         isHomePage ? document.getElementById("form")?.scrollIntoView({behavior: "smooth", block: "start"}) : router.push("/#form")
 
-        localStorage.setItem('destination', destination!)
+        destination && localStorage.setItem('destination', destination!)
     };
 
     return (
         <div className="rounded-xl bg-linear-to-r from-blue-600 to-violet-600 mx-4 mt-15 p-4 flex flex-col items-center
-        md:flex-row md:justify-evenly  
-        xl:justify-evenly xl:items-center
+            md:flex-row md:justify-evenly  
+            xl:justify-evenly xl:items-center
         ">
             <span className="text-white">{icon}</span>
             <div className="text-white text-center">

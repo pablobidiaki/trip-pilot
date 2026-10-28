@@ -9,12 +9,13 @@ const texts = {
     },
 
     home: {
-        title: "Planeje sua próxima viagem com",
-        ai: "IA.",
+        title: "Planeje sua próxima viagem com IA.",
         mainText: "Em poucos minutos, receba um roteiro completo com as melhores atrações, lugares e sugestões personalizadas.",
         customized: "100% personalizado",
         saveTimeAndMoney: "Economize tempo e dinheiro",
-        scriptForIa: "Roteiros otimizados pela IA"
+        scriptForIa: "Roteiros otimizados pela IA",
+        nextTripTitle: "Qual seu próximo destino?",
+        nextTripSubtitle: "Escolha um continente para visualizar nossos roteiros prontos!"
     },
 
     form: {
