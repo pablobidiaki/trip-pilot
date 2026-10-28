@@ -1,5 +1,3 @@
-import { deleteItinerary } from "@/services/itinerary.service";
-
 const texts = {
     header: {
         createScript: "Criar roteiro",
@@ -55,7 +53,7 @@ const texts = {
     },
 
     itineraryExample: {
-        title: "Exemplos de roteiros",
+        title: "Roteiros prontos",
         viewAllItinerary: "Ver todos os roteiros",
         viewItinerary: "Ver roteiro",
     },
@@ -450,6 +448,12 @@ const texts = {
     createItineraryModal:{
         title: "Seu roteiro está sendo criado!",
         text: "Nossa IA está planejando sua viagem e buscando as melhores opções para você."
+    },
+
+    sevenWondersOfWorld:{
+        title: "As sete maravilhas do mundo",
+        naturalTitle:"As sete maravilhas do mundo natural",
+        subtitle: "Guias prontos para os lugares mais desejados do mundo"
     },
 
     real: "R$",
