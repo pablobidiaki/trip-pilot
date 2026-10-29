@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Delete, Patch, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
-import { EditCountryDto } from '../dtos/create-users-dto';
+import { EditCountryDto, EditUserInfosDto } from '../dtos/create-users-dto';
 import { JwtAuthGuard } from '../../auth/guards/jwt.auth.guard';
 
 @ApiTags('Users')
@@ -96,5 +96,13 @@ export class UsersController {
     })
     async removeCountryCountryWishlist(@Body() data: EditCountryDto){
         return await this.usersService.removeCountryCountryWishlist(data)
+    }
+
+    @Patch('edit')
+    @ApiOperation({
+        summary: 'Edit user infos'
+    })
+    async editUserInfos(@Body() data: EditUserInfosDto){
+        return await this.usersService.editUserInfos(data)
     }
 }

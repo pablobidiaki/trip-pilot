@@ -2,6 +2,7 @@ import { CreateUserDto } from "src/auth/dtos/create.user.dto";
 import { IUserRepository } from "./IUserRepository";
 import { PrismaService } from "src/prisma/prisma.service";
 import { Injectable } from "@nestjs/common";
+import { EditUserInfosDto } from "../dtos/create-users-dto";
 
 @Injectable()
 export class PrismaUserRepository implements IUserRepository{
@@ -23,8 +24,9 @@ export class PrismaUserRepository implements IUserRepository{
         return this.prisma.user.findUnique({where: {email}})
     }
 
-    async update(id: string, data: Partial<CreateUserDto>): Promise<any> {
-        return this.prisma.user.update({where: {id}, data})
+    async update(data: Partial<EditUserInfosDto>): Promise<any> {
+        const { id, ...userData } = data;
+        return this.prisma.user.update({where: {id}, data: userData})
     }
     
     async removeAll(): Promise<any> {

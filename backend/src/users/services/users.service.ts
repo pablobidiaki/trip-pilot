@@ -1,6 +1,6 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import { ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common"
-import { CreateUsersDto, EditCountryDto } from '../dtos/create-users-dto';
+import { CreateUsersDto, EditCountryDto, EditUserInfosDto } from '../dtos/create-users-dto';
 import { LoginInterface } from '../../auth/interfaces/auth.interfaces';
 import { ICrypto } from '../../core/crypto/ICrypto';
 import { IUserRepository } from '../repositories/IUserRepository';
@@ -195,5 +195,9 @@ export class UsersService {
     return await this.prisma.user.findFirst({
       where: login
     });
+  }
+
+  async editUserInfos(data: EditUserInfosDto) {
+    return await this.userRepository.update(data)
   }
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, MinLength } from "class-validator"
+import { IsEmail, IsNotEmpty, IsOptional, MinLength } from "class-validator"
 
 export class CreateUsersDto {
   @ApiProperty({
@@ -21,7 +21,7 @@ export class CreateUsersDto {
   password?: string;
 }
 
-export class EditCountryDto{
+export class EditCountryDto {
   @ApiProperty({
     example: '8ab672ae-c515-46da-a3a3-3b47a4ba4c7c',
   })
@@ -33,4 +33,30 @@ export class EditCountryDto{
   })
   @IsNotEmpty()
   country: string;
+}
+
+export class EditUserInfosDto {
+  @ApiProperty({
+    example: 'AKLSDHJLhasldkahnnLSKDLH',
+  })
+  @IsNotEmpty()
+  id: string
+
+  @ApiProperty({
+    example: 'user9002',
+  })
+  @IsOptional()
+  name: string
+
+  @ApiProperty({
+    example: 'hash password',
+  })
+  @IsOptional()
+  password: string
+
+  @ApiProperty({
+    example: 'https://urlimgcloudinary',
+  })
+  @IsOptional()
+  image: string
 }
