@@ -23,7 +23,7 @@ export default function Calendar({day, date, local, selected, onClick}: Calendar
                 xl:block
             ">
                 <p className="text-primary-color">{local}</p>
-                <p className="text-second-color ">{date}</p>
+                <p className="text-secondary-color ">{date}</p>
             </div>
         </div>
     )

@@ -15,7 +15,7 @@ export default async function SevenWondersOfWorld({ title, filter }: SevenWonder
         <div className="mx-auto mt-10 w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 2xl:px-12">
             <h1 className="text-center text-xl text-primary-color sm:text-2xl md:text-3xl xl:text-5xl"> {title} </h1>
 
-            <p className="mb-6 mt-2 text-center text-sm font-light text-second-color sm:text-base xl:text-lg"> {texts.sevenWondersOfWorld.subtitle} </p>
+            <p className="mb-6 mt-2 text-center text-sm font-light text-secondary-color sm:text-base xl:text-lg"> {texts.sevenWondersOfWorld.subtitle} </p>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 xl:gap-8">
                 {filteredGuides.map((guide, index) => (

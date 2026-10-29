@@ -24,7 +24,7 @@ export default function Input({ icon, title, placeholder, type, value, onChange,
                     <p>{title}</p>
                     <input  ref={inputRef}
                         min={title == texts.form.budget ? 1500 : 1}
-                        className={`text-second-color w-full outline-none `}
+                        className={`text-secondary-color w-full outline-none `}
                         type={type}
                         placeholder={placeholder}
                         value={value}

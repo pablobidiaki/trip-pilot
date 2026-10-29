@@ -61,7 +61,9 @@ export default function DestinationBody({ user }: DestinationBodyProps) {
         <div className={`relative -mt-15 h-full overflow-hidden rounded-t-4xl bg-background-color ${filteredDestinations?.length == 0 ? 'pb-20' : 'pb-0'}`}>
             <h1 className="mx-4 mt-4 text-3xl font-medium text-primary-color"> {texts.destinations.featuredDestinations} </h1>
 
-            <div className="flex flex-col-reverse xl:grid xl:grid-cols-[4fr_1fr]">
+            <div className="flex flex-col-reverse 
+                xl:grid xl:grid-cols-[4fr_1fr]
+            ">
                 <div className="grid grid-cols-1 gap-4 
                     md:grid-cols-2 
                     xl:grid-cols-3 xl:gap-0

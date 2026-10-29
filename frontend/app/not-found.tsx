@@ -23,7 +23,7 @@ export default function NotFound(){
                 <h2 className="text-4xl font-bold text-primary-color mt-2 text-center
                     lg:text-start
                 ">{texts.notFound.title}</h2>
-                <p className="text-2xl text-second-color mt-2 text-center
+                <p className="text-2xl text-secondary-color mt-2 text-center
                     lg:text-start
                 ">{texts.notFound.text}</p>
                 <Link href={"/"} className="flex items-center py-3 px-8 bg-purple-color text-white gap-2 rounded-2xl mt-7

@@ -15,8 +15,8 @@ export default function Weather({ weather }: WeatherProps) {
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2">{texts.itineraryTitles.weather}</h1>
 
             <div className="mx-4 text-primary-color">
-                <p className="my-2">{texts.weather.seasonText} <span className="text-second-color">{weather.season}</span></p>
-                <p className="my-2 ">{texts.weather.temperatureText} <span className="text-second-color">{weather.averageTemperature}{texts.weather.graus}</span></p>
+                <p className="my-2">{texts.weather.seasonText} <span className="text-secondary-color">{weather.season}</span></p>
+                <p className="my-2 ">{texts.weather.temperatureText} <span className="text-secondary-color">{weather.averageTemperature}{texts.weather.graus}</span></p>
                 <p className="mb-2"><span className="text-purple-400">{texts.tip}:</span> {weather.recommendation}</p>
             </div>
         </div>

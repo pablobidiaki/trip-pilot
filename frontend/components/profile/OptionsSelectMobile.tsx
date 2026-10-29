@@ -46,7 +46,7 @@ export default function OptionsSelectMobile({ optionSelected, setOptionSelected 
         <div className="md:hidden">
             <div className="flex justify-between mx-2">
                 <Link href="/" onClick={() => setMenuOpen(false)}>
-                    <img src="/imgs/icons/trip_pilot.png" alt="Logo" className="w-8 h-8 my-2 ml-2" />
+                    <img src="/imgs/icons/tripPilot.png" alt="Logo" className="w-8 h-8 my-2 ml-2" />
                 </Link>
                 <button onClick={() => setMenuOpen(true)} className="z-30 text-primary-color active:scale-95 transition">
                     <Menu />

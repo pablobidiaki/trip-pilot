@@ -14,7 +14,7 @@ export default function SavedDestinations({ destinations }: SavedDestinationsPro
             <h1 className="font-medium text-primary-color
                 md:text-2xl
             ">{texts.profile.savedDestinations}</h1>
-            <p className="text-xs font-light text-second-color
+            <p className="text-xs font-light text-secondary-color
                 md:text-sm
             ">{texts.profile.destinationsText}</p>
             <div className="grid grid-cols-1 mt-5 gap-5
@@ -24,7 +24,7 @@ export default function SavedDestinations({ destinations }: SavedDestinationsPro
             ">
                 {destinations.length === 0 &&
                     <div className="flex items-center">
-                        <p className="text-second-color text-lg italic">{texts.profile.noneDestinationSaved}</p>
+                        <p className="text-secondary-color text-lg italic">{texts.profile.noneDestinationSaved}</p>
                     </div>
                 }
                 {destinations.map((destination, index) => (
@@ -33,7 +33,7 @@ export default function SavedDestinations({ destinations }: SavedDestinationsPro
                         <img className="w-full h-60 object-cover brightness-50 rounded-t-2xl" src={destination.destination.imageURL} alt={destination.destination.destination} />
                         <div>
                             <p className="text-2xl font-semibold text-gray-900 truncate mx-2">{destination.destination.destination}</p>
-                            <p className="mx-2 text-second-color text-sm mt-2 line-clamp-2">{destination.destination.description}</p>
+                            <p className="mx-2 text-secondary-color text-sm mt-2 line-clamp-2">{destination.destination.description}</p>
                             <div className="grid grid-cols-1 gap-2 mx-2  mt-3 text-center
                                 md:grid-cols-3
                             ">
@@ -42,21 +42,21 @@ export default function SavedDestinations({ destinations }: SavedDestinationsPro
                                         <Languages className="text-green-500" />
                                     </div>
                                     <p className="text-primary-color mt-2">{destination.destination.language} </p>
-                                    <p className="text-second-color">{texts.destination.language}</p>
+                                    <p className="text-secondary-color">{texts.destination.language}</p>
                                 </div>
                                 <div className="flex flex-col items-center">
                                     <div className="bg-blue-100 rounded-full p-2">
                                         <SunSnow className="text-blue-500" />
                                     </div>
                                     <p className="text-primary-color mt-2 mx-2 truncate max-w-30">{destination.destination.weather}</p>
-                                    <p className="text-second-color mx-2 ">{texts.destination.weather}</p>
+                                    <p className="text-secondary-color mx-2 ">{texts.destination.weather}</p>
                                 </div>
                                 <div className="flex flex-col items-center">
                                     <div className="bg-purple-100 rounded-full p-2">
                                         <Calendar1 className="text-purple-500" />
                                     </div>
                                     <p className="text-primary-color mt-2">{destination.destination.dayReccomended} </p>
-                                    <p className="text-second-color">{texts.days}</p>
+                                    <p className="text-secondary-color">{texts.days}</p>
                                 </div>
                             </div>
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { AiModels, TripTypesArray } from "@/constants/enum";
+import { TripTypesArray } from "@/constants/enum";
 import { MapPin, CalendarDays, DollarSign, Users, BrainCircuit, Backpack, Calendar1 } from "lucide-react";
 import { toast } from "sonner"
 
@@ -154,7 +154,7 @@ export default function HeroForm() {
             2xl:scroll-mt-50
         ">
             <h1 className="text-center text-5xl text-primary-color mt-15">Para onde vamos viajar?</h1>
-            <h1 className="text-center text-xl font-light text-second-color">Conte um pouco sobre sua viagem. A IA cuida do planejamento para você</h1>
+            <h1 className="text-center text-xl font-light text-secondary-color">Conte um pouco sobre sua viagem. A IA cuida do planejamento para você</h1>
 
             <form  onSubmit={handleSubmit} className="bg-white p-4 mx-2 rounded-2xl mt-10
                 lg:max-w-5/7 lg:mx-auto

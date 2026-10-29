@@ -13,7 +13,7 @@ export default function ItineraryDays({ itineraryDays }: ItineraryDaysProps) {
     return (
         <div className="bg-white border rounded-2xl border-gray-100 mt-8">
             <h1 className="p-2 text-2xl border-b border-gray-100 mx-2 pb-2 mb-2">{texts.itineraryTitles.itinerary}</h1>
-            <p className="text-second-color italic mx-4">{texts.itinerary.tip}</p>
+            <p className="text-secondary-color italic mx-4">{texts.itinerary.tip}</p>
             <div className="grid grid-cols-1 gap-4 p-4
                 lg:grid-cols-2 lg:gap-2 lg:gap-y-5
                 xl:grid-cols-3

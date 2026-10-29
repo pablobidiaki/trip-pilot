@@ -13,8 +13,8 @@ export default function TransportInfo({icon, title, first_info, second_info}: Tr
             {icon}
             <div>
                 <p className="text-primary-color font-medium">{title}</p>
-                <p className="text-second-color">{first_info}</p>
-                {second_info && <p className="text-second-color">{second_info}</p>}
+                <p className="text-secondary-color">{first_info}</p>
+                {second_info && <p className="text-secondary-color">{second_info}</p>}
             </div>
         </div>
     )

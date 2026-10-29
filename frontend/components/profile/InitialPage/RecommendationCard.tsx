@@ -16,7 +16,7 @@ export default function RecommendationCard({ type, readyGuide, destination, path
             <p className="absolute mt-2 ml-2 object-cover z-50 rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700">{type}</p>
             <img className="relative rounded-t-2xl min-h-55 max-h-55" src={readyGuide ? readyGuide?.imageURL : destination?.imageURL} />
             <h1 className="mx-2 text-primary text-2xl truncate">{readyGuide ? readyGuide?.title : destination?.destination}</h1>
-            <p className="mx-2  text-second-color text-xs line-clamp-2
+            <p className="mx-2  text-secondary-color text-xs line-clamp-2
                 lg:text-sm
             ">{readyGuide ? readyGuide?.description : destination?.description}</p>
             <p className="mx-2 text-primary-color mt-2 truncateline-clamp-2 text-xs

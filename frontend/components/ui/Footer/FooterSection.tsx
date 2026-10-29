@@ -19,7 +19,7 @@ export default function FooterSection({title, links}: FooterSectionProps){
 
             <div className="mt-2 flex flex-col gap-2">
                 {links.map((link) => (
-                    <Link className="text-second-color text-sm text-center
+                    <Link className="text-secondary-color text-sm text-center
                         lg:text-start
                     " key={link.label} href={link.href}> {link.label} </Link>
                 ))}

@@ -52,7 +52,7 @@ export default function Requirements({ requirements }: RequirementsProps) {
                     <RequirementsBeforeCard icon={<CreditCard />} title={texts.requirements.payment} text={texts.requirements.paymentText}/>
                     <RequirementsBeforeCard icon={<WifiHigh />} title={texts.requirements.connection} text={texts.requirements.connectionText}/>                    
                 </div>
-                <p className="bg-blue-100 p-2 mt-8 rounded-2xl text-second-color text-sm font-medium mx-2
+                <p className="bg-blue-100 p-2 mt-8 rounded-2xl text-secondary-color text-sm font-medium mx-2
                     lg:w-fit lg:mx-auto
                 "><span className="text-blue-700 font-medium">Obs.: </span>{texts.requirements.observation}</p>
             </div>

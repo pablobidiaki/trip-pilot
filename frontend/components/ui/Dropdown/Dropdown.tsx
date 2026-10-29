@@ -49,7 +49,7 @@ export default function Dropdown({ icon, title, options, bottom, tailwindTags, v
 
                 <div className="w-full">
                     <p>{title}</p>
-                    <div className="flex w-full items-center justify-between text-second-color">
+                    <div className="flex w-full items-center justify-between text-secondary-color">
                         <span>{value}</span>
                         <ChevronDown size={18} className={`mr-1 text-gray-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`}/>
                     </div>
@@ -62,7 +62,7 @@ export default function Dropdown({ icon, title, options, bottom, tailwindTags, v
                         <button key={index}
                             type="button"
                             onClick={() => handleSelect(option)}
-                            className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm text-second-color transition-all duration-150 hover:bg-blue-50 hover:text-main-primary-color">
+                            className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm text-secondary-color transition-all duration-150 hover:bg-blue-50 hover:text-main-primary-color">
                             <span>
                                 {option}
                             </span>

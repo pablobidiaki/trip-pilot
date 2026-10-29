@@ -12,7 +12,7 @@ export default function InfoRow({ icon, label, value }: InfoRowProps) {
             </div>
 
             <div className="flex flex-col min-w-0">
-                <span className="text-sm font-semibold text-second-color">
+                <span className="text-sm font-semibold text-secondary-color">
                     {label}
                 </span>
 

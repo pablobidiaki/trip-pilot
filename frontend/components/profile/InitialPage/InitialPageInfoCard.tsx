@@ -14,7 +14,7 @@ export default function InitialPageInfoCard({ icon, title, value, bgColor }: Ini
         ">
             <div className="flex flex-col  items-center gap-2">
                 <span className={`${bgColor} text-white p-2 rounded-full`}>{icon}</span>
-                <p className=" text-center text-sm text-second-color">{title}</p>
+                <p className=" text-center text-sm text-secondary-color">{title}</p>
                 <p className="text-primary-color font-bold text-2xl text-center">{value}</p>
             </div>
         </div>

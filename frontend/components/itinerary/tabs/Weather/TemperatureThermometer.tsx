@@ -28,14 +28,14 @@ export default function TemperatureThermometer({ temperature }: TemperatureTherm
         <div className="flex items-center gap-5 mx-auto
             lg:w-[70%]
         ">
-            <span className="text-sm text-second-color ml-4">{minTemperature}{texts.weather.graus}</span>
+            <span className="text-sm text-secondary-color ml-4">{minTemperature}{texts.weather.graus}</span>
             <div className={`w-full h-3 bg-gray-200 rounded-full overflow-hidden`}>
                 <div
                     className={`${textColor()} h-full rounded-full`}
                     style={{ width: `${percentage}%` }}
                 />
             </div>
-            <span className="text-sm text-second-color mr-4">{maxTemperature}{texts.weather.graus}</span>
+            <span className="text-sm text-secondary-color mr-4">{maxTemperature}{texts.weather.graus}</span>
         </div>
     );
 }

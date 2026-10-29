@@ -26,14 +26,14 @@ export default function ItineraryGeneratingModal({ isOpen }: ItineraryGenerating
             <div className="relative w-90 rounded-xl bg-white p-2
             md:w-120
             ">
-                <Image src={"/imgs/icons/trip_pilot.png"}
+                <Image src={"/imgs/icons/tripPilot.png"}
                     alt="TripPilot icon"
                     width={85}
                     height={85}
                     className="mx-auto"
                 />
                 <h1 className="text-primary-color text-2xl text-center mt-3">{texts.createItineraryModal.title}</h1>
-                <p className="max-w-[85%] mt-5 text-second-color text-center mx-auto
+                <p className="max-w-[85%] mt-5 text-secondary-color text-center mx-auto
                 md:max-w-[55%]
                 ">{texts.createItineraryModal.text}</p>
 

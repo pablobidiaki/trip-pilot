@@ -14,7 +14,7 @@ export default function InfoRow({icon, information, value, tailwindTags}: InfoRo
                 <span>{icon}</span>
                 <p className="font-medium text-primary-color">{information}</p>
             </div>
-            <p className="text-second-color capitalize">{value}</p>
+            <p className="text-secondary-color capitalize">{value}</p>
         </div>
     )
 }

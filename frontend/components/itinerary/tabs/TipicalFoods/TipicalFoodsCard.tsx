@@ -35,11 +35,11 @@ export default function TipicalFoodsCard({ imageURL, name, description, category
             </div>
             <div className="px-3 py-2">
                 <p className="text-2xl text-primary-color font-medium text-center mb-3 line-clamp-1 group-hover:line-clamp-none">{name}</p>
-                <p className="text-second-color font-light text-lg line-clamp-2 group-hover:line-clamp-none">
+                <p className="text-secondary-color font-light text-lg line-clamp-2 group-hover:line-clamp-none">
                     <span className="text-primary-color font-medium text-lg">{texts.tipicalFood.description}</span>
                     {description}
                 </p>
-                <p className="text-second-color font-light text-lg">
+                <p className="text-secondary-color font-light text-lg">
                     <span className="text-primary-color font-medium text-lg">{texts.tipicalFood.category}</span>
                     {category}
                 </p>

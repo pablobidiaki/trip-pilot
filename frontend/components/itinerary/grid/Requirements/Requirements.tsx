@@ -31,19 +31,19 @@ export default function Requirements({requirements}: RequirementsProps){
                             <h1 className="text-primary-color text-xl text-center p-1">{texts.requirements.documents}</h1>
                             <hr className="mb-2"/>
                             {requirements.documents.length > 0 ? requirements.documents.map((document,index) => (
-                                <p key={index} className="text-second-color text-sm mx-1 p-0.5">- {document}</p>
-                            )) : <p className="p-2 text-second-color text-sm">- {texts.requirements.noneDocument}</p>}
+                                <p key={index} className="text-secondary-color text-sm mx-1 p-0.5">- {document}</p>
+                            )) : <p className="p-2 text-secondary-color text-sm">- {texts.requirements.noneDocument}</p>}
                         </div>
                         <div className="border min-w-1/2 rounded-2xl">
                             <h1 className="text-primary-color text-xl text-center p-1">{texts.requirements.vaccinesAndHealth}</h1>
                             <hr className="mb-2"/>
                             {requirements.vaccines.length > 0 ? requirements.vaccines.map((vaccine, index) => (
-                                <p key={index} className="text-second-color text-sm mx-1 p-0.5">- {vaccine}</p>
-                            )) : <p className="p-2 text-second-color text-sm">- {texts.requirements.noneVaccine}</p>}
+                                <p key={index} className="text-secondary-color text-sm mx-1 p-0.5">- {vaccine}</p>
+                            )) : <p className="p-2 text-secondary-color text-sm">- {texts.requirements.noneVaccine}</p>}
                         </div>
                     </div>
 
-                    <p className="bg-orange-100 p-2 mt-4 rounded-2xl text-second-color text-sm font-medium w-fit mx-auto"><span className="text-orange-500 font-medium">Obs.: </span>{texts.requirements.observation}</p>
+                    <p className="bg-orange-100 p-2 mt-4 rounded-2xl text-secondary-color text-sm font-medium w-fit mx-auto"><span className="text-orange-500 font-medium">Obs.: </span>{texts.requirements.observation}</p>
                 </div>
             </div>
         </div>

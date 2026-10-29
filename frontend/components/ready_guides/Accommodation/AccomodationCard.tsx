@@ -28,18 +28,18 @@ export default function AccomodationCard({ image, days, name, review, address, t
             <div className="w-full
                 md:w-2/3
             ">
-                <p className="text-second-color text-sm">{days}</p>
+                <p className="text-secondary-color text-sm">{days}</p>
                 <p className="text-primary-color font-medium text-xl">{name}</p>
 
                 <ReviewBar rating={Number(review)} />
 
-                <div className="flex items-center text-second-color my-2 gap-2">
+                <div className="flex items-center text-secondary-color my-2 gap-2">
                     <MapPin size={20} />
                     <p className="text-xs">{address}</p>
                 </div>
-                <p className="text-second-color text-sm">{text}</p>
+                <p className="text-secondary-color text-sm">{text}</p>
             </div>
-            <div className="bg-purple-100 px-3 py-1 rounded-2xl text-center text-second-color text-sm mt-2
+            <div className="bg-purple-100 px-3 py-1 rounded-2xl text-center text-secondary-color text-sm mt-2
                 md:w-[22%]
             ">
                 <p className="md:text-xs">{texts.startingAt}</p>

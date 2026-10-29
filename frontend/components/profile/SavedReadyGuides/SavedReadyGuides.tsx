@@ -14,7 +14,7 @@ export default function SavedReadyGuides({guides}: SavedReadyGuidesProps){
             <h1 className="font-medium text-primary-color
                 md:text-2xl
             ">{texts.profile.savedGuides}</h1>
-            <p className="text-xs font-light text-second-color
+            <p className="text-xs font-light text-secondary-color
                 md:text-sm
             ">{texts.profile.savedGuidesText}</p>
             <div className="grid grid-cols-1 mt-5 gap-5
@@ -24,7 +24,7 @@ export default function SavedReadyGuides({guides}: SavedReadyGuidesProps){
             ">
                 {guides.length === 0 &&
                     <div className="flex items-center">
-                        <p className="text-second-color text-lg italic">{texts.profile.noneGuideSaved}</p>
+                        <p className="text-secondary-color text-lg italic">{texts.profile.noneGuideSaved}</p>
                     </div>
                 }
                 {guides.map((guide, index) => (
@@ -33,7 +33,7 @@ export default function SavedReadyGuides({guides}: SavedReadyGuidesProps){
                         <img className="w-full h-60 object-cover brightness-50 rounded-t-2xl" src={guide.readyGuide.imageURL} alt={guide.readyGuide.title} />
                         <div>
                             <p className="text-2xl font-semibold text-gray-900 truncate mx-2">{guide.readyGuide.title}</p>
-                            <p className="mx-2 text-second-color text-sm mt-2 line-clamp-2">{guide.readyGuide.description}</p>
+                            <p className="mx-2 text-secondary-color text-sm mt-2 line-clamp-2">{guide.readyGuide.description}</p>
                             <div className="grid grid-cols-1 gap-2 mx-2  mt-3 text-center
                                 md:grid-cols-3
                             ">
@@ -42,21 +42,21 @@ export default function SavedReadyGuides({guides}: SavedReadyGuidesProps){
                                         <Languages className="text-green-500" />
                                     </div>
                                     <p className="text-primary-color mt-2">{guide.readyGuide.language} </p>
-                                    <p className="text-second-color">{texts.readyGuides.language}</p>
+                                    <p className="text-secondary-color">{texts.readyGuides.language}</p>
                                 </div>
                                 <div className="flex flex-col items-center">
                                     <div className="bg-blue-100 rounded-full p-2">
                                         <CircleDollarSign className="text-blue-500" />
                                     </div>
                                     <p className="text-primary-color mt-2 mx-2 truncate max-w-30">{guide.readyGuide.currenty}</p>
-                                    <p className="text-second-color mx-2 ">{texts.readyGuides.currency}</p>
+                                    <p className="text-secondary-color mx-2 ">{texts.readyGuides.currency}</p>
                                 </div>
                                 <div className="flex flex-col items-center">
                                     <div className="bg-purple-100 rounded-full p-2">
                                         <Calendar1 className="text-purple-500" />
                                     </div>
                                     <p className="text-primary-color mt-2">{guide.readyGuide.days} </p>
-                                    <p className="text-second-color">{texts.days}</p>
+                                    <p className="text-secondary-color">{texts.days}</p>
                                 </div>
                             </div>
 

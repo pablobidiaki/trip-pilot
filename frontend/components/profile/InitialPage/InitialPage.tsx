@@ -73,7 +73,7 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
                         md:text-2xl
                         lg:text-3xl
                     ">{texts.profile.hello} {session?.user?.name}</p>
-                    <p className="text-second-color text-xs font-light
+                    <p className="text-secondary-color text-xs font-light
                         md:text-sm
                     ">{texts.profile.readyForNextAdventure}</p>
                 </div>
@@ -91,7 +91,7 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
             <div className="flex justify-between items-center">
                 <h1 className="text-primary-color text-lg font-medium mx-2 mt-5
                     md:text-2xl
-                ">Seus Roteiros <span className="text-second-color ml-1 text-lg font-normal">({itineraries.length})</span></h1>
+                ">Seus Roteiros <span className="text-secondary-color ml-1 text-lg font-normal">({itineraries.length})</span></h1>
                 <p onClick={() => setOptionSelected(texts.optionSelectorProfile.myItineraries)} className="text-link-color underline text-lg font-medium mx-2 mt-5 cursor-pointer hidden
                     md:block
                 ">{texts.profile.viewAllItineraries}</p>
@@ -101,7 +101,7 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
             <div className="flex justify-between items-center">
                 <h1 className="text-primary-color text-lg font-medium mx-2 mt-5
                     md:text-2xl
-                ">Destinos salvos <span className="text-second-color ml-1 text-lg font-normal">({savedDestinations.length})</span></h1>
+                ">Destinos salvos <span className="text-secondary-color ml-1 text-lg font-normal">({savedDestinations.length})</span></h1>
                 <p onClick={() => setOptionSelected(texts.optionSelectorProfile.destinationsSaved)} className="text-link-color underline text-lg font-medium mx-2 mt-5 cursor-pointer hidden
                     md:block
                 ">{texts.profile.viewAllDestinationsSaved}</p>
@@ -111,7 +111,7 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
             <div className="flex  justify-between items-center">
                 <h1 className="text-primary-color text-lg font-medium mx-2 mt-5
                     md:text-2xl
-                ">Guias prontos salvos <span className="text-second-color ml-1 text-lg font-normal">({savedReadyGuides.length})</span></h1>
+                ">Guias prontos salvos <span className="text-secondary-color ml-1 text-lg font-normal">({savedReadyGuides.length})</span></h1>
                 <p onClick={() => setOptionSelected(texts.optionSelectorProfile.guidesSaved)} className="text-link-color underline text-lg font-medium mx-2 mt-5 cursor-pointer hidden
                     md:block
                 ">{texts.profile.viewAllReadyGuidesSaved}</p>

@@ -39,14 +39,14 @@ export default function GuideCard({ id, image, title, cities, duration, type, co
                 <h1 className="text-primary-color font-medium text-2xl mx-2 mt-2 truncate">{title}</h1>
                 <div className="flex">
                     {cities.map((city, index) => (
-                        <h2 key={index} className="text-second-color mx-2 text-sm">{city}</h2>
+                        <h2 key={index} className="text-secondary-color mx-2 text-sm">{city}</h2>
                     ))}
                 </div>
 
                 <div className="flex justify-between truncate mx-2 mb-3 mt-5">
-                    <p className="text-second-color text-xs">{`${duration.toString()} dias`}</p>
-                    <p className="text-second-color text-xs">{type}</p>
-                    <p className="text-second-color text-xs">{continent}</p>
+                    <p className="text-secondary-color text-xs">{`${duration.toString()} dias`}</p>
+                    <p className="text-secondary-color text-xs">{type}</p>
+                    <p className="text-secondary-color text-xs">{continent}</p>
                 </div>
 
                 <p className="text-primary-color mx-2 text-sm line-clamp-2">{description}</p>

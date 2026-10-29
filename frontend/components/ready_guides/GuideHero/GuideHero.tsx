@@ -39,7 +39,7 @@ export default async function GuideHero({ guide }: GuideHeroProps) {
             ">
                 {/* <div className="flex items-center gap-2">
                     <Heart className="text-red-500 fill-red-500" />
-                    <p className="text-sm text-second-color">3.1k de pessoas salvaram esse roteiro.</p>
+                    <p className="text-sm text-secondary-color">3.1k de pessoas salvaram esse roteiro.</p>
                 </div> */}
 
                 <h1 className="text-2xl font-medium mx-2
@@ -52,7 +52,7 @@ export default async function GuideHero({ guide }: GuideHeroProps) {
                         <h2 key={index} className="text-primary-color">{city} </h2>
                     ))}
                 </div>
-                <p className="text-xs text-second-color my-2 mx-2
+                <p className="text-xs text-secondary-color my-2 mx-2
                     lg:text-sm
                 ">
                     {guide.description}

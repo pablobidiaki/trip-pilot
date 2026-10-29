@@ -17,7 +17,7 @@ export default function TipsCard({title, text}: TipsCardProps){
         <div className="mx-4 bg-gray-50 rounded-2xl p-2 mb-5">
             <span className="flex w-fit mx-auto">{getIcon(title)}</span>
             <h1 className="text-center text-primary-color text-2xl font-medium">{title}</h1>
-            <p className="text-center text-second-color mt-2">{text}</p>
+            <p className="text-center text-secondary-color mt-2">{text}</p>
         </div>
     )
 }

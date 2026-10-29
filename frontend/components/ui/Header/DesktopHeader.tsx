@@ -11,15 +11,16 @@ import UserMenu from "../UserMenu/UserMenu";
 interface DesktopHeaderProps {
     session: any;
     status: string
+    backgroundLight?: boolean
 }
 
-export default function DesktopHeader({ session, status }: DesktopHeaderProps) {    
+export default function DesktopHeader({ session, status, backgroundLight }: DesktopHeaderProps) {
     return (
         <div>
-            <div className="bg-transparent font-medium flex justify-between px-4 py-3 items-center text-white">
+            <div className={`bg-transparent font-medium flex justify-between px-4 py-3 items-center ${backgroundLight ? "text-primary-color" : "text-white"}`}>
                 <div>
                     <Link href={'/'}>
-                        <Image src="/imgs/icons/logo.png"
+                        <Image src={`${backgroundLight ? "/imgs/icons/tripPilot.png" : "/imgs/icons/logo.png"}`}
                             alt="Logo TripPilot"
                             width={40}
                             height={40}
@@ -28,34 +29,35 @@ export default function DesktopHeader({ session, status }: DesktopHeaderProps) {
                     </Link>
                 </div>
 
-                <div className="flex gap-18">
+                <div className="flex gap-18 ">
                     <p><Link href={'/'}>{texts.header.createScript}</Link></p>
                     <p><Link href={'/ready_guides'}>{texts.header.readyGuides}</Link></p>
                     <p><Link href={'/destinations'}>{texts.header.destinations}</Link></p>
                     {/* <p><Link href={'/pro'}>{texts.header.pro}</Link></p> */}
                 </div>
-
-                {status === "loading" ? (
-                    <div />
-                ) : session ? (
-                    <UserMenu
-                        image={session.user?.image}
-                        name={session.user?.name}
-                        email={session.user?.email}
-                    />
-                ) : (
-                    <div className="flex gap-5">
-                        <WhiteButton
-                            text={<Link href="/login">Entrar</Link>}
-                            type="button"
+                <div className="text-black">
+                    {status === "loading" ? (
+                        <div />
+                    ) : session ? (
+                        <UserMenu
+                            image={session.user?.image}
+                            name={session.user?.name}
+                            email={session.user?.email}
                         />
+                    ) : (
+                        <div className="flex gap-5">
+                            <WhiteButton
+                                text={<Link href="/login">Entrar</Link>}
+                                type="button"
+                            />
 
-                        <GradientButton
-                            text={<Link href="/register">Começar Grátis</Link>}
-                            type="button"
-                        />
-                    </div>
-                )}
+                            <GradientButton
+                                text={<Link href="/register">Começar Grátis</Link>}
+                                type="button"
+                            />
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     )

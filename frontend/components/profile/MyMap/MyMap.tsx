@@ -60,7 +60,7 @@ export default function MyMap({ user }: MyMapProps) {
     return (
         <div className="w-full mx-auto p-2 sm:p-4 rounded-xl animate-[optionSelector_300ms_ease-out]">
             <h1 className="text-xl sm:text-2xl font-medium text-primary-color">{texts.profile.myMap}</h1>
-            <p className="text-second-color text-xs sm:text-sm font-light mb-3 sm:mb-4">{texts.profile.myMapText}</p>
+            <p className="text-secondary-color text-xs sm:text-sm font-light mb-3 sm:mb-4">{texts.profile.myMapText}</p>
 
             <div className="relative w-full max-h-[80vh] rounded-xl overflow-hidden bg-blue-50 touch-none">
                 <ComposableMap

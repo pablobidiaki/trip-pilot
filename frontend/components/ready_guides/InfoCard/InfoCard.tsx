@@ -13,7 +13,7 @@ export default function InfoCard({icon, title, text, tailwindTags}: InfoCardProp
             <span className="rounded-full bg-purple-100 text-purple-color m-2 p-2">{icon}</span>
             <div className="p-1">
                 <h1 className="text-xl font-medium text-primary-color">{title}</h1>
-                <p className="text-md text-second-color">{text}</p>
+                <p className="text-md text-secondary-color">{text}</p>
             </div>
         </div>
     )

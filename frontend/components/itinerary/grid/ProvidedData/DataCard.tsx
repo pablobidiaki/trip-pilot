@@ -12,9 +12,9 @@ export default function DataCard({ icon, title, text, subText }: DataCardProps) 
         <div className="flex gap-2 mx-2 bg-background-color py-2 pr-6 pl-2 rounded-xl">
             <span className="p-2 h-fit text-orange-400 bg-orange-100 rounded-xl">{icon}</span>
             <div>
-                <p className="text-second-color uppercase text-xs font-light">{title}</p>
+                <p className="text-secondary-color uppercase text-xs font-light">{title}</p>
                 <p className="text-primary-color font-medium">{text}</p>
-                <p className="text-second-color text-xs font-light">{subText}</p>
+                <p className="text-secondary-color text-xs font-light">{subText}</p>
             </div>
         </div>
     )

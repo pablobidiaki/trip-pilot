@@ -25,7 +25,7 @@ export default function MyItineraries({ itineraries }: MyItinerariesProps) {
             <h1 className="font-medium text-primary-color
                 md:text-2xl
             ">{texts.profile.myItineraries}</h1>
-            <p className="text-xs font-light text-second-color
+            <p className="text-xs font-light text-secondary-color
                 md:text-sm
             ">{texts.profile.itineraryText}</p>
             <div className="grid grid-cols-1 mt-5 gap-5
@@ -35,7 +35,7 @@ export default function MyItineraries({ itineraries }: MyItinerariesProps) {
             ">
                 {itineraries.length === 0 &&
                     <div className="flex items-center">
-                        <p className="text-second-color text-xs italic
+                        <p className="text-secondary-color text-xs italic
                             md:text-lg
                         ">{texts.profile.noneItineraryCreated}</p>
                     </div>
@@ -58,21 +58,21 @@ export default function MyItineraries({ itineraries }: MyItinerariesProps) {
                                             <Calendar className="text-blue-500" />
                                         </div>
                                         <p className="text-primary-color mt-2">{itinerary.days} </p>
-                                        <p className="text-second-color">{texts.days}</p>
+                                        <p className="text-secondary-color">{texts.days}</p>
                                     </div>
                                     <div className="flex flex-col items-center">
                                         <div className="bg-green-100 rounded-full p-2">
                                             <Plane className="text-green-500" />
                                         </div>
-                                        <p className="text-second-color mt-2 mx-2 "><span className="text-primary-color">Ida: </span>{formatDate(itinerary.startDate)}</p>
-                                        <p className="text-second-color mx-2 "><span className="text-primary-color">Volta: </span>{formatDate(itinerary.endDate)}</p>
+                                        <p className="text-secondary-color mt-2 mx-2 "><span className="text-primary-color">Ida: </span>{formatDate(itinerary.startDate)}</p>
+                                        <p className="text-secondary-color mx-2 "><span className="text-primary-color">Volta: </span>{formatDate(itinerary.endDate)}</p>
                                     </div>
                                     <div className="flex flex-col items-center">
                                         <div className="bg-purple-100 rounded-full p-2">
                                             <User className="text-purple-500" />
                                         </div>
                                         <p className="text-primary-color mt-2">{itinerary.travelers} </p>
-                                        <p className="text-second-color">{texts.people}</p>
+                                        <p className="text-secondary-color">{texts.people}</p>
                                     </div>
                                 </div>
 

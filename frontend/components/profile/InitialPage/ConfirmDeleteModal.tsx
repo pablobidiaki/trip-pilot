@@ -47,7 +47,7 @@ export default function ConfirmDeleteModal({ accessToken, itineraryId, isOpen, o
                 onClick={(e) => e.stopPropagation()}>
                 <button type="button"
                     onClick={onClose}
-                    className="absolute right-4 top-4 text-second-color transition-colors hover:text-red-500">
+                    className="absolute right-4 top-4 text-secondary-color transition-colors hover:text-red-500">
                     <X className="cursor-pointer" />
                 </button>
 
@@ -55,7 +55,7 @@ export default function ConfirmDeleteModal({ accessToken, itineraryId, isOpen, o
                     {texts.deleteItinerary.title}
                 </h1>
 
-                <p className="mt-2 text-sm text-second-color">
+                <p className="mt-2 text-sm text-secondary-color">
                     {texts.deleteItinerary.text}
                 </p>
 

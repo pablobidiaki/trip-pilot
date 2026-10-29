@@ -7,13 +7,13 @@ export default function SocialLinks(){
             md:w-[50%]
             lg:w-[24%]
         ">
-            <Image src={"/imgs/icons/trip_pilot.png"} 
+            <Image src={"/imgs/icons/tripPilot.png"} 
                    alt="TripPilot icon"
                    width={50}
                    height={50}
             />
 
-            <p className="text-second-color text-sm mt-3 text-center">{texts.footer.socialLinksText}</p>
+            <p className="text-secondary-color text-sm mt-3 text-center">{texts.footer.socialLinksText}</p>
 
             <div className="flex gap-5 mt-3">
                 <Image src={"/imgs/icons/instagram.png"} 

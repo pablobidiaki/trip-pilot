@@ -13,7 +13,7 @@ export default function ReadyGuidesSavedCard({ user, savedReadyGuides }: ReadyGu
     if (savedReadyGuides.length === 0) {
         return (
             <div className="flex items-center mx-5 py-5">
-                <p className="text-second-color text-lg italic">{texts.profile.noneGuideSaved}</p>
+                <p className="text-secondary-color text-lg italic">{texts.profile.noneGuideSaved}</p>
             </div>
         )
     }
@@ -31,11 +31,11 @@ export default function ReadyGuidesSavedCard({ user, savedReadyGuides }: ReadyGu
                     </div>
                     <img className="relative w-full h-52 object-cover brightness-50 rounded-t-2xl" src={guide.readyGuide.imageURL} />
                     <h1 className="mx-2 text-lg font-semibold text-gray-900 truncate">{guide.readyGuide.title}</h1>
-                    <p className="text-xs line-clamp-2 text-second-color mx-2 mb-3
+                    <p className="text-xs line-clamp-2 text-secondary-color mx-2 mb-3
                         md:text-sm
                     ">{guide.readyGuide.description}</p>
                     {guide.readyGuide.cities.map((city, index) => (
-                        <span key={index} className="mx-2 text-second-color text-xs
+                        <span key={index} className="mx-2 text-secondary-color text-xs
                             md:text-sm
                         ">{city}</span>
                     ))}

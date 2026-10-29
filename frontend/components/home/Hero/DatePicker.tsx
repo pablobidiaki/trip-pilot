@@ -144,7 +144,7 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
                 </span>
                 <div className="flex flex-col pr-3">
                     <p>{title}</p>
-                    <span className={value ? "text-second-color" : "text-gray-400"}>
+                    <span className={value ? "text-secondary-color" : "text-gray-400"}>
                         {displayDate || texts.form.whenPlaceholder}
                     </span>
                 </div>
@@ -157,7 +157,7 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
                             <ChevronLeft size={20} />
                         </button>
 
-                        <span className="font-semibold capitalize text-second-color">
+                        <span className="font-semibold capitalize text-secondary-color">
                             {months[currentMonth]} de {currentYear}
                         </span>
 
@@ -190,7 +190,7 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
                                             ? "cursor-not-allowed text-gray-300"
                                             : isSelected(day)
                                                 ? "bg-main-primary-color font-semibold text-white"
-                                                : "text-second-color hover:bg-blue-50 hover:text-main-primary-color"
+                                                : "text-secondary-color hover:bg-blue-50 hover:text-main-primary-color"
                                         }`}
                                 >
                                     {day}
@@ -204,7 +204,7 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
                     </div>
 
                     <div className="mt-4 flex items-center justify-between border-t border-gray-100 pt-3">
-                        <button type="button" onClick={clearDate} className="rounded-lg px-3 py-2 text-sm text-gray-500 transition hover:bg-gray-100 hover:text-second-color ">
+                        <button type="button" onClick={clearDate} className="rounded-lg px-3 py-2 text-sm text-gray-500 transition hover:bg-gray-100 hover:text-secondary-color ">
                             {texts.clear}
                         </button>
 

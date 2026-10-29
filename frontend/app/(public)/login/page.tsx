@@ -53,7 +53,7 @@ export default function Login() {
           xl:max-w-[70%]
         ">
           <h1 className="text-center text-4xl text-primary-color mt-10">{texts.loginAndRegister.welcomeAgain}</h1>
-          <p className="text-center text-lg text-second-color mb-5">{texts.loginAndRegister.loginToContinue}</p>
+          <p className="text-center text-lg text-secondary-color mb-5">{texts.loginAndRegister.loginToContinue}</p>
           <form >
             <div onClick={() => setError(false)}>
               <InputWithTitle icon={<Mail />}

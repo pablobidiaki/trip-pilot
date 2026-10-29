@@ -17,7 +17,7 @@ export default async function ReadyGuidePage({ params }: ReadyGuidesProps) {
 
   return (
     <div>
-      <Header />
+      <Header backgroundLight={true}/>
       <ReadyGuide guide={guide} />
       <Footer />
     </div>

@@ -20,14 +20,14 @@ export default function Transportation({transports}: TransportationProps){
                 2xl:w-[60%]
             ">
                 <h1 className="text-2xl text-center text-primary-color font-medium">{texts.transportation.tabTitle}</h1>
-                <h2 className="text-sm text-center text-second-color font-medium">{texts.transportation.tabSubtitle}</h2>
+                <h2 className="text-sm text-center text-secondary-color font-medium">{texts.transportation.tabSubtitle}</h2>
                 <div className="flex flex-col gap-6 justify-center
                     lg:flex-row
                 ">
                     <TransportationCard icon={<CarFront size={40}/>} type={transports[0].type} averagePrice={transports[0].averagePrice} advantages={carAdvantages} typePayment={texts.transportation.diary}/>
                     <TransportationCard icon={<BusFront size={40}/>} type={transports[1].type} averagePrice={transports[1].averagePrice} advantages={publicTransportAdvantages} typePayment={texts.transportation.price}/>
                 </div>
-                <p className="mt-10 text-center text-second-color 
+                <p className="mt-10 text-center text-secondary-color 
                     lg:max-w-[68%] lg:mx-auto
                 "><span className="text-purple-color">{texts.tip}: </span>{texts.transportation.tabText}</p>
             </div>

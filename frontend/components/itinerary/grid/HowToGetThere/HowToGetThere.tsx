@@ -42,9 +42,9 @@ export default function HowToGetThere({ tickets, destinationCountry, destination
                         <div key={index} className=" mb-5">
                             <hr />
                             <h2 className="text-primary-color text-xl font-medium my-2 px-2">{index + 1}{texts.howToGetThere.fly}</h2>
-                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.boardingPoint} <span className="text-second-color">{ticket.boardingPoint}</span></p>
-                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.disembarkationPoint} <span className="text-second-color">{ticket.disembarkationPoint}</span></p>
-                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.flyTime} <span className="text-second-color">{ticket.flyTime}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.boardingPoint} <span className="text-secondary-color">{ticket.boardingPoint}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.disembarkationPoint} <span className="text-secondary-color">{ticket.disembarkationPoint}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.flyTime} <span className="text-secondary-color">{ticket.flyTime}</span></p>
                         </div>
                     ))}
                 </div>
@@ -67,9 +67,9 @@ export default function HowToGetThere({ tickets, destinationCountry, destination
                         <div key={index} className="w-full mb-5">
                             <hr />
                             <h2 className="text-primary-color text-xl font-medium my-2 px-2">{index + 1}º voo</h2>
-                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.boardingPoint} <span className="text-second-color">{ticket.boardingPoint}</span></p>
-                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.disembarkationPoint} <span className="text-second-color">{ticket.disembarkationPoint}</span></p>
-                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.flyTime} <span className="text-second-color">{ticket.flyTime}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.boardingPoint} <span className="text-secondary-color">{ticket.boardingPoint}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.disembarkationPoint} <span className="text-secondary-color">{ticket.disembarkationPoint}</span></p>
+                            <p className="text-primary-color font-medium px-2">{texts.howToGetThere.flyTime} <span className="text-secondary-color">{ticket.flyTime}</span></p>
                         </div>
                     ))}
                 </div>

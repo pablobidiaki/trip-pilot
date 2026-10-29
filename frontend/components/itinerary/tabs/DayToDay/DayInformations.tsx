@@ -19,9 +19,9 @@ export default function DayInformations({ itinerary, imageLoading, setImageLoadi
             <div className="bg-white relative rounded-2xl
                 xl:grid-cols-2 xl:min-h-157.5 xl:max-h-157.5
             ">
-                <h1 className="text-center mt-2 font-medium text-lg text-second-color">{itinerary.day}</h1>
+                <h1 className="text-center mt-2 font-medium text-lg text-secondary-color">{itinerary.day}</h1>
                 <h2 className="text-center font-medium text-2xl text-primary-color">{itinerary.title}</h2>
-                <p className="text-center mb-2 text-second-color font-light">{texts.itinerary.cust}:
+                <p className="text-center mb-2 text-secondary-color font-light">{texts.itinerary.cust}:
                     <span className=" text-green-500"> {texts.real} {itinerary.dayCostEstimate.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2

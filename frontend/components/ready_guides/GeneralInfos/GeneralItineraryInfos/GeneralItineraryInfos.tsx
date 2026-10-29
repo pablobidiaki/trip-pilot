@@ -15,7 +15,7 @@ export default function GeneralItineraryInfos({guide}: GeneralItineraryInfosProp
             <h1 className="text-primary-color font-medium px-2 mt-2 text-2xl
                 lg:text-3xl
             ">{texts.readyGuides.overview}</h1>
-            <p className="px-2 text-second-color text-xs
+            <p className="px-2 text-secondary-color text-xs
                 lg:text-sm
             ">{guide.overviewResume}</p>
             <div className="items-center p-2 mt-4

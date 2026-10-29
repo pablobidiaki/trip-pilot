@@ -65,7 +65,7 @@ export default function MainContentGrid({itinerary}: MainContentGridProps){
             <ItineraryDays itineraryDays={itinerary.itinerary.dayToDay} />
 
             <p className="w-fit mx-auto text-center mt-5 px-3 py-2 bg-yellow-100 text-primary-color font-medium rounded-2xl"> {texts.aiWarning}</p>
-            <p className="text-center mt-2 text-second-color">{texts.goodTravel}</p>
+            <p className="text-center mt-2 text-secondary-color">{texts.goodTravel}</p>
         </div>
     )
 }

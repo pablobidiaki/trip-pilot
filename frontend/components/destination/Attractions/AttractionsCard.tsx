@@ -21,7 +21,7 @@ export default function AttractionsCard({ image, name, description, cost_estimat
                     <p className="text-2xl font-medium text-primary-color mb-1
                         xl:text-lg
                     ">{name}</p>
-                    <p className="text-sm text-second-color line-clamp-3
+                    <p className="text-sm text-secondary-color line-clamp-3
                         xl:text-xs
                     ">{description}</p>
                 </div>

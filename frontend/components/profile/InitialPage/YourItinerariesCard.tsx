@@ -23,7 +23,7 @@ export default function YourItinerariesCard({itineraries}: YourItinerariesCardPr
     if (itineraries.length === 0) {
         return (
             <div className="flex items-center mx-5 py-5">
-                <p className="text-second-color text-lg italic">
+                <p className="text-secondary-color text-lg italic">
                     {texts.profile.noneItineraryCreated}
                 </p>
             </div>
@@ -55,7 +55,7 @@ export default function YourItinerariesCard({itineraries}: YourItinerariesCardPr
                                     <p className="rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-700">{itinerary.travelType}</p>
                                 </div>
 
-                                <div className="space-y-2 text-xs text-second-color mx-2 md:text-sm">
+                                <div className="space-y-2 text-xs text-secondary-color mx-2 md:text-sm">
                                     <p>
                                         <span> {formatDate(itinerary.startDate)}</span>
                                         {" "}-{" "}

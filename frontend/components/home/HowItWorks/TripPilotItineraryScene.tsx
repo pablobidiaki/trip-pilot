@@ -90,14 +90,14 @@ export default function TripPilotItineraryScene() {
                 <motion.article key={day.day} initial={{ opacity: 0, x: -25 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.3 + index * 0.25, duration: 0.6, ease: "easeOut", }} className="group grid gap-2 rounded-2xl border border-gray-100 bg-background-color grid-cols-[72px_1fr] p-2">
                   <div className={`flex items-center justify-center rounded-2xl ${day.color}`}>
                     <div className="text-center">
-                      <p className="text-[10px] font-medium text-second-color text-center"> DIA </p>
+                      <p className="text-[10px] font-medium text-secondary-color text-center"> DIA </p>
                       <p className="text-xl font-bold text-slate-800 text-center"> {day.day} </p>
                     </div>
                   </div>
 
                   <div>
                     <h3 className="font-semibold">{day.title}</h3>
-                    <p className="text-xs text-second-color"> {day.subtitle} </p>
+                    <p className="text-xs text-secondary-color"> {day.subtitle} </p>
 
                     <div className="mt-3 flex flex-col gap-2">
                       {day.places.map((place, placeIndex) => (

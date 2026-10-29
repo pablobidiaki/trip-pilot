@@ -29,14 +29,14 @@ export default function UtilInfoCard({ icon, title, text, isOpen, selected, guid
                 <span className="text-purple-color p-2 bg-purple-100 rounded-full m-1">{icon}</span>
                 <div className="max-w-2/3">
                     <h1 className="text-primary-color font-medium text-xl ">{title}</h1>
-                    <p className="text-second-color text-sm font-light">{text}</p>
+                    <p className="text-secondary-color text-sm font-light">{text}</p>
                 </div>
                 <ChevronRight className={`transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-90' : 'rotate-0'}`} />
 
                 {isOpen && (
                     <div className="absolute left-0 top-full mt-5 z-20 bg-white border border-gray-200 rounded-2xl p-4 shadow-lg w-full">
                         {info?.map((text, index) => (
-                            <p key={index} className="text-second-color font-light text-sm">- {text} </p>
+                            <p key={index} className="text-secondary-color font-light text-sm">- {text} </p>
                         ))}
                     </div>
                 )}

@@ -22,7 +22,7 @@ export default function ExpandableCard({ icon, title, texts, isOpen, onClick }: 
             {isOpen && (
                 <div className="absolute left-0 top-full z-20 w-full mt-2 bg-white border border-gray-200 rounded-2xl p-4 shadow-lg">
                     {texts.map((text, index) => (
-                        <p key={index} className="text-second-color font-light text-sm">- {text} </p>
+                        <p key={index} className="text-secondary-color font-light text-sm">- {text} </p>
                     ))}
                 </div>
             )}

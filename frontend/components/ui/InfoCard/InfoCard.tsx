@@ -14,7 +14,7 @@ export default function InfoCard({icon, iconBgColor, title, text }: CardProps){
                 <span>{icon}</span>
             </div>
             <h1 className="text-primary-color font-medium text-2xl mt-1">{title}</h1>
-            <p className="text-second-color text-sm text-center max-w-62">{text}</p>
+            <p className="text-secondary-color text-sm text-center max-w-62">{text}</p>
         </div>
     )
 }

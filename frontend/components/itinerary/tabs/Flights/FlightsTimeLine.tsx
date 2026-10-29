@@ -17,16 +17,16 @@ export default function FlightsTimeLine({ index, boardingPoint, disembarkationPo
                     <div className="z-10 mt-1 h-4 w-4 rounded-full border-4 border-white bg-primary-color" />
                     <div>
                         <p className="text-primary-color font-medium">{boardingPoint}</p>
-                        <p className="text-sm text-second-color">{flyTime}</p>
-                        <span className="text-xs text-second-color">{texts.flights.boarding}</span>
+                        <p className="text-sm text-secondary-color">{flyTime}</p>
+                        <span className="text-xs text-secondary-color">{texts.flights.boarding}</span>
                     </div>
                 </div>
                 <div className="relative flex items-start gap-4 ">
                     <div className="z-10 mt-1 h-4 w-4 rounded-full border-4 border-white bg-primary-color" />
                     <div>
                         <p className="text-primary-color font-medium">{disembarkationPoint}</p>
-                        <p className="text-sm text-second-color">{flyTime}</p>
-                        <span className="text-xs text-second-color">{texts.flights.disembarkation}</span>
+                        <p className="text-sm text-secondary-color">{flyTime}</p>
+                        <span className="text-xs text-secondary-color">{texts.flights.disembarkation}</span>
                     </div>
                 </div>
             </div>

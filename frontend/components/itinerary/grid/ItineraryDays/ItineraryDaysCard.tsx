@@ -29,11 +29,11 @@ export default function ItineraryDaysCard({ day, title, image, morning, afternoo
                 <img src={image} alt="Imagem tour" className="max-h-40 w-full
                     md:max-h-50 md:md:min-h-50
                 "/>
-                <p className="mx-2 text-second-color italic text-sm">{day}</p>
+                <p className="mx-2 text-secondary-color italic text-sm">{day}</p>
                 <p className="mx-2 text-primary-color font-medium text-xl mb-2">{title}</p>
-                <p className="text-sm px-2 py-1 text-primary-color font-medium">{texts.itinerary.morning}<span className="text-second-color">{morning}</span></p>
-                <p className="text-sm px-2 py-1 text-primary-color font-medium">{texts.itinerary.afternoon}<span className="text-second-color">{afternoon}</span></p>
-                <p className="text-sm px-2 py-1 text-primary-color font-medium mb-2">{texts.itinerary.evening}<span className="text-second-color">{evening}</span></p>
+                <p className="text-sm px-2 py-1 text-primary-color font-medium">{texts.itinerary.morning}<span className="text-secondary-color">{morning}</span></p>
+                <p className="text-sm px-2 py-1 text-primary-color font-medium">{texts.itinerary.afternoon}<span className="text-secondary-color">{afternoon}</span></p>
+                <p className="text-sm px-2 py-1 text-primary-color font-medium mb-2">{texts.itinerary.evening}<span className="text-secondary-color">{evening}</span></p>
                 <div className="flex gap-2 items-center p-2 mt-auto">
                     <p className="text-primary-color">{texts.itinerary.cust} </p>
                     <p className="text-green-500">{texts.real} {cost_estimate.toLocaleString("pt-BR", {

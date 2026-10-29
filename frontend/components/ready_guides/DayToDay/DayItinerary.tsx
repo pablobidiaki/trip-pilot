@@ -20,12 +20,12 @@ export default function DayItineraryProps({ guide, daySelected }: DayItineraryPr
                 ">
                     {resumeDay.city}
                 </p>
-                <p className="text-second-color text-xs
+                <p className="text-secondary-color text-xs
                     xl:text-lg
                 ">
                     {resumeDay.fullDate}
                 </p>
-                <p className="text-second-color mt-2 mb-5  text-sm
+                <p className="text-secondary-color mt-2 mb-5  text-sm
                     xl:text-lg
                 ">
                     {resumeDay.description}

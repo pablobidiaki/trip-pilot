@@ -4,13 +4,17 @@ import { useSession } from "next-auth/react"
 import DesktopHeader from "./DesktopHeader";
 import MobileHeader from "./MobileHeader";
 
-export default function Header() {
+interface HeaderProps{
+    backgroundLight?: boolean
+}
+
+export default function Header({backgroundLight}: HeaderProps) {
     const { data: session, status } = useSession()
 
     return (
         <header className="max-w-screen">
             <div className="hidden md:block">
-                <DesktopHeader session={session} status={status} />
+                <DesktopHeader session={session} status={status} backgroundLight={backgroundLight}/>
             </div>
 
             <div className="block md:hidden">

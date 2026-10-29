@@ -13,7 +13,7 @@ export default function GuideInfoCard({icon, title, text}: GuideInfoCardProps){
         ">
             <span>{icon}</span>
             <div>
-                <p className="text-second-color text-center
+                <p className="text-secondary-color text-center
                     md:text-start
                 ">{title}</p>
                 <p className="text-primary-color font-medium text-center

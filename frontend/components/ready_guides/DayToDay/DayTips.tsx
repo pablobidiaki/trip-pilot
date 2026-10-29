@@ -20,7 +20,7 @@ export default function DayTips({ guide, daySelected }: DayTipsProps) {
             {guide.itinerary.map(resumeDay => (
                 resumeDay.day.toString() == daySelected &&
                 resumeDay.dayTips.map((tip, index) => (
-                    <p key={index} className="mt-3 text-sm text-second-color">{index + 1}. {tip}</p>
+                    <p key={index} className="mt-3 text-sm text-secondary-color">{index + 1}. {tip}</p>
                 ))
             ))}
         </div>

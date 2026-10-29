@@ -43,7 +43,7 @@ export default function Register() {
           xl:max-w-[70%]
         ">
             <h1 className="text-center text-4xl text-primary-color mt-0">{texts.loginAndRegister.createYourAccount}</h1>
-            <p className="text-center text-lg text-second-color mb-5">{texts.loginAndRegister.createYourAccountText}</p>
+            <p className="text-center text-lg text-secondary-color mb-5">{texts.loginAndRegister.createYourAccountText}</p>
             <form onSubmit={createUser}>
               <InputWithTitle icon={<User />}
                 title={texts.loginAndRegister.name}

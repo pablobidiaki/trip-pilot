@@ -26,11 +26,11 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                 ">{texts.providedData.yourTravelTo} <span className="capitalize">{itinerary.destination}</span></h1>
 
                 <div className="flex w-fit mx-auto gap-4 mt-5 items-center capitalize">
-                    <p className="text-second-color text-lg
+                    <p className="text-secondary-color text-lg
                         xl:text-2xl
                     ">{itinerary.departure}</p>
-                    <MoveRight size={30} className="text-second-color" />
-                    <p className="text-second-color text-lg
+                    <MoveRight size={30} className="text-secondary-color" />
+                    <p className="text-secondary-color text-lg
                         xl:text-2xl
                     ">{itinerary.destination}</p>
                 </div>
@@ -39,11 +39,11 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                     <img src={itinerary.countryDestinationFlagURL} className="w-20 shadow-2xl shadow-gray-500" />
                 </div>
                 <div className="flex w-fit mx-auto gap-4 items-center mt-5">
-                    <p className="text-second-color">{formatDate(itinerary.startDate)}</p>
-                    <p className="text-second-color text-xl">•</p>
-                    <p className="text-second-color">{formatDate(itinerary.endDate)}</p>
+                    <p className="text-secondary-color">{formatDate(itinerary.startDate)}</p>
+                    <p className="text-secondary-color text-xl">•</p>
+                    <p className="text-secondary-color">{formatDate(itinerary.endDate)}</p>
                 </div>
-                <p className="text-center text-second-color">{itinerary.days} {texts.days}</p>
+                <p className="text-center text-secondary-color">{itinerary.days} {texts.days}</p>
                 <div className="grid grid-cols-2 items-center mx-2 gap-10 justify-center mt-10
                     lg:flex lg:justify-center
                 ">
@@ -70,10 +70,10 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
                         }).toString()}`}
                     />
                 </div>
-                <p className="mx-auto text-center text-second-color text-lg mt-15 px-2
+                <p className="mx-auto text-center text-secondary-color text-lg mt-15 px-2
                     xl:text-xl
                 ">{texts.itinerary.proviededDataText}</p>
-                <p className="mx-auto text-center text-second-color text-xs pb-5 italic px-2
+                <p className="mx-auto text-center text-secondary-color text-xs pb-5 italic px-2
                     xl:text-sm
                 ">{texts.aiWarning}</p>
             </div>

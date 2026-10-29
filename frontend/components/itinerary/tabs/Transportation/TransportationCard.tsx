@@ -15,7 +15,7 @@ export default function TransportationCard({ icon, type, averagePrice, advantage
         <div className="p-2 rounded-2xl bg-gray-50 flex flex-col items-center w-full mt-5">
             <span className="text-primary-color">{icon}</span>
             <h1 className="text-primary-color font-medium text-xl text-center">{type}</h1>
-            <p className="text-second-color text-sm font-light">{typePayment}</p>
+            <p className="text-secondary-color text-sm font-light">{typePayment}</p>
             <p className="text-green-500 mt-5 mb-8 text-xl py-2 px-4 bg-green-100 rounded-2xl ">{texts.real} {averagePrice.toLocaleString("pt-BR", {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2

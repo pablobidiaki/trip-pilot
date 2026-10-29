@@ -23,12 +23,12 @@ export default function Flights({ tickets, countryDestinationFlag, countryOrigin
                     <div className="flex flex-col items-center">
                         <p className="text-primary-color">{texts.howToGetThere.boarding}</p>
                         <img src={countryOriginFlag} className="max-w-30 " />
-                        <p className="text-second-color capitalize">{countryOriginName}</p>
+                        <p className="text-secondary-color capitalize">{countryOriginName}</p>
                     </div>
                     <div className="flex flex-col items-center">
                         <p className="text-primary-color">{texts.howToGetThere.disembarkation}</p>
                         <img src={countryDestinationFlag} className="max-w-30 " />
-                        <p className="text-second-color capitalize">{countryDestinationName}</p>
+                        <p className="text-secondary-color capitalize">{countryDestinationName}</p>
                     </div>
                 </div>
                 <div className="flex flex-col gap-10 mt-5

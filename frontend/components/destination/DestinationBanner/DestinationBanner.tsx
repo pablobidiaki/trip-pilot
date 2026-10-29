@@ -24,7 +24,7 @@ export default async function DestinationBanner({ destination }: DestinationBann
         <div className="relative overflow-hidden pb-15 w-full">
             <img src={destination.bannerURL} alt="Banner" className="absolute inset-0 h-full w-full object-cover z-0 brightness-50" />
 
-            <div className="relative z-50 bg-white/20">
+            <div className="relative z-50">
                 <Header />
             </div>
 

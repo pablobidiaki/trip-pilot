@@ -19,7 +19,7 @@ export default function OptionsSelect({ optionSelected, setOptionSelected }: opt
         { icon: <Tent />, text: texts.optionSelectorProfile.destinationsSaved },
         { icon: <Signpost />, text: texts.optionSelectorProfile.guidesSaved },
         { icon: <Map />, text: texts.optionSelectorProfile.myMap },
-        // { icon: <Cog />, text: texts.optionSelectorProfile.configurations },
+        { icon: <Cog />, text: texts.optionSelectorProfile.configurations },
         { icon: <LogOut />, text: texts.optionSelectorProfile.exit },
     ]
 
@@ -33,7 +33,7 @@ export default function OptionsSelect({ optionSelected, setOptionSelected }: opt
             md:flex
         ">
             <Link href="/">
-                <img src="/imgs/icons/trip_pilot.png" alt="Logo" className="w-16 h-16 mx-auto my-2" />
+                <img src="/imgs/icons/tripPilot.png" alt="Logo" className="w-16 h-16 mx-auto my-2" />
             </Link>
             {options.map((option, index) => (
                 <div key={index}

@@ -17,7 +17,7 @@ export default function ReviewBar({ rating, reviews }: ReviewBarProps) {
             <div className="flex gap-5 ml-1">
                 <p className="text-primary-color font-medium">{rating}</p>
                 {reviews &&
-                    <p className="text-second-color font-light">{reviews} {texts.accommodations.reviews}</p>
+                    <p className="text-secondary-color font-light">{reviews} {texts.accommodations.reviews}</p>
                 }
             </div>
         </div>

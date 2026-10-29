@@ -13,7 +13,7 @@ export default function ProvidedDataCard({icon, title, value}: ProvidedDataCardP
         ">  
             <span className="text-blue-700">{icon}</span>
             <p className="text-primary-color text-xl mb-2">{title}</p>
-            <p className="text-second-color ">{value}</p>
+            <p className="text-secondary-color ">{value}</p>
         </div>
     )
 }

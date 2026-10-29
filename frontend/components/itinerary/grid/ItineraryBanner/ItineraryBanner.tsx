@@ -6,8 +6,8 @@ export default function ItineraryBanner() {
     return (
         <div className="relative">
             <h1 className="text-primary-color text-4xl font-medium">{texts.itineraryTitles.mainTitle}</h1>
-            <p className="text-second-color mt-2">{texts.allReady}</p>
-            <p className="text-second-color text-sm font-light mt-5">{texts.itinerary.pexelsCredits}
+            <p className="text-secondary-color mt-2">{texts.allReady}</p>
+            <p className="text-secondary-color text-sm font-light mt-5">{texts.itinerary.pexelsCredits}
                 <Link href={"https://www.pexels.com/pt-br/"} target="_blank" className="text-link-color"> Pexels.</Link>
             </p>
         </div>

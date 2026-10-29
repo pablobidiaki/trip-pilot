@@ -46,7 +46,7 @@ export default function Weather({ weather }: WeatherProps) {
                     lg:max-w-[50%]
                 ">
                     <p className="text-center mb-2 font-medium text-primary-color">{texts.weather.recommendation}</p>
-                    <p className=" text-second-color text-center text-sm"> {weather.recommendation}</p>
+                    <p className=" text-secondary-color text-center text-sm"> {weather.recommendation}</p>
                 </div>
             </div>
         </div>

@@ -45,10 +45,10 @@ export default function ModalHours({ isOpen, day, hours, onClose }: ModalProps) 
                                 <p>{hour.hour} -</p>
                                 <p>{hour.title}</p>
                             </div>
-                            <p className="text-sm text-second-color"> {hour.description} </p>
+                            <p className="text-sm text-secondary-color"> {hour.description} </p>
 
                             {hour.tip && (
-                                <p className="mt-2 w-fit rounded-2xl border border-purple-300 px-2 py-1 text-sm text-second-color">
+                                <p className="mt-2 w-fit rounded-2xl border border-purple-300 px-2 py-1 text-sm text-secondary-color">
                                     <span className="text-purple-500">
                                         {texts.tip}:
                                     </span>{" "}
