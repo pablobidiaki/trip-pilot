@@ -42,7 +42,7 @@ export async function registerUser(data: RegisterUserInterface) {
     return result
 }
 
-export async function updateUser(data: UpdateUserInterface) {
+export async function updateUser(data: UpdateUserInterface | {}) {
     const response = await fetch(`${apiKey}/user/edit`, {
         method: "PATCH",
         headers: {

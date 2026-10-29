@@ -49,14 +49,14 @@ export class EditUserInfosDto {
   name: string
 
   @ApiProperty({
-    example: 'hash password',
+    example: 'https://urlimgcloudinary',
   })
   @IsOptional()
-  password: string
+  image: string
 
   @ApiProperty({
     example: 'https://urlimgcloudinary',
   })
   @IsOptional()
-  image: string
+  password: string
 }

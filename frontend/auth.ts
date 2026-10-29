@@ -17,6 +17,8 @@ declare module "next-auth" {
 declare module "next-auth/jwt" {
   interface JWT {
     accessToken?: string;
+    name?: string | null;
+    image?: string | null;
   }
 }
 
@@ -53,12 +55,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         );
 
         if (!response.ok) return null;
-        
+
 
         const result = await response.json();
 
         if (!result.data?.id || !result.accessToken) return null
-      
+
 
         return {
           id: String(result.data.id),
@@ -72,8 +74,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
 
   callbacks: {
-    async jwt({ token, user, account }) {
-      if (user?.accessToken) token.accessToken = user.accessToken;
+    async jwt({ token, user, account, trigger, session }) {
+      if (user) {
+        token.name = user.name;
+        token.picture = user.image;
+      }
+
+      if (user?.accessToken) {
+        token.accessToken = user.accessToken;
+      }
 
       if (account?.provider === "google" && account.id_token) {
         const response = await fetch(
@@ -89,14 +98,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
         );
 
-        if (!response.ok) throw new Error("Falha na autenticação do backend");
-        
+        if (!response.ok)throw new Error("Falha na autenticação do backend");
+      
         const result = await response.json();
 
         if (!result.accessToken) throw new Error("Backend não retornou accessToken");
         
 
         token.accessToken = result.accessToken;
+
+        if (result.data) {
+          token.name = result.data.name ?? token.name;
+          token.picture = result.data.image ?? token.picture;
+        }
+      }
+
+      if (trigger === "update" && session?.user) {
+        token.name = session.user.name ?? token.name;
+        token.picture = session.user.image ?? token.picture;
       }
 
       return token;
@@ -104,6 +123,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     async session({ session, token }) {
       session.accessToken = token.accessToken;
+      session.user.name = token.name ?? null;
+      session.user.image = token.picture ?? null;
+
       return session;
     },
   },

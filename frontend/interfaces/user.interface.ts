@@ -14,8 +14,8 @@ export interface RegisterUserInterface{
 }
 
 export interface UpdateUserInterface{
-    id: string
-    name?: string
-    password?: string
-    imageURL?: string
+    id: string 
+    name: string | undefined
+    image: string | undefined
+    password: string | undefined
 }

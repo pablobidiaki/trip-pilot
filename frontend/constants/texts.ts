@@ -434,6 +434,13 @@ const texts = {
         noneItineraryCreated: "Você ainda não criou nenhum roteiro.",
         noneDestinationSaved: "Você ainda não salvou nenhum destino.",
         noneGuideSaved: "Você ainda não salvou nenhum guia.",
+        myProfile: "Meu perfil",
+        configurationsSubtitle: "Gerencie seu perfil e acompanhe sua jornada pelo mundo.",
+        changeYourPhoto: "Altere sua foto de perfil",
+        username: "Nome de usuário",
+        email: "E-mail",
+        emailCannotBeChanged: "O e-mail não pode ser alterado.",
+        saveChanges: "Salvar alterações"
     },
 
     deleteItinerary:{
