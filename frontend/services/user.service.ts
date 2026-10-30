@@ -73,3 +73,35 @@ export async function updatePassword(data: UpdateUserInterface | {}) {
 
     return result
 }
+
+export async function forgotPassword(data: {email: string}) {
+    const response = await fetch(`${apiKey}/auth/forgotPassword`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+
+    const result = await response.json()
+
+    if (!response.ok) throw new Error(result.message || "Error trying run forgotPassword.")
+
+    return result
+}
+
+export async function changePassword(data: {token: string, password: string}) {
+     const response = await fetch(`${apiKey}/auth/changePassword`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+
+    const result = await response.json()
+
+    if (!response.ok) throw new Error(result.message || "Error trying change password.")
+
+    return result
+}

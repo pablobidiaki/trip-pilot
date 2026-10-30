@@ -11,7 +11,7 @@ export default function NotFound(){
                 lg:block lg:object-cover
             "/>
             <div className="relative">
-                <Header />
+                <Header backgroundLight={true}/>
             </div>
             <div className="relative mt-5 mx-2
                 lg:max-w-2/6 lg:ml-32 lg:mt-80

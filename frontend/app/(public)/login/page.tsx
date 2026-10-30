@@ -8,6 +8,8 @@ import { signIn } from "next-auth/react"
 import { useRouter } from "next/dist/client/components/navigation";
 import InputWithTitle from "@/components/ui/InputWithTitle/InputWithTitle";
 import texts from "@/constants/texts";
+import { toast } from "sonner";
+import { forgotPassword } from "@/services/user.service";
 
 export default function Login() {
   const router = useRouter()
@@ -29,8 +31,21 @@ export default function Login() {
     router.push("/")
   }
 
+  const forgotMyPassword = async () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(email);
+
+    if (email === "" || !isValid) {
+      toast.warning("Insira um e-mail válido.")
+      return
+    }
+
+    const message = await forgotPassword({'email': email})
+    toast.success(message.message)
+  }
+
   return (
-    <div className="xl:grid xl:grid-cols-2 animate-[optionSelector_300ms_ease-out]">
+    <div className="xl:grid xl:grid-cols-2 animate-[optionSelector_300ms_ease-out] bg-background-color">
       <Image src={"/imgs/login/image.png"}
         alt="Traveler image"
         width={1280}
@@ -78,7 +93,7 @@ export default function Login() {
               <Eye onClick={() => setViewPassword(!viewPassword)} className="cursor-pointer mt-2" />
             </div>
 
-            {/* <p className="mt-2 text-end text-link-color font-medium mb-10 cursor-pointer">
+            {/* <p onClick={() => forgotMyPassword()} className="mt-2 text-end text-link-color font-medium mb-10 cursor-pointer">
               {texts.loginAndRegister.forgotPassword}
             </p> */}
 
@@ -101,9 +116,9 @@ export default function Login() {
           </div>
 
           <button type="button" onClick={() => { signIn("google", { redirectTo: "/" }) }}
-            className="w-full mt-5  h-12 flex items-center justify-center gap-3 rounded-xl border border-gray-100 hover:bg-gray-50 cursor-pointer
+            className="w-full mt-5  h-12 flex items-center justify-center gap-3 rounded-xl border bg-white border-gray-100 hover:bg-gray-50 cursor-pointer
               lg:mt-10
-          ">
+            ">
             <img
               src="/imgs/icons/google.png"
               alt="Google"

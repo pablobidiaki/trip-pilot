@@ -13,9 +13,9 @@ interface InputWithTitleProps{
 
 export default function InputWithTitle({icon, title, placeholder, inputType, tailwindTags, required, value, onChange}:InputWithTitleProps){
     return(
-        <div className="w-full">
+        <div className="w-full ">
             <p className="mb-1 text-primary-color font-medium">{title}</p>
-              <div className={`border flex items-center p-2 rounded-xl mb-5 ${tailwindTags}`} >
+              <div className={`border border-gray-100 flex items-center p-2 rounded-xl mb-5 bg-white ${tailwindTags}`} >
                 <span>{icon}</span>
                 <input type={inputType} className="outline-none w-full ml-2 px-1" placeholder={placeholder} value={value} onChange={onChange} required={required} />
               </div>

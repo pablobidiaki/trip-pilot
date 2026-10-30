@@ -15,18 +15,32 @@ datasource db {
 }
 
 model User {
-  id                String              @id @default(uuid())
-  name              String
-  email             String              @unique
-  password          String?
-  image             String?
-  countriesVisited  String[]            @default([])
-  countriesWishlist String[]            @default([])
-  itinerary         Itinerary[]
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime            @updatedAt
-  savedDestinations SavedDestinations[]
-  savedReadyGuides  SavedReadyGuides[]
+  id                  String               @id @default(uuid())
+  name                String
+  email               String               @unique
+  password            String?
+  image               String?
+  countriesVisited    String[]             @default([])
+  countriesWishlist   String[]             @default([])
+  itinerary           Itinerary[]
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  savedDestinations   SavedDestinations[]
+  savedReadyGuides    SavedReadyGuides[]
+  passwordResetTokens PasswordResetToken[]
+}
+
+model PasswordResetToken {
+  id        String    @id @default(uuid())
+  tokenHash String    @unique
+  userId    String
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Itinerary {
@@ -52,26 +66,26 @@ model Itinerary {
 }
 
 model ReadyGuides {
-  id                  String             @id @default(uuid())
-  imageURL            String
-  title               String
-  description         String
-  travelType          String
-  continent           String
-  bestTime            String
-  language            String
-  currenty            String
-  overviewResume      String
-  cities              String[]
-  days                Int
-  price               Float
-  overview            Json
-  itinerary           Json
-  accommodations      Json
-  usefulInformation   Json
-  createdAt           DateTime           @default(now())
-  updatedAt           DateTime           @updatedAt
-  savedReadyGuides    SavedReadyGuides[]
+  id                String             @id @default(uuid())
+  imageURL          String
+  title             String
+  description       String
+  travelType        String
+  continent         String
+  bestTime          String
+  language          String
+  currenty          String
+  overviewResume    String
+  cities            String[]
+  days              Int
+  price             Float
+  overview          Json
+  itinerary         Json
+  accommodations    Json
+  usefulInformation Json
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  savedReadyGuides  SavedReadyGuides[]
 }
 
 model Destinations {
