@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Camera, LockKeyhole } from "lucide-react";
+import { Camera, Eye, LockKeyhole } from "lucide-react";
 import { toast } from "sonner";
 import texts from "@/constants/texts";
-import { updateUser } from "@/services/user.service"; import { useSession } from "next-auth/react";
+import { updatePassword, updateUser } from "@/services/user.service"; import { useSession } from "next-auth/react";
 
 interface User {
     id: string
@@ -27,6 +27,10 @@ export default function Configurations({ user }: ConfigurationsProps) {
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [currentPasswordView, setCurrentPasswordView] = useState(false);
+    const [newPasswordView, setNewPasswordView] = useState(false);
+    const [confirmPasswordView, setConfirmPasswordView] = useState(false);
+
 
     async function uploadImage(file: File): Promise<string> {
         const formData = new FormData();
@@ -66,18 +70,48 @@ export default function Configurations({ user }: ConfigurationsProps) {
         }
     }
 
-    async function handleSubmit() {
-        const data: { id?: string, name?: string, image?: string, password?: string} = {};
+    const changePassword = async () => {
+        if (newPassword !== confirmPassword) {
+            toast.error("As senhas não coincidem")
+            return
+        }
+
+        if (newPassword.length < 12) {
+            toast.error("A senha deve ter no minimo 12 caracteres")
+            return
+        }
+
+        if (newPassword !== "") {
+            const _data: { id?: string, currentPassword?: string, newPassword?: string } = {}
+            _data.id = user.id
+            _data.currentPassword = currentPassword
+            _data.newPassword = newPassword
+
+            try {
+                const message = await updatePassword(_data)
+                toast.info(message.message)
+
+                setNewPassword('')
+                setCurrentPassword('')
+                setConfirmPassword('')
+            } catch (error) {
+                console.error("Erro na alteração da senha: ", error)
+                toast.error(String(error))
+            }
+        }
+    }
+
+    const updateUserInfos = async () => {
+        const data: { id?: string, name?: string, image?: string } = {};
 
         data.id = user.id
 
         if (name.trim()) data.name = name.trim();
         if (image) data.image = image
-        if (newPassword) data.password = newPassword
 
-        try{
+        try {
             await updateUser(data)
-    
+
             await update({
                 user: {
                     ...session?.user,
@@ -86,9 +120,16 @@ export default function Configurations({ user }: ConfigurationsProps) {
                 },
             });
             toast.success("Dados atualizadas com sucesso!")
-        }catch (error){
+        } catch (error) {
             console.error("Erro na alteração dos dados: ", error)
+            toast.error("Erro ao tentar alterar os dados")
         }
+    }
+
+    async function handleSubmit() {
+        if(currentPassword != "") await changePassword()
+        await updateUserInfos()
+
     }
 
     return (
@@ -117,7 +158,7 @@ export default function Configurations({ user }: ConfigurationsProps) {
 
                     <div>
                         <p className="font-semibold">{name}</p>
-                        <p className="text-sm text-gray-500"> {texts.profile.changeYourPhoto} </p>
+                        <p className="text-sm text-secondary-color"> {texts.profile.changeYourPhoto} </p>
                     </div>
                 </div>
 
@@ -129,7 +170,7 @@ export default function Configurations({ user }: ConfigurationsProps) {
                             onChange={(event) => setName(event.target.value)}
                             required
                             minLength={2}
-                            className="w-full rounded-xl border p-3 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                            className="w-full rounded-lg border p-3 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
                         />
                     </div>
 
@@ -140,7 +181,7 @@ export default function Configurations({ user }: ConfigurationsProps) {
                                 type="email"
                                 value={user.email}
                                 readOnly
-                                className="w-full rounded-xl border bg-gray-100 p-3 pr-10 text-secondary-color"
+                                className="w-full rounded-lg border bg-gray-100 p-3 pr-10 text-secondary-color"
                             />
                             <LockKeyhole
                                 size={17}
@@ -151,27 +192,47 @@ export default function Configurations({ user }: ConfigurationsProps) {
                     </div>
 
                 </div>
-                <div className="grid gap-4 md:grid-cols-3 mt-6">
-                    <input type="password"
-                        placeholder="Senha atual"
-                        value={currentPassword}
-                        onChange={(event) => setCurrentPassword(event.target.value)}
-                        className="rounded-xl border p-3"
-                    />
-
-                    <input type="password"
-                        placeholder="Nova senha"
-                        value={newPassword}
-                        onChange={(event) => setNewPassword(event.target.value)}
-                        className="rounded-xl border p-3"
-                    />
-
-                    <input type="password"
-                        placeholder="Confirmar nova senha"
-                        value={confirmPassword}
-                        onChange={(event) => setConfirmPassword(event.target.value)}
-                        className="rounded-xl border p-3"
-                    />
+                <div className="flex flex-col gap-4 mt-6
+                    xl:flex-row
+                ">
+                    <div className="w-full">
+                        <p className="text-sm font-medium">Senha atual</p>
+                        <div className="flex items-center rounded-lg border">
+                            <input type={`${currentPasswordView ? 'text' : 'password'}`}
+                                placeholder="Senha atual"
+                                value={currentPassword}
+                                onChange={(event) => setCurrentPassword(event.target.value)}
+                                className="w-full outline-0 p-3"
+                            />
+                            <Eye size={30} className="mr-2 cursor-pointer" onClick={() => setCurrentPasswordView(!currentPasswordView)} />
+                        </div>
+                    </div>
+                    <div className="w-full">
+                        <p className="text-sm font-medium">Nova senha</p>
+                        <div className="flex items-center rounded-lg border">
+                            <input type={`${newPasswordView ? 'text' : 'password'}`}
+                                min={12}
+                                placeholder="Nova senha"
+                                value={newPassword}
+                                onChange={(event) => setNewPassword(event.target.value)}
+                                className="w-full outline-0 p-3"
+                            />
+                            <Eye size={30} className="mr-2 cursor-pointer" onClick={() => setNewPasswordView(!newPasswordView)} />
+                        </div>
+                    </div>
+                    <div className="w-full">
+                        <p className="text-sm font-medium">Confirme a nova senha</p>
+                        <div className="flex items-center rounded-lg border">
+                            <input type={`${confirmPasswordView ? 'text' : 'password'}`}
+                                min={12}
+                                placeholder="Confirmar nova senha"
+                                value={confirmPassword}
+                                onChange={(event) => setConfirmPassword(event.target.value)}
+                                className="p-3 w-full outline-0"
+                            />
+                            <Eye size={30} className="mr-2 cursor-pointer" onClick={() => setConfirmPasswordView(!confirmPasswordView)} />
+                        </div>
+                    </div>
                 </div>
             </div>
 

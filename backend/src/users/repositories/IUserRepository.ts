@@ -1,4 +1,4 @@
-import { CreateUsersDto, EditUserInfosDto } from "../dtos/create-users-dto";
+import { CreateUsersDto, EditUserInfosDto } from "../dtos/users-dto";
 
 export abstract class IUserRepository{
     abstract create(createUserDto: CreateUsersDto): Promise<any>
@@ -8,4 +8,5 @@ export abstract class IUserRepository{
     abstract update(data: Partial<EditUserInfosDto>): Promise<any>
     abstract removeAll(): Promise<void>
     abstract removeOne(id: string): Promise<void>
+    abstract updatePassword(id: string, password: string): Promise<any>
 }

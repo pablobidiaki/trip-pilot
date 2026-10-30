@@ -10,7 +10,7 @@ interface HeaderProps{
 
 export default function Header({backgroundLight}: HeaderProps) {
     const { data: session, status } = useSession()
-    console.log(session)
+    
     return (
         <header className="max-w-screen">
             <div className="hidden md:block">

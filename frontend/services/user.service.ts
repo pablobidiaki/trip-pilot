@@ -57,3 +57,19 @@ export async function updateUser(data: UpdateUserInterface | {}) {
 
     return result
 }
+
+export async function updatePassword(data: UpdateUserInterface | {}) {
+    const response = await fetch(`${apiKey}/user/edit/password`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+
+    const result = await response.json()
+
+    if (!response.ok) throw new Error(result.message || "Error trying to register user.")
+
+    return result
+}

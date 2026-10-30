@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Delete, Patch, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
-import { EditCountryDto, EditUserInfosDto } from '../dtos/create-users-dto';
+import { EditCountryDto, EditPasswordDto, EditUserInfosDto } from '../dtos/users-dto';
 import { JwtAuthGuard } from '../../auth/guards/jwt.auth.guard';
 
 @ApiTags('Users')
@@ -104,5 +104,13 @@ export class UsersController {
     })
     async editUserInfos(@Body() data: EditUserInfosDto){
         return await this.usersService.editUserInfos(data)
+    }
+
+    @Patch('edit/password')
+    @ApiOperation({
+        summary: 'Edit user password'
+    })
+    async changePassword(@Body() data: EditPasswordDto){
+        return await this.usersService.changePassword(data)
     }
 }

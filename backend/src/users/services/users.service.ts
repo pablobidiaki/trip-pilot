@@ -1,6 +1,6 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import { ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common"
-import { CreateUsersDto, EditCountryDto, EditUserInfosDto } from '../dtos/create-users-dto';
+import { CreateUsersDto, EditCountryDto, EditPasswordDto, EditUserInfosDto } from '../dtos/users-dto';
 import { LoginInterface } from '../../auth/interfaces/auth.interfaces';
 import { ICrypto } from '../../core/crypto/ICrypto';
 import { IUserRepository } from '../repositories/IUserRepository';
@@ -199,5 +199,21 @@ export class UsersService {
 
   async editUserInfos(data: EditUserInfosDto) {
     return await this.userRepository.update(data)
+  }
+
+  async changePassword(dto: EditPasswordDto):Promise<any> {
+    const user = await this.userRepository.findOne(dto.id);
+
+    if (!user?.password) throw new UnauthorizedException('Não é possível alterar a senha desta conta por este fluxo.');
+
+    const validPassword = await this.crypto.compare(dto.currentPassword, user.password);
+
+    if (!validPassword) throw new UnauthorizedException('Senha atual incorreta.',);
+
+    const hashedPassword = await this.crypto.hash(dto.newPassword,);
+
+    await this.userRepository.updatePassword(dto.id, hashedPassword);
+
+    return { message: 'Senha alterada com sucesso.'};
   }
 }

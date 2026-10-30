@@ -17,5 +17,10 @@ export interface UpdateUserInterface{
     id: string 
     name: string | undefined
     image: string | undefined
-    password: string | undefined
+}
+
+export interface UpdatePasswordInterface{
+    id: string
+    currentPassword: string
+    password: string
 }

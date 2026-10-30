@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsOptional, MinLength } from "class-validator"
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from "class-validator"
 
 export class CreateUsersDto {
   @ApiProperty({
@@ -53,10 +53,26 @@ export class EditUserInfosDto {
   })
   @IsOptional()
   image: string
+}
+
+export class EditPasswordDto {
+  @ApiProperty({
+    example: 'AKLSDHJLhasldkahnnLSKDLH',
+  })
+  @IsNotEmpty()
+  id: string
 
   @ApiProperty({
-    example: 'https://urlimgcloudinary',
+    example: 'hash password',
   })
-  @IsOptional()
-  password: string
+  @IsString()
+  currentPassword: string;
+
+  @ApiProperty({
+    example: 'hash password',
+  })
+  @IsString()
+  @MinLength(12)
+  @MaxLength(128)
+  newPassword: string;
 }
