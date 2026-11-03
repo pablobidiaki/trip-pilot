@@ -47,7 +47,7 @@ export async function createItinerary(accessToken: string, data: createItinerary
     }
 }
 
-export async function getItinerary(id: string): Promise<ItineraryInterface[]> {
+export async function getItinerary(id: string): Promise<ItineraryInterface> {
     const response = await fetch(`${apiKey}/itinerary/${id}`)
 
     if (!response.ok)

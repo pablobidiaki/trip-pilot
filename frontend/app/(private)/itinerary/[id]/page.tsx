@@ -7,9 +7,7 @@ interface ItineraryPageProps {
     }>;
 }
 
-export default async function Itinerary({
-    params
-}: ItineraryPageProps) {
+export default async function Itinerary({ params}: ItineraryPageProps) {
 
     const { id } = await params;
 
