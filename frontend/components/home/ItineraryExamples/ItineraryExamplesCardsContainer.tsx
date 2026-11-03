@@ -1,8 +1,20 @@
+"use client"
+
+import { useEffect, useState } from "react";
 import ItineraryExamplesCard from "./ItineraryExamplesCard";
 import { getReadyGuides } from "@/services/readyGuides.service";
+import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
-export default async function ItineraryExamplesCardsContainer() {
-    const readyGuides = await getReadyGuides()
+export default function ItineraryExamplesCardsContainer() {
+    const [readyGuides, setReadyGuides] = useState<ReadyGuideInterface[]>()
+    
+        useEffect(() => {
+            const _getReadyGuides = async () => {
+                const readyGuides = await getReadyGuides()
+                setReadyGuides(readyGuides)
+            }
+            _getReadyGuides()
+        }, [readyGuides])
     
     return (
         <div className="flex flex-col items-center gap-y-5
