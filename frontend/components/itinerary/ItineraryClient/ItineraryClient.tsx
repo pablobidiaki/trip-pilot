@@ -11,7 +11,7 @@ import { ItineraryInterface } from "@/interfaces/itinerary.interface";
 import MainContentGrid from "../grid/MainContentGrid/MainContentGrid";
 
 interface ItineraryClientProps {
-    itinerary: ItineraryInterface[]
+    itinerary: ItineraryInterface
 }
 
 export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
