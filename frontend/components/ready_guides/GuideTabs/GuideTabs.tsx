@@ -12,7 +12,7 @@ import UtilInfos from "../UtilInfos/UtilInfos";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
 interface GuideTabsProps {
-    guide: ReadyGuideInterface[]
+    guide: ReadyGuideInterface
 }
 
 export default function GuideTabs({ guide }: GuideTabsProps) {

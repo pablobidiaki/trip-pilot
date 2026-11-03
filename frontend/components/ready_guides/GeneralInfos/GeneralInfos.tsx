@@ -3,7 +3,7 @@ import GeneralInfosInclude from "./GeneralItineraryInfos/GeneralInfosInclude";
 import GeneralItineraryInfos from "./GeneralItineraryInfos/GeneralItineraryInfos";
 
 interface GeneralInfosProps{
-    guide: ReadyGuideInterface[]
+    guide: ReadyGuideInterface
 }
 
 export default function GeneralInfos({guide}: GeneralInfosProps){

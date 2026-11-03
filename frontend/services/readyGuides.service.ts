@@ -11,7 +11,7 @@ export async function getReadyGuides(): Promise<ReadyGuideInterface[]> {
     return response.json()
 }   
 
-export async function getReadyGuide(id: string): Promise<ReadyGuideInterface[]> {
+export async function getReadyGuide(id: string): Promise<ReadyGuideInterface> {
     const response = await fetch(`${apiKey}/readyGuide/${id}`)
 
     if(!response.ok)

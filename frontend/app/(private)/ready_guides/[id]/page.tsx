@@ -13,7 +13,7 @@ export default async function ReadyGuidePage({ params }: ReadyGuidesProps) {
 
   const guide = await getReadyGuide(id)
 
-  if (!guide || guide.length === 0) notFound()
+  if (!guide) notFound()
 
   return (
     <div>

@@ -3,7 +3,7 @@ import GuideTabs from "../GuideTabs/GuideTabs";
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
 interface ReadyGuideProps{
-    guide: ReadyGuideInterface[]
+    guide: ReadyGuideInterface
 }
 
 export default function ReadyGuide({guide}: ReadyGuideProps){
