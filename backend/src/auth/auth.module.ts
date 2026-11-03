@@ -4,8 +4,8 @@ import { AuthController } from './controller/auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
 import { JwtStrategy } from './jwt.strategy';
-import { UsersModule } from 'src/users/users.module';
-import { BCryptoModule } from 'src/core/crypto/BCrypto.module';
+import { UsersModule } from '../users/users.module';
+import { BCryptoModule } from '../core/crypto/BCrypto.module';
 
 @Module({
   imports: [

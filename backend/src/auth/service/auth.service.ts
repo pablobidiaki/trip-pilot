@@ -6,8 +6,8 @@ import { JwtPayloadInterface, LoginInterface, RegistrationStatusInterface, UserI
 import { OAuth2Client } from "google-auth-library";
 import { createHash, randomBytes } from 'crypto';
 import { Resend } from 'resend';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { ICrypto } from 'src/core/crypto/ICrypto';
+import { PrismaService } from '../../prisma/prisma.service';
+import { ICrypto } from '../../core/crypto/ICrypto';
 
 @Injectable()
 export class AuthService {
