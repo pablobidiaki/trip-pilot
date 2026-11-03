@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -22,12 +16,12 @@ model User {
   image               String?
   countriesVisited    String[]             @default([])
   countriesWishlist   String[]             @default([])
-  itinerary           Itinerary[]
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
+  itinerary           Itinerary[]
+  passwordResetTokens PasswordResetToken[]
   savedDestinations   SavedDestinations[]
   savedReadyGuides    SavedReadyGuides[]
-  passwordResetTokens PasswordResetToken[]
 }
 
 model PasswordResetToken {
@@ -37,8 +31,7 @@ model PasswordResetToken {
   expiresAt DateTime
   usedAt    DateTime?
   createdAt DateTime  @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
@@ -112,27 +105,25 @@ model Destinations {
 }
 
 model SavedDestinations {
-  id            String   @id @default(uuid())
+  id            String       @id @default(uuid())
   userId        String
   destinationId String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  user        User         @relation(fields: [userId], references: [id])
-  destination Destinations @relation(fields: [destinationId], references: [id])
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  destination   Destinations @relation(fields: [destinationId], references: [id])
+  user          User         @relation(fields: [userId], references: [id])
 
   @@unique([userId, destinationId])
 }
 
 model SavedReadyGuides {
-  id           String   @id @default(uuid())
+  id           String      @id @default(uuid())
   userId       String
   readyGuideId String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  user       User        @relation(fields: [userId], references: [id])
-  readyGuide ReadyGuides @relation(fields: [readyGuideId], references: [id])
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  readyGuide   ReadyGuides @relation(fields: [readyGuideId], references: [id])
+  user         User        @relation(fields: [userId], references: [id])
 
   @@unique([userId, readyGuideId])
 }
