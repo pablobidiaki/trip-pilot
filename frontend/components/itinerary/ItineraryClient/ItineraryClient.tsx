@@ -29,7 +29,7 @@ export default function ItineraryClient({ itinerary }: ItineraryClientProps) {
                 />
             }
             <div className="relative">
-                <Header />
+                <Header backgroundLight={true}/>
             </div>
 
             <div className="flex flex-col

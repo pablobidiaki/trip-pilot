@@ -1,15 +1,29 @@
+"use client"
+
 import texts from '@/constants/texts';
+import { ReadyGuideInterface } from '@/interfaces/readyGuides.interface';
 import { getReadyGuides } from '@/services/readyGuides.service';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface SevenWondersOfWorldProps {
     title: string
     filter: string
 }
 
-export default async function SevenWondersOfWorld({ title, filter }: SevenWondersOfWorldProps) {
-    const readyGuides = await getReadyGuides();
-    const filteredGuides = readyGuides.filter((guide) => guide.travelType === filter);
+export default function SevenWondersOfWorld({ title, filter }: SevenWondersOfWorldProps) {
+    const [readyGuides, setReadyGuides] = useState<ReadyGuideInterface[]>()
+    const [filteredGuides, setFilteredGuides] = useState<ReadyGuideInterface[]>([])
+
+    useEffect(() => {
+        const _getReadyGuides = async () => {
+            const readyGuides = await getReadyGuides()
+            setReadyGuides(readyGuides)
+
+            setFilteredGuides(readyGuides.filter((guide) => guide.travelType === filter))
+        }
+        _getReadyGuides()
+    }, [readyGuides])
 
     return (
         <div className="mx-auto mt-10 w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 2xl:px-12">

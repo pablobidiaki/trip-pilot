@@ -7,15 +7,15 @@ import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface";
 
 export default function ItineraryExamplesCardsContainer() {
     const [readyGuides, setReadyGuides] = useState<ReadyGuideInterface[]>()
-    
-        useEffect(() => {
-            const _getReadyGuides = async () => {
-                const readyGuides = await getReadyGuides()
-                setReadyGuides(readyGuides)
-            }
-            _getReadyGuides()
-        }, [readyGuides])
-    
+
+    useEffect(() => {
+        const _getReadyGuides = async () => {
+            const readyGuides = await getReadyGuides()
+            setReadyGuides(readyGuides)
+        }
+        _getReadyGuides()
+    }, [readyGuides])
+
     return (
         <div className="flex flex-col items-center gap-y-5
         md:grid md:grid-cols-2 md:gap-2
@@ -27,7 +27,7 @@ export default function ItineraryExamplesCardsContainer() {
                     image={guide.imageURL}
                     title={guide.title}
                     text={guide.description}
-                    days={guide.days} 
+                    days={guide.days}
                     trip_type={guide.travelType}
                     price={guide.price}
                     route_to_itinerary={`/ready_guides/${guide.id}`}
