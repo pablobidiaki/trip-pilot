@@ -20,7 +20,7 @@ interface MainContentGridProps{
 export default function MainContentGrid({itinerary}: MainContentGridProps){
     return (
         <div className="mx-2 mt-2 animate-[optionSelector_300ms_ease-out]">
-            <ItineraryBanner />
+            <ItineraryBanner itinerary={itinerary}/>
             <div className="relative">
                 <ProvidedData itinerary={itinerary} />
             </div>
