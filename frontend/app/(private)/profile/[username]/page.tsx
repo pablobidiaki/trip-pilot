@@ -18,7 +18,6 @@ export default function ProfilePage({ params }: ProfilePageProps) {
     const [user, setUser] = useState<UserInterface>()
     const [itineraries, setItineraries] = useState<ItineraryInterface[]>()
 
-
     useEffect(() => {
         const getData = async () => {
             try {

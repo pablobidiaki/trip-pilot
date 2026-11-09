@@ -27,9 +27,9 @@ export default function UserInfos({ user, itineraries }: UserInfosProps) {
             <p className="text-sm text-secondary-color">@{user?.username}</p>
             <p className="mt-2 mb-5 font-light mx-4">{user?.biography}</p>
             <div className="flex gap-10">
-                <UserInfoCard title="Roteiros criados" value={itineraries?.length} />
-                <UserInfoCard title="Países visitados" value={user?.countriesVisited.length} />
-                <UserInfoCard title="Países desejados" value={user?.countriesWishlist.length} />
+                <UserInfoCard title="Roteiros criados" value={user?.isPublicAccount ? itineraries?.length : "*"} />
+                <UserInfoCard title="Países visitados" value={user?.isPublicAccount ? user?.countriesVisited.length : "*"} />
+                <UserInfoCard title="Países desejados" value={user?.isPublicAccount ? user?.countriesWishlist.length : "*"} />
             </div>
 
             <PhotoModal open={isOpen} src={user?.image!} onClose={() => setIsOpen(false)} />
