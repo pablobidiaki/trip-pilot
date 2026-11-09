@@ -35,7 +35,7 @@ export default function DestinationCard({ id, image, name, description, travel_t
                     <div>
                         <p className="text-white text-3xl font-medium mb-1 line-clamp-2">{name}</p>
                         <p className="text-[#c4c4c4] text-xs mb-1 line-clamp-3">{description}</p>
-                        <div className="flex justify-between mt-5 truncate">
+                        <div className="flex justify-between mt-5 line-clamp-1">
                             <p className="text-[#c4c4c4] text-xs ">{travel_type}</p>
                             <p className="text-[#c4c4c4] text-xs ">{country}</p>
                             <p className="text-[#c4c4c4] text-xs ">{continent}</p>

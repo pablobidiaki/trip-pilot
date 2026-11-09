@@ -19,7 +19,7 @@ export default function RecommendationCard({ type, readyGuide, destination, path
             <p className="mx-2  text-secondary-color text-xs line-clamp-2
                 lg:text-sm
             ">{readyGuide ? readyGuide?.description : destination?.description}</p>
-            <p className="mx-2 text-primary-color mt-2 truncateline-clamp-2 text-xs
+            <p className="mx-2 text-primary-color mt-2 line-clamp-1 text-xs
                 lg:text-sm
             ">{readyGuide ?
                 readyGuide.cities.map((city, index) => (

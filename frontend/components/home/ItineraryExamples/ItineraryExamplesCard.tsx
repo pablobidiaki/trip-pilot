@@ -25,7 +25,7 @@ export default function ItineraryExamplesCard({ image, title, text, days, trip_t
                     md:h-60
                 "/>
 
-                <h1 className="text-primary-color text-2xl font-medium mx-4 truncate">{title}</h1>
+                <h1 className="text-primary-color text-2xl font-medium mx-4 line-clamp-1">{title}</h1>
                 <p className="text-secondary-color text-sm mx-4 mb-2 line-clamp-2">{text}</p>
 
                 <div className="flex gap-4 mx-4 text-secondary-color text-sm">

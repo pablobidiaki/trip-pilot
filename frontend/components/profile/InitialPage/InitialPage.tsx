@@ -69,7 +69,7 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
                 md:flex-row md:justify-between md:items-center 
             ">
                 <div className="mx-2 gap-2">
-                    <p className="text-primary-color font-medium truncate
+                    <p className="text-primary-color font-medium line-clamp-1
                         md:text-2xl
                         lg:text-3xl
                     ">{texts.profile.hello} {session?.user?.name}</p>

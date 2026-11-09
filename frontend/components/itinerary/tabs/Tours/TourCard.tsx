@@ -39,7 +39,7 @@ export default function TourCard({ imageURL, title, description, price }: TourCa
 
                 <Fullscreen size={30} onClick={() => setIsOpen(true)} className="cursor-pointer absolute top-2 left-3 text-white" />
             </div>
-            <p className="mx-2 mt-2 text-primary-color text-xl font-semibold truncate">{title}</p>
+            <p className="mx-2 mt-2 text-primary-color text-xl font-semibold line-clamp-1">{title}</p>
             <p className="mx-2 mb-2 text-secondary-color line-clamp-2
                 md:text-sm
             ">{description}</p>

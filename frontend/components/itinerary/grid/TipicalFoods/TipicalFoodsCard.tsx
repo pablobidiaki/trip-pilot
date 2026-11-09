@@ -27,7 +27,7 @@ export default function TipicalFoodsCard({ imageURL, title, description, average
             <div className="flex flex-col max-w-[170] ml-2
                 md:max-w-238
             ">
-                <p className="text-primary-color font-medium truncate text-2xl">{title}</p>
+                <p className="text-primary-color font-medium line-clamp-1 text-2xl">{title}</p>
                 <p className="text-primary-color mb-2 text-sm italic ">{category}</p>
                 <p className="text-secondary-color line-clamp-2">{description}</p>
                 <p className="text-green-500 font-medium mt-auto">{texts.real} {averagePrice.toLocaleString("pt-BR", {

@@ -30,7 +30,7 @@ export default function ReadyGuidesSavedCard({ user, savedReadyGuides }: ReadyGu
                         <FavoriteButton userId={user?.id} readyGuideId={guide.readyGuide.id} />
                     </div>
                     <img className="relative w-full h-52 object-cover brightness-50 rounded-t-2xl" src={guide.readyGuide.imageURL} />
-                    <h1 className="mx-2 text-lg font-semibold text-gray-900 truncate">{guide.readyGuide.title}</h1>
+                    <h1 className="mx-2 text-lg font-semibold text-gray-900 line-clamp-1">{guide.readyGuide.title}</h1>
                     <p className="text-xs line-clamp-2 text-secondary-color mx-2 mb-3
                         md:text-sm
                     ">{guide.readyGuide.description}</p>

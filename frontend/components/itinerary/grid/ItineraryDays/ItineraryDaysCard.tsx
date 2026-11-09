@@ -26,9 +26,18 @@ export default function ItineraryDaysCard({ day, title, image, morning, afternoo
             <div onClick={() => setIsModalOpen(true)} className="flex flex-col overflow-hidden rounded-2xl cursor-pointer transition-transform hover:scale-101
                 md:w-full
             ">
-                <img src={image} alt="Imagem tour" className="max-h-40 w-full
+                {image ?
+                    <img src={image} alt="Imagem tour" className="max-h-40 w-full
                     md:max-h-50 md:md:min-h-50
                 "/>
+                    :
+                    <div>
+                        <img src={"/imgs/icons/tripPilot.png"} className="max-w-[50%] mx-auto object-cover rounded-b-2xl
+                            xl:grid-cols-2 xl:w-full xl:max-h-127.5
+                        "/>
+                        <p className="text-center pb-2 italic text-primary-color text-xl">Ocorreu um erro ao tentar salvar essa imagem.</p>
+                    </div>
+                }
                 <p className="mx-2 text-secondary-color italic text-sm">{day}</p>
                 <p className="mx-2 text-primary-color font-medium text-xl mb-2">{title}</p>
                 <p className="text-sm px-2 py-1 text-primary-color font-medium">{texts.itinerary.morning}<span className="text-secondary-color">{morning}</span></p>

@@ -12,6 +12,7 @@ interface DayInformationsProps {
 }
 
 export default function DayInformations({ itinerary, imageLoading, setImageLoading }: DayInformationsProps) {
+    console.log(itinerary.imageURL)
     return (
         <div className="grid grid-cols-1 gap-5 mt-7  
             xl:grid-cols-2 xl:min-h-157.5 xl:max-h-157.5
@@ -28,16 +29,28 @@ export default function DayInformations({ itinerary, imageLoading, setImageLoadi
                     })}
                     </span>
                 </p>
-                {imageLoading &&
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-white rounded-2xl
-                        xl:grid-cols-2 xl:min-h-157.5 xl:max-h-157.5
-                    ">
-                        <Loading />
+                {itinerary.imageURL ?
+                    <div>
+                        {imageLoading &&
+                            <div className="absolute inset-0 z-10 flex items-center justify-center bg-white rounded-2xl
+                                xl:grid-cols-2 xl:min-h-157.5 xl:max-h-157.5
+                            ">
+                                <Loading />
+                            </div>
+                        }
+                        <img src={itinerary.imageURL} className="w-full object-cover rounded-b-2xl
+                            xl:grid-cols-2 xl:min-h-127.5 xl:max-h-127.5
+                        " onLoad={() => setImageLoading()} />
+                    </div>
+                    :
+                    <div>
+                        <img src={"/imgs/icons/tripPilot.png"} className="max-w-[50%] mx-auto object-cover rounded-b-2xl
+                            xl:grid-cols-2 xl:w-full xl:max-h-127.5
+                        "/>
+                        <p className="text-center pb-2 italic text-primary-color text-xl">Ocorreu um erro ao tentar salvar essa imagem.</p>
                     </div>
                 }
-                <img src={itinerary.imageURL} className="w-full object-cover rounded-b-2xl
-                    xl:grid-cols-2 xl:min-h-127.5 xl:max-h-127.5
-                " onLoad={() => setImageLoading()} />
+
             </div>
             <div className="bg-white rounded-2xl
                 xl:grid-cols-2 xl:min-h-152.5 xl:max-h-152.5
