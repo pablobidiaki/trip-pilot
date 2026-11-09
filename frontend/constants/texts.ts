@@ -428,7 +428,7 @@ const texts = {
         zoomOut: "Zoom Out",
         originPosition: "Posição original",
         visited: "Visitado",
-        wantVisit: "Quero visitar",
+        wantVisit: "Desejo",
         selected: "Selecionado",
         countries: "Países",
         noneItineraryCreated: "Você ainda não criou nenhum roteiro.",
@@ -462,6 +462,13 @@ const texts = {
         title: "As sete maravilhas do mundo",
         naturalTitle:"As sete maravilhas do mundo natural",
         subtitle: "Guias prontos para os lugares mais desejados do mundo"
+    },
+
+    visitingProfile:{
+        itinerary: "Roteiro",
+        publicItinerary: "Roteiro público",
+        mapTitle:"Explore o mapa de viagens de",
+        itinerariesGenerated: "Roteiros gerados por"
     },
 
     real: "R$",

@@ -35,13 +35,17 @@ export class UsersService {
     const user = await this.userRepository.create({
       name: dto.name,
       email: dto.email,
-      password: hashedPassword
+      password: hashedPassword,
+      isPublicAccount: true,
+      username: dto.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "").toLowerCase(),
     })
 
     return {
       id: user.id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      username: user.username,
+      isPublicAccount: user.isPublicAccount
     }
   }
 
@@ -187,7 +191,7 @@ export class UsersService {
     return rest;
   }
 
-  async createGoogleUser(dto: CreateUsersDto) {
+  async createGoogleUser(dto: any) {
     return this.userRepository.create(dto)
   }
 
@@ -201,7 +205,7 @@ export class UsersService {
     return await this.userRepository.update(data)
   }
 
-  async changePassword(dto: EditPasswordDto):Promise<any> {
+  async changePassword(dto: EditPasswordDto): Promise<any> {
     const user = await this.userRepository.findOne(dto.id);
 
     if (!user?.password) throw new UnauthorizedException('Não é possível alterar a senha desta conta por este fluxo.');
@@ -214,6 +218,10 @@ export class UsersService {
 
     await this.userRepository.updatePassword(dto.id, hashedPassword);
 
-    return { message: 'Senha alterada com sucesso.'};
+    return { message: 'Senha alterada com sucesso.' };
+  }
+
+  async getByUsername(username: string): Promise<any>{
+    return await this.userRepository.getByUsername(username)
   }
 }

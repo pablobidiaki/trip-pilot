@@ -1,7 +1,7 @@
 import { CreateUsersDto, EditUserInfosDto } from "../dtos/users-dto";
 
 export abstract class IUserRepository{
-    abstract create(createUserDto: CreateUsersDto): Promise<any>
+    abstract create(createUserDto: any): Promise<any>
     abstract findAll(): Promise<any[]>
     abstract findOne(id: string): Promise<any>
     abstract findOneByEmail(email: string): Promise<any>
@@ -9,4 +9,5 @@ export abstract class IUserRepository{
     abstract removeAll(): Promise<void>
     abstract removeOne(id: string): Promise<void>
     abstract updatePassword(id: string, password: string): Promise<any>
+    abstract getByUsername(username: string): Promise<any>
 }

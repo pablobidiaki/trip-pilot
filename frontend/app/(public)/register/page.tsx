@@ -19,7 +19,7 @@ export default function Register() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [passwordsMatch, setPasswordsMatch] = useState(true)
-
+  
   const createUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 

@@ -87,6 +87,8 @@ export class AuthService {
             user = await this.usersService.createGoogleUser({
                 name: googlePayload.name || email,
                 email,
+                isPublicAccount: true,
+                username: googlePayload.name!.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "").toLowerCase(),
             });
         }
         const token = this._createToken(user);

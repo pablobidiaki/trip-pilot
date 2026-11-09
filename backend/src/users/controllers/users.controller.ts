@@ -113,4 +113,16 @@ export class UsersController {
     async changePassword(@Body() data: EditPasswordDto){
         return await this.usersService.changePassword(data)
     }
+
+    @Get('profile/:username')
+    @ApiOperation({
+        summary: 'Get an especific user',
+    })
+    async getByUsername(@Param('username') username: string) {
+        const user = await this.usersService.getByUsername(username)
+        return {
+            success: true,
+            user
+        }
+    }
 }

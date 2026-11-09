@@ -14,6 +14,9 @@ model User {
   email               String               @unique
   password            String?
   image               String?
+  username            String               @unique
+  isPublicAccount     Boolean              @default(true)
+  biography           String?
   countriesVisited    String[]             @default([])
   countriesWishlist   String[]             @default([])
   createdAt           DateTime             @default(now())

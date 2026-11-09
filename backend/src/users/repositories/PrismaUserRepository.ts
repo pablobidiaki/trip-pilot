@@ -8,7 +8,7 @@ import { EditUserInfosDto } from "../dtos/users-dto";
 export class PrismaUserRepository implements IUserRepository{
     constructor(private readonly prisma: PrismaService) {}
 
-    async create(data: CreateUserDto){
+    async create(data: any){
         return this.prisma.user.create({data})
     }
 
@@ -39,5 +39,9 @@ export class PrismaUserRepository implements IUserRepository{
 
     async updatePassword(id:string, password: string):Promise<any>{
         return this.prisma.user.update({where: {id}, data: {password}}) 
+    }
+
+    async getByUsername(username: string): Promise<any>{
+        return this.prisma.user.findFirst({where: {username: username}})
     }
 }

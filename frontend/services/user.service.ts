@@ -105,3 +105,12 @@ export async function changePassword(data: {token: string, password: string}) {
 
     return result
 }
+
+export async function getByUsername(username: string) {
+    const response = await fetch(`${apiKey}/user/profile/${username}`)
+
+    if (!response.ok)
+        throw new Error("Erro ao buscar usuario")
+
+    return response.json()
+}

@@ -19,15 +19,17 @@ export default function UserMenu({ image, name, email }: UserMenuProps) {
 
     return (
         <div className="relative">
-            <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
-                <img src={image ? image : "/imgs/icons/user.png"} alt="Foto do usuário" className={`w-8.75 h-8.75 rounded-full object-cover ${image ? '' : 'bg-white'}`} />
+            <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer flex w-10 h-10 items-center justify-center rounded-full bg-indigo-100">
+                {image ? (<img src={image} alt="Foto de perfil" className="h-full w-full object-cover rounded-full" />) : (<span className="text-3xl font-bold text-indigo-600"> {name!.charAt(0).toUpperCase()} </span>)}
             </div>
 
             {isOpen && (
                 <div className="absolute right-0 top-10 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
                     <div className="p-4 border-b border-gray-100">
                         <div className="flex items-center gap-3">
-                            <img src={image ? image : "/imgs/icons/user.png"} alt="user photo" className="w-10 h-10 rounded-full object-cover" />
+                            <div className="flex w-10 h-10 items-center justify-center rounded-full bg-indigo-100">
+                                {image ? (<img src={image} alt="Foto de perfil" className="h-full w-full object-cover rounded-full" />) : (<span className="text-3xl font-bold text-indigo-600"> {name!.charAt(0).toUpperCase()} </span>)}
+                            </div>
 
                             <div className="min-w-0">
                                 <p className="font-semibold text-gray-800 truncate"> {name} </p>

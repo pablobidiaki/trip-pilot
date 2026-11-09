@@ -5,6 +5,9 @@ export interface UserInterface{
     email: string
     image?: string 
     name: string
+    username: string
+    biography?: string
+    isPublicAccount: boolean
 }
 
 export interface RegisterUserInterface{

@@ -1,5 +1,3 @@
-"use client"
-
 import { ItineraryInterface } from "@/interfaces/itinerary.interface"
 import InitialPage from "./InitialPage/InitialPage"
 import { SavedDestinationInterface } from "@/interfaces/destination.interface"
