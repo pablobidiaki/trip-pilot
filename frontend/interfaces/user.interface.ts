@@ -20,6 +20,8 @@ export interface UpdateUserInterface{
     id: string 
     name: string | undefined
     image: string | undefined
+    biography: string| undefined
+    isPublicAccount: string | undefined
 }
 
 export interface UpdatePasswordInterface{

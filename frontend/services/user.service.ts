@@ -1,4 +1,4 @@
-import { RegisterUserInterface, UpdateUserInterface } from "@/interfaces/user.interface"
+import { RegisterUserInterface, UpdatePasswordInterface, UpdateUserInterface } from "@/interfaces/user.interface"
 
 const apiKey = process.env.NEXT_PUBLIC_API_URL
 
@@ -58,7 +58,7 @@ export async function updateUser(data: UpdateUserInterface | {}) {
     return result
 }
 
-export async function updatePassword(data: UpdateUserInterface | {}) {
+export async function updatePassword(data: UpdatePasswordInterface | {}) {
     const response = await fetch(`${apiKey}/user/edit/password`, {
         method: "PATCH",
         headers: {

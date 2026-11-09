@@ -1,22 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Camera, Eye, LockKeyhole } from "lucide-react";
+import { Camera, Eye, Globe, LockKeyhole } from "lucide-react";
 import { toast } from "sonner";
 import texts from "@/constants/texts";
-import { updatePassword, updateUser } from "@/services/user.service"; import { useSession } from "next-auth/react";
-
-interface User {
-    id: string
-    name: string;
-    email: string;
-    image?: string | null;
-    countriesVisited: string[];
-    countriesWishlist: string[];
-}
+import { updatePassword, updateUser } from "@/services/user.service"; 
+import { useSession } from "next-auth/react";
+import { UserInterface } from "@/interfaces/user.interface";
 
 interface ConfigurationsProps {
-    user: User;
+    user: UserInterface;
 }
 
 export default function Configurations({ user }: ConfigurationsProps) {
@@ -30,6 +23,8 @@ export default function Configurations({ user }: ConfigurationsProps) {
     const [currentPasswordView, setCurrentPasswordView] = useState(false);
     const [newPasswordView, setNewPasswordView] = useState(false);
     const [confirmPasswordView, setConfirmPasswordView] = useState(false);
+    const [bio, setBio] = useState(user.biography ?? "");
+    const [isProfilePublic, setIsProfilePublic] = useState(user.isPublicAccount ?? true);
 
 
     async function uploadImage(file: File): Promise<string> {
@@ -54,7 +49,7 @@ export default function Configurations({ user }: ConfigurationsProps) {
         return data.secure_url;
     }
 
-    async function teste(event: React.ChangeEvent<HTMLInputElement>) {
+    async function uploadImg(event: React.ChangeEvent<HTMLInputElement>) {
         const file = event.target.files?.[0];
 
         if (!file) return;
@@ -102,12 +97,15 @@ export default function Configurations({ user }: ConfigurationsProps) {
     }
 
     const updateUserInfos = async () => {
-        const data: { id?: string, name?: string, image?: string } = {};
+        const data: { id?: string, name?: string, image?: string, biography?: string, isPublicAccount?: boolean} = {};
 
         data.id = user.id
 
         if (name.trim()) data.name = name.trim();
         if (image) data.image = image
+        if (bio) data.biography = bio
+        
+        data.isPublicAccount = isProfilePublic
 
         try {
             await updateUser(data)
@@ -127,9 +125,8 @@ export default function Configurations({ user }: ConfigurationsProps) {
     }
 
     async function handleSubmit() {
-        if(currentPassword != "") await changePassword()
+        if (currentPassword != "") await changePassword()
         await updateUserInfos()
-
     }
 
     return (
@@ -148,47 +145,48 @@ export default function Configurations({ user }: ConfigurationsProps) {
 
                             <span className="absolute bottom-0 right-0 rounded-full bg-primary-color p-2 text-white"> <Camera size={16} /> </span>
 
-                            <input type="file"
-                                accept="image/*"
-                                className="hidden"
-                                onChange={teste}
-                            />
+                            <input type="file" accept="image/*" className="hidden" onChange={uploadImg} />
                         </label>
                     </div>
 
                     <div>
                         <p className="font-semibold">{name}</p>
+                        <p className="text-xs text-secondary-color mb-2">@{user.username}</p>
                         <p className="text-sm text-secondary-color"> {texts.profile.changeYourPhoto} </p>
                     </div>
                 </div>
 
                 <div className="mt-6 grid gap-5 md:grid-cols-2">
                     <div>
-                        <p className="mb-2 block text-sm font-medium"> {texts.profile.username} </p>
-                        <input id="name"
-                            value={name}
-                            onChange={(event) => setName(event.target.value)}
-                            required
-                            minLength={2}
-                            className="w-full rounded-lg border p-3 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
-                        />
+                        <label htmlFor="name" className="mb-2 block text-sm font-medium"> Nome </label>
+                        <input id="name" value={name} onChange={(event) => setName(event.target.value)} required minLength={2} className="w-full rounded-lg border p-3 outline-none"/>
                     </div>
 
                     <div>
-                        <p className="mb-2 block text-sm font-medium"> {texts.profile.email} </p>
+                        <label htmlFor="username" className="mb-2 block text-sm font-medium"> Username </label>
                         <div className="relative">
-                            <input id="email"
-                                type="email"
-                                value={user.email}
-                                readOnly
-                                className="w-full rounded-lg border bg-gray-100 p-3 pr-10 text-secondary-color"
-                            />
-                            <LockKeyhole
-                                size={17}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-                            />
+                            <input id="username" value={`@${user.username}`} readOnly className="w-full cursor-not-allowed rounded-lg border bg-gray-100 p-3 pr-10 text-gray-500 outline-none"/>
+                            <LockKeyhole size={17} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"/>
                         </div>
+
+                        <p className="mt-1 text-xs text-secondary-color"> O username não pode ser alterado.</p>
+                    </div>
+
+                    <div>
+                        <label htmlFor="email" className="mb-2 block text-sm font-medium"> {texts.profile.email} </label>
+
+                        <div className="relative">
+                            <input id="email" type="email" value={user.email} readOnly className="cursor-not-allowed  w-full rounded-lg border bg-gray-100 p-3 pr-10 text-secondary-color"/>
+                            <LockKeyhole size={17} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                        </div>
+
                         <p className="mt-1 text-xs text-secondary-color"> {texts.profile.emailCannotBeChanged} </p>
+                    </div>
+
+                    <div className="md:col-span-2">
+                        <label htmlFor="bio" className="mb-2 block text-sm font-medium"> Biografia </label>
+                        <textarea id="bio" value={bio} onChange={(event) => setBio(event.target.value)} placeholder="Conte um pouco sobre você e suas aventuras..." maxLength={80} rows={3} className="w-full resize-none rounded-lg border p-3 outline-none transition" />
+                        <p className="mt-1 text-right text-xs text-secondary-color"> {bio.length}/80 caracteres </p>
                     </div>
 
                 </div>
@@ -233,6 +231,31 @@ export default function Configurations({ user }: ConfigurationsProps) {
                             <Eye size={30} className="mr-2 cursor-pointer" onClick={() => setConfirmPasswordView(!confirmPasswordView)} />
                         </div>
                     </div>
+                </div>
+                <div className="mt-8 border-t border-gray-100 pt-6">
+                    <h3 className="text-lg font-semibold"> Privacidade do perfil </h3>
+
+                    <p className="mt-1 text-sm text-secondary-color"> Controle como outras pessoas podem visualizar seu perfil no TripPilot. </p>
+
+                    <label className="mt-5 flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-gray-100 p-4 transition hover:bg-gray-50">
+                        <div className="flex items-center gap-3">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                                {isProfilePublic ? ( <Globe size={21} /> ) : ( <LockKeyhole size={21} />)}
+                            </div>
+
+                            <div>
+                                <p className="font-medium"> {isProfilePublic ? "Perfil público" : "Perfil privado"} </p>
+
+                                <p className="text-sm text-secondary-color">
+                                    {isProfilePublic ? "Outras pessoas podem visualizar seu perfil e seus conteúdos públicos." : "Somente você poderá visualizar seu perfil." }
+                                </p>
+                            </div>
+                        </div>
+
+                        <input type="checkbox" checked={isProfilePublic} onChange={(event) => setIsProfilePublic(event.target.checked)} className="peer sr-only" />
+
+                        <div className=" relative h-6 w-11 shrink-0 rounded-full bg-gray-300 transition-colors after:absolute after:left-1 after:top-1 after:h-4 after:w-4 after:rounded-full after:bg-white after:transition-transform after:content-[''] peer-checked:bg-indigo-600 peer-checked:after:translate-x-5 peer-focus-visible:ring-2" />
+                    </label>
                 </div>
             </div>
 

@@ -53,6 +53,19 @@ export class EditUserInfosDto {
   })
   @IsOptional()
   image: string
+
+  @ApiProperty({
+    example: 'https://urlimgcloudinary',
+  })
+  @IsOptional()
+  @MaxLength(80)
+  biography: string
+
+  @ApiProperty({
+    example: 'https://urlimgcloudinary',
+  })
+  @IsOptional()
+  isPublicAccount: boolean
 }
 
 export class EditPasswordDto {
