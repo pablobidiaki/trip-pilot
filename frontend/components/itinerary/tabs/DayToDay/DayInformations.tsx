@@ -4,6 +4,7 @@ import { Moon, Sun, Sunrise } from "lucide-react";
 import texts from "@/constants/texts";
 import DayInfos from "@/components/ready_guides/DayToDay/DayInfos";
 import Loading from "@/components/loading/Loading/Loading";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface DayInformationsProps {
     itinerary: DayToDayInterface,
@@ -23,10 +24,7 @@ export default function DayInformations({ itinerary, imageLoading, setImageLoadi
                 <h1 className="text-center mt-2 font-medium text-lg text-secondary-color">{itinerary.day}</h1>
                 <h2 className="text-center font-medium text-2xl text-primary-color">{itinerary.title}</h2>
                 <p className="text-center mb-2 text-secondary-color font-light">{texts.itinerary.cust}:
-                    <span className=" text-green-500"> {texts.real} {itinerary.dayCostEstimate.toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })}
+                    <span className=" text-green-500"> {texts.real} {formatCurrent(itinerary.dayCostEstimate)}
                     </span>
                 </p>
                 {itinerary.imageURL ?

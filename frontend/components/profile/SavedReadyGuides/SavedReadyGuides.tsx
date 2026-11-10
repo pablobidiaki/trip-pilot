@@ -1,6 +1,7 @@
 import GradientButton from "@/components/ui/Buttons/GradientButton"
 import texts from "@/constants/texts"
 import { SavedReadyGuideInterface } from "@/interfaces/readyGuides.interface"
+import formatCurrent from "@/utils/formatCurrent"
 import { Calendar1, CircleDollarSign, Languages } from "lucide-react"
 import Link from "next/link"
 
@@ -60,10 +61,7 @@ export default function SavedReadyGuides({guides}: SavedReadyGuidesProps){
                                 </div>
                             </div>
 
-                            <p className="text-xl text-center mt-5 font-bold text-gray-900">{texts.real} {guide.readyGuide.price.toLocaleString("pt-BR", {
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2
-                            })}</p>
+                            <p className="text-xl text-center mt-5 font-bold text-gray-900">{texts.real} {formatCurrent(guide.readyGuide.price)}</p>
 
                             <div className="m-2 mt-5">
                                 <GradientButton text={texts.profile.viewGuide} type="button" />

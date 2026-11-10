@@ -1,6 +1,7 @@
 import texts from "@/constants/texts"
 import { DestinationInterface } from "@/interfaces/destination.interface"
 import { ReadyGuideInterface } from "@/interfaces/readyGuides.interface"
+import formatCurrent from "@/utils/formatCurrent"
 import Link from "next/link"
 
 interface RecommendationProps {
@@ -28,13 +29,7 @@ export default function RecommendationCard({ type, readyGuide, destination, path
             </p>
             <p className="mx-2 mt-2 text-green-500 text-sm font-medium
                 lg:text-xl
-            ">{texts.real} {readyGuide ? readyGuide?.price.toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }) : destination?.averageCost.total.toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })}</p>
+            ">{texts.real} {readyGuide ? formatCurrent(readyGuide?.price) : formatCurrent(destination?.averageCost.total!)}</p>
         </Link>
     )
 }

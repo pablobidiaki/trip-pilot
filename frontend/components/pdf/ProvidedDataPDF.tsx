@@ -1,6 +1,7 @@
 
 import { Text, View } from "@react-pdf/renderer";
 import { styles } from "./stylesPDF";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface ProvidedDataPDFProps {
     destination: string
@@ -57,10 +58,7 @@ export function ProvidedDataPDF({ destination, departure, budget, days, traveler
 
                     <View style={styles.summaryItem}>
                         <Text style={styles.summaryValue}>
-                            {budget.toLocaleString("pt-BR", {
-                                style: "currency",
-                                currency: "BRL"
-                            })}
+                            {formatCurrent(budget)}
                         </Text>
                         <Text style={styles.summaryLabel}>Orçamento</Text>
                     </View>

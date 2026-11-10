@@ -2,6 +2,7 @@
 
 import ImageFullScreen from "@/components/ui/ImageFullScreen/ImageFullScreen";
 import texts from "@/constants/texts"
+import formatCurrent from "@/utils/formatCurrent";
 import { Expand } from "lucide-react";
 import { useState } from "react";
 
@@ -30,10 +31,7 @@ export default function TipicalFoodsCard({ imageURL, title, description, average
                 <p className="text-primary-color font-medium line-clamp-1 text-2xl">{title}</p>
                 <p className="text-primary-color mb-2 text-sm italic ">{category}</p>
                 <p className="text-secondary-color line-clamp-2">{description}</p>
-                <p className="text-green-500 font-medium mt-auto">{texts.real} {averagePrice.toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })}
+                <p className="text-green-500 font-medium mt-auto">{texts.real} {formatCurrent(averagePrice)}
                 </p>
             </div>
 

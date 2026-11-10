@@ -1,5 +1,6 @@
 import texts from "@/constants/texts"
 import ProgressBar from "../ProgressBar/ProgressBar"
+import formatCurrent from "@/utils/formatCurrent"
 
 interface CostEstimateInfoLineProps {
     title: string
@@ -12,10 +13,7 @@ export default function CostEstimateInfoLine({ title, cost, total }: CostEstimat
         <div className="">
             <div className="flex justify-between">
                 <h1>{title}</h1>
-                <p>{texts.real} {cost.toLocaleString("pt-BR", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                })}
+                <p>{texts.real} {formatCurrent(cost)}
                 </p>
             </div>
             <ProgressBar value={cost} maxValue={total} />

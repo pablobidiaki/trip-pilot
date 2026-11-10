@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import ConfirmDeleteModal from "../InitialPage/ConfirmDeleteModal";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface MyItinerariesProps {
     itineraries: ItineraryInterface[]
@@ -76,10 +77,7 @@ export default function MyItineraries({ itineraries }: MyItinerariesProps) {
                                     </div>
                                 </div>
 
-                                <p className="text-xl text-center mt-5 font-bold text-gray-900">{texts.real} {itinerary.budgetTotal.toLocaleString("pt-BR", {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })}</p>
+                                <p className="text-xl text-center mt-5 font-bold text-gray-900">{texts.real} {formatCurrent(itinerary.budgetTotal)}</p>
 
                                 <div className="m-2 mt-5">
                                     <GradientButton text={texts.itineraryExample.viewItinerary} type="button" />

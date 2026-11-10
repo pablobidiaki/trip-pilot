@@ -7,6 +7,7 @@ import { AccommodationsInterface } from "@/interfaces/itinerary.interface";
 import { useState } from "react";
 import ReviewBar from "@/components/ui/ReviewBar/ReviewBar";
 import Loading from "@/components/loading/Loading/Loading";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface AccommodationProps {
     accommodations: AccommodationsInterface[]
@@ -80,10 +81,7 @@ export default function Accommodation({ accommodations }: AccommodationProps) {
 
                     <div className="flex gap-2 items-center justify-between">
                         <p className="font-medium">{texts.accommodations.costEstimate}</p>
-                        <span className="text-green-500 text-sm p-2 bg-green-100 rounded-xl font-medium">{texts.real} {accommodations[option].costEstimate.toLocaleString("pt-BR", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        })}
+                        <span className="text-green-500 text-sm p-2 bg-green-100 rounded-xl font-medium">{texts.real} {formatCurrent(accommodations[option].costEstimate)}
                         </span>
                     </div>
                 </div>

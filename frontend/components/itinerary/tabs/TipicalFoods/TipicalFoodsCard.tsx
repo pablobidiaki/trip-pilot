@@ -2,6 +2,7 @@
 
 import Loading from "@/components/loading/Loading/Loading"
 import texts from "@/constants/texts"
+import formatCurrent from "@/utils/formatCurrent"
 import { useState } from "react"
 
 interface TipicalFoodsCardProps {
@@ -44,10 +45,7 @@ export default function TipicalFoodsCard({ imageURL, name, description, category
                     {category}
                 </p>
                 <p className="mt-auto text-primary-color font-medium text-lg py-2">{texts.tipicalFood.averagePrice}
-                    <span className="bg-green-100 text-green-500 w-fit py-1 px-3 rounded-2xl">{texts.real} {averagePrice.toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })}
+                    <span className="bg-green-100 text-green-500 w-fit py-1 px-3 rounded-2xl">{texts.real} {formatCurrent(averagePrice)}
                     </span>
                 </p>
             </div>

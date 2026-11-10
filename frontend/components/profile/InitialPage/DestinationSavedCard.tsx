@@ -2,6 +2,7 @@ import FavoriteButton from "@/components/destination/DestinationBanner/FavoriteB
 import texts from "@/constants/texts"
 import { SavedDestinationInterface } from "@/interfaces/destination.interface"
 import { UserInterface } from "@/interfaces/user.interface"
+import formatCurrent from "@/utils/formatCurrent"
 import Link from "next/link"
 
 interface DestinationSavedCardProps {
@@ -44,10 +45,7 @@ export default function DestinationSavedCard({ user, savedDestinations }: Destin
                     <div className="pt-3 mx-2 mb-1">
                         <p className="text-sm font-bold text-gray-900
                             lg:text-xl
-                        ">{texts.real} {destination.destination.averageCost.total.toLocaleString("pt-BR", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        })}</p>
+                        ">{texts.real} {formatCurrent(destination.destination.averageCost.total)}</p>
                     </div>
                 </Link>
             ))}

@@ -1,6 +1,7 @@
 import { CostEstimateInterface } from "@/interfaces/itinerary.interface"
 import CostEstimateInfoLine from "./CostEstimateInfoLine"
 import texts from "@/constants/texts"
+import formatCurrent from "@/utils/formatCurrent"
 
 interface CostEstimateProps {
     costs: CostEstimateInterface
@@ -19,10 +20,7 @@ export default function CostEstimate({ costs, budgetTotal }: CostEstimateProps) 
                 <h1 className="text-center text-xl text-primary-color font-medium mb-2
                     lg:text-2xl lg:mb-0
                 ">{texts.costEstimate.youInformed}
-                    <span className="text-green-500">{texts.real} {budgetTotal.toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })}
+                    <span className="text-green-500">{texts.real} {formatCurrent(budgetTotal)}
                     </span>
                 </h1>
                 <CostEstimateInfoLine title={texts.costEstimate.accommodation} cost={costs.accommodations} total={costs.total} />

@@ -2,6 +2,7 @@
 import { Text, View } from "@react-pdf/renderer";
 import { styles } from "./stylesPDF";
 import { TransportationInterface } from "@/interfaces/itinerary.interface";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface TransportsPDFProps {
     transports: TransportationInterface[];
@@ -33,10 +34,7 @@ export function TransportsPDF({ transports }: TransportsPDFProps) {
                             </Text>
 
                             <Text style={styles.transportPrice}>
-                                {transport.averagePrice.toLocaleString("pt-BR", {
-                                    style: "currency",
-                                    currency: "BRL",
-                                })}
+                                {formatCurrent(transport.averagePrice)}
                             </Text>
                         </View>
                     </View>

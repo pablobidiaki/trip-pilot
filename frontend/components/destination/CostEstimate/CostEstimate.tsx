@@ -1,6 +1,7 @@
 import InfoRow from "@/components/itinerary/grid/InfoRow/InfoRow";
 import texts from "@/constants/texts";
 import { DestinationInterface } from "@/interfaces/destination.interface";
+import formatCurrent from "@/utils/formatCurrent";
 import { Bed, Binoculars, Car, DollarSign, Utensils } from "lucide-react";
 
 interface CostEstimateProps {
@@ -23,10 +24,7 @@ export default function CostEstimate({ destination }: CostEstimateProps) {
                 <hr className="mx-1" />
                 <div className="flex justify-between mt-2 mx-2 items-center">
                     <p className="text-primary-color font-bold">{texts.costEstimate.totalEstimate}</p>
-                    <p className="px-2 py-1 rounded-2xl bg-green-200 text-green-400">{texts.real} {destination.averageCost.total.toLocaleString("pt-BR", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        })}
+                    <p className="px-2 py-1 rounded-2xl bg-green-200 text-green-400">{texts.real} {formatCurrent(destination.averageCost.total)}
                     </p>
                 </div>
             </div>

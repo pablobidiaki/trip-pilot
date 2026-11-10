@@ -1,5 +1,6 @@
 import ReviewBar from "@/components/ui/ReviewBar/ReviewBar"
 import texts from "@/constants/texts"
+import formatCurrent from "@/utils/formatCurrent"
 import { MapPin, StarIcon } from "lucide-react"
 import Image from "next/image"
 
@@ -46,10 +47,7 @@ export default function AccomodationCard({ image, days, name, review, address, t
                 <p className="text-primary-color font-medium text-xl
                     md:text-sm
                 ">
-                    {texts.real} {price.toLocaleString("pt-BR", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                })}
+                    {texts.real} {formatCurrent(price)}
                 </p>
                 <p className="md:text-xs">{texts.perPerson}</p>
             </div>

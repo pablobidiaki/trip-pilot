@@ -3,6 +3,7 @@ import { CalendarDays, CircleDollarSign, Clock, MoveRight, Users } from "lucide-
 import ProvidedDataCard from "./ProvidedDataCard";
 import texts from "@/constants/texts";
 import formatDate from "@/utils/formatDate";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface ProviedDataProps {
     itinerary: ItineraryInterface
@@ -64,10 +65,7 @@ export default function ProviedData({ itinerary }: ProviedDataProps) {
 
                     <ProvidedDataCard icon={<CircleDollarSign />}
                         title={texts.providedData.budgetTab}
-                        value={`${texts.real} ${itinerary.budgetTotal.toLocaleString("pt-BR", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        }).toString()}`}
+                        value={`${texts.real} ${formatCurrent(itinerary.budgetTotal)}`}
                     />
                 </div>
                 <p className="mx-auto text-center text-secondary-color text-lg mt-15 px-2

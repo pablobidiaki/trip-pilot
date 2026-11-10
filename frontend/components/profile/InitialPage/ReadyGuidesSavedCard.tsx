@@ -2,6 +2,7 @@ import FavoriteButton from "@/components/destination/DestinationBanner/FavoriteB
 import texts from "@/constants/texts"
 import { SavedReadyGuideInterface } from "@/interfaces/readyGuides.interface"
 import { UserInterface } from "@/interfaces/user.interface"
+import formatCurrent from "@/utils/formatCurrent"
 import Link from "next/link"
 
 interface ReadyGuidesSavedCardProps {
@@ -42,10 +43,7 @@ export default function ReadyGuidesSavedCard({ user, savedReadyGuides }: ReadyGu
                     <div className="pt-3 mx-2 mb-1">
                         <p className="text-sm font-bold text-gray-900
                             md:text-xl
-                        ">{texts.real} {guide.readyGuide.price.toLocaleString("pt-BR", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        })}</p>
+                        ">{texts.real} {formatCurrent(guide.readyGuide.price)}</p>
                     </div>
                 </Link>
             ))}

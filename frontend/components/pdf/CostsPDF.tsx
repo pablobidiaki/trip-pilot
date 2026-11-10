@@ -2,6 +2,7 @@
 import { Text, View } from "@react-pdf/renderer";
 import { styles } from "./stylesPDF";
 import { CostEstimateInterface } from "@/interfaces/itinerary.interface";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface CostsPDFProps {
     costs: CostEstimateInterface;
@@ -11,12 +12,12 @@ export function CostsPDF({ costs }: CostsPDFProps) {
     if (!costs) return null;
 
     const expenses = [
-        { label: "Passagens", value: costs.ticket.toLocaleString("pt-BR", { style: "currency", currency: "BRL", }) },
-        { label: "Hospedagem", value: costs.accommodations.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) },
-        { label: "Alimentação", value: costs.food.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) },
-        { label: "Transporte", value: costs.transport.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) },
-        { label: "Atividades", value: costs.activities.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) },
-        { label: "Extras", value: costs.extra.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) },
+        { label: "Passagens", value: formatCurrent(costs.ticket) },
+        { label: "Hospedagem", value: formatCurrent(costs.accommodations) },
+        { label: "Alimentação", value: formatCurrent(costs.food) },
+        { label: "Transporte", value: formatCurrent(costs.transport) },
+        { label: "Atividades", value: formatCurrent(costs.activities) },
+        { label: "Extras", value: formatCurrent(costs.extra) },
     ];
 
     return (
@@ -37,7 +38,7 @@ export function CostsPDF({ costs }: CostsPDFProps) {
                 </Text>
 
                 <Text style={styles.totalCostValue}>
-                    {costs.total.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
+                    {formatCurrent(costs.total)}
                 </Text>
 
                 <Text style={styles.totalCostDescription}>

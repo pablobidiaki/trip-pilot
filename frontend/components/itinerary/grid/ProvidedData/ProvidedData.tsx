@@ -4,6 +4,7 @@ import { MapPin, FlagTriangleRight, CalendarDays, Clock, Users, Banknote } from 
 import { ItineraryInterface } from "@/interfaces/itinerary.interface";
 import formatDate from "@/utils/formatDate";
 import DataCard from "./DataCard";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface ProvidedDataProps {
     itinerary: ItineraryInterface
@@ -20,10 +21,7 @@ export default function ProvidedData({ itinerary }: ProvidedDataProps) {
             <DataCard icon={<CalendarDays />} title={texts.providedData.departureDate} text={formatDate(itinerary.startDate)} />
             <DataCard icon={<Clock />} title={texts.days} text={`${itinerary.days.toString()} ${texts.days}`} />
             <DataCard icon={<Users />} title={texts.providedData.travelers} text={`${itinerary.travelers.toString()} ${texts.people}`} />
-            <DataCard icon={<Banknote />} title={texts.providedData.budget} text={`${texts.real} ${itinerary.budgetTotal.toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).toString()}`} />
+            <DataCard icon={<Banknote />} title={texts.providedData.budget} text={`${texts.real} ${formatCurrent(itinerary.budgetTotal)}`} />
         </div>
     )
 }

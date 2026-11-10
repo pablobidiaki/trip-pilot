@@ -1,6 +1,7 @@
 "use client"
 
 import texts from "@/constants/texts";
+import formatCurrent from "@/utils/formatCurrent";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -35,16 +36,10 @@ export default function ImageFullScreen({ title, image, description, price, isOp
 
                 <h1 className="text-2xl font-medium text-primary-color text-center"> {title} </h1>
                 <p className="text-secondary-color text-center">{description}</p>
-                <p className="text-green-600 font-semibold text-center mb-4">{price === 0 ? texts.free : `${texts.real} ${price.toLocaleString("pt-BR", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                })} ${texts.perPerson}`}
-                </p>
+                <p className="text-green-600 font-semibold text-center mb-4">{price === 0 ? texts.free : `${texts.real} ${formatCurrent(price)} ${texts.perPerson}`}</p>
 
-                <img src={image}
-                    alt={title}
-                    className="max-h-[70vh] w-full object-contain"
-                />
+                <img src={image} alt={title} className="max-h-[70vh] w-full object-contain"/>
+                
                 <p className="text-center text-secondary-color text-sm font-light mt-5">{texts.itinerary.pexelsCredits}
                     <Link href={"https://www.pexels.com/pt-br/"} target="_blank" className="text-link-color"> Pexels.</Link>
                 </p>

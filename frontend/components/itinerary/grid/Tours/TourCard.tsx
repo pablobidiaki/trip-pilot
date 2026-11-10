@@ -2,6 +2,7 @@
 
 import ImageFullScreen from "@/components/ui/ImageFullScreen/ImageFullScreen";
 import texts from "@/constants/texts";
+import formatCurrent from "@/utils/formatCurrent";
 import { useState } from "react";
 
 interface TourCardProps {
@@ -25,10 +26,7 @@ export default function TourCard({ image, title, description, price }: TourCardP
                 <h1 className="text-white font-medium line-clamp-1">{title}</h1>
                 <p className="text-gray-300 text-xs line-clamp-2">{description}</p>
                 {price == 0 ? <p className="text-sm bg-green-100 w-fit mb-2 px-2 rounded-xl text-green-500 font-medium mt-2">{texts.free}</p> :
-                    <p className="text-sm text-green-500 font-medium mt-2 px-2 bg-green-100 rounded-xl w-fit mb-2">{texts.real} {price.toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2 
-                    })} {texts.perPerson}
+                    <p className="text-sm text-green-500 font-medium mt-2 px-2 bg-green-100 rounded-xl w-fit mb-2">{texts.real} {formatCurrent(price)} {texts.perPerson}
                     </p>
                 }
             </div>

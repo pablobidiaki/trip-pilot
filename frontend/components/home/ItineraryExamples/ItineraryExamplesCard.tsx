@@ -2,6 +2,7 @@ import { Clock, CircleDollarSign } from "lucide-react"
 import texts from "@/constants/texts"
 import Link from "next/link"
 import InfoItem from "../../ui/InfoItem/InfoItem"
+import formatCurrent from "@/utils/formatCurrent"
 
 interface CardProps {
     image: string,
@@ -37,10 +38,7 @@ export default function ItineraryExamplesCard({ image, title, text, days, trip_t
 
                 <div className="flex justify-between mx-4 mb-4">
                     <p className="text-secondary-color">{texts.startingAt}
-                        <span className="text-primary-color font-bold">{texts.real} {price.toLocaleString("pt-BR", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        })}
+                        <span className="text-primary-color font-bold">{texts.real} {formatCurrent(price)}
                         </span>
                     </p>
                     <p className="text-link-color underline font-medium">{texts.itineraryExample.viewItinerary}</p>

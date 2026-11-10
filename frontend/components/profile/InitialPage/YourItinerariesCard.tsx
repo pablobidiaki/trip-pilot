@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface YourItinerariesCardProps {
     itineraries: ItineraryInterface[];
@@ -72,11 +73,7 @@ export default function YourItinerariesCard({itineraries}: YourItinerariesCardPr
                                 <div className="mt-2 border-gray-100 pt-3 mx-2 mb-1">
                                     <p className="text-sm font-bold text-gray-900 md:text-xl">
                                         {texts.real}{" "}
-                                        {itinerary.budgetTotal.toLocaleString("pt-BR", {
-                                            minimumFractionDigits: 2,
-                                            maximumFractionDigits: 2,
-                                        }
-                                        )}
+                                        {formatCurrent(itinerary.budgetTotal)}
                                     </p>
                                 </div>
                             </div>

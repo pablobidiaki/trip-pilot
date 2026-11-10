@@ -2,6 +2,7 @@
 import { Text, View, Image } from "@react-pdf/renderer";
 import { styles } from "./stylesPDF";
 import { ToursInterface } from "@/interfaces/itinerary.interface";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface ToursPDFProps {
     tours: ToursInterface[];
@@ -40,10 +41,7 @@ export function ToursPDF({ tours }: ToursPDFProps) {
                                 </Text>
 
                                 <Text style={styles.tourPrice}>
-                                    {tour.price.toLocaleString("pt-BR", {
-                                        style: "currency",
-                                        currency: "BRL"
-                                    })}
+                                    {formatCurrent(tour.price)}
                                 </Text>
                             </View>
                         </View>

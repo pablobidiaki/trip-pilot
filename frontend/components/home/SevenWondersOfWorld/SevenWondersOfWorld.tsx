@@ -3,6 +3,7 @@
 import texts from '@/constants/texts';
 import { ReadyGuideInterface } from '@/interfaces/readyGuides.interface';
 import { getReadyGuides } from '@/services/readyGuides.service';
+import formatCurrent from '@/utils/formatCurrent';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -44,10 +45,7 @@ export default function SevenWondersOfWorld({ title, filter }: SevenWondersOfWor
                         <div className="absolute right-3 top-3 z-10">
                             <p className="rounded-xl bg-green-200/30 px-3 py-1 text-xs font-bold text-green-400 sm:text-sm">
                                 {texts.real}
-                                {guide.price.toLocaleString('pt-BR', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2,
-                                })}
+                                {formatCurrent(guide.price)}
                             </p>
                         </div>
 

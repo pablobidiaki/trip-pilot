@@ -2,6 +2,7 @@
 import { Image, Text, View } from "@react-pdf/renderer";
 import { styles } from "./stylesPDF";
 import { DayToDayInterface } from "@/interfaces/itinerary.interface";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface DayToDayPDFProps {
     days: DayToDayInterface[];
@@ -44,10 +45,7 @@ export function DayToDayPDF({ days }: DayToDayPDFProps) {
                                     Custo médio do dia
                                 </Text>
                                 <Text style={styles.dayCost}>
-                                    {day.dayCostEstimate.toLocaleString("pt-BR", {
-                                        style: "currency",
-                                        currency: "BRL",
-                                    })}
+                                    {formatCurrent(day.dayCostEstimate)}
                                 </Text>
                             </View>
                         </View>

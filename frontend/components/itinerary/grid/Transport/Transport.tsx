@@ -3,6 +3,7 @@ import texts from "@/constants/texts";
 import { CarFront, BusFront } from "lucide-react"
 import TransportInfo from "./TransportInfo"
 import { TransportationInterface } from "@/interfaces/itinerary.interface";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface TransportProps {
     transports: TransportationInterface[]
@@ -15,10 +16,7 @@ export default function Transport({ transports }: TransportProps) {
 
             <TransportInfo icon={<CarFront />}
                 title={transports[0].type}
-                first_info={`Diaria: ~${texts.real} ${transports[0].averagePrice.toLocaleString("pt-BR", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                })}`}
+                first_info={`Diaria: ~${texts.real} ${formatCurrent(transports[0].averagePrice)}`}
                 second_info="Ideal para conhecer atrações próximas"
             />
 
@@ -26,10 +24,7 @@ export default function Transport({ transports }: TransportProps) {
 
             <TransportInfo icon={<BusFront />}
                 title={transports[1].type}
-                first_info={`Preço médio: ~${texts.real} ${transports[1].averagePrice.toLocaleString("pt-BR", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                })}`}
+                first_info={`Preço médio: ~${texts.real} ${formatCurrent(transports[1].averagePrice)}`}
                 second_info="Linha de onibus e transfers disponiveis para passeios"
             />
         </div>

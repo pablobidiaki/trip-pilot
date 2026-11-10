@@ -7,6 +7,7 @@ import ReviewBar from "@/components/ui/ReviewBar/ReviewBar"
 import InfoRow from "../../tabs/InfoRow/InfoRow"
 import { BedDouble, MapPin, Package } from "lucide-react"
 import texts from "@/constants/texts"
+import formatCurrent from "@/utils/formatCurrent"
 
 interface MainContentTabsProps {
     itinerary: ItineraryInterface
@@ -72,10 +73,7 @@ export default function Accommodation({ itinerary }: MainContentTabsProps) {
                                 value={accommodation.roomType}
                             />
                             <p className="rounded-2xl mb-2 p-2 bg-green-200 w-fit mx-auto font-medium text-primary-color mt-5">{texts.accommodations.averagePricePerPerson}
-                                <span className="text-green-700 font-semibold"> {texts.real} {accommodation.costEstimate.toLocaleString("pt-BR", {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })}
+                                <span className="text-green-700 font-semibold"> {texts.real} {formatCurrent(accommodation.costEstimate)}
                                 </span>
                             </p>
                         </div>

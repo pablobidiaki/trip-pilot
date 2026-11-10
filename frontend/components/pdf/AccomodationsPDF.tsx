@@ -2,6 +2,7 @@
 import { Text, View } from "@react-pdf/renderer";
 import { styles } from "./stylesPDF";
 import { AccommodationsInterface } from "@/interfaces/itinerary.interface";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface AccomodationsPDFProps {
     accomodation: AccommodationsInterface[]
@@ -53,10 +54,7 @@ export function AccomodationsPDF({ accomodation }: AccomodationsPDFProps) {
                                     Preço estimado
                                 </Text>
                                 <Text style={styles.hotelPrice}>
-                                    {hotel.costEstimate.toLocaleString("pt-BR", {
-                                        style: "currency",
-                                        currency: "BRL"
-                                    })}
+                                    {formatCurrent(hotel.costEstimate)}
                                 </Text>
                             </View>
                         </View>

@@ -1,6 +1,7 @@
 import GradientButton from "@/components/ui/Buttons/GradientButton"
 import texts from "@/constants/texts"
 import { SavedDestinationInterface } from "@/interfaces/destination.interface"
+import formatCurrent from "@/utils/formatCurrent"
 import { Calendar1, Languages, SunSnow } from "lucide-react"
 import Link from "next/link"
 
@@ -60,10 +61,7 @@ export default function SavedDestinations({ destinations }: SavedDestinationsPro
                                 </div>
                             </div>
 
-                            <p className="text-xl text-center mt-5 font-bold text-gray-900">{texts.real} {destination.destination.averageCost.total.toLocaleString("pt-BR", {
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2
-                            })}</p>
+                            <p className="text-xl text-center mt-5 font-bold text-gray-900">{texts.real} {formatCurrent(destination.destination.averageCost.total)}</p>
 
                             <div className="m-2 mt-5">
                                 <GradientButton text={texts.profile.viewDestination} type="button" />

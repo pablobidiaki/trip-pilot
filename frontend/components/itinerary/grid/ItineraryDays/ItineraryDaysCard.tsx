@@ -4,6 +4,7 @@ import { useState } from "react"
 import texts from "@/constants/texts"
 import ModalHours from "./ModalHours"
 import { Hours } from "@/interfaces/itinerary.interface"
+import formatCurrent from "@/utils/formatCurrent"
 
 interface ItineraryDaysCardProps {
     day: string
@@ -45,10 +46,7 @@ export default function ItineraryDaysCard({ day, title, image, morning, afternoo
                 <p className="text-sm px-2 py-1 text-primary-color font-medium mb-2">{texts.itinerary.evening}<span className="text-secondary-color">{evening}</span></p>
                 <div className="flex gap-2 items-center p-2 mt-auto">
                     <p className="text-primary-color">{texts.itinerary.cust} </p>
-                    <p className="text-green-500">{texts.real} {cost_estimate.toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })}
+                    <p className="text-green-500">{texts.real} {formatCurrent(cost_estimate)}
                     </p>
                 </div>
             </div>

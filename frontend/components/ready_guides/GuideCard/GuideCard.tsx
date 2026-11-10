@@ -4,6 +4,7 @@ import { Clock, Landmark } from "lucide-react";
 import Link from "next/link";
 import FavoriteButton from "@/components/destination/DestinationBanner/FavoriteButton";
 import { UserInterface } from "@/interfaces/user.interface";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface GuideCardProps {
     id: string,
@@ -51,11 +52,7 @@ export default function GuideCard({ id, image, title, cities, duration, type, co
 
                 <p className="text-primary-color mx-2 text-sm line-clamp-2">{description}</p>
                 <div className=" flex justify-between items-center mx-2 mb-2 mt-5">
-                    <p className="p-2 bg-green-200 text-green-500 rounded-2xl">{texts.real} {price.toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })}
-                    </p>
+                    <p className="p-2 bg-green-200 text-green-500 rounded-2xl">{texts.real} {formatCurrent(price)}</p>
                     <button className="rounded-2xl cursor-pointer p-2 border border-[#6366F1] text-[#6366F1]" >{texts.itineraryExample.viewItinerary}</button>
                 </div>
             </div>

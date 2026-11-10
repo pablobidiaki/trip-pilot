@@ -2,6 +2,7 @@
 import { Image, Text, View } from "@react-pdf/renderer";
 import { styles } from "./stylesPDF";
 import { TipicalFoodsInterface } from "@/interfaces/itinerary.interface";
+import formatCurrent from "@/utils/formatCurrent";
 
 interface TipicalFoodsPDFProps {
     typicalFood: TipicalFoodsInterface[];
@@ -42,10 +43,7 @@ export function TipicalFoodsPDF({ typicalFood }: TipicalFoodsPDFProps) {
                                     Preço médio
                                 </Text>
                                 <Text style={styles.typicalFoodPrice}>
-                                    {food.averagePrice.toLocaleString("pt-BR", {
-                                        style: "currency",
-                                        currency: "BRL",
-                                    })}
+                                    {formatCurrent(food.averagePrice)}
                                 </Text>
                             </View>
                         </View>
