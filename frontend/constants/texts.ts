@@ -424,6 +424,8 @@ const texts = {
         markNoVisited: "Marcar como não visitado",
         markWishlist: "Marcar na lista de desejos",
         markNoWishlist: "Remover da lista de desejos",
+        createMemory: "Criar lembrança",
+        editMemory: "Editar lembrança",
         zoom: "Zoom",
         zoomOut: "Zoom Out",
         originPosition: "Posição original",

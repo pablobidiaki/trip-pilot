@@ -106,7 +106,7 @@ export default function Map({ user, guestMode, tailwindTags }: MapProps) {
                         isOpen={isOpen}
                         onClose={() => setIsOpen(false)}
                         user={user!}
-                        setVisiteConfirmed={setVisiteConfirmed}
+                        setVisitConfirmed={setVisiteConfirmed}
                         imageLoading={imageLoading}
                         guestMode={guestMode}
                         setImageLoading={setImageLoading}
