@@ -21,7 +21,7 @@ export class CreateUsersDto {
   password?: string;
 }
 
-export class EditCountryDto {
+export class EditCountryUserDto {
   @ApiProperty({
     example: '8ab672ae-c515-46da-a3a3-3b47a4ba4c7c',
   })
@@ -29,10 +29,22 @@ export class EditCountryDto {
   userId: string;
 
   @ApiProperty({
+    example: '076',
+  })
+  @IsNotEmpty()
+  countryCode: string;
+
+  @ApiProperty({
     example: 'Brazil',
   })
   @IsNotEmpty()
-  country: string;
+  countryName: string
+
+  @ApiProperty({
+    example: 'false',
+  })
+  @IsNotEmpty()
+  isAdd: boolean
 }
 
 export class EditUserInfosDto {

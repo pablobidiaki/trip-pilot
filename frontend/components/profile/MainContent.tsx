@@ -6,7 +6,6 @@ import texts from "@/constants/texts"
 import MyItineraries from "./MyItineraries/MyItineraries"
 import SavedDestinations from "./SavedDestinations/SavedDestinations"
 import SavedReadyGuides from "./SavedReadyGuides/SavedReadyGuides"
-import MyMap from "./MyMap/MyMap"
 import { UserInterface } from "@/interfaces/user.interface"
 import Configurations from "./Configurations/Configurations"
 
@@ -29,7 +28,6 @@ export default function MainContent({ user, session, itineraries, savedDestinati
             {optionSelected === texts.optionSelectorProfile.myItineraries && <MyItineraries itineraries={itineraries} />}
             {optionSelected === texts.optionSelectorProfile.destinationsSaved && <SavedDestinations destinations={savedDestinations}/>}
             {optionSelected === texts.optionSelectorProfile.guidesSaved && <SavedReadyGuides guides={savedReadyGuides}/>}
-            {optionSelected === texts.optionSelectorProfile.myMap && <MyMap user={user!}/>}
             {optionSelected === texts.optionSelectorProfile.configurations && <Configurations user={user!} />}
         </div>
     )

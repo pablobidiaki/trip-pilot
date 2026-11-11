@@ -8,7 +8,19 @@ export interface UserInterface{
     username: string
     biography?: string
     isPublicAccount: boolean
-    countriesMemories: any
+    countriesMemories: CountriesMemoriesInterface[]
+}
+
+export interface CountriesMemoriesInterface{
+    id: string
+    cities: string[]
+    countryCode: string
+    countryName: string
+    isVisitedCountry: boolean
+    isWishListCountry: boolean
+    notes: string
+    visitedAt: string
+    userId: string
 }
 
 export interface RegisterUserInterface{

@@ -43,7 +43,7 @@ export default function InitialPage({ user, session, itineraries, savedDestinati
         {
             icon: <Plane className="text-blue-500" />,
             title: texts.profile.visitedCountries,
-            value: user?.countriesVisited.length,
+            value: 1,
             bgColor: "bg-blue-100"
         }
     ]

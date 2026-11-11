@@ -11,41 +11,32 @@ export async function getCountryFlag(country: string): Promise<FlagInterface> {
     return response.json()
 }
 
-export async function addCountryVisited(userId: string, country: string) {
-    await fetch(`${apiKey}/user/add/countryVisited`, {
+export async function handleCountryVisited(userId: string, countryName: string, countryCode: string, isAdd: boolean) {
+    await fetch(`${apiKey}/user/countryVisited`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             userId: userId,
-            country: country
+            countryCode: countryCode,
+            countryName:countryName,
+            isAdd: isAdd
         }),
     });
 }
 
-export async function removeCountryVisited(userId: string, country: string) {
-    await fetch(`${apiKey}/user/remove/countryVisited`, {
+export async function addCountryWishlist(userId: string, countryName: string, countryCode: string, isAdd: boolean) {
+    await fetch(`${apiKey}/user/countryWishlist`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             userId: userId,
-            country: country
-        }),
-    });
-}
-
-export async function addCountryWishlist(userId: string, country: string) {
-    await fetch(`${apiKey}/user/add/countryWishlist`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            userId: userId,
-            country: country
+            countryCode: countryCode,
+            countryName:countryName,
+            isAdd: isAdd
         }),
     });
 }

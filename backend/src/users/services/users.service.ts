@@ -1,6 +1,6 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import { ConflictException, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common"
-import { CreateUsersDto, EditCountryDto, EditPasswordDto, EditUserInfosDto } from '../dtos/users-dto';
+import { CreateUsersDto, EditCountryUserDto, EditPasswordDto, EditUserInfosDto } from '../dtos/users-dto';
 import { LoginInterface } from '../../auth/interfaces/auth.interfaces';
 import { ICrypto } from '../../core/crypto/ICrypto';
 import { IUserRepository } from '../repositories/IUserRepository';
@@ -75,104 +75,42 @@ export class UsersService {
     }
   }
 
-  async addCountryVisited(data: EditCountryDto) {
-    const user = await this.prisma.user.findUnique({
+  async handleCountryVisited(dto: EditCountryUserDto) {
+    return this.prisma.userCountry.upsert({
       where: {
-        id: data.userId,
+        userId_countryCode: {
+          userId: dto.userId,
+          countryCode: dto.countryCode,
+        },
       },
-      select: {
-        countriesVisited: true,
+      create: {
+        userId: dto.userId,
+        countryCode: dto.countryCode,
+        countryName: dto.countryName,
+        isVisitedCountry: true
       },
-    });
-
-    const countriesVisited = [
-      ...(user?.countriesVisited ?? []),
-      data.country,
-    ];
-
-    return this.prisma.user.update({
-      where: {
-        id: data.userId,
-      },
-      data: {
-        countriesVisited,
+      update: {
+        isVisitedCountry: dto.isAdd
       },
     });
   }
 
-  async removeCountryVisited(data: EditCountryDto) {
-    const user = await this.prisma.user.findUnique({
+  async handleCountryWishlist(dto: EditCountryUserDto) {
+    return this.prisma.userCountry.upsert({
       where: {
-        id: data.userId,
+        userId_countryCode: {
+          userId: dto.userId,
+          countryCode: dto.countryCode,
+        },
       },
-      select: {
-        countriesVisited: true,
+      create: {
+        userId: dto.userId,
+        countryCode: dto.countryCode,
+        countryName: dto.countryName,
+        isWishListCountry: true
       },
-    });
-
-    let countries = user?.countriesVisited
-
-    const countriesVisited = countries?.filter(
-      country => country !== data.country
-    )
-
-    return this.prisma.user.update({
-      where: {
-        id: data.userId,
-      },
-      data: {
-        countriesVisited,
-      },
-    });
-  }
-
-  async addCountryCountryWishlist(data: EditCountryDto) {
-    const user = await this.prisma.user.findUnique({
-      where: {
-        id: data.userId,
-      },
-      select: {
-        countriesWishlist: true,
-      },
-    });
-
-    const countriesWishlist = [
-      ...(user?.countriesWishlist ?? []),
-      data.country,
-    ];
-
-    return this.prisma.user.update({
-      where: {
-        id: data.userId,
-      },
-      data: {
-        countriesWishlist,
-      },
-    });
-  }
-
-  async removeCountryCountryWishlist(data: EditCountryDto) {
-    const user = await this.prisma.user.findUnique({
-      where: {
-        id: data.userId,
-      },
-      select: {
-        countriesWishlist: true,
-      },
-    });
-
-    let countries = user?.countriesWishlist
-
-    const countriesWishlist = countries?.filter(
-      country => country !== data.country
-    )
-
-    return this.prisma.user.update({
-      where: {
-        id: data.userId,
-      },
-      data: {
-        countriesWishlist,
+      update: {
+        isWishListCountry: dto.isAdd
       },
     });
   }
@@ -221,11 +159,11 @@ export class UsersService {
     return { message: 'Senha alterada com sucesso.' };
   }
 
-  async getByUsername(username: string): Promise<any>{
+  async getByUsername(username: string): Promise<any> {
     return await this.userRepository.getByUsername(username)
   }
 
-  async createCountryMemory(data: any): Promise<any>{
+  async createCountryMemory(data: any): Promise<any> {
     return await this.userRepository.createCountryMemory(data)
   }
 }

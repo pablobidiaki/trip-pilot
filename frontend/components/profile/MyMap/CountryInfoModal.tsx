@@ -1,8 +1,8 @@
 "use client"
 
 import Loading from "@/components/loading/Loading/Loading"
-import { UserInterface } from "@/interfaces/user.interface"
-import { addCountryVisited, addCountryWishlist, getCountryFlag, removeCountryVisited, removeCountryWishlist } from "@/services/map.service"
+import { CountriesMemoriesInterface, UserInterface } from "@/interfaces/user.interface"
+import { handleCountryVisited, addCountryWishlist, getCountryFlag, removeCountryWishlist } from "@/services/map.service"
 import { X } from "lucide-react"
 import { useEffect, useState } from "react"
 import ModalButton from "./ModalButton"
@@ -10,6 +10,7 @@ import texts from "@/constants/texts"
 import Link from "next/link"
 import { toast } from "sonner"
 import MemoryModal from "./MemoryModal"
+import formatDate from "@/utils/formatDate"
 
 interface CountryInfoModalProps {
     visited: boolean
@@ -20,17 +21,18 @@ interface CountryInfoModalProps {
     imageLoading: boolean
     guestMode: boolean
     onClose: () => void
-    setVisitConfirmed: (value: boolean) => void
-    setWishListConfirmed: (value: boolean) => void
+    onWishlistChange: (countryCode: string, isWishlist: boolean) => void
+    onVisitedChange: (countryCode: string, isVisited: boolean) => void
     setImageLoading: (value: boolean) => void
 }
 
-export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen, imageLoading, guestMode, onClose, setVisitConfirmed, setWishListConfirmed, setImageLoading }: CountryInfoModalProps) {
+export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen, imageLoading, guestMode, onClose, onWishlistChange, onVisitedChange, setImageLoading }: CountryInfoModalProps) {
     const [flagUrl, setFlagUrl] = useState("")
     const [isCountryVisited, setIsCountryVisited] = useState(visited);
     const [isCountryWishlist, setIsCountryWishlist] = useState(wishlist);
     const [isUpdating, setIsUpdating] = useState(false);
     const [isMemoryModalOpen, setIsMemoryModalOpen] = useState(false)
+    const [userContryInfos, setUserContryInfos] = useState<CountriesMemoriesInterface>()
 
     useEffect(() => {
         setIsCountryVisited(visited);
@@ -48,37 +50,38 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
 
     if (!isOpen) return null
 
-    const handdleClose = () => {
-        onClose()
-    }
+    const normalizeCountryCode = (code: string | number) => String(code).padStart(3, "0");
 
-    const handleAddButton = async () => {
+    const handleVisitedButton = async (isAdd: boolean) => {
+        let text = isAdd ? "marcou" : "removeu"
+
         try {
             setIsUpdating(true)
 
-            await addCountryVisited(user.id, geo.id)
+            await handleCountryVisited(user.id, geo.properties.name, geo.id, isAdd)
 
-            setIsCountryVisited(true)
-            setVisitConfirmed(true)
+            onVisitedChange(normalizeCountryCode(geo.id), isAdd);
 
-            toast.success(`Você marcou '${geo.properties.name}' como visitado!`)
+            toast.success(`Você ${text} '${geo.properties.name}' como visitado!`)
         } catch (error) {
             toast.error("Não foi possível atualizar seu mapa.")
+            console.log(error)
         } finally {
             setIsUpdating(false)
         }
     }
 
-    const handleRemoveButton = async () => {
+    const handleWishListButton = async (isAdd: boolean) => {
+        let text = isAdd ? "marcou" : "removeu"
+
         try {
             setIsUpdating(true)
 
-            await removeCountryVisited(user.id, geo.id)
+            await addCountryWishlist(user.id, geo.properties.name, geo.id, isAdd)
 
-            setIsCountryVisited(false)
-            setVisitConfirmed(false)
+            onWishlistChange(normalizeCountryCode(geo.id), isAdd);
 
-            toast.warning(`Você removeu '${geo.properties.name}' dos visitados!`)
+            toast.warning(`Você ${text} '${geo.properties.name}' na lista de desejos!`)
         } catch (error) {
             toast.error("Não foi possível atualizar seu mapa.")
         } finally {
@@ -86,39 +89,13 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
         }
     }
 
-    const handleAddWishlist = async () => {
-        try {
-            setIsUpdating(true)
-
-            await addCountryWishlist(user.id, geo.id)
-
-            setWishListConfirmed(true)
-            setIsCountryWishlist(true)
-
-            toast.warning(`Você adicionou '${geo.properties.name}' na lista de desejos!`)
-        } catch (error) {
-            toast.error("Não foi possível atualizar seu mapa.")
-        } finally {
-            setIsUpdating(false)
+    useEffect(() => {
+        const getUserCountryByCode = (countryCode: string) => {
+            for (let i = 0; i < user.countriesMemories.length; i++) if (user.countriesMemories[i].countryCode == countryCode) setUserContryInfos(user.countriesMemories[i])
         }
-    }
 
-    const handleRemoveWishlist = async () => {
-        try {
-            setIsUpdating(false)
-
-            await removeCountryWishlist(user.id, geo.id)
-
-            setWishListConfirmed(false)
-            setIsCountryWishlist(false)
-
-            toast.warning(`Você removeu '${geo.properties.name}' da lista de desejos!`)
-        } catch (error) {
-            toast.error("Não foi possível atualizar seu mapa.")
-        } finally {
-            setIsUpdating(false)
-        }
-    }
+        getUserCountryByCode(geo.id)
+    }, [geo])
 
     return (
         <div className="absolute z-50 w-fit top-2 h-fit flex justify-end right-2 animate-[optionSelector_300ms_ease-out]">
@@ -127,7 +104,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
             ">
                 <div className="flex justify-between items-center p-2">
                     <h1 className=" font-medium text-primary-color">{geo.properties.name}</h1>
-                    <X onClick={handdleClose} className="cursor-pointer transition-all hover:duration-150 hover:text-red-500" />
+                    <X onClick={() => onClose()} className="cursor-pointer transition-all hover:duration-150 hover:text-red-500" />
                 </div>
                 {imageLoading &&
                     <div className="absolute w-46 mx-2 h-20 z-100 bg-white
@@ -145,31 +122,27 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                     <div>
                         {isCountryVisited ?
                             <div>
-                                {user.countriesMemories &&
+                                {userContryInfos?.cities || userContryInfos?.visitedAt !== "" &&
                                     <div>
                                         <p className="text-center text-primary-color text-md mb-2 mt-1 font-medium">Resumo da sua experiência</p>
-                                        <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em dezembro de 2025</p>
+                                        {userContryInfos?.visitedAt && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em <span>{formatDate(userContryInfos?.visitedAt)}</span></p>}
                                         <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">3 Cidades conhecidas</p>
                                         <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Curitiba, Balneario Camburiu e Penha </p>
                                     </div>
                                 }
 
-                                <ModalButton onClick={() => handleRemoveButton()} text={isUpdating ? "Atualizando..." : texts.profile.markNoVisited} tailwindTags="bg-red-500 text-white text-xs mt-1  lg:mt-2 lg:max-w-76 lg:text-sm" />
+                                <ModalButton onClick={() => handleVisitedButton(false)} text={isUpdating ? "Atualizando..." : texts.profile.markNoVisited} tailwindTags="bg-red-500 text-white text-xs mt-1  lg:mt-2 lg:max-w-76 lg:text-sm" />
 
-                                {user.countriesMemories ?
-                                    <ModalButton text={texts.profile.editMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
-                                    :
-                                    <ModalButton onClick={() => setIsMemoryModalOpen(true)} text={texts.profile.createMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
-                                }
+                                <ModalButton onClick={() => setIsMemoryModalOpen(true)} text={userContryInfos?.cities || userContryInfos?.visitedAt || userContryInfos?.notes ? texts.profile.createMemory : texts.profile.editMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
 
                             </div>
                             :
                             <div>
-                                <ModalButton onClick={() => handleAddButton()} text={texts.profile.markVisited} tailwindTags="bg-blue-color text-white text-xs mt-1 max-w-[146px] lg:mt-2 lg:max-w-76 lg:text-sm" />
+                                <ModalButton onClick={() => handleVisitedButton(true)} text={texts.profile.markVisited} tailwindTags="bg-blue-color text-white text-xs mt-1 max-w-[146px] lg:mt-2 lg:max-w-76 lg:text-sm" />
                                 {isCountryWishlist ?
-                                    <ModalButton onClick={() => handleRemoveWishlist()} text={texts.profile.markNoWishlist} tailwindTags="bg-red-500 text-white text-xs max-w-[146px] lg:mt-2 lg:max-w-76 lg:text-sm" />
+                                    <ModalButton onClick={() => handleWishListButton(false)} text={texts.profile.markNoWishlist} tailwindTags="bg-red-500 text-white text-xs max-w-[146px] lg:mt-2 lg:max-w-76 lg:text-sm" />
                                     :
-                                    <ModalButton onClick={() => handleAddWishlist()} text={texts.profile.markWishlist} tailwindTags="bg-orange-400 text-white text-xs max-w-[146px] lg:mt-2 lg:max-w-76 lg:text-sm" />
+                                    <ModalButton onClick={() => handleWishListButton(true)} text={texts.profile.markWishlist} tailwindTags="bg-orange-400 text-white text-xs max-w-[146px] lg:mt-2 lg:max-w-76 lg:text-sm" />
                                 }
                             </div>
                         }
@@ -181,7 +154,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                 }
             </div>
 
-            {isMemoryModalOpen && <MemoryModal geo={geo} setIsMemoryModalOpen={setIsMemoryModalOpen}/>}
+            {isMemoryModalOpen && <MemoryModal geo={geo} setIsMemoryModalOpen={setIsMemoryModalOpen} />}
         </div>
     )
 }

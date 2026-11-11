@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { LogOut, User } from "lucide-react"
+import { LogOut, Map, User } from "lucide-react"
 import { MountainSnow, Signpost, Tent } from "lucide-react"
 import ExitConfirm from "../ExitConfirm/ExitConfirm"
 import texts from "@/constants/texts"
@@ -55,6 +55,10 @@ export default function UserMenu({ image, name, email }: UserMenuProps) {
                         <Link className={"flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition"} href={'/destinations'}>
                             <Tent size={18} />
                             <span>{texts.header.destinations}</span>
+                        </Link>
+                        <Link className={"flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition"} href={'/mymap'}>
+                            <Map size={18} />
+                            <span>{texts.header.myMap}</span>
                         </Link>
                         {/* <p><Link href={'/pro'}>{texts.header.pro}</Link></p> */}
 

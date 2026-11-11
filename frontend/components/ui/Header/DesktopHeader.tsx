@@ -33,6 +33,7 @@ export default function DesktopHeader({ session, status, backgroundLight }: Desk
                     <p><Link href={'/'}>{texts.header.createScript}</Link></p>
                     <p><Link href={'/ready_guides'}>{texts.header.readyGuides}</Link></p>
                     <p><Link href={'/destinations'}>{texts.header.destinations}</Link></p>
+                    <p><Link href={'/mymap'}>{texts.header.myMap}</Link></p>
                     {/* <p><Link href={'/pro'}>{texts.header.pro}</Link></p> */}
                 </div>
                 <div className="text-black">

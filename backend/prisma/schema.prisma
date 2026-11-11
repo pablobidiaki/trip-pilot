@@ -17,8 +17,6 @@ model User {
   username            String               @unique
   isPublicAccount     Boolean              @default(true)
   biography           String?
-  countriesVisited    String[]             @default([])
-  countriesWishlist   String[]             @default([])
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
   countriesMemories   UserCountry[]
@@ -133,16 +131,18 @@ model SavedReadyGuides {
 }
 
 model UserCountry {
-  id          String            @id @default(uuid())
-  userId      String
-  countryCode String
-  countryName String
-  visitedAt   DateTime?
-  notes       String?           @db.VarChar(500)
-  cities      UserCountryCity[]
-  memories    CountryMemory[]
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
+  id                String            @id @default(uuid())
+  userId            String
+  countryCode       String
+  countryName       String
+  isVisitedCountry  Boolean           @default(false)
+  isWishListCountry Boolean           @default(false)
+  visitedAt         DateTime?
+  notes             String?           @db.VarChar(500)
+  cities            UserCountryCity[]
+  memories          CountryMemory[]
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

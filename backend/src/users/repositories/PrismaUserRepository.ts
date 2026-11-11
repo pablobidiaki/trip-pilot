@@ -21,7 +21,15 @@ export class PrismaUserRepository implements IUserRepository{
     }
 
     async findOneByEmail(email: string): Promise<any | null> {
-        return this.prisma.user.findUnique({where: {email: email}})
+        return this.prisma.user.findUnique({where: { email },
+        include: {
+            countriesMemories: {
+                include: {
+                    cities: true,
+                    memories: true,
+                },
+            },
+        },})
     }
 
     async update(data: Partial<EditUserInfosDto>): Promise<any> {
@@ -42,7 +50,15 @@ export class PrismaUserRepository implements IUserRepository{
     }
 
     async getByUsername(username: string): Promise<any>{
-        return this.prisma.user.findFirst({where: {username: username}})
+        return this.prisma.user.findUnique({where: { username },
+        include: {
+            countriesMemories: {
+                include: {
+                    cities: true,
+                    memories: true,
+                },
+            },
+        },})
     }
 
     async createCountryMemory(data: any): Promise<any>{

@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Delete, Patch, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
-import { EditCountryDto, EditPasswordDto, EditUserInfosDto } from '../dtos/users-dto';
+import { EditCountryUserDto, EditPasswordDto, EditUserInfosDto } from '../dtos/users-dto';
 import { JwtAuthGuard } from '../../auth/guards/jwt.auth.guard';
 
 @ApiTags('Users')
@@ -66,36 +66,20 @@ export class UsersController {
         }
     }
 
-    @Patch('add/countryVisited')
+    @Patch('countryVisited')
     @ApiOperation({
-        summary: 'Add country in countriesVisited'
+        summary: 'Add or remove country in countriesVisited'
     })
-    async addCountryVisited(@Body() data: EditCountryDto){
-        return await this.usersService.addCountryVisited(data)
+    async handleCountryVisited(@Body() dto: EditCountryUserDto){
+        return await this.usersService.handleCountryVisited(dto)
     }
 
-    @Patch('remove/countryVisited')
+    @Patch('countryWishlist')
     @ApiOperation({
-        summary: 'Remove country in countriesVisited'
+        summary: 'Add or remove country in countryWishlist'
     })
-    async removeCountryVisited(@Body() data: EditCountryDto){
-        return await this.usersService.removeCountryVisited(data)
-    }
-
-    @Patch('add/countryWishlist')
-    @ApiOperation({
-        summary: 'Add country in countryWishlist'
-    })
-    async addCountryCountryWishlist(@Body() data: EditCountryDto){
-        return await this.usersService.addCountryCountryWishlist(data)
-    }
-
-    @Patch('remove/countryWishlist')
-    @ApiOperation({
-        summary: 'Remove country in countryWishlist'
-    })
-    async removeCountryCountryWishlist(@Body() data: EditCountryDto){
-        return await this.usersService.removeCountryCountryWishlist(data)
+    async handleCountryWishlist(@Body() dto: EditCountryUserDto){
+        return await this.usersService.handleCountryWishlist(dto)
     }
 
     @Patch('edit')
