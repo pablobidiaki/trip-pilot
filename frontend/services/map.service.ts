@@ -62,3 +62,16 @@ export async function removeCountryWishlist(userId: string, country: string) {
         }),
     });
 }
+
+export async function createMemoryContry(userId: string, data: any){
+    await fetch(`${apiKey}/user/countryMemory`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            userId: userId,
+            data: data
+        }),
+    });
+}

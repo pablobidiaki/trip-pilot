@@ -44,4 +44,8 @@ export class PrismaUserRepository implements IUserRepository{
     async getByUsername(username: string): Promise<any>{
         return this.prisma.user.findFirst({where: {username: username}})
     }
+
+    async createCountryMemory(data: any): Promise<any>{
+        console.log('data',  data)
+    }
 }

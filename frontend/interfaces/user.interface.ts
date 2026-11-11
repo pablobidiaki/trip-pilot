@@ -8,6 +8,7 @@ export interface UserInterface{
     username: string
     biography?: string
     isPublicAccount: boolean
+    countriesMemories: any
 }
 
 export interface RegisterUserInterface{

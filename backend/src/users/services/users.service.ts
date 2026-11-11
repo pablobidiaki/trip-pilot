@@ -224,4 +224,8 @@ export class UsersService {
   async getByUsername(username: string): Promise<any>{
     return await this.userRepository.getByUsername(username)
   }
+
+  async createCountryMemory(data: any): Promise<any>{
+    return await this.userRepository.createCountryMemory(data)
+  }
 }

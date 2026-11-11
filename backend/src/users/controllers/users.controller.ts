@@ -125,4 +125,12 @@ export class UsersController {
             user
         }
     }
+
+    @Patch('countryMemory')
+    @ApiOperation({
+        summary: 'Create a country memory',
+    })
+    async createCountryMemory(@Body() data: any){
+        return await this.usersService.createCountryMemory(data)
+    }
 }

@@ -9,6 +9,7 @@ import ModalButton from "./ModalButton"
 import texts from "@/constants/texts"
 import Link from "next/link"
 import { toast } from "sonner"
+import MemoryModal from "./MemoryModal"
 
 interface CountryInfoModalProps {
     visited: boolean
@@ -29,6 +30,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
     const [isCountryVisited, setIsCountryVisited] = useState(visited);
     const [isCountryWishlist, setIsCountryWishlist] = useState(wishlist);
     const [isUpdating, setIsUpdating] = useState(false);
+    const [isMemoryModalOpen, setIsMemoryModalOpen] = useState(false)
 
     useEffect(() => {
         setIsCountryVisited(visited);
@@ -143,13 +145,22 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                     <div>
                         {isCountryVisited ?
                             <div>
-                                <p className="text-center text-primary-color text-md mb-2 mt-1 font-medium">Resumo da sua experiência</p>
-                                <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em dezembro de 2025</p>
-                                <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">3 Cidades conhecidas</p>
-                                <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Curitiba, Balneario Camburiu e Penha </p>
+                                {user.countriesMemories &&
+                                    <div>
+                                        <p className="text-center text-primary-color text-md mb-2 mt-1 font-medium">Resumo da sua experiência</p>
+                                        <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em dezembro de 2025</p>
+                                        <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">3 Cidades conhecidas</p>
+                                        <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Curitiba, Balneario Camburiu e Penha </p>
+                                    </div>
+                                }
 
                                 <ModalButton onClick={() => handleRemoveButton()} text={isUpdating ? "Atualizando..." : texts.profile.markNoVisited} tailwindTags="bg-red-500 text-white text-xs mt-1  lg:mt-2 lg:max-w-76 lg:text-sm" />
-                                <ModalButton text={texts.profile.createMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
+
+                                {user.countriesMemories ?
+                                    <ModalButton text={texts.profile.editMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
+                                    :
+                                    <ModalButton onClick={() => setIsMemoryModalOpen(true)} text={texts.profile.createMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
+                                }
 
                             </div>
                             :
@@ -169,6 +180,8 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                     </div>
                 }
             </div>
+
+            {isMemoryModalOpen && <MemoryModal geo={geo} setIsMemoryModalOpen={setIsMemoryModalOpen}/>}
         </div>
     )
 }

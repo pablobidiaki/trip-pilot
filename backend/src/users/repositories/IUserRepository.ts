@@ -10,4 +10,5 @@ export abstract class IUserRepository{
     abstract removeOne(id: string): Promise<void>
     abstract updatePassword(id: string, password: string): Promise<any>
     abstract getByUsername(username: string): Promise<any>
+    abstract createCountryMemory(data: any): Promise<any>
 }

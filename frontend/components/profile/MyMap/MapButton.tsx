@@ -9,7 +9,7 @@ interface MapButtonProps{
 
 export default function MapButton({icon, toolTipText, tailwindTags, onClick}: MapButtonProps){
     return(
-        <div onClick={onClick} className={`group right-2 w-fit p-2 rounded-xl bg-gray-300 z-100 cursor-pointer hover:bg-gray-500 transition-all hover:duration-200 mb-2 ${tailwindTags}
+        <div onClick={onClick} className={`group right-2 w-fit p-2 rounded-xl bg-gray-300 z-50 cursor-pointer hover:bg-gray-500 transition-all hover:duration-200 mb-2 ${tailwindTags}
             lg:absolute
         `}>
             <span>{icon}</span>

@@ -8,6 +8,8 @@ interface DatePickerProps {
     icon: ReactNode
     title: string
     value: string
+    showBottom?: boolean
+    fullCalendar?: boolean 
     onChange: (date: string) => void
 }
 
@@ -28,7 +30,7 @@ const months = [
 
 const weekDays = ["D", "S", "T", "Q", "Q", "S", "S"]
 
-export default function DatePicker({ icon, title, value, onChange }: DatePickerProps) {
+export default function DatePicker({ icon, title, value, showBottom, fullCalendar, onChange }: DatePickerProps) {
     const containerRef = useRef<HTMLDivElement>(null)
 
     const initialDate = value ? new Date(`${value}T00:00:00`) : new Date()
@@ -40,7 +42,6 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
                 setOpen(false)
             }
@@ -127,6 +128,8 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
     }
 
     const isPastDate = (day: number) => {
+        if(fullCalendar) return false
+
         const today = new Date()
 
         const date = new Date(currentYear, currentMonth, day)
@@ -136,9 +139,10 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
 
         return date < today
     }
+
     return (
-        <div ref={containerRef} className="inline-block relative cursor-pointer" >
-            <div onClick={() => setOpen(!open)} className="flex items-center gap-2 rounded-2xl border-2 border-gray-100 p-1">
+        <div ref={containerRef} className="inline-block relative cursor-pointer " >
+            <div onClick={() => setOpen(!open)} className="flex items-center gap-2 rounded-2xl border-2 bg-white border-gray-100 p-1">
                 <span className="m-2 text-main-primary-color">
                     {icon}
                 </span>
@@ -151,7 +155,7 @@ export default function DatePicker({ icon, title, value, onChange }: DatePickerP
             </div>
 
             {open && (
-                <div className=" absolute left-0 bottom-full z-50 mt-2 w-[320px] rounded-2xl border border-gray-200 bg-white p-4 shadow-2xl animate-[optionSelector_200ms_ease-out]">
+                <div className={`${showBottom ? 'top-full' : 'bottom-full'} absolute left-0  z-50 mt-2 w-[320px] rounded-2xl border border-gray-200 bg-white p-4 shadow-2xl animate-[optionSelector_200ms_ease-out]`}>
                     <div className="mb-5 flex items-center justify-between">
                         <button type="button" onClick={previousMonth} className="rounded-lg p-2 text-gray-500 transition hover:bg-gray-100 hover:text-main-primary-color">
                             <ChevronLeft size={20} />
