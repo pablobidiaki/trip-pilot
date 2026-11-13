@@ -20,7 +20,6 @@ export default function OptionsSelectMobile({ optionSelected, setOptionSelected 
         { icon: <MountainSnow />, text: texts.optionSelectorProfile.myItineraries },
         { icon: <Tent />, text: texts.optionSelectorProfile.destinationsSaved },
         { icon: <Signpost />, text: texts.optionSelectorProfile.guidesSaved },
-        { icon: <Map />, text: texts.optionSelectorProfile.myMap },
         { icon: <Cog />, text: texts.optionSelectorProfile.configurations },
         { icon: <LogOut />, text: texts.optionSelectorProfile.exit },
     ]

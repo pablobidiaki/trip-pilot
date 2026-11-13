@@ -2,7 +2,7 @@
 
 import Loading from "@/components/loading/Loading/Loading"
 import { CountriesMemoriesInterface, UserInterface } from "@/interfaces/user.interface"
-import { handleCountryVisited, addCountryWishlist, getCountryFlag, removeCountryWishlist } from "@/services/map.service"
+import { handleCountryVisited, addCountryWishlist, getCountryFlag, removeCountryWishlist, getCities } from "@/services/map.service"
 import { X } from "lucide-react"
 import { useEffect, useState } from "react"
 import ModalButton from "./ModalButton"
@@ -20,19 +20,22 @@ interface CountryInfoModalProps {
     isOpen: boolean
     imageLoading: boolean
     guestMode: boolean
+    updateMemory: boolean
+    setUpdateMemory: (value: boolean) => void
     onClose: () => void
     onWishlistChange: (countryCode: string, isWishlist: boolean) => void
     onVisitedChange: (countryCode: string, isVisited: boolean) => void
     setImageLoading: (value: boolean) => void
 }
 
-export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen, imageLoading, guestMode, onClose, onWishlistChange, onVisitedChange, setImageLoading }: CountryInfoModalProps) {
+export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen, imageLoading, guestMode, updateMemory, setUpdateMemory, onClose, onWishlistChange, onVisitedChange, setImageLoading }: CountryInfoModalProps) {
     const [flagUrl, setFlagUrl] = useState("")
     const [isCountryVisited, setIsCountryVisited] = useState(visited);
     const [isCountryWishlist, setIsCountryWishlist] = useState(wishlist);
     const [isUpdating, setIsUpdating] = useState(false);
     const [isMemoryModalOpen, setIsMemoryModalOpen] = useState(false)
     const [userContryInfos, setUserContryInfos] = useState<CountriesMemoriesInterface>()
+    const [cities, setCities] = useState([])
 
     useEffect(() => {
         setIsCountryVisited(visited);
@@ -91,11 +94,22 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
 
     useEffect(() => {
         const getUserCountryByCode = (countryCode: string) => {
-            for (let i = 0; i < user.countriesMemories.length; i++) if (user.countriesMemories[i].countryCode == countryCode) setUserContryInfos(user.countriesMemories[i])
+            for (let i = 0; i < user.countriesMemories.length; i++)
+                if (user.countriesMemories[i].countryCode == countryCode)
+                    setUserContryInfos(user.countriesMemories[i])
         }
 
         getUserCountryByCode(geo.id)
     }, [geo])
+
+    useEffect(() => {
+        const _getCities = async ()  => {
+            setCities(await getCities(user.id))
+        }
+        _getCities()
+        
+        setUpdateMemory(false)
+    },[updateMemory])
 
     return (
         <div className="absolute z-50 w-fit top-2 h-fit flex justify-end right-2 animate-[optionSelector_300ms_ease-out]">
@@ -122,18 +136,17 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                     <div>
                         {isCountryVisited ?
                             <div>
-                                {userContryInfos?.cities || userContryInfos?.visitedAt !== "" &&
+                                {userContryInfos?.visitedAt !== null &&
                                     <div>
-                                        <p className="text-center text-primary-color text-md mb-2 mt-1 font-medium">Resumo da sua experiência</p>
+                                        <p className="text-center text-primary-color text-md mb-2 font-medium">Resumo da sua experiência</p>
                                         {userContryInfos?.visitedAt && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em <span>{formatDate(userContryInfos?.visitedAt)}</span></p>}
-                                        <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">3 Cidades conhecidas</p>
-                                        <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Curitiba, Balneario Camburiu e Penha </p>
+                                        {cities.length != 0 && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">{cities.length} Cidades/lugares visitados</p>}
                                     </div>
                                 }
 
                                 <ModalButton onClick={() => handleVisitedButton(false)} text={isUpdating ? "Atualizando..." : texts.profile.markNoVisited} tailwindTags="bg-red-500 text-white text-xs mt-1  lg:mt-2 lg:max-w-76 lg:text-sm" />
 
-                                <ModalButton onClick={() => setIsMemoryModalOpen(true)} text={userContryInfos?.cities || userContryInfos?.visitedAt || userContryInfos?.notes ? texts.profile.createMemory : texts.profile.editMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
+                                <ModalButton onClick={() => setIsMemoryModalOpen(true)} text={userContryInfos?.visitedAt !== null ? texts.profile.editMemory : texts.profile.createMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
 
                             </div>
                             :
@@ -154,7 +167,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                 }
             </div>
 
-            {isMemoryModalOpen && <MemoryModal geo={geo} setIsMemoryModalOpen={setIsMemoryModalOpen} />}
+            {isMemoryModalOpen && <MemoryModal user={user} geo={geo} userContryInfos={userContryInfos!} userCitiesVisited={cities} setIsMemoryModalOpen={setIsMemoryModalOpen} setUpdateMemory={setUpdateMemory}/>}
         </div>
     )
 }

@@ -20,7 +20,7 @@ export async function handleCountryVisited(userId: string, countryName: string, 
         body: JSON.stringify({
             userId: userId,
             countryCode: countryCode,
-            countryName:countryName,
+            countryName: countryName,
             isAdd: isAdd
         }),
     });
@@ -35,7 +35,7 @@ export async function addCountryWishlist(userId: string, countryName: string, co
         body: JSON.stringify({
             userId: userId,
             countryCode: countryCode,
-            countryName:countryName,
+            countryName: countryName,
             isAdd: isAdd
         }),
     });
@@ -54,15 +54,22 @@ export async function removeCountryWishlist(userId: string, country: string) {
     });
 }
 
-export async function createMemoryContry(userId: string, data: any){
+export async function createCountryMemory(data: any) {
     await fetch(`${apiKey}/user/countryMemory`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            userId: userId,
-            data: data
-        }),
+            data
+        })
     });
+}
+
+export async function getCities(userId: string) {
+    const response = await fetch(`${apiKey}/user/userCities/${userId}`)
+
+    if (!response.ok) throw new Error("Erro ao buscar destinos")
+
+    return response.json()
 }

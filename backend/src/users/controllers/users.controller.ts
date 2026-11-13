@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Delete, Patch, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Delete, Patch, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { EditCountryUserDto, EditPasswordDto, EditUserInfosDto } from '../dtos/users-dto';
@@ -115,6 +115,14 @@ export class UsersController {
         summary: 'Create a country memory',
     })
     async createCountryMemory(@Body() data: any){
-        return await this.usersService.createCountryMemory(data)
+        return await this.usersService.createCountryMemory(data.data)
+    }
+
+    @Get('userCities/:id')
+    @ApiOperation({
+        summary: 'Get an especific user',
+    })
+    async getUserCities(@Param('id') id: string) {
+        return await this.usersService.getUserCities(id)
     }
 }

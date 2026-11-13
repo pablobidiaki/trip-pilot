@@ -12,13 +12,15 @@ interface MapProps {
     user: UserInterface;
     guestMode: boolean;
     tailwindTags?: string;
+    updateMemory?: boolean
+    setUpdateMemory?: (value: boolean) => void
 }
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 const normalizeCountryCode = (code: string | number) => String(code).padStart(3, "0")
 
-export default function Map({ user, guestMode, tailwindTags }: MapProps) {
+export default function Map({ user, guestMode, tailwindTags, updateMemory, setUpdateMemory }: MapProps) {
     const [visitedCountries, setVisitedCountries] = useState<string[]>([])
     const [countriesWishlist, setCountriesWishlist] = useState<string[]>([])
     const [countrySelected, setCountrySelected] = useState<GeoInterface | undefined>()
@@ -35,9 +37,7 @@ export default function Map({ user, guestMode, tailwindTags }: MapProps) {
         const countries = user.countriesMemories ?? [];
 
         setVisitedCountries(countries.filter(country => country.isVisitedCountry).map(country => normalizeCountryCode(country.countryCode)));
-
         setCountriesWishlist(countries.filter(country => country.isWishListCountry).map(country => normalizeCountryCode(country.countryCode)));
-
     }, [user?.id, user?.countriesMemories]);
 
     const handleVisitedChange = (countryCode: string, isVisited: boolean) => {
@@ -136,6 +136,8 @@ export default function Map({ user, guestMode, tailwindTags }: MapProps) {
                         setImageLoading={setImageLoading}
                         onVisitedChange={handleVisitedChange}
                         onWishlistChange={handleWishlistChange}
+                        setUpdateMemory={setUpdateMemory!}
+                        updateMemory={updateMemory!}
                     />
                 )}
             </div>

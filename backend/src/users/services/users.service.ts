@@ -166,4 +166,8 @@ export class UsersService {
   async createCountryMemory(data: any): Promise<any> {
     return await this.userRepository.createCountryMemory(data)
   }
+
+  async getUserCities(id: string): Promise<any>{
+    return await this.userRepository.getUserCities(id)
+  }
 }

@@ -396,7 +396,6 @@ const texts = {
         myItineraries: "Meus Roteiros",
         destinationsSaved: "Destinos Salvos",
         guidesSaved: "Guias salvos",
-        myMap: "Meu mapa",
         configurations: "Configurações",
         exit: "Sair"
     },
@@ -420,7 +419,7 @@ const texts = {
         savedGuidesText: "Explore roteiros completos e prontos para inspirar sua próxima viagem.",
         viewGuide: "Ver guia pronto",
         myMap: "Meu mapa",
-        myMapText: "Veja no mapa os lugares que já fizeram parte da sua jornada.",
+        myMapText: "Acompanhe os países que você já visitou e marque os próximos destinos da sua lista.",
         markVisited: "Marcar como visitado",
         markNoVisited: "Marcar como não visitado",
         markWishlist: "Marcar na lista de desejos",

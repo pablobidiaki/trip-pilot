@@ -13,7 +13,7 @@ export interface UserInterface{
 
 export interface CountriesMemoriesInterface{
     id: string
-    cities: string[]
+    cities: CitiesInterface[]
     countryCode: string
     countryName: string
     isVisitedCountry: boolean
@@ -21,6 +21,12 @@ export interface CountriesMemoriesInterface{
     notes: string
     visitedAt: string
     userId: string
+}
+
+export interface CitiesInterface{
+    id: string
+    userCountryId?: string
+    name: string
 }
 
 export interface RegisterUserInterface{

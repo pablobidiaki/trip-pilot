@@ -137,7 +137,7 @@ model UserCountry {
   countryName       String
   isVisitedCountry  Boolean           @default(false)
   isWishListCountry Boolean           @default(false)
-  visitedAt         DateTime?
+  visitedAt         String?
   notes             String?           @db.VarChar(500)
   cities            UserCountryCity[]
   memories          CountryMemory[]
