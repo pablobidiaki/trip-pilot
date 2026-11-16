@@ -104,8 +104,8 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
         }
         _getCities()
 
-        setUpdateMemory(false)
-    }, [updateMemory])
+        if(!guestMode) setUpdateMemory(false)
+    }, [updateMemory, geo])
 
     useEffect(() => {
         setIsCountryVisited(visited);
@@ -113,10 +113,10 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
     }, [visited, wishlist, geo?.id, isOpen]);
 
     useEffect(() => {
-        if(userContryInfos?.visitedAt !== null || cities.length !== 0)
+        if (userContryInfos?.visitedAt !== null || cities.length !== 0)
             setIsHasContent(true)
 
-    },[updateMemory, userContryInfos])
+    }, [updateMemory, userContryInfos])
 
     return (
         <div className="absolute z-50 w-fit top-2 h-fit flex justify-end right-2 animate-[optionSelector_300ms_ease-out]">
@@ -139,18 +139,22 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                     2xl:mb-0 
                 " src={flagUrl} onLoad={() => setImageLoading(false)} />
 
+                {isHasContent &&
+                    <div>
+                        <p className="text-center text-primary-color text-md mb-2 font-medium">{userContryInfos?.isWishListCountry ? 
+                            guestMode ?  `${userContryInfos.countryName} faz parte da lista de desejos de ${user.name}` : 
+                            `${userContryInfos.countryName} faz parte da sua lista de desejos`
+                            : `Resumo da experiência`}
+                        </p>
+                        {userContryInfos?.visitedAt && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em <span>{formatDate(userContryInfos?.visitedAt)}</span></p>}
+                        {cities.length != 0 && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">{cities.length} Cidades/lugares visitados</p>}
+                    </div>
+                }
+
                 {!guestMode &&
                     <div>
                         {isCountryVisited ?
                             <div>
-                                {isHasContent &&
-                                    <div>
-                                        <p className="text-center text-primary-color text-md mb-2 font-medium">Resumo da sua experiência</p>
-                                        {userContryInfos?.visitedAt && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em <span>{formatDate(userContryInfos?.visitedAt)}</span></p>}
-                                        {cities.length != 0 && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">{cities.length} Cidades/lugares visitados</p>}
-                                    </div>
-                                }
-
                                 <ModalButton onClick={() => handleVisitedButton(false)} text={isUpdating ? "Atualizando..." : texts.profile.markNoVisited} tailwindTags="bg-red-500 text-white text-xs mt-1  lg:mt-2 lg:max-w-76 lg:text-sm" />
 
                                 <ModalButton onClick={() => setIsMemoryModalOpen(true)} text={userContryInfos?.visitedAt !== null ? texts.profile.editMemory : texts.profile.createMemory} tailwindTags="bg-gray-500 text-white text-xs mt-1 lg:mt-2 lg:max-w-76 lg:text-sm" />
