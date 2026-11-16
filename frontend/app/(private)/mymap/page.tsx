@@ -9,7 +9,7 @@ import { getUserIdByEmail } from "@/services/user.service";
 import Header from "@/components/ui/Header/Header";
 import { UserInfoCard } from "@/components/visitingProfile/UserInfoCard";
 import Footer from "@/components/ui/Footer/Footer";
-import { getCities } from "@/services/map.service";
+import { getCitiesVisited } from "@/services/map.service";
 
 export default function MyMap() {
     const { data: session, status } = useSession();
@@ -38,7 +38,7 @@ export default function MyMap() {
 
         const getInfos = async () => {
             const countries = user.countriesMemories ?? [];
-            const _cities = await getCities(user.id)
+            const _cities = await getCitiesVisited(user.id)
             
             setVisitedCountries(countries.filter(country => country.isVisitedCountry).map(country => normalizeCountryCode(country.countryCode)));
             setCountriesWishlist(countries.filter(country => country.isWishListCountry).map(country => normalizeCountryCode(country.countryCode)));

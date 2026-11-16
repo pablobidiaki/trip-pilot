@@ -12,4 +12,5 @@ export abstract class IUserRepository{
     abstract getByUsername(username: string): Promise<any>
     abstract createCountryMemory(data: any): Promise<any>
     abstract getUserCities(id: string): Promise<any>
+    abstract getCountryCities(userId:  string, countryCode: string)
 }

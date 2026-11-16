@@ -64,8 +64,8 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
                 await createCountryMemory(data);
 
                 setUpdateMemory(true);
-
                 setIsMemoryModalOpen(false);
+
                 toast.success("Memória atualizada com sucesso");
             } catch (error) {
                 console.error(error)

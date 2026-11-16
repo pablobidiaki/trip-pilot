@@ -2,7 +2,7 @@
 
 import Loading from "@/components/loading/Loading/Loading"
 import { CountriesMemoriesInterface, UserInterface } from "@/interfaces/user.interface"
-import { handleCountryVisited, addCountryWishlist, getCountryFlag, removeCountryWishlist, getCities } from "@/services/map.service"
+import { handleCountryVisited, addCountryWishlist, getCountryFlag, getCountryCities } from "@/services/map.service"
 import { X } from "lucide-react"
 import { useEffect, useState } from "react"
 import ModalButton from "./ModalButton"
@@ -36,20 +36,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
     const [isMemoryModalOpen, setIsMemoryModalOpen] = useState(false)
     const [userContryInfos, setUserContryInfos] = useState<CountriesMemoriesInterface>()
     const [cities, setCities] = useState([])
-
-    useEffect(() => {
-        setIsCountryVisited(visited);
-        setIsCountryWishlist(wishlist);
-    }, [visited, wishlist, geo?.id, isOpen]);
-
-    useEffect(() => {
-        const getFlag = async () => {
-            const data = await getCountryFlag(geo.id)
-            setFlagUrl(data.flag)
-        }
-        getFlag()
-
-    }, [isOpen, geo])
+    const [isHasContent, setIsHasContent] = useState(false)
 
     if (!isOpen) return null
 
@@ -93,6 +80,15 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
     }
 
     useEffect(() => {
+        const getFlag = async () => {
+            const data = await getCountryFlag(geo.id)
+            setFlagUrl(data.flag)
+        }
+        //getFlag()
+
+    }, [isOpen, geo])
+
+    useEffect(() => {
         const getUserCountryByCode = (countryCode: string) => {
             for (let i = 0; i < user.countriesMemories.length; i++)
                 if (user.countriesMemories[i].countryCode == countryCode)
@@ -103,13 +99,24 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
     }, [geo])
 
     useEffect(() => {
-        const _getCities = async ()  => {
-            setCities(await getCities(user.id))
+        const _getCities = async () => {
+            setCities(await getCountryCities(user.id, geo.id))
         }
         _getCities()
-        
+
         setUpdateMemory(false)
-    },[updateMemory])
+    }, [updateMemory])
+
+    useEffect(() => {
+        setIsCountryVisited(visited);
+        setIsCountryWishlist(wishlist);
+    }, [visited, wishlist, geo?.id, isOpen]);
+
+    useEffect(() => {
+        if(userContryInfos?.visitedAt !== null || cities.length !== 0)
+            setIsHasContent(true)
+
+    },[updateMemory, userContryInfos])
 
     return (
         <div className="absolute z-50 w-fit top-2 h-fit flex justify-end right-2 animate-[optionSelector_300ms_ease-out]">
@@ -136,7 +143,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                     <div>
                         {isCountryVisited ?
                             <div>
-                                {userContryInfos?.visitedAt !== null &&
+                                {isHasContent &&
                                     <div>
                                         <p className="text-center text-primary-color text-md mb-2 font-medium">Resumo da sua experiência</p>
                                         {userContryInfos?.visitedAt && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em <span>{formatDate(userContryInfos?.visitedAt)}</span></p>}
@@ -167,7 +174,15 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                 }
             </div>
 
-            {isMemoryModalOpen && <MemoryModal user={user} geo={geo} userContryInfos={userContryInfos!} userCitiesVisited={cities} setIsMemoryModalOpen={setIsMemoryModalOpen} setUpdateMemory={setUpdateMemory}/>}
+            {isMemoryModalOpen &&
+                <MemoryModal user={user}
+                    geo={geo}
+                    userContryInfos={userContryInfos!}
+                    userCitiesVisited={cities}
+                    setIsMemoryModalOpen={setIsMemoryModalOpen}
+                    setUpdateMemory={setUpdateMemory}
+                />
+            }
         </div>
     )
 }

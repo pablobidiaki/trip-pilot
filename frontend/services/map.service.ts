@@ -66,10 +66,18 @@ export async function createCountryMemory(data: any) {
     });
 }
 
-export async function getCities(userId: string) {
-    const response = await fetch(`${apiKey}/user/userCities/${userId}`)
+export async function getCitiesVisited(userId: string) {
+    const response = await fetch(`${apiKey}/user/userCitiesVisited/${userId}`)
 
     if (!response.ok) throw new Error("Erro ao buscar destinos")
 
     return response.json()
+}
+
+export async function getCountryCities(userId: string, countryCode: string) {
+    const response = await fetch(`${apiKey}/user/${userId}/countries/${countryCode}/cities`);
+
+    if (!response.ok) throw new Error("Erro ao buscar cidades");
+
+    return response.json();
 }

@@ -70,7 +70,7 @@ export class UsersController {
     @ApiOperation({
         summary: 'Add or remove country in countriesVisited'
     })
-    async handleCountryVisited(@Body() dto: EditCountryUserDto){
+    async handleCountryVisited(@Body() dto: EditCountryUserDto) {
         return await this.usersService.handleCountryVisited(dto)
     }
 
@@ -78,7 +78,7 @@ export class UsersController {
     @ApiOperation({
         summary: 'Add or remove country in countryWishlist'
     })
-    async handleCountryWishlist(@Body() dto: EditCountryUserDto){
+    async handleCountryWishlist(@Body() dto: EditCountryUserDto) {
         return await this.usersService.handleCountryWishlist(dto)
     }
 
@@ -86,7 +86,7 @@ export class UsersController {
     @ApiOperation({
         summary: 'Edit user infos'
     })
-    async editUserInfos(@Body() data: EditUserInfosDto){
+    async editUserInfos(@Body() data: EditUserInfosDto) {
         return await this.usersService.editUserInfos(data)
     }
 
@@ -94,7 +94,7 @@ export class UsersController {
     @ApiOperation({
         summary: 'Edit user password'
     })
-    async changePassword(@Body() data: EditPasswordDto){
+    async changePassword(@Body() data: EditPasswordDto) {
         return await this.usersService.changePassword(data)
     }
 
@@ -114,15 +114,20 @@ export class UsersController {
     @ApiOperation({
         summary: 'Create a country memory',
     })
-    async createCountryMemory(@Body() data: any){
+    async createCountryMemory(@Body() data: any) {
         return await this.usersService.createCountryMemory(data.data)
     }
 
-    @Get('userCities/:id')
+    @Get('userCitiesVisited/:id')
     @ApiOperation({
         summary: 'Get an especific user',
     })
     async getUserCities(@Param('id') id: string) {
         return await this.usersService.getUserCities(id)
+    }
+
+    @Get(':userId/countries/:countryCode/cities')
+    async getCities(@Param('userId') userId: string, @Param('countryCode') countryCode: string) {
+        return this.usersService.getCountryCities(userId, countryCode);
     }
 }

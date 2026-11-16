@@ -87,7 +87,23 @@ export class PrismaUserRepository implements IUserRepository {
         })
     }
 
-    async getUserCities(id: string): Promise<any>{
-        return await this.prisma.userCountryCity.findMany({where: {userCountry: {is: {userId: id}}}})
+    async getUserCities(id: string): Promise<any> {
+        return await this.prisma.userCountryCity.findMany({ where: { userCountry: { is: { userId: id } } } })
+    }
+
+    async getCountryCities(userId: string, countryCode: string) {
+        const country = await this.prisma.userCountry.findUnique({
+            where: {
+                userId_countryCode: {
+                    userId,
+                    countryCode,
+                },
+            },
+            include: {
+                cities: true,
+            },
+        });
+
+        return country?.cities ?? [];
     }
 }
