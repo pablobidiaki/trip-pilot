@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Plus, X, Check, Trash } from "lucide-react";
 import { CitiesInterface, CountriesMemoriesInterface, UserInterface } from "@/interfaces/user.interface";
 import CityInfosModal from "./CityInfosModal";
-import { deleteCountryMemory } from "@/services/map.service";
+import { deleteCountryMemory, getCountryInfos, handleCountryMemory } from "@/services/map.service";
 import ConfirmDelete from "@/components/ui/ConfirmDelete/ConfirmDelete";
 import { toast } from "sonner";
 
@@ -34,8 +34,11 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
 
     useEffect(() => {
         setCities(userCitiesVisited!)
+    }, [userCitiesVisited])
+
+    useEffect(() => {
         setNote(userContryInfos?.notes!)
-    }, [userContryInfos, userCitiesVisited])
+    }, [])
 
     useEffect(() => {
         document.body.style.overflow = "hidden";
@@ -46,14 +49,14 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
     }, []);
 
     const deleteMemory = async () => {
-        try{
+        try {
             await deleteCountryMemory(memoryId)
 
             setUpdateMemory(true);
             setIsOpenDeleteModal(false)
 
             toast.success("Memória deletada com sucesso")
-        }catch(error){
+        } catch (error) {
             toast.success("Erro ao tentar deletar memória")
             console.error("Error: ", error)
         }
@@ -63,6 +66,38 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
         setMemoryId(id)
         setIsOpenDeleteModal(true)
     }
+
+    const handleSaveMemoriesButton = async () => {
+        const data = {
+            countryCode: geo.id,
+            countryNotes: note
+        };
+
+        try {
+            await handleCountryMemory(data);
+
+            setSaved(true);
+            setUpdateMemory(true);
+
+            toast.success("Memória salva com sucesso");
+        } catch (error) {
+            toast.error("Erro ao tentar salvar memória");
+            console.error(error);
+        }
+    };
+
+    // useEffect(() => {
+    //     const getInfo = async () => {
+    //         try {
+    //             const data = await getCountryInfos(user.id, geo.id);
+    //             setNote(data.notes || "");
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
+
+    //     getInfo();
+    // }, [user.id, geo.id]);
 
     return (
         <div className="fixed inset-0 z-200 flex items-center justify-center bg-black/60 p-4 animate-[optionSelector_300ms_ease-out]">
@@ -143,7 +178,7 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
                     />
                 </div>
 
-                <button type="button" className="cursor-pointer flex h-9 w-full items-center justify-center gap-2 rounded-full bg-foreground text-sm font-medium text-background transition hover:opacity-90">
+                <button type="button" onClick={() => handleSaveMemoriesButton()} className="cursor-pointer flex h-9 w-full items-center justify-center gap-2 rounded-full bg-foreground text-sm font-medium text-background transition hover:opacity-90">
                     {saved ? (
                         <>
                             <Check className="h-4 w-4" />
@@ -155,8 +190,8 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
                 </button>
             </section>
 
-            {isOpenCityInfosModal && <CityInfosModal user={user} geo={geo} setIsOpenCityInfosModal={setIsOpenCityInfosModal} setUpdateMemory={setUpdateMemory} city={city}/>}
-            <ConfirmDelete isOpen={isOpenDeleteModal} deleteFunction={() => deleteMemory()} onClose={() => setIsOpenDeleteModal(false)}/>
+            {isOpenCityInfosModal && <CityInfosModal user={user} geo={geo} setIsOpenCityInfosModal={setIsOpenCityInfosModal} setUpdateMemory={setUpdateMemory} city={city} />}
+            <ConfirmDelete isOpen={isOpenDeleteModal} deleteFunction={() => deleteMemory()} onClose={() => setIsOpenDeleteModal(false)} />
         </div>
     );
 }

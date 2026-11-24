@@ -112,12 +112,12 @@ export class UsersController {
 
     @Patch('countryMemory')
     @ApiOperation({
-        summary: 'Create a country memory',
+        summary: 'Create or edit a country memory',
     })
     async handleCountryMemory(@Body() data: any) {
         return await this.usersService.handleCountryMemory(data.data)
     }
-
+ 
     @Delete('deleteCountryMemory/:id')
     @ApiOperation({
         summary: 'Remove an especific momory'
@@ -135,8 +135,8 @@ export class UsersController {
     }
 
     @Get(':userId/countries/:countryCode/cities')
-    async getCities(@Param('userId') userId: string, @Param('countryCode') countryCode: string) {
-        return this.usersService.getCountryCities(userId, countryCode);
+    async getCountryInfos(@Param('userId') userId: string, @Param('countryCode') countryCode: string) {
+        return this.usersService.getCountryInfos(userId, countryCode);
     }
 
     @Post('cityInfos')

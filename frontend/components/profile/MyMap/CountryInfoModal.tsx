@@ -2,7 +2,7 @@
 
 import Loading from "@/components/loading/Loading/Loading"
 import { CountriesMemoriesInterface, UserInterface } from "@/interfaces/user.interface"
-import { handleCountryVisited, addCountryWishlist, getCountryFlag, getCountryCities } from "@/services/map.service"
+import { handleCountryVisited, addCountryWishlist, getCountryFlag, getCountryInfos } from "@/services/map.service"
 import { X } from "lucide-react"
 import { useEffect, useState } from "react"
 import ModalButton from "./ModalButton"
@@ -99,10 +99,11 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
     }, [geo])
 
     useEffect(() => {
-        const _getCities = async () => {
-            setCities(await getCountryCities(user.id, geo.id))
+        const _getCountryInfo = async () => {
+            const data = await getCountryInfos(user.id, geo.id)
+            setCities(data.cities)
         }
-        _getCities()
+        _getCountryInfo()
 
         if(!guestMode) setUpdateMemory(false)
     }, [updateMemory, geo])

@@ -17,23 +17,23 @@ interface CityInfosModalProps {
 }
 
 export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIsOpenCityInfosModal }: CityInfosModalProps) {
-    const [name, setName] = useState("");
-    const [image, setImage] = useState<File | null>(null);
+    const [cityName, setCityName] = useState("");
+    const [cityImage, setCityImage] = useState<File | null>(null);
     const [preview, setPreview] = useState("");
     const [date, setDate] = useState("")
-    const [notes, setNotes] = useState("");
+    const [cityNotes, setCityNotes] = useState("");
 
     useEffect(() => {
-        if (!image) {
+        if (!cityImage) {
             setPreview("");
             return;
         }
 
-        const imageUrl = URL.createObjectURL(image);
+        const imageUrl = URL.createObjectURL(cityImage);
         setPreview(imageUrl);
 
         return () => URL.revokeObjectURL(imageUrl);
-    }, [image]);
+    }, [cityImage]);
 
     const handleImage = (file: File | undefined) => {
         if (!file) return;
@@ -48,27 +48,27 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
             return;
         }
 
-        setImage(file);
+        setCityImage(file);
     };
 
     const handleSave = async () => {
-        if (!name.trim()) {
+        if (!cityName.trim()) {
             toast.error("Preencha o título.");
             return;
         }
 
-        if (!notes.trim()) {
+        if (!cityNotes.trim()) {
             toast.error("Preencha a descrição.");
             return;
         }
 
         const data = {
             userId: user.id,
-            name: name,
+            cityName: cityName,
             visitedAt: date,
-            notes: notes,
+            cityNotes: cityNotes,
             countryCode: geo.id,
-            image:image
+            cityImage: cityImage
         }
 
         try{
@@ -103,8 +103,8 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                         </label>
 
                         <input type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            value={cityName}
+                            onChange={(e) => setCityName(e.target.value)}
                             maxLength={100}
                             placeholder="Ex: Conhecendo as ruas de Paris"
                             className="h-12 w-full rounded-xl border-2 border-gray-100 bg-white px-3 text-sm text-primary-color outline-none transition focus:border-blue-400 placeholder:text-muted-foreground"
@@ -130,8 +130,8 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                         </label>
 
                         <textarea
-                            value={notes}
-                            onChange={(e) => setNotes(e.target.value)}
+                            value={cityNotes}
+                            onChange={(e) => setCityNotes(e.target.value)}
                             rows={4}
                             maxLength={2000}
                             placeholder="Conte como foi sua experiência, lugares que conheceu, dicas e momentos especiais..."
@@ -139,7 +139,7 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                         />
 
                         <p className="text-right text-xs text-gray-400">
-                            {notes.length}/2000 caracteres
+                            {cityNotes.length}/2000 caracteres
                         </p>
                     </div>
 
@@ -186,7 +186,7 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                                         <ImagePlus className="h-4 w-4 text-gray-700" />
                                     </label>
 
-                                    <button type="button" onClick={() => setImage(null)} className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-white shadow-md transition hover:text-red-500" title="Remover imagem">
+                                    <button type="button" onClick={() => setCityImage(null)} className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-white shadow-md transition hover:text-red-500" title="Remover imagem">
                                         <Trash className="h-4 w-4" />
                                     </button>
                                 </div>

@@ -95,7 +95,7 @@ export async function getCitiesVisited(userId: string) {
     return response.json()
 }
 
-export async function getCountryCities(userId: string, countryCode: string) {
+export async function getCountryInfos(userId: string, countryCode: string) {
     const response = await fetch(`${apiKey}/user/${userId}/countries/${countryCode}/cities`);
 
     if (!response.ok) throw new Error("Erro ao buscar cidades");

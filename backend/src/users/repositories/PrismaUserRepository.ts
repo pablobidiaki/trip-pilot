@@ -67,33 +67,34 @@ export class PrismaUserRepository implements IUserRepository {
     async handleCountryMemory(data: any): Promise<any> {
         const userContryObj = await this.prisma.userCountry.findFirst({ where: { countryCode: data.countryCode } })
 
+        await this.prisma.userCountry.update({where: {id: userContryObj?.id}, data:{notes: data.countryNotes}})
+
         if (!userContryObj) throw new Error('Country not found')
 
-        await this.prisma.userCountryCity.create({
-            data: {
-                name: data.name,
-                visitedAt: data.visitedAt,
-                notes: data.notes,
-                image: data.image || null,
-
-                userCountry: {
-                    connect: {
-                        id: userContryObj!.id,
-                    },
-                },
-            },
-        });
+        // await this.prisma.userCountryCity.create({
+        //     data: {
+        //         name: data.cityName,
+        //         visitedAt: data.visitedAt,
+        //         notes: data.cityNotes,
+        //         image: data.cityImage || null,
+        //         userCountry: {
+        //             connect: {
+        //                 id: userContryObj!.id,
+        //             },
+        //         },
+        //     },
+        // });
     }
 
-    async deleteCountryMemory(memoryId: string): Promise<any>{
-        return await this.prisma.userCountryCity.delete({where: {id: memoryId}})
+    async deleteCountryMemory(memoryId: string): Promise<any> {
+        return await this.prisma.userCountryCity.delete({ where: { id: memoryId } })
     }
 
     async getUserCities(id: string): Promise<any> {
         return await this.prisma.userCountryCity.findMany({ where: { userCountry: { is: { userId: id } } } })
     }
 
-    async getCountryCities(userId: string, countryCode: string) {
+    async getCountryInfos(userId: string, countryCode: string) {
         const country = await this.prisma.userCountry.findUnique({
             where: {
                 userId_countryCode: {
@@ -106,7 +107,7 @@ export class PrismaUserRepository implements IUserRepository {
             },
         });
 
-        return country?.cities ?? [];
+        return country ?? [];
     }
 
     async createCityInfo(data: any) {
