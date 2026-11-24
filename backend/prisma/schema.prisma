@@ -151,11 +151,15 @@ model UserCountry {
 }
 
 model UserCountryCity {
-  id            String @id @default(uuid())
+  id            String  @id @default(uuid())
   userCountryId String
   name          String
+  visitedAt     String?
+  notes         String? @db.VarChar(1000)
+  image         String?
 
-  userCountry UserCountry @relation(fields: [userCountryId], references: [id], onDelete: Cascade)
+  memories    CityMemory[]
+  userCountry UserCountry  @relation(fields: [userCountryId], references: [id], onDelete: Cascade)
 
   @@unique([userCountryId, name])
 }
@@ -165,8 +169,19 @@ model CountryMemory {
   userCountryId String
   title         String?
   description   String?  @db.VarChar(500)
-  imageURL      String
+  imageURL      String?
   createdAt     DateTime @default(now())
 
   userCountry UserCountry @relation(fields: [userCountryId], references: [id], onDelete: Cascade)
+}
+
+model CityMemory {
+  id          String   @id @default(uuid())
+  cityId      String
+  title       String?
+  description String?  @db.VarChar(500)
+  imageURL    String?
+  createdAt   DateTime @default(now())
+
+  city UserCountryCity @relation(fields: [cityId], references: [id], onDelete: Cascade)
 }

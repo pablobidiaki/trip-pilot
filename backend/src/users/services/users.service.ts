@@ -163,8 +163,12 @@ export class UsersService {
     return await this.userRepository.getByUsername(username)
   }
 
-  async createCountryMemory(data: any): Promise<any> {
-    return await this.userRepository.createCountryMemory(data)
+  async handleCountryMemory(data: any): Promise<any> {
+    return await this.userRepository.handleCountryMemory(data)
+  }
+
+  async deleteCountryMemory(memoryId: string): Promise<any>{
+    return await this.userRepository.deleteCountryMemory(memoryId)
   }
 
   async getUserCities(id: string): Promise<any>{
@@ -174,4 +178,9 @@ export class UsersService {
   async getCountryCities(userId: string, countryCode: string): Promise<any>{
     return await this.userRepository.getCountryCities(userId, countryCode)
   }
+
+  async createCityInfo(data: any): Promise<any>{
+    return await this.userRepository.createCityInfo(data)
+  }
+
 }

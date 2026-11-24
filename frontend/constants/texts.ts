@@ -455,6 +455,11 @@ const texts = {
         text: "Tem certeza que deseja sair desta página?"
     },
 
+    deleteConfirm:{
+        title: "Deseja deletar este item?",
+        text: "Tem certeza que deseja deletar este item?"
+    },
+
     createItineraryModal:{
         title: "Seu roteiro está sendo criado!",
         text: "Nossa IA está planejando sua viagem e buscando as melhores opções para você."

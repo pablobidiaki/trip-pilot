@@ -1,9 +1,7 @@
-import { CreateUserDto } from "../../auth/dtos/create.user.dto";
 import { IUserRepository } from "./IUserRepository";
 import { PrismaService } from "../../prisma/prisma.service";
 import { Injectable } from "@nestjs/common";
 import { EditUserInfosDto } from "../dtos/users-dto";
-import { CitiesInterface } from "../interfaces/user.interface";
 
 @Injectable()
 export class PrismaUserRepository implements IUserRepository {
@@ -66,25 +64,29 @@ export class PrismaUserRepository implements IUserRepository {
         })
     }
 
-    async createCountryMemory(data: any): Promise<any> {
+    async handleCountryMemory(data: any): Promise<any> {
         const userContryObj = await this.prisma.userCountry.findFirst({ where: { countryCode: data.countryCode } })
 
         if (!userContryObj) throw new Error('Country not found')
 
-        await this.prisma.userCountry.update({
-            where: { userId: data.userId, id: userContryObj!.id },
+        await this.prisma.userCountryCity.create({
             data: {
-                notes: data.notes,
+                name: data.name,
                 visitedAt: data.visitedAt,
-                cities: {
-                    deleteMany: {},
-                    create: data.cities.map((city: CitiesInterface) => ({ name: city.name }))
-                }
+                notes: data.notes,
+                image: data.image || null,
+
+                userCountry: {
+                    connect: {
+                        id: userContryObj!.id,
+                    },
+                },
             },
-            include: {
-                cities: true
-            }
-        })
+        });
+    }
+
+    async deleteCountryMemory(memoryId: string): Promise<any>{
+        return await this.prisma.userCountryCity.delete({where: {id: memoryId}})
     }
 
     async getUserCities(id: string): Promise<any> {
@@ -105,5 +107,9 @@ export class PrismaUserRepository implements IUserRepository {
         });
 
         return country?.cities ?? [];
+    }
+
+    async createCityInfo(data: any) {
+        console.log(data)
     }
 }

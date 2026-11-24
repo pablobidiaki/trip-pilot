@@ -1,4 +1,4 @@
-import { CreateUsersDto, EditUserInfosDto } from "../dtos/users-dto";
+import { EditUserInfosDto } from "../dtos/users-dto";
 
 export abstract class IUserRepository{
     abstract create(createUserDto: any): Promise<any>
@@ -10,7 +10,9 @@ export abstract class IUserRepository{
     abstract removeOne(id: string): Promise<void>
     abstract updatePassword(id: string, password: string): Promise<any>
     abstract getByUsername(username: string): Promise<any>
-    abstract createCountryMemory(data: any): Promise<any>
+    abstract handleCountryMemory(data: any): Promise<any>
+    abstract deleteCountryMemory(memoryId: string)
     abstract getUserCities(id: string): Promise<any>
     abstract getCountryCities(userId:  string, countryCode: string)
+    abstract createCityInfo(data: any)
 }

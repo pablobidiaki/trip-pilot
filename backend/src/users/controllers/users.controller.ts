@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Delete, Patch, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Delete, Patch, UseGuards, Post } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { EditCountryUserDto, EditPasswordDto, EditUserInfosDto } from '../dtos/users-dto';
@@ -114,8 +114,16 @@ export class UsersController {
     @ApiOperation({
         summary: 'Create a country memory',
     })
-    async createCountryMemory(@Body() data: any) {
-        return await this.usersService.createCountryMemory(data.data)
+    async handleCountryMemory(@Body() data: any) {
+        return await this.usersService.handleCountryMemory(data.data)
+    }
+
+    @Delete('deleteCountryMemory/:id')
+    @ApiOperation({
+        summary: 'Remove an especific momory'
+    })
+    async deleteCountryMemory(@Param('id') memoryId: string){
+        return await this.usersService.deleteCountryMemory(memoryId)
     }
 
     @Get('userCitiesVisited/:id')
@@ -129,5 +137,10 @@ export class UsersController {
     @Get(':userId/countries/:countryCode/cities')
     async getCities(@Param('userId') userId: string, @Param('countryCode') countryCode: string) {
         return this.usersService.getCountryCities(userId, countryCode);
+    }
+
+    @Post('cityInfos')
+    async createCityInfo(@Body() data: any){
+        return await this.usersService.createCityInfo(data)
     }
 }
