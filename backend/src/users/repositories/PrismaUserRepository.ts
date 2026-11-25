@@ -26,7 +26,6 @@ export class PrismaUserRepository implements IUserRepository {
                 countriesMemories: {
                     include: {
                         cities: true,
-                        memories: true,
                     },
                 },
             },
@@ -57,7 +56,6 @@ export class PrismaUserRepository implements IUserRepository {
                 countriesMemories: {
                     include: {
                         cities: true,
-                        memories: true,
                     },
                 },
             },
@@ -67,23 +65,32 @@ export class PrismaUserRepository implements IUserRepository {
     async handleCountryMemory(data: any): Promise<any> {
         const userContryObj = await this.prisma.userCountry.findFirst({ where: { countryCode: data.countryCode } })
 
-        await this.prisma.userCountry.update({where: {id: userContryObj?.id}, data:{notes: data.countryNotes}})
+        await this.prisma.userCountry.update({ where: { id: userContryObj?.id }, data: { notes: data.countryNotes } })
 
         if (!userContryObj) throw new Error('Country not found')
 
-        // await this.prisma.userCountryCity.create({
-        //     data: {
-        //         name: data.cityName,
-        //         visitedAt: data.visitedAt,
-        //         notes: data.cityNotes,
-        //         image: data.cityImage || null,
-        //         userCountry: {
-        //             connect: {
-        //                 id: userContryObj!.id,
-        //             },
-        //         },
-        //     },
-        // });
+        if (data.cityId) {
+            await this.prisma.userCountryCity.update({
+                where: { id: data.cityId },
+                data: {
+                    name: data.cityName,
+                    notes: data.cityNotes,
+                },
+            });
+        }
+        else {
+            await this.prisma.userCountryCity.create({
+                data: {
+                    name: data.cityName,
+                    notes: data.cityNotes,
+                    userCountry: {
+                        connect: {
+                            id: userContryObj!.id,
+                        },
+                    },
+                },
+            });
+        }
     }
 
     async deleteCountryMemory(memoryId: string): Promise<any> {
@@ -110,7 +117,59 @@ export class PrismaUserRepository implements IUserRepository {
         return country ?? [];
     }
 
-    async createCityInfo(data: any) {
-        console.log(data)
+    async handleCityMemory(data: any) {
+        if (data.cityMemoryId) {
+            await this.prisma.cityMemory.update({
+                where: { id: data.cityMemoryId },
+                data: {
+                    title: data.cityMemoryTitle,
+                    description: data.cityMemoryDescription,
+                    imageURL: data.cityMemoryImageURL,
+                    visitedAt: data.cityMemoryVisitedAt
+                },
+            });
+        }
+        else {
+            await this.prisma.cityMemory.create({
+                data: {
+                    title: data.cityMemoryTitle,
+                    description: data.cityMemoryDescription,
+                    imageURL: data.cityMemoryImageURL,
+                    visitedAt: data.cityMemoryVisitedAt,
+                    city: {
+                        connect: {
+                            id: data.cityId
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    async getCityMemories(userId: string) {
+        return await this.prisma.cityMemory.findMany({
+            where: {
+                city: {
+                    userCountry: {
+                        userId: userId
+                    }
+                }
+            },
+            include: {
+                city: {
+                    include: {
+                        userCountry: {
+                            select: {
+                                countryCode: true,
+                                countryName: true
+                            }
+                        }
+                    }
+                }
+            },
+            orderBy: {
+                createdAt: "desc"
+            }
+        });
     }
 }

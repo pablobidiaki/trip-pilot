@@ -148,7 +148,7 @@ export default function DatePicker({ icon, title, value, showBottom, fullCalenda
                 </span>
                 <div className="flex flex-col pr-3">
                     <p>{title}</p>
-                    <span className={value ? "text-secondary-color" : "text-gray-400"}>
+                    <span className={`line-clamp-1 ${value ? "text-secondary-color" : "text-gray-400"}`} >
                         {displayDate || texts.form.whenPlaceholder}
                     </span>
                 </div>

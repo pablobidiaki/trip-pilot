@@ -179,8 +179,11 @@ export class UsersService {
     return await this.userRepository.getCountryInfos(userId, countryCode)
   }
 
-  async createCityInfo(data: any): Promise<any>{
-    return await this.userRepository.createCityInfo(data)
+  async handleCityMemory(data: any): Promise<any>{
+    return await this.userRepository.handleCityMemory(data.data)
   }
 
+  async getCityMemories(userId: string): Promise<any>{
+    return await this.userRepository.getCityMemories(userId)
+  }
 }

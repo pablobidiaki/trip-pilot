@@ -68,23 +68,23 @@ export async function handleCountryMemory(data: any) {
 
 export async function deleteCountryMemory(memoryId: string) {
     const response = await fetch(`${apiKey}/user/deleteCountryMemory/${memoryId}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
 
-     if (!response.ok) {
-            const errorData = await response.json();
+    if (!response.ok) {
+        const errorData = await response.json();
 
-            console.error("Erro retornado pelo backend:", errorData);
+        console.error("Erro retornado pelo backend:", errorData);
 
-            throw new Error(
-                errorData.message || "Erro ao remover memoria"
-            );
-        }
+        throw new Error(
+            errorData.message || "Erro ao remover memoria"
+        );
+    }
 
-        return await response.json();
+    return await response.json();
 }
 
 export async function getCitiesVisited(userId: string) {
@@ -105,7 +105,7 @@ export async function getCountryInfos(userId: string, countryCode: string) {
 
 export async function handleCityInfo(title: string, description: string, imageURL: string, cityId?: string) {
     if (cityId !== undefined) {
-        try{
+        try {
             await fetch(`${apiKey}/user/cityInfos`, {
                 method: 'PATCH',
                 headers: {
@@ -119,37 +119,71 @@ export async function handleCityInfo(title: string, description: string, imageUR
                 }),
             })
         }
-        catch(error){
+        catch (error) {
             console.error("Error: ", error)
         }
     }
     else {
-        try{
+        try {
             const response = await fetch(`${apiKey}/user/cityInfos`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     title: title,
                     description: description,
                     imageURL: imageURL
                 })
             });
-    
+
             if (!response.ok) {
                 const errorData = await response.json();
-    
+
                 console.error("Erro retornado pelo backend:", errorData);
-    
+
                 throw new Error(
                     errorData.message || "Erro ao criar informações da cidade"
                 );
             }
-    
+
             return await response.json();
-        } catch(error){
+        } catch (error) {
             console.error("Error: ", error)
         }
     }
+}
+
+export async function handleCityExperience(data: any) {
+    try {
+        const response = await fetch(`${apiKey}/user/cityMemory`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                data
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+
+            console.error("Erro retornado pelo backend:", errorData);
+
+            throw new Error(
+                errorData.message || "Erro ao criar informações da cidade"
+            );
+        }
+    } catch (error) {
+        console.error("Error: ", error)
+    }
+}
+
+export async function getCityMemories(userId: string) {
+    const response = await fetch(`${apiKey}/user/cityMemories/${userId}`);
+
+    if (!response.ok) throw new Error("Erro ao buscar cidades");
+
+    return response.json();
 }

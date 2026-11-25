@@ -11,8 +11,9 @@ export abstract class IUserRepository{
     abstract updatePassword(id: string, password: string): Promise<any>
     abstract getByUsername(username: string): Promise<any>
     abstract handleCountryMemory(data: any): Promise<any>
-    abstract deleteCountryMemory(memoryId: string)
+    abstract deleteCountryMemory(memoryId: string): Promise<any>
     abstract getUserCities(id: string): Promise<any>
-    abstract getCountryInfos(userId:  string, countryCode: string)
-    abstract createCityInfo(data: any)
+    abstract getCountryInfos(userId:  string, countryCode: string): Promise<any>
+    abstract handleCityMemory(data: any): Promise<any>
+    abstract getCityMemories(userId: string): Promise<any>
 }

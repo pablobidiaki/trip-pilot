@@ -1,9 +1,5 @@
-"use client"
-
 import texts from "@/constants/texts"
 import { X } from "lucide-react"
-import { signOut } from "next-auth/react"
-import { useEffect } from "react"
 
 interface ExitConfirmProps {
     isOpen: boolean
@@ -12,15 +8,6 @@ interface ExitConfirmProps {
 }
 
 export default function ConfirmDelete({ isOpen, deleteFunction, onClose }: ExitConfirmProps) {
-    useEffect(() => {
-        if (isOpen) document.body.style.overflow = "hidden"
-        else document.body.style.overflow = ""
-
-        return () => {
-            document.body.style.overflow = ""
-        }
-    }, [isOpen])
-
     if (!isOpen) return null
 
     return (

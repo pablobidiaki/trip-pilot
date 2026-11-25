@@ -147,7 +147,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                             `${userContryInfos.countryName} faz parte da sua lista de desejos`
                             : `Resumo da experiência`}
                         </p>
-                        {userContryInfos?.visitedAt && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">Visitado em <span>{formatDate(userContryInfos?.visitedAt)}</span></p>}
+                        {userContryInfos?.notes && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">{userContryInfos?.notes}</p>}
                         {cities.length != 0 && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">{cities.length} Cidades/lugares visitados</p>}
                     </div>
                 }

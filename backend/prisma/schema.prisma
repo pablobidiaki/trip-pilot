@@ -137,10 +137,8 @@ model UserCountry {
   countryName       String
   isVisitedCountry  Boolean           @default(false)
   isWishListCountry Boolean           @default(false)
-  visitedAt         String?
   notes             String?           @db.VarChar(500)
   cities            UserCountryCity[]
-  memories          CountryMemory[]
   createdAt         DateTime          @default(now())
   updatedAt         DateTime          @updatedAt
 
@@ -154,9 +152,7 @@ model UserCountryCity {
   id            String  @id @default(uuid())
   userCountryId String
   name          String
-  visitedAt     String?
   notes         String? @db.VarChar(1000)
-  image         String?
 
   memories    CityMemory[]
   userCountry UserCountry  @relation(fields: [userCountryId], references: [id], onDelete: Cascade)
@@ -164,23 +160,13 @@ model UserCountryCity {
   @@unique([userCountryId, name])
 }
 
-model CountryMemory {
-  id            String   @id @default(uuid())
-  userCountryId String
-  title         String?
-  description   String?  @db.VarChar(500)
-  imageURL      String?
-  createdAt     DateTime @default(now())
-
-  userCountry UserCountry @relation(fields: [userCountryId], references: [id], onDelete: Cascade)
-}
-
 model CityMemory {
   id          String   @id @default(uuid())
   cityId      String
   title       String?
-  description String?  @db.VarChar(500)
+  description String?  @db.VarChar(1000)
   imageURL    String?
+  visitedAt   String?
   createdAt   DateTime @default(now())
 
   city UserCountryCity @relation(fields: [cityId], references: [id], onDelete: Cascade)

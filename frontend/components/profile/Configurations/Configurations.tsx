@@ -7,6 +7,7 @@ import texts from "@/constants/texts";
 import { updatePassword, updateUser } from "@/services/user.service"; 
 import { useSession } from "next-auth/react";
 import { UserInterface } from "@/interfaces/user.interface";
+import { uploadImage } from "@/services/upload.service";
 
 interface ConfigurationsProps {
     user: UserInterface;
@@ -25,29 +26,6 @@ export default function Configurations({ user }: ConfigurationsProps) {
     const [confirmPasswordView, setConfirmPasswordView] = useState(false);
     const [bio, setBio] = useState(user.biography ?? "");
     const [isProfilePublic, setIsProfilePublic] = useState(user.isPublicAccount ?? true);
-
-
-    async function uploadImage(file: File): Promise<string> {
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!);
-
-        const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, {
-            method: "POST",
-            body: formData,
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            console.error("Erro do Cloudinary:", data);
-            throw new Error(
-                data.error?.message ?? "Falha ao enviar a imagem."
-            );
-        }
-
-        return data.secure_url;
-    }
 
     async function uploadImg(event: React.ChangeEvent<HTMLInputElement>) {
         const file = event.target.files?.[0];

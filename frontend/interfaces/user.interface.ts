@@ -27,6 +27,8 @@ export interface CitiesInterface{
     id: string
     userCountryId?: string
     name: string
+    visitedAt: string
+    notes: string
 }
 
 export interface RegisterUserInterface{

@@ -86,22 +86,22 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
         }
     };
 
-    // useEffect(() => {
-    //     const getInfo = async () => {
-    //         try {
-    //             const data = await getCountryInfos(user.id, geo.id);
-    //             setNote(data.notes || "");
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
+    useEffect(() => {
+        const getInfo = async () => {
+            try {
+                const data = await getCountryInfos(user.id, geo.id);
+                setNote(data.notes || "");
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-    //     getInfo();
-    // }, [user.id, geo.id]);
+        getInfo();
+    }, [user.id, geo.id]);
 
     return (
         <div className="fixed inset-0 z-200 flex items-center justify-center bg-black/60 p-4 animate-[optionSelector_300ms_ease-out]">
-            <section className="mx-auto w-full max-w-3xl rounded-xl border border-gray-100 bg-background-color p-3 sm:p-4">
+            <section className="mx-auto flex h-[85vh] max-h-200 w-full max-w-3xl flex-col rounded-xl border border-gray-100 bg-background-color p-3 sm:p-4">
                 <div className="mb-3 flex items-center justify-between">
                     <h2 className="text-2xl font-semibold text-primary-color"> Minhas memórias </h2>
                     <X onClick={() => setIsMemoryModalOpen(false)} className="cursor-pointer" />

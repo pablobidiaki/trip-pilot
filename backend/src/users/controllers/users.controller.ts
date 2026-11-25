@@ -135,12 +135,26 @@ export class UsersController {
     }
 
     @Get(':userId/countries/:countryCode/cities')
+    @ApiOperation({
+        summary: 'Get country infos'
+    })
     async getCountryInfos(@Param('userId') userId: string, @Param('countryCode') countryCode: string) {
         return this.usersService.getCountryInfos(userId, countryCode);
     }
 
-    @Post('cityInfos')
-    async createCityInfo(@Body() data: any){
-        return await this.usersService.createCityInfo(data)
+    @Patch('cityMemory')
+    @ApiOperation({
+        summary: 'Create or edit a user cityMemory'
+    })
+    async handleCityMemory(@Body() data: any){
+        return await this.usersService.handleCityMemory(data)
+    }
+
+    @Get('cityMemories/:id')
+    @ApiOperation({
+        summary: 'Get all cityMemory'
+    })
+    async getCityMemories(@Param('userId') userId: string){
+        return await this.usersService.getCityMemories(userId)
     }
 }
