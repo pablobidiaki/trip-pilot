@@ -149,6 +149,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
                         </p>
                         {userContryInfos?.notes && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">{userContryInfos?.notes}</p>}
                         {cities.length != 0 && <p className="text-secondary-color text-sm text-center italic font-light line-clamp-1">{cities.length} Cidades/lugares visitados</p>}
+                        {guestMode && <ModalButton onClick={() => setIsMemoryModalOpen(true)} text={'Ver experiências'} tailwindTags="bg-gray-500 text-white text-xs mt-1  lg:mt-2 lg:max-w-76 lg:text-sm" />}
                     </div>
                 }
 
