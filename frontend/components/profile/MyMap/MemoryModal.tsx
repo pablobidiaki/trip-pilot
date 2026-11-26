@@ -158,7 +158,7 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
                                                 <img src={cityMemory?.imageURL || "/imgs/icons/tripPilot.png"} alt={city.name} className="h-full w-full object-cover"/>
 
                                                 <button type="button"
-                                                    className="absolute right-2 top-2 rounded-full transition cursor-pointer z-100 text-black hover:text-red-500"
+                                                    className="absolute right-2 top-2 p-1 bg-white rounded-full transition cursor-pointer z-50 text-black hover:text-red-500"
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         setCity(city);
@@ -197,7 +197,7 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
 
                     <textarea value={note}
                         onChange={(e) => setNote(e.target.value)}
-                        rows={1}
+                        rows={4}
                         className="min-h-11.5 bg-white w-full resize-none rounded-xl border-2 border-gray-100 px-3 py-3 text-sm text-primary-color outline-none placeholder:text-muted-foreground"
                         placeholder="Conte um pouco sobre sua viagem..."
                     />

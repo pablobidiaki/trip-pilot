@@ -55,7 +55,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
             toast.success(`Você ${text} '${geo.properties.name}' como visitado!`)
         } catch (error) {
             toast.error("Não foi possível atualizar seu mapa.")
-            console.log(error)
+            console.error(error)
         } finally {
             setIsUpdating(false)
         }

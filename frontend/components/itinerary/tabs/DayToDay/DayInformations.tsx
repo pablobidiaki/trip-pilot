@@ -13,7 +13,6 @@ interface DayInformationsProps {
 }
 
 export default function DayInformations({ itinerary, imageLoading, setImageLoading }: DayInformationsProps) {
-    console.log(itinerary.imageURL)
     return (
         <div className="grid grid-cols-1 gap-5 mt-7  
             xl:grid-cols-2 xl:min-h-157.5 xl:max-h-157.5

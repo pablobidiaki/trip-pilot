@@ -70,7 +70,7 @@ export class PrismaUserRepository implements IUserRepository {
         if (!userContryObj) throw new Error('Country not found')
 
         if (data.cityId) {
-            await this.prisma.userCountryCity.update({
+            return await this.prisma.userCountryCity.update({
                 where: { id: data.cityId },
                 data: {
                     name: data.cityName,
@@ -78,8 +78,8 @@ export class PrismaUserRepository implements IUserRepository {
                 },
             });
         }
-        else {
-            await this.prisma.userCountryCity.create({
+        else if (data.cityName) {
+            return await this.prisma.userCountryCity.create({
                 data: {
                     name: data.cityName,
                     notes: data.cityNotes,

@@ -1,13 +1,12 @@
-
 "use client"
 
 import { useCallback, useEffect, useState } from "react";
 import { X, Check, ImagePlus, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { UserInterface } from "@/interfaces/user.interface";
-import { getCityMemories, handleCountryMemory } from "@/services/map.service";
+import { getCityMemories, handleCityExperience, handleCountryMemory } from "@/services/map.service";
 import { uploadImage } from "@/services/upload.service";
-import CityMemoriesCard from "./CityMemoriesCard";
+import CityMemoriesCard, { CityMemoryDraft } from "./CityMemoriesCard";
 
 interface CityInfosModalProps {
     user: UserInterface;
@@ -18,49 +17,61 @@ interface CityInfosModalProps {
 }
 
 export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIsOpenCityInfosModal }: CityInfosModalProps) {
+    const [currentCityId, setCurrentCityId] = useState<string | null>(city?.id ?? null);
     const [cityName, setCityName] = useState(city?.name ?? "");
     const [cityNotes, setCityNotes] = useState(city?.notes ?? "");
-    const [isSavingMemory, setIsSavingMemory] = useState(false);
-    const [memories, setMemories] = useState<any[]>([]);
-    const [draftExperience, setDraftExperience] = useState<{
-        preview: string;
-        image: string;
-        isUploading: boolean;
-    } | null>(null);
+    const [isSaving, setIsSaving] = useState(false);
+    const [experiences, setExperiences] = useState<CityMemoryDraft[]>([]);
 
     useEffect(() => {
+        setCurrentCityId(city?.id ?? null);
         if (!city) return;
 
         setCityName(city.name ?? "");
         setCityNotes(city.notes ?? "");
     }, [city]);
 
-    const fetchCityMemories = useCallback(async () => {
+    const fetchCityMemories = useCallback(async (targetCityId: string | null) => {
+        if (!targetCityId) {
+            setExperiences([]);
+            return;
+        }
+
         try {
-            const cityMemories = await getCityMemories(user.id);
-            setMemories(cityMemories ?? []);
+            const allMemories = await getCityMemories(user.id);
+            const filtered = (allMemories ?? [])
+                .filter((memory: any) => memory?.cityId === targetCityId)
+                .map((memory: any): CityMemoryDraft => ({
+                    localId: memory.id,
+                    id: memory.id,
+                    title: memory.title ?? "",
+                    visitedAt: memory.visitedAt ?? "",
+                    description: memory.description ?? "",
+                    imageURL: memory.imageURL ?? "",
+                }));
+
+            setExperiences(filtered);
         } catch (error) {
             console.error(error);
         }
     }, [user.id]);
 
     useEffect(() => {
-        fetchCityMemories();
-    }, [fetchCityMemories]);
+        fetchCityMemories(currentCityId);
+    }, [fetchCityMemories, currentCityId]);
 
-    useEffect(() => {
-        if (!draftExperience?.preview) return;
-        const previewUrl = draftExperience.preview;
-        return () => URL.revokeObjectURL(previewUrl);
-    }, [draftExperience?.preview]);
+    const handleExperienceChange = (localId: string, patch: Partial<CityMemoryDraft>) => {
+        setExperiences((prev) =>
+            prev.map((exp) => (exp.localId === localId ? { ...exp, ...patch } : exp))
+        );
+    };
+
+    const handleRemoveExperience = (localId: string) => {
+        setExperiences((prev) => prev.filter((exp) => exp.localId !== localId));
+    };
 
     const handleNewImage = async (file: File | undefined) => {
         if (!file) return;
-
-        if (!city?.id) {
-            toast.error("Salve as informações gerais da cidade antes de adicionar fotos.");
-            return;
-        }
 
         if (!file.type.startsWith("image/")) {
             toast.error("Selecione um arquivo de imagem válido.");
@@ -72,54 +83,91 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
             return;
         }
 
+        const localId = `draft-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
         const previewUrl = URL.createObjectURL(file);
-        setDraftExperience({ preview: previewUrl, image: "", isUploading: true });
+
+        setExperiences((prev) => [
+            {
+                localId,
+                title: "",
+                visitedAt: "",
+                description: "",
+                imageURL: "",
+                preview: previewUrl,
+                isUploading: true,
+            },
+            ...prev,
+        ]);
 
         try {
             const imageUrl = await uploadImage(file);
-            setDraftExperience({ preview: previewUrl, image: imageUrl, isUploading: false });
+            handleExperienceChange(localId, { imageURL: imageUrl, preview: "", isUploading: false });
+            URL.revokeObjectURL(previewUrl);
             toast.success("Imagem enviada com sucesso!");
         } catch (error) {
             console.error("Erro no upload:", error);
-            setDraftExperience(null);
+            URL.revokeObjectURL(previewUrl);
+            handleRemoveExperience(localId);
             toast.error("Erro ao enviar imagem.");
         }
     };
 
-    const cityMemories = memories.filter((memory) => city?.id && memory?.cityId === city.id);
+    const isAnyUploading = experiences.some((exp) => exp.isUploading);
 
-    const handleSaveMemory = async () => {
+    const handleSaveAll = async () => {
         if (!cityName.trim()) {
             toast.error("Preencha o nome da cidade ou destino.");
             return;
         }
 
-        if (!cityNotes.trim()) {
-            toast.error("Preencha a descrição da experiência geral.");
+        if (isAnyUploading) {
+            toast.error("Aguarde o envio das imagens terminar antes de salvar.");
             return;
         }
 
-        const data = {
+        const cityData = {
             userId: user.id,
             countryCode: geo.id,
             cityName: cityName.trim(),
             cityNotes: cityNotes.trim(),
-            cityId: city?.id ?? null
+            cityId: currentCityId,
         };
 
         try {
-            setIsSavingMemory(true);
+            setIsSaving(true);
 
-            await handleCountryMemory(data);
+            const savedCity = await handleCountryMemory(cityData);
+            const resolvedCityId = savedCity?.id ?? currentCityId;
+
+            if (savedCity?.id && savedCity.id !== currentCityId) {
+                setCurrentCityId(savedCity.id);
+            }
+
+            if (resolvedCityId && experiences.length > 0) {
+                await Promise.all(
+                    experiences.map((exp) =>
+                        handleCityExperience({
+                            cityMemoryId: exp.id,
+                            cityId: resolvedCityId,
+                            cityMemoryTitle: exp.title.trim(),
+                            cityMemoryVisitedAt: exp.visitedAt,
+                            cityMemoryDescription: exp.description.trim(),
+                            cityMemoryImageURL: exp.imageURL,
+                        })
+                    )
+                );
+            }
 
             setUpdateMemory(true);
+            await fetchCityMemories(resolvedCityId);
 
-            toast.success("Informações gerais salvas com sucesso!");
+            toast.success("Experiência salva com sucesso!");
+            setIsOpenCityInfosModal(false)
         } catch (error) {
-            toast.error("Erro ao salvar informações gerais.");
+            toast.error("Erro ao salvar experiência.");
             console.error(error);
         } finally {
-            setIsSavingMemory(false);
+            setIsSaving(false);
         }
     };
 
@@ -140,7 +188,7 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                             </div>
 
                             <div className="space-y-1.5">
-                                <label className="block text-base text-primary-color"> Nome da cidade ou destino </label>
+                                <label className="block text-base text-primary-color"> Nome da cidade ou destino *</label>
 
                                 <input
                                     type="text"
@@ -150,7 +198,6 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                                     placeholder="Ex: Conhecendo as ruas de Paris"
                                     className="h-12 w-full rounded-xl border-2 border-gray-100 bg-white px-3 text-primary-color outline-none transition focus:border-blue-400 placeholder:text-muted-foreground"
                                 />
-
                             </div>
 
                             <div className="space-y-1.5">
@@ -166,13 +213,7 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                                 />
 
                                 <p className="text-right text-xs text-gray-400"> {cityNotes.length}/2000 caracteres </p>
-
                             </div>
-
-                            <button type="button" onClick={handleSaveMemory} disabled={isSavingMemory} className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground text-sm font-medium text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
-                                <Check className="h-4 w-4" />
-                                {isSavingMemory ? "Salvando informações..." : "Salvar informações gerais"}
-                            </button>
                         </div>
 
                         <div className="border-t border-gray-200" />
@@ -207,29 +248,12 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                                     />
                                 </label>
 
-                                {draftExperience && city?.id && (
+                                {experiences.map((experience) => (
                                     <CityMemoriesCard
-                                        key="new-experience"
-                                        cityId={city.id}
-                                        initialImage={draftExperience.image}
-                                        initialPreview={draftExperience.preview}
-                                        isInitialUploading={draftExperience.isUploading}
-                                        setUpdateMemory={setUpdateMemory}
-                                        onSaved={() => {
-                                            setDraftExperience(null);
-                                            fetchCityMemories();
-                                        }}
-                                        onRemove={() => setDraftExperience(null)}
-                                    />
-                                )}
-
-                                {cityMemories.map((memory) => (
-                                    <CityMemoriesCard
-                                        key={memory.id}
-                                        cityId={city.id}
-                                        memory={memory}
-                                        setUpdateMemory={setUpdateMemory}
-                                        onSaved={fetchCityMemories}
+                                        key={experience.localId}
+                                        experience={experience}
+                                        onChange={handleExperienceChange}
+                                        onRemove={handleRemoveExperience}
                                     />
                                 ))}
                             </div>
@@ -237,12 +261,26 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                     </div>
                 </div>
 
-                <div className="mt-4 flex shrink-0 justify-end border-t border-gray-100 pt-3">
-                    <button type="button" onClick={() => setIsOpenCityInfosModal(false)} className="flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-gray-200 bg-red-500 text-sm font-medium text-white" >
+                <div className="mt-4 flex shrink-0 gap-3 border-t border-gray-100 pt-3">
+                    <button
+                        type="button"
+                        onClick={() => setIsOpenCityInfosModal(false)}
+                        className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full border border-gray-200 bg-red-500 text-sm font-medium text-white transition hover:bg-red-600"
+                    >
                         Fechar
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={handleSaveAll}
+                        disabled={isSaving || isAnyUploading}
+                        className="flex h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-blue-600 text-sm font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        <Check className="h-4 w-4" />
+                        {isSaving ? "Salvando..." : "Salvar"}
                     </button>
                 </div>
             </section>
         </div>
-    )
+    );
 }
