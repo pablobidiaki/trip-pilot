@@ -183,6 +183,7 @@ export default function CountryInfoModal({ visited, wishlist, user, geo, isOpen,
             {isMemoryModalOpen &&
                 <MemoryModal user={user}
                     geo={geo}
+                    guestMode={guestMode}
                     userContryInfos={userContryInfos!}
                     userCitiesVisited={cities}
                     setIsMemoryModalOpen={setIsMemoryModalOpen}
