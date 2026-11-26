@@ -75,6 +75,7 @@ export class PrismaUserRepository implements IUserRepository {
                 data: {
                     name: data.cityName,
                     notes: data.cityNotes,
+                    ...(data.bannerURL !== undefined ? { bannerURL: data.bannerURL } : {}),
                 },
             });
         }
@@ -83,6 +84,7 @@ export class PrismaUserRepository implements IUserRepository {
                 data: {
                     name: data.cityName,
                     notes: data.cityNotes,
+                    bannerURL: data.bannerURL ?? null,
                     userCountry: {
                         connect: {
                             id: userContryObj!.id,
@@ -118,23 +120,32 @@ export class PrismaUserRepository implements IUserRepository {
     }
 
     async handleCityMemory(data: any) {
+        const mediaURLs: string[] = Array.isArray(data.cityMemoryMediaURLs)
+            ? data.cityMemoryMediaURLs.filter(Boolean)
+            : data.cityMemoryImageURL
+                ? [data.cityMemoryImageURL]
+                : [];
+        const primaryImageURL = data.cityMemoryImageURL ?? mediaURLs[0] ?? null;
+
         if (data.cityMemoryId) {
-            await this.prisma.cityMemory.update({
+            return await this.prisma.cityMemory.update({
                 where: { id: data.cityMemoryId },
                 data: {
                     title: data.cityMemoryTitle,
                     description: data.cityMemoryDescription,
-                    imageURL: data.cityMemoryImageURL,
+                    imageURL: primaryImageURL,
+                    mediaURLs,
                     visitedAt: data.cityMemoryVisitedAt
                 },
             });
         }
         else {
-            await this.prisma.cityMemory.create({
+            return await this.prisma.cityMemory.create({
                 data: {
                     title: data.cityMemoryTitle,
                     description: data.cityMemoryDescription,
-                    imageURL: data.cityMemoryImageURL,
+                    imageURL: primaryImageURL,
+                    mediaURLs,
                     visitedAt: data.cityMemoryVisitedAt,
                     city: {
                         connect: {
@@ -144,6 +155,12 @@ export class PrismaUserRepository implements IUserRepository {
                 }
             });
         }
+    }
+
+    async deleteCityMemory(cityMemoryId: string) {
+        return await this.prisma.cityMemory.delete({
+            where: { id: cityMemoryId },
+        });
     }
 
     async getCityMemories(userId: string) {

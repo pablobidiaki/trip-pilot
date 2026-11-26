@@ -4,9 +4,9 @@ import { useCallback, useEffect, useState } from "react";
 import { X, Check, ImagePlus, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { UserInterface } from "@/interfaces/user.interface";
-import { getCityMemories, handleCityExperience, handleCountryMemory } from "@/services/map.service";
+import { deleteCityExperience, getCityMemories, handleCityExperience, handleCountryMemory } from "@/services/map.service";
 import { uploadImage } from "@/services/upload.service";
-import CityMemoriesCard, { CityMemoryDraft } from "./CityMemoriesCard";
+import CityMemoriesCard, { CityMemoryDraft, MediaItem, isVideoUrl } from "./CityMemoriesCard";
 
 interface CityInfosModalProps {
     user: UserInterface;
@@ -16,15 +16,21 @@ interface CityInfosModalProps {
     setIsOpenCityInfosModal: (value: boolean) => void;
 }
 
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+const MAX_VIDEO_SIZE = 50 * 1024 * 1024;
+
 export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIsOpenCityInfosModal }: CityInfosModalProps) {
     const [currentCityId, setCurrentCityId] = useState<string | null>(city?.id ?? null);
     const [cityName, setCityName] = useState(city?.name ?? "");
     const [cityNotes, setCityNotes] = useState(city?.notes ?? "");
+    const [selectedBannerUrl, setSelectedBannerUrl] = useState<string | null>(city?.bannerURL ?? null);
     const [isSaving, setIsSaving] = useState(false);
     const [experiences, setExperiences] = useState<CityMemoryDraft[]>([]);
+    const [deletedExperienceIds, setDeletedExperienceIds] = useState<string[]>([]);
 
     useEffect(() => {
         setCurrentCityId(city?.id ?? null);
+        setSelectedBannerUrl(city?.bannerURL ?? null);
         if (!city) return;
 
         setCityName(city.name ?? "");
@@ -41,14 +47,29 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
             const allMemories = await getCityMemories(user.id);
             const filtered = (allMemories ?? [])
                 .filter((memory: any) => memory?.cityId === targetCityId)
-                .map((memory: any): CityMemoryDraft => ({
-                    localId: memory.id,
-                    id: memory.id,
-                    title: memory.title ?? "",
-                    visitedAt: memory.visitedAt ?? "",
-                    description: memory.description ?? "",
-                    imageURL: memory.imageURL ?? "",
-                }));
+                .map((memory: any): CityMemoryDraft => {
+                    const urls: string[] =
+                        Array.isArray(memory.mediaURLs) && memory.mediaURLs.length > 0
+                            ? memory.mediaURLs
+                            : memory.imageURL
+                                ? [memory.imageURL]
+                                : [];
+
+                    const media: MediaItem[] = urls.map((url, idx) => ({
+                        id: `${memory.id}-media-${idx}`,
+                        url,
+                        type: isVideoUrl(url) ? "video" : "image",
+                    }));
+
+                    return {
+                        localId: memory.id,
+                        id: memory.id,
+                        title: memory.title ?? "",
+                        visitedAt: memory.visitedAt ?? "",
+                        description: memory.description ?? "",
+                        media,
+                    };
+                });
 
             setExperiences(filtered);
         } catch (error) {
@@ -60,31 +81,62 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
         fetchCityMemories(currentCityId);
     }, [fetchCityMemories, currentCityId]);
 
-    const handleExperienceChange = (localId: string, patch: Partial<CityMemoryDraft>) => {
+    const handleExperienceChange = (localId: string, updater: (prev: CityMemoryDraft) => CityMemoryDraft) => {
         setExperiences((prev) =>
-            prev.map((exp) => (exp.localId === localId ? { ...exp, ...patch } : exp))
+            prev.map((exp) => (exp.localId === localId ? updater(exp) : exp))
         );
     };
 
     const handleRemoveExperience = (localId: string) => {
+        const target = experiences.find((exp) => exp.localId === localId);
+        if (target?.id) {
+            setDeletedExperienceIds((prev) =>
+                prev.includes(target.id!) ? prev : [...prev, target.id!]
+            );
+        }
+        if (target && selectedBannerUrl && target.media.some((m) => m.url === selectedBannerUrl)) {
+            setSelectedBannerUrl(null);
+        }
         setExperiences((prev) => prev.filter((exp) => exp.localId !== localId));
     };
 
-    const handleNewImage = async (file: File | undefined) => {
-        if (!file) return;
+    const handleNewExperience = async (files: FileList | null) => {
+        if (!files || files.length === 0) return;
 
-        if (!file.type.startsWith("image/")) {
-            toast.error("Selecione um arquivo de imagem válido.");
-            return;
+        const validFiles: { file: File; type: "image" | "video" }[] = [];
+
+        for (const file of Array.from(files)) {
+            const isImage = file.type.startsWith("image/");
+            const isVideo = file.type.startsWith("video/");
+
+            if (!isImage && !isVideo) {
+                toast.error(`Arquivo inválido: ${file.name}. Selecione imagens ou vídeos.`);
+                continue;
+            }
+
+            if (isImage && file.size > MAX_IMAGE_SIZE) {
+                toast.error(`A imagem "${file.name}" excede o limite de 5MB.`);
+                continue;
+            }
+
+            if (isVideo && file.size > MAX_VIDEO_SIZE) {
+                toast.error(`O vídeo "${file.name}" excede o limite de 50MB.`);
+                continue;
+            }
+
+            validFiles.push({ file, type: isVideo ? "video" : "image" });
         }
 
-        if (file.size > 5 * 1024 * 1024) {
-            toast.error("A imagem deve ter no máximo 5MB.");
-            return;
-        }
+        if (validFiles.length === 0) return;
 
         const localId = `draft-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-        const previewUrl = URL.createObjectURL(file);
+        const initialMedia: MediaItem[] = validFiles.map(({ file, type }, idx) => ({
+            id: `${localId}-media-${idx}`,
+            url: "",
+            preview: URL.createObjectURL(file),
+            type,
+            isUploading: true,
+        }));
 
         setExperiences((prev) => [
             {
@@ -92,27 +144,39 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                 title: "",
                 visitedAt: "",
                 description: "",
-                imageURL: "",
-                preview: previewUrl,
-                isUploading: true,
+                media: initialMedia,
             },
             ...prev,
         ]);
 
-        try {
-            const imageUrl = await uploadImage(file);
-            handleExperienceChange(localId, { imageURL: imageUrl, preview: "", isUploading: false });
-            URL.revokeObjectURL(previewUrl);
-            toast.success("Imagem enviada com sucesso!");
-        } catch (error) {
-            console.error("Erro no upload:", error);
-            URL.revokeObjectURL(previewUrl);
-            handleRemoveExperience(localId);
-            toast.error("Erro ao enviar imagem.");
-        }
+        await Promise.all(
+            validFiles.map(async ({ file }, idx) => {
+                const item = initialMedia[idx];
+                try {
+                    const uploadedUrl = await uploadImage(file);
+                    handleExperienceChange(localId, (prev) => ({
+                        ...prev,
+                        media: prev.media.map((m) =>
+                            m.id === item.id
+                                ? { ...m, url: uploadedUrl, preview: "", isUploading: false }
+                                : m
+                        ),
+                    }));
+                    if (item.preview) URL.revokeObjectURL(item.preview);
+                } catch (error) {
+                    console.error("Erro no upload:", error);
+                    handleExperienceChange(localId, (prev) => ({
+                        ...prev,
+                        media: prev.media.filter((m) => m.id !== item.id),
+                    }));
+                    if (item.preview) URL.revokeObjectURL(item.preview);
+                    toast.error(`Erro ao enviar "${file.name}".`);
+                }
+            })
+        );
     };
 
-    const isAnyUploading = experiences.some((exp) => exp.isUploading);
+    const isAnyUploading = experiences.some((exp) => exp.media.some((m) => m.isUploading));
 
     const handleSaveAll = async () => {
         if (!cityName.trim()) {
@@ -120,8 +184,13 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
             return;
         }
 
+        if (!cityNotes.trim()) {
+            toast.error("Preencha a descrição da experiência geral.");
+            return;
+        }
+
         if (isAnyUploading) {
-            toast.error("Aguarde o envio das imagens terminar antes de salvar.");
+            toast.error("Aguarde o envio das mídias terminar antes de salvar.");
             return;
         }
 
@@ -131,6 +200,7 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
             cityName: cityName.trim(),
             cityNotes: cityNotes.trim(),
             cityId: currentCityId,
+            bannerURL: selectedBannerUrl,
         };
 
         try {
@@ -143,18 +213,29 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                 setCurrentCityId(savedCity.id);
             }
 
+            if (deletedExperienceIds.length > 0) {
+                await Promise.all(
+                    deletedExperienceIds.map((id) => deleteCityExperience(id))
+                );
+                setDeletedExperienceIds([]);
+            }
+
             if (resolvedCityId && experiences.length > 0) {
                 await Promise.all(
-                    experiences.map((exp) =>
-                        handleCityExperience({
+                    experiences.map((exp) => {
+                        const mediaURLs = exp.media.map((m) => m.url).filter(Boolean);
+                        const firstImage = exp.media.find((m) => m.type === "image" && m.url)?.url;
+
+                        return handleCityExperience({
                             cityMemoryId: exp.id,
                             cityId: resolvedCityId,
                             cityMemoryTitle: exp.title.trim(),
                             cityMemoryVisitedAt: exp.visitedAt,
                             cityMemoryDescription: exp.description.trim(),
-                            cityMemoryImageURL: exp.imageURL,
-                        })
-                    )
+                            cityMemoryImageURL: firstImage ?? mediaURLs[0] ?? "",
+                            cityMemoryMediaURLs: mediaURLs,
+                        });
+                    })
                 );
             }
 
@@ -162,7 +243,6 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
             await fetchCityMemories(resolvedCityId);
 
             toast.success("Experiência salva com sucesso!");
-            setIsOpenCityInfosModal(false)
         } catch (error) {
             toast.error("Erro ao salvar experiência.");
             console.error(error);
@@ -188,7 +268,7 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                             </div>
 
                             <div className="space-y-1.5">
-                                <label className="block text-base text-primary-color"> Nome da cidade ou destino *</label>
+                                <label className="block text-base text-primary-color"> Nome da cidade ou destino </label>
 
                                 <input
                                     type="text"
@@ -220,7 +300,7 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                         <div className="space-y-4">
                             <div>
                                 <h3 className="text-lg font-semibold text-primary-color"> Fotos e experiências </h3>
-                                <p className="text-xs text-gray-400"> Adicione fotos e registre detalhes de cada momento da viagem. </p>
+                                <p className="text-xs text-gray-400"> Adicione fotos ou vídeos e registre detalhes de cada momento da viagem. </p>
                             </div>
 
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -230,21 +310,22 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                                     </div>
 
                                     <div className="text-center">
-                                        <p className="text-sm font-semibold"> Adicionar imagem </p>
-                                        <p className="mt-1 text-xs text-gray-400"> Selecione uma foto da experiência </p>
+                                        <p className="text-sm font-semibold"> Nova experiência </p>
+                                        <p className="mt-1 text-xs text-gray-400"> Selecione fotos ou vídeos da experiência </p>
                                     </div>
 
                                     <span className="flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5 text-xs">
                                         <Upload className="h-3.5 w-3.5" />
-                                        PNG, JPG ou WEBP · Máximo 5MB
+                                        Imagens (5MB) ou Vídeos (50MB)
                                     </span>
 
                                     <input
                                         id="add-city-image"
                                         type="file"
-                                        accept="image/*"
+                                        accept="image/*,video/*"
+                                        multiple
                                         className="hidden"
-                                        onChange={(e) => { handleNewImage(e.target.files?.[0]); e.target.value = ""; }}
+                                        onChange={(e) => { handleNewExperience(e.target.files); e.target.value = ""; }}
                                     />
                                 </label>
 
@@ -252,6 +333,8 @@ export default function CityInfosModal({ user, geo, city, setUpdateMemory, setIs
                                     <CityMemoriesCard
                                         key={experience.localId}
                                         experience={experience}
+                                        selectedBannerUrl={selectedBannerUrl}
+                                        onSelectBanner={setSelectedBannerUrl}
                                         onChange={handleExperienceChange}
                                         onRemove={handleRemoveExperience}
                                     />

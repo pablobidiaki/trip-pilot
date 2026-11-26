@@ -151,11 +151,16 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
 
                                 {cities?.map((city) => {
                                     const cityMemory = memories?.find((memory) => memory.cityId! === city.id);
+                                    const bannerImage =
+                                        city.bannerURL ||
+                                        cityMemory?.imageURL ||
+                                        cityMemory?.mediaURLs?.[0] ||
+                                        "/imgs/icons/tripPilot.png";
 
                                     return (
                                         <div onClick={() => openCityInfosModal(city)} key={city.id} className="overflow-hidden rounded-xl border border-gray-200 bg-white cursor-pointer transition hover:border-blue-400">
                                             <div className="relative h-46 w-full">
-                                                <img src={cityMemory?.imageURL || "/imgs/icons/tripPilot.png"} alt={city.name} className="h-full w-full object-cover"/>
+                                                <img src={bannerImage} alt={city.name} className="h-full w-full object-cover"/>
 
                                                 <button type="button"
                                                     className="absolute right-2 top-2 p-1 bg-white rounded-full transition cursor-pointer z-50 text-black hover:text-red-500"

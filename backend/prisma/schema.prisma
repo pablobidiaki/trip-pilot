@@ -153,6 +153,7 @@ model UserCountryCity {
   userCountryId String
   name          String
   notes         String? @db.VarChar(1000)
+  bannerURL     String?
 
   memories    CityMemory[]
   userCountry UserCountry  @relation(fields: [userCountryId], references: [id], onDelete: Cascade)
@@ -166,6 +167,7 @@ model CityMemory {
   title       String?
   description String?  @db.VarChar(1000)
   imageURL    String?
+  mediaURLs   String[] @default([])
   visitedAt   String?
   createdAt   DateTime @default(now())
 

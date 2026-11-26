@@ -137,6 +137,23 @@ export async function handleCityExperience(data: any) {
     }
 }
 
+export async function deleteCityExperience(cityMemoryId: string) {
+    const response = await fetch(`${apiKey}/user/cityMemory/${cityMemoryId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Erro ao remover experiência");
+    }
+
+    const text = await response.text();
+    return text ? JSON.parse(text) : null;
+}
+
 export async function getCityMemories(userId: string) {
     const response = await fetch(`${apiKey}/user/cityMemories/${userId}`);
 

@@ -150,6 +150,14 @@ export class UsersController {
         return await this.usersService.handleCityMemory(data)
     }
 
+    @Delete('cityMemory/:id')
+    @ApiOperation({
+        summary: 'Delete a user cityMemory'
+    })
+    async deleteCityMemory(@Param('id') cityMemoryId: string){
+        return await this.usersService.deleteCityMemory(cityMemoryId)
+    }
+
     @Get('cityMemories/:id')
     @ApiOperation({
         summary: 'Get all cityMemory'

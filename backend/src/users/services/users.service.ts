@@ -183,6 +183,10 @@ export class UsersService {
     return await this.userRepository.handleCityMemory(data.data)
   }
 
+  async deleteCityMemory(cityMemoryId: string): Promise<any>{
+    return await this.userRepository.deleteCityMemory(cityMemoryId)
+  }
+
   async getCityMemories(userId: string): Promise<any>{
     return await this.userRepository.getCityMemories(userId)
   }

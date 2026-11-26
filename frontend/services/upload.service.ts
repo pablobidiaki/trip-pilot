@@ -4,7 +4,7 @@ export async function uploadImage(file: File): Promise<string> {
     formData.append("file", file);
     formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!);
 
-    const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, {
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/auto/upload`, {
         method: "POST",
         body: formData,
     });
@@ -14,7 +14,7 @@ export async function uploadImage(file: File): Promise<string> {
     if (!response.ok) {
         console.error("Erro do Cloudinary:", data);
 
-        throw new Error(data.error?.message ?? "Falha ao enviar a imagem.");
+        throw new Error(data.error?.message ?? "Falha ao enviar a mídia.");
     }
 
     return data.secure_url;
