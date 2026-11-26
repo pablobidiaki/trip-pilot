@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Plus, X, Check, Trash } from "lucide-react";
 import { CitiesInterface, CountriesMemoriesInterface, UserInterface } from "@/interfaces/user.interface";
 import CityInfosModal from "./CityInfosModal";
-import { deleteCountryMemory, getCountryInfos, handleCountryMemory } from "@/services/map.service";
+import { deleteCountryMemory, getCityMemories, getCountryInfos, handleCountryMemory } from "@/services/map.service";
 import ConfirmDelete from "@/components/ui/ConfirmDelete/ConfirmDelete";
 import { toast } from "sonner";
 
@@ -25,6 +25,7 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
     const [city, setCity] = useState()
     const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
     const [memoryId, setMemoryId] = useState("")
+    const [memories, setMemories] = useState<any[]>([]) 
 
     const openCityInfosModal = (city?: any) => {
         document.getElementById("new-city-input")?.focus()
@@ -99,16 +100,35 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
         getInfo();
     }, [user.id, geo.id]);
 
+    useEffect(() => {
+        const _getCityMemories = async () => {
+            const cityMemories = await getCityMemories(user.id)
+            setMemories(cityMemories)
+        }
+        _getCityMemories()
+    }, [cities, isOpenCityInfosModal])
+
+    const formatVisitedDate = (dateValue?: string) => {
+        if (!dateValue) return "Data não informada";
+        if (/^\d{2}\/\d{2}\/\d{4}$/.test(dateValue.trim())) {
+            return dateValue.trim();
+        }
+        const parsed = new Date(dateValue);
+        return Number.isNaN(parsed.getTime())
+            ? dateValue
+            : parsed.toLocaleDateString("pt-BR");
+    };
+
     return (
         <div className="fixed inset-0 z-200 flex items-center justify-center bg-black/60 p-4 animate-[optionSelector_300ms_ease-out]">
             <section className="mx-auto flex h-[85vh] max-h-200 w-full max-w-3xl flex-col rounded-xl border border-gray-100 bg-background-color p-3 sm:p-4">
                 <div className="mb-3 flex items-center justify-between">
-                    <h2 className="text-2xl font-semibold text-primary-color"> Minhas memórias </h2>
+                    <h2 className="text-2xl font-semibold text-primary-color"> Minhas memórias ({cities.length})</h2>
                     <X onClick={() => setIsMemoryModalOpen(false)} className="cursor-pointer" />
                 </div>
                 <div className="mb-3 space-y-1.5">
                     <label className="block text-lg text-primary-color">
-                        Cidades ou lugares visitados *
+                        Cidades ou lugares visitados
                     </label>
 
                     <div className="min-h-17.5 rounded-xl border border-gray-100 bg-white p-3">
@@ -129,37 +149,42 @@ export default function MemoryModal({ user, geo, userCitiesVisited, userContryIn
                                     </div>
                                 </button>
 
-                                {cities?.map((city) => (
-                                    <div onClick={() => openCityInfosModal(city)} key={city.id} className="overflow-hidden rounded-xl border border-gray-200 bg-white cursor-pointer transition hover:border-blue-400">
-                                        <div className="relative h-46 w-full">
-                                            <img src={city.image || "/imgs/icons/tripPilot.png"} alt={city.name} className="h-full w-full object-cover" />
+                                {cities?.map((city) => {
+                                    const cityMemory = memories?.find((memory) => memory.cityId! === city.id);
 
-                                            <button type="button" className="absolute right-2 top-2 rounded-full transition cursor-pointer z-100 text-black hover:text-red-500"
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    setCity(city);
-                                                    handleDeleteButton(city.id);
-                                                }}
-                                            >
-                                                <Trash className="h-4 w-4" />
-                                            </button>
-                                        </div>
+                                    return (
+                                        <div onClick={() => openCityInfosModal(city)} key={city.id} className="overflow-hidden rounded-xl border border-gray-200 bg-white cursor-pointer transition hover:border-blue-400">
+                                            <div className="relative h-46 w-full">
+                                                <img src={cityMemory?.imageURL || "/imgs/icons/tripPilot.png"} alt={city.name} className="h-full w-full object-cover"/>
 
-                                        <div className="p-3">
-                                            <h3 className="text-base font-semibold capitalize text-gray-800">
-                                                {city.name}
-                                            </h3>
-
-                                            <div className="mt-1 flex items-center gap-1.5 text-xs text-gray-400">
-                                                {city.visitedAt ? new Date(city.visitedAt).toLocaleDateString("pt-BR") : "Data não informada"}
+                                                <button type="button"
+                                                    className="absolute right-2 top-2 rounded-full transition cursor-pointer z-100 text-black hover:text-red-500"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setCity(city);
+                                                        handleDeleteButton(city.id);
+                                                    }}
+                                                >
+                                                    <Trash className="h-4 w-4" />
+                                                </button>
                                             </div>
 
-                                            <p className="mt-3 line-clamp-3 text-sm text-gray-600">
-                                                {city.notes || "Nenhuma descrição adicionada."}
-                                            </p>
+                                            <div className="p-3">
+                                                <h3 className="text-base font-semibold capitalize text-gray-800">
+                                                    {city.name}
+                                                </h3>
+
+                                                <div className="mt-1 flex items-center gap-1.5 text-xs text-gray-400">
+                                                    {formatVisitedDate(cityMemory?.visitedAt)}
+                                                </div>
+
+                                                <p className="mt-3 line-clamp-3 text-sm text-gray-600">
+                                                    {city?.notes || "Nenhuma descrição adicionada."}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
